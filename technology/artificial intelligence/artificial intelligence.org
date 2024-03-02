@@ -1,0 +1,164 @@
+:PROPERTIES:
+:ID:       1A64F002-AF71-46B8-B672-E5D7890B785E
+:END:
+#+title: ai
+
+You may need to learn [[id:6E2E2BCD-B887-4057-B586-1D1FDE43BAB3][linear algebra]], [[id:3E3773AD-6B20-4D3B-987D-1F7EF9CC8230][probability]] and [[id:B5DF4CBA-4748-4D0E-8CB6-49E496321C9D][calculus]].
+The platform is [[id:22B1088C-A196-43C1-A621-77FD75DFC5B8][pytorch]].
+
+
+
+* AI, ML and DL
+Artificial intelligence (AI) is the intelligence of machines or software, as opposed to the intelligence of humans or animals.
+It is a field of study in computer science that develops and studies intelligent machines.
+Such machines may be called AIs.
+
+
+Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions.
+The solution is to allow computers to learn from experience (data) and understand the world in terms of a hierarchy of concepts, with each concept defined through its relation to simpler concepts.
+
+
+
+Deep learning (DL) is the subset of machine learning methods based on artificial neural networks with representation learning.
+The adjective "deep" refers to the use of multiple layers in the network.
+
+
+Thus in the scope view, AI > ML > DL.
+
+The age of “Big Data” has made machine learning much easier because the key burden of statistical estimation – generalizing well to new data after observing only a small amount of data – has been considerably lightened.
+
+
+
+
+
+
+* DONE Learning
+CLOSED: [2023-12-13 Wed 18:18]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-12-13 Wed 18:18]
+:END:
+A program is said to learn from experience E with respect to task T and performance measure P, if it’s performance at tasks in T, as measured by P, improves with experience E.
+
+
+How this happens?
+A program (or a model) has lots of parameters.
+By adjusting the parameters, the performance measure P may increase or decrease.
+In the domain of AI, the processing of adjusting the parameters is called training.
+One commonly used algorithm to adjust the parameters is stochastic gradent descent (SGD).
+
+
+
+
+
+
+
+* Processes of Machine Learning
+1. Load data
+2. Pre-precessing (Optional)
+3. Model
+4. Loss function
+5. Optimizer
+6. Train and fine-tuning
+7. Predict
+
+
+* Least Mean Square (LMS)
+
+* K-Nearest Neighbors (KNN)
+
+* Support Vector Machine (SVM)
+
+* Decision Tree
+
+* Random Forest
+
+* Boost
+
+* Linear Regression
+
+* Logistic Regression
+* Distances
+
+** Euclidean Distance
+
+** Cosine Distance
+
+** Manhattan Distance
+
+** Mahalanob Distance
+
+** Pearson Correlation
+
+** KL Divergence
+
+** Cross Entropy
+
+** Hamming Distance
+
+** Edit Distance
+
+** Chebyshev Distance
+
+** Inner Distance
+
+** Jaccard Distance
+
+* Metrics
+** Precision, Recall, Accuracy and F1
+Suppose the real value is $y$ and the predicted value is $\hat{y}$.
+
+Here's all the relations between $y$ and $\hat{y}$.
+|                    | $y$ is true         | $y$ is false        |
+| $\hat{y}$ is true  | true positive (TP)  | false positive (FP) |
+| $\hat{y}$ is false | false negative (FN) | true negative (TN)  |
+
+\begin{equation}
+\text{precision (P)}=\frac{TP}{TP+FP}
+\end{equation}
+
+Precision reflects the ability in predicted positive samples.
+It focuses on predicted positive samples.
+
+\begin{equation}
+\text{recall (R)}=\frac{TP}{TP+FN}
+\end{equation}
+
+Recall reflects the ability in real positive samples.
+It focuses on real positive samples.
+
+\begin{equation}
+\text{accuracy}=\frac{TP+TN}{TP+FP+FN+TN}
+\end{equation}
+
+
+Accuracy reflects the ability in predicted samples.
+It focuses on true positive and true negative.
+
+\begin{equation}
+\text{F1}= (\frac{R^{-1} + P^{-1}}{2}^{})^{-1} = 2\frac{P\cdot R}{P + R}
+\end{equation}
+
+It focuses on false negative and false positive.
+
+
+
+* TODO [#C] Deep Feedforward Network
+* TODO [#C] Convolution Neural Network (CNN)
+* TODO [#C] Recurrent Neural Network (RNN)
+* TODO [#C] Optimization
+* TODO [#C] Regularization
+
+* TODO [#C] Object Detection [0/3]
+
+** Intersection over Union (IoU)
+** TODO [#C] Faster R-CNN
+** TODO [#C] Mask R-CNN
+** TODO [#C] YOLO
+
+* TODO [#C] Segmentation
+* TODO Transformer
+* TODO [#C] Diffusion
+* TODO Reinforcement Learning
+* TODO Generative Learning
+* OCR
+* Large Language Model (LLM)

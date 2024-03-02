@@ -1,0 +1,281 @@
+:PROPERTIES:
+:ID:       6E2E2BCD-B887-4057-B586-1D1FDE43BAB3
+:END:
+#+title: linear algebra
+
+* Scalars, Vectors, Matrices and Tensors
+| Term   | Definition                                                                    | Sign         |
+|--------+-------------------------------------------------------------------------------+--------------|
+| scalar | a single number                                                               | a            |
+| vector | an array of numbers arranged in order                                         | $\vec{a}$    |
+| matrix | 2-D array of numbers                                                          | $A$          |
+| tensor | an array of numbers arranged on a regular grid with a variable number of axis | $\mathsf{A}$ |
+
+* Multiplying Matrices and Vectors
+** Matrix Product
+
+If $\mathbf{A}$ is an $m \times n$ matrix and $\mathbf{B}$ is an $n \times p$ matrix,
+$$
+\mathbf{A}=\left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1 n} \\
+a_{21} & a_{22} & \cdots & a_{2 n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m 1} & a_{m 2} & \cdots & a_{m n}
+\end{array}\right), \quad \mathbf{B}=\left(\begin{array}{cccc}
+b_{11} & b_{12} & \cdots & b_{1 p} \\
+b_{21} & b_{22} & \cdots & b_{2 p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n 1} & b_{n 2} & \cdots & b_{n p}
+\end{array}\right)
+$$
+the matrix product $\mathbf{C}=\mathbf{A B}$ (denoted without multiplication signs or dots) is defined to be the $m \times p$ matrix 
+$$
+\mathbf{C}=\left(\begin{array}{cccc}
+c_{11} & c_{12} & \cdots & c_{1 p} \\
+c_{21} & c_{22} & \cdots & c_{2 p} \\
+\vdots & \vdots & \ddots & \vdots \\
+c_{m 1} & c_{m 2} & \cdots & c_{m p}
+\end{array}\right)
+$$
+such that
+$$
+c_{i j}=a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i n} b_{n j}=\sum_{k=1}^n a_{i k} b_{k j},
+$$
+for $i=1, \ldots, m$ and $j=1, \ldots, p$.
+*** Properites
+| Non-commutativity | $\mathbf{A B} \neq \mathbf{B A}$                                       |
+| Distributivity    | $\mathbf{A}(\mathbf{B}+\mathbf{C})=\mathbf{A B}+\mathbf{A} \mathbf{C}$ |
+| Transpose         | $(\mathbf{A B})^{\top}=\mathbf{B}^{\top} \mathbf{A}^{\top}$            |
+| Associativity     | $(\mathbf{A B}) \mathbf{C}=\mathbf{A}(\mathbf{B C})$                   |
+
+** Element-Wise Product (Hadamard Product)
+For tow matrices $\mathbf{A}$ and $\mathbf{B}$ of the same dimension $m \times n$, the element-wise product (Hadamard product) $\mathbf{C}$ is a matrix of the same dimension as the the operands, with elements given by
+$$
+\mathbf{C}_{ij} = \mathbf{A}_{ij} \odot \mathbf{B}_{ij}
+$$
+
+
+
+
+* Identity Matrices
+
+In linear algebra, the identity matrix of size $n$ is the $n \times n$   square matrix with ones on the main diagonal and zeros elsewhere.
+The identity matrix is often denoted by $I_n$.
+$$
+I_1=[1],
+I_2=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right],
+I_3=\left[\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right], \ldots,
+I_n=\left[\begin{array}{ccccc}
+1 & 0 & 0 & \cdots & 0 \\
+0 & 1 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1
+\end{array}\right]
+$$
+
+* Inverse Matrices
+A $n\times n$ square matrix $\mathbf{A}$ is called inventible if there exists an $n\times n$ square matrix $\mathbf{B}$ such that
+$$
+\mathbf{A B}=\mathbf{B A}=\mathbf{I}_n
+$$
+where $\mathbf{I}_n$ denotes the identity matrix.
+The matrix $\mathbf{B}$ is uniquely determined by $\mathbf{A}$, and is called inverse of $\mathbf{A}$, denoted by $\mathbf{A}^{-1}$.
+
+* Linear Dependence and Span
+A linear combination of some set of vectors $\{v^{(1)}, ... , v^{(n)}\}$ can be written with:
+$$
+\sum_i c_i v^{(i)}
+$$
+where $c_i$ can be any numbers.
+
+A set of vectors is linearly independent if no vector in the set is a linear combination of the other vectors.
+
+The span of a set of vectors is the set of all points obtainable by linear combination of the original vectors.
+
+
+
+* Norms
+A norm is a function $f$ used to measure the size of vectors that satisfies the following properties:
+- $f(x) = 0 \Rightarrow x=0$
+- $f(x+y) \le f(x) + f(y)$
+- $\forall \alpha \in \mathbb{R}, f(\alpha x)=|\alpha|f(x)$
+
+
+A widely used norm is $L^P$ norm:
+\begin{equation*}
+||x||_p = (\sum_i |x_i|^p)^{\frac{1}{p}} \quad \text{for} \quad p \in \mathbb{R}, p\ge 1
+\end{equation*}
+
+When $p=2$, we got the $L^2$ norm, which is also known as the Euclidean norm.
+
+
+
+* spcial kinds of matrices and vectors
+diagonal matrix:
+A matrix $D$ is diagonal matrix if and only if $D_{i,j}=0$ for all $i\ne j$.
+
+$\text{diag}(v)$ is used to denote a square diagonal matrix whose diagonal entries are given by the entries of the vector $v$.
+
+symmetirc matrix:
+\begin{equation}
+A=A^\top
+\end{equation}
+
+a unit vecotor is a vector with unit norm:
+\begin{equation}
+||x||_2 =1
+\end{equation}
+
+orthogonal:
+\begin{equation}
+x^\top y = 0
+\end{equation}
+
+orthnormal:
+\begin{equation}
+x^\top y = 0  \quad \text{and} \quad ||x||_2 = 1 , ||y||_2 = 1
+\end{equation}
+
+orthogonal matrix:
+\begin{equation}
+A^\top A = AA^\top = I
+\end{equation}
+
+* eigendecomposition
+*eigendecomposition*: decompose a matrix into a set of eigenvectors and eigenvalues.
+
+*eigenvector*: a nonzero vector satisfying
+\begin{equation}
+Av = \lambda v
+\end{equation}
+
+
+supose $A$ has $n$ linearly independent eigenvectors $\{v^{(1)}, ... , v^{(n)}\}$ with corresponding eigenvalues $\{\lambda_1, ...,\lambda_n\}$.
+
+-----
+\begin{equation}
+A
+\begin{bmatrix}
+V_1 & V_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+AV_1 & AV_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+V_1 & V_2
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{bmatrix}
+
+\end{equation}
+-----
+
+*eigendecomposition* of A:
+\begin{equation}
+A = V\text{diag}(\lambda)V^{-1}
+\end{equation}
+\begin{equation}
+V = [v^{(1)}, ... ,v^{(n)}]
+\end{equation}
+\begin{equation}
+\lambda = [\lambda_1,...,\lambda_n]^\top
+\end{equation}
+
+
+Every real symmetric matrix can be decomposed into an expression using only real-valued eigenvectors and eigenvalues:
+\begin{equation}
+A=Q\Lambda Q^\top
+\end{equation}
+where $Q$ is an orthogonal matrix composed of eigenvectors of $A$, and $\Lambda$ is a diagonal matrix.
+
+The matrix is singular if and only if any of the eigenvalues are zero.
+
+A matrix whose eigenvalues are all positive is call *positive definite*.
+
+* singular value decompositon
+*singular value decompositon* (SVD): factorize a matrix into singular vectors and singular values.
+
+Every real matrix has a singular values decompositon.
+
+\begin{equation}
+A=UDV^\top
+\end{equation}
+Suppose that $A$ is a $m\times n$.
+Then $U$ is defined to be an $m\times m$ orthogonal matrix,
+$D$ to be a $m \times n$ diagonal matrix, and $V$ to be an $n\times n$ orthogonal matrix.
+
+The elements along the diagonal of $D$ are known as the *singular values*.
+The columns of $U$ are known as the *left-sigular vectors*.
+The columns of $V$ are known as the *right-sigular vectors*.
+
+
+* the Moor-Penrose pseudoinverse
+The *Moor-Penrose pseudoinverse* of $A$ is *defined* as a matrix:
+\begin{equation}
+A^+ = \lim_{\alpha \searrow 0}(A^\top A + \alpha I)^{-1}A^\top
+\end{equation}
+
+*Practical* algorithms for computing the pseudoinverse are base on:
+\begin{equation}
+A^+ = VD^+U^\top
+\end{equation}
+where $U$, $D$ and $V$ are the singular value decompositon of A, and the pseudoinverse $D^+$ of a diagonal matrix $D$ is obtained by taking the reciprocal (/ri 'si prer kl/) of its nonzero elements then taking the transpose of the resulting matrix.
+
+-----
+\begin{equation}
+D =
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 3 & 0\\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+D^{+} =
+\begin{bmatrix}
+\frac{1}{2} & 0 \\
+0 & \frac{1}{3} \\
+0 & 0
+\end{bmatrix}
+\end{equation}
+-----
+
+* the trace operator
+\begin{equation}
+\mathrm{Tr}(A) = \sum_i A_{i,i}
+\end{equation}
+
+
+An other form of Frobenius norm:
+\begin{equation}
+||A||_F = \sqrt{\mathrm{Tr}(AA^\top)}
+\end{equation}
+
+
+properties:
+\begin{equation}
+\mathrm{Tr}(A) = \mathrm{Tr}(A^\top)
+\end{equation}
+\begin{equation}
+\mathrm{Tr}(\prod_{i=1}^n F^{(i)}) = \mathrm{Tr}(F^{(n)}\prod_{i=1}^{n-1}F^{(i)})
+\end{equation}
+
+
+* the determinant
+The *determinant* of a square matrix, denoted $\mathrm{det}(A)$, is a function that maps matrix to a real scalars.
+
+*The absolute value of the determinant can be thought of as a measure of how much multiplication by the matrix expands or contracts space.*
+
+

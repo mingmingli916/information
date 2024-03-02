@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       B5DF4CBA-4748-4D0E-8CB6-49E496321C9D
+:END:
+#+title: calculus
+
+
+* Taylor 公式
+欲求 $f(x)$ ，但不知道具体的 $f(x)$ 的表达式，在知道 $f(x)$ 在 $x_0$ 处的 $n$ 阶导数，可以利用 $(x-x_0)$ 的 $n$ 次多项式来逼近。
+\begin{equation}
+f(x)=\frac{f\left(x_0\right)}{0 !}+\frac{f^{\prime}\left(x_0\right)}{1 !}\left(x-x_0\right)+\frac{f^{\prime \prime}\left(x_0\right)}{2 !}\left(x-x_0\right)^2+\cdots+\frac{f^{(n)}\left(x_0\right)}{n !}\left(x-x_0\right)^n+R_n(x)
+\end{equation}
+
+其中 $R_n(x)$ 是 $(x-x_0)$ 的高阶无穷小。
+

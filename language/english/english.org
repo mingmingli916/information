@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       03B879E0-A5E4-4217-B886-5AC51A9CC9A2
+:END:
+#+title: english
+
+[[id:0F7FCA94-7B14-43B4-AFCC-C394B9D28819][memory]]
+
+* TODO [#C] Grammer

@@ -1,0 +1,531 @@
+:PROPERTIES:
+:ID:       A194CD53-E934-452A-B9F4-3348F7E77DBA
+:END:
+#+title: elisp
+* Lisp Processing
+
+<<<Lisp>>> stands for LISt Processing, and the programming language handles lists (and lists of lists) by putting them between parentheses.
+The parentheses mark the boundaries of the list.
+Sometimes a list is preceded by an apostrophe ', called a single-quote in Lisp.
+
+
+** Lisp Lists
+A list looks this:
+#+begin_src emacs-lisp
+  '(rose violet daisy buttercup)
+#+end_src
+The whitespace separates the elements in the list.
+
+
+*** Numbers, Lists Inside of Lists
+#+begin_src emacs-lisp
+  (+ 2 2)
+  '(this list has (a list inside of it))
+#+end_src
+
+In Lisp, both data and program are presented the same way: that is, they are both lists of words, numbers, or other lists, separated by whitespace and surrounded by parentheses.
+With the single quote, it works like a data.
+Without the single quote, it works like a program.
+
+
+
+*** Symbolic Expression
+#+begin_src emacs-lisp
+  (+ 2 2)
+#+end_src
+This is a symbolic expression (s-expression).
+"+" is a symbol that stands for the math addition computation and "2" is a symbol for the number in nature.
+
+
+For example, "Michael Jackson" is a symbol.
+"Michael Jackson" can be used to stand for the real person but it is not the real person.
+
+
+*** String
+All the quoted text is called a string.
+#+begin_src emacs-lisp
+  "text between quotation marks."
+#+end_src
+
+
+*** Whitespace
+The amount of whitespace in a list does not matter.
+Extra whitespace and newlines are designed to make a list more readable by humans.
+When Lisp reads the expression, it gets rid of all the extra whitespace (but it needs to have at least one space between atoms in order to tell them apart.)
+
+
+** Run a Program
+A list in Lisp is a program ready to run.
+If you run it (for which the Lisp jargon is evaluate), the computer will do one of three things:
+- do nothing except return the list itself
+- send you an error message
+- treat the first symbol in the list as a command to do something.
+
+
+The single apostrophe, ', that I put in front of some of the example lists in preceding sections is called a quote; when it precedes a list, it tells Lisp to do nothing with the list, other than take it as it is written.
+But if there is no quote preceding a list, the first item of the list is special: it is a command for the computer to obey.
+
+
+
+In Emacs, C-x C-e will invoke the command eval-last-sexp.
+This command will call the Lisp interpreter to evaluate the last expression.
+
+
+** The Lisp Interpreter
+What a Lisp interpreter does when we command it to evaluate a list?
+
+1. It looks to see whether there is a quote before the list
+   1. If there is, the interpreter just gaves us the list
+   2. If there is no quote, the interpreter looks at the first element in the list and sees whether it has a function definition
+      1. If it does, the interpreter carries out the instruction in the function definition
+      2. Otherwise, the interpreter prints an error message.
+
+
+*** Complications
+Besides evaluationg a list, a list interpreter can also process:
+- variable
+- special forms
+- macros
+- inner list
+
+
+*** Byte Compiling
+the Lisp interpreter is able to interpret two kinds of entity: humanly readable code and byte compiled code.
+Byte compiled code runs faster than humanly readable code.
+Byte compiled code is usually stored in a file that ends with a .elc extension rather than a .el extension.
+
+
+** Evaluation
+When the Lisp interpreter works on an expression, the term for the activity is called <<<evaluation>>>.
+Evaluating a symbolic expression most commonly causes the Lisp interpreter to return a value and perhaps carry out a side effect; or else produce an error.
+
+Evaluation of a symbolic expression:
+- A number evaluates to itself.
+- A string evalutes to itself.
+- When you evaluate a symbol by itself, its value is returned.
+- When you evaluate a list, the Lisp interpreter looks at the first symbol in the list and then at the function definition bound to that symbol. Then the instructions in the function definition are carried out.
+- A single-quote ‘'’ tells the Lisp interpreter that it should return the following expression as written, and not evaluate it as it would if the quote were not there.
+
+
+Whenever you give an editing command to Emacs Lisp, you are evaluating an expression, the first element of which is a function.
+This is how Emacs works.
+
+
+** Variables
+In Emacs Lisp, a symbol can have a value attached to it just as it can have a function definition attached to it.
+The two are different.
+The function definition is a set of instructions that a computer will obey.
+A value, on the other hand, is something, such as number or a name, that can vary (which is why such a symbol is called a variable).
+The value of a symbol can be any expression in Lisp, such as a symbol, number, list, or string.
+A symbol that has a value is often called a <<<variable>>>.
+
+A symbol can have both a function definition and a value attached to it at the same time. Or it can have just one or the other.
+The two are separate.
+
+A symbol can have any value attached to it.
+
+
+** Arguments
+#+begin_src emacs-lisp
+  (+ 1 2)
+#+end_src
+
+In this example, the numbers 1 and 2 are called <<<arguments>>> of the function +.
+The numbers are the information that is given to or passed to the function.
+
+In Lisp, the arguments to a function are the s-expressions that follow the function.
+The values returned by the evaluation of those s-expressions are passed to the function.
+Different functions require different numbers of arguments; some functions require none at alla
+
+
+
+
+
+* How to Write Function Definitions
+All functions are defined in terms of other functions, except for a few primitive functions that are wirtten in the C programming language.
+The primitive functions are used exactly like those written in Emacs Lisp and behave like them.
+They are written in C so we can easily run GNU Emacs on any computer that can run C. (C is the main language used for writting operating system.)
+
+*When you write code in Emacs Lisp, you do not need to distinguish between the use of functions written in C and the use of functions written in Emacs Lisp.*
+
+
+A function definition has up to five parts following the word =defun=:
+1. The name of the symbol to which the function definition should be attached.
+2. A list of the arguments that will be passed to the function. If no arguments will be passed, this is an empty list, ().
+3. Documentation describing the function. (Technically optional, but strongly recommended.)
+4. Optionally, an expression to make the function interactive so you can use it by typing M-x and then the name of the function.
+5. The code that instructs the computer what to do: the body of the function definition.
+
+
+#+begin_example
+(defun function-name (arguments…)
+  "optional-documentation…"
+  (interactive argument-passing-info)     ; optional
+  body…)
+#+end_example
+
+The parentheses are written in the function definition so the computer can figure out where the argument list ends and the rest of the function definition begins.
+(When called, the parentheses around the arguments are not necessary.)
+The name you use in an argument list is private to that particular definition.
+The documentation string is what you see when you type C-h f and the name of a function.
+When you write a documentation string, you should make the first line a complete sentence since some commands, such as apropos, print only the first line of a multi-line documentation string.
+Also, you should not indent the second line of a documentation string, if you have one, because that looks odd when you use C-h f (describe-function). 
+
+
+** Optional Arguments
+
+Optional arguments are a feature of Lisp: a particular keyword is used to tell the Lisp interpreter that an argument is optional.
+The keyword is &optional.
+
+** Substituation in Document String
+#+begin_src emacs-lisp
+(defun beginning-of-buffer (&optional arg)
+  "Move point to the beginning of the buffer;
+leave mark at previous position.
+With \\[universal-argument] prefix,
+do not set mark at previous position."
+)
+#+end_src
+
+This ‘\\’ tells the Lisp interpreter to substitute whatever key is currently bound to the ‘[…]’.
+In the case of universal-argument, that is usually C-u.
+
+
+* car, cdr, cons: Fundamental Functions
+In Lisp, car, cdr, and cons are fundamental functions.
+The cons function is used to construct lists, and the car and cdr functions are used to take them apart.
+
+** car (Contents of the Address part of the Register)
+The CAR of a list is the first element in the list.
+car does not remove the first item from the list; it only reports what it is.
+
+
+#+begin_src emacs-lisp
+  (car '(dog cat pig))
+  ;; dog
+#+end_src
+
+** cdr (Contents of the Decrement part of the Register)
+
+The CDR of a list is the rest of the list, that is, the cdr function returns the part of the list that follows the first item.
+Like car, cdr does not remove any elements from the list—it just returns a report of what the second and subsequent elements are.
+#+begin_src emacs-lisp
+  (cdr '(dog cat pig))
+  ;; (cat pig)
+#+end_src
+
+** cons
+The cons function constructs lists; it is the inverse of car and cdr.
+cons causes the creation of a new list in which the element is followed by the elements of the original list.
+Like car and cdr, cons is non-destructive.
+
+
+#+begin_src emacs-lisp
+  (cons 'dog '(cat pig))
+  ;; (dog cat pig)
+#+end_src
+
+
+
+* Conditionals
+
+** if
+#+begin_src emacs-lisp
+(if true-or-false-test
+    action-to-carry-out-if-test-is-true)  
+#+end_src
+
+#+begin_src emacs-lisp
+(if true-or-false-test
+    action-to-carry-out-if-the-test-returns-true
+  action-to-carry-out-if-the-test-returns-false)  
+#+end_src
+
+
+The expression that tests for truth is interpreted as true if the result of evaluating it is a value that is not nil.
+
+
+** or
+
+** and
+
+** not
+
+** when
+
+** cond
+#+begin_src emacs-lisp
+(cond
+ (first-true-or-false-test first-consequent)
+ (second-true-or-false-test second-consequent)
+ (third-true-or-false-test third-consequent)
+  …)  
+#+end_src
+* Loops and Recursion
+** while
+#+begin_src emacs-lisp
+(while true-or-false-test
+  body…)  
+#+end_src
+** dolist
+#+begin_src emacs-lisp
+(dolist (VAR LIST [RESULT]) BODY...)
+#+end_src
+
+Evaluate BODY with VAR bound to each car from LIST, in turn.
+Then evaluate RESULT to get return value, default nil.
+
+** dotimes
+#+begin_src emacs-lisp
+(dotimes (VAR COUNT [RESULT]) BODY...)
+#+end_src
+
+Loop a certain number of times.
+Evaluate BODY with VAR bound to successive integers running from 0,
+inclusive, to COUNT, exclusive.
+
+Finally RESULT is evaluated to get the return value (nil if
+RESULT is omitted).  Using RESULT is deprecated, and may result
+in compilation warnings about unused variables.
+
+** Recursion
+A recursive function contains code that tells the Lisp interpreter to call a program that runs exactly like itself, but with slightly different arguments.
+
+
+#+begin_src emacs-lisp
+(defun name-of-recursive-function (argument-list)
+  "documentation…"
+  (if do-again-test
+    body…
+    (name-of-recursive-function
+         next-step-expression)))  
+#+end_src
+
+
+
+* Regular Expression
+
+** re-search-forward
+* Functions
+** Pring a Message in the Echo Area (message)
+#+begin_src emacs-lisp
+  (message "hello world")
+  (message "my english name is %s" "aike acheson")
+  (message "the value of fill-column is %d" fill-column)
+#+end_src
+This function print a message in the echo area.
+"%s" and "%d" is a placeholder and they will be replaced by the following corresponding arugments.
+
+When you call =message=, the text is printed in double quotes.
+But when embedded in a function, =message= prints the text  as a side effect without quotes.
+
+** Setting the Value of a Variable 
+*** set
+#+begin_src emacs-lisp
+  (set 'animals '(dog cat))
+#+end_src
+
+
+The list (dog cat) will appear in the echo area.
+This is what is returned by the set function.
+As a side effect, the symbol animals is bound to the list.
+*** setq
+#+begin_src emacs-lisp
+    (setq animals '(dog cat))
+    (setq animals '(dog cat)
+	  languages '(english french))
+#+end_src
+As a practical matter, you almost always quote the first argument to set.
+The combination of set and a quoted first argument is so common that it has its own name: the special form setq.
+This special form is just like set except that the first argument is quoted automatically, so you don’t need to type the quote mark yourself.
+Also, as an added convenience, setq permits you to set several different variables to different values, all in one expression.
+*** DONE let
+CLOSED: [2023-12-03 Sun 00:12]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-12-03 Sun 00:12]
+:END:
+
+=let= is used to attach or bind a symbol to a value in such a way that the Lisp interpreter will not confuse the variable with a variable of the same name that is not part of the function.
+=let= creates a name for a local variable that overshadows any use of the same name outside the =let= expression.
+(Symbols used in argument lists work the same way.)
+
+Local variables created by a let expression retain their value only within the let expression itself; the local variables have no effect outside the let expression.
+
+let can create more than one variable at once.
+Also, let gives each variable it creates an initial value, either a value specified by you, or nil.
+
+
+#+begin_src emacs-lisp
+(let varlist body...)
+
+(let ((variable value)
+      (variable value)
+      ...)
+  body...)
+
+#+end_src
+
+#+begin_src emacs-lisp
+
+(let ((first-name "Aike")
+      (last-name "Acheson"))
+  (message "My English name is %s %s." first-name last-name))
+  
+#+end_src
+*** let*
+Comparing to let, let* can bind a variable using the variables before.
+*** defvar
+The defvar special form is similar to setq in that it sets the value of a variable.
+It is unlike setq in two ways: first, it only sets the value of the variable if the variable does not already have a value.
+If the variable already has a value, defvar does not override the existing value.
+Second, defvar has a documentation string.
+*** TODO [#C] defcustom
+
+** Make a Function Interacive (interative)
+
+#+begin_src emacs-lisp
+  (interactive "p")			; prefix argument
+  (interactive "p\ncZap to char: ")
+#+end_src
+
+| b | The name of an exiting buffer.                                |
+| c | A character.                                                  |
+| f | The name of an exiting file.                                  |
+| p | The numeric prefix argument.                                  |
+| r | Point and the mark, as two numeric arguments, smallest first. |
+
+
+A function with two or more arguments can have information passed to each argument by adding parts to the string that follows =interactive=.
+When you do this, the information is passed to each argument in the same order it is specified in the =interactive= list.
+In the string, each part is separated from the next part by a ‘\n’, which is a newline.
+
+
+** Restore Point and Buffer (save-excursion)
+
+save-excursion saves the location and restores this position after the code within the body is evaluated.
+save-excursion restores the value of point even in case of abnormal exit.
+In addition to recording the value of point, save-excursion keeps track of the current buffer, and restores it, too.
+
+
+
+#+begin_src emacs-lisp
+(save-excursion
+  body...)
+#+end_src
+
+
+
+** Point
+
+*** point
+
+*** point-min
+
+*** point-max
+
+*** goto-char
+
+
+
+** Buffer
+
+*** beginning-of-buffer
+
+*** buffer-file-name
+
+*** buffer-name
+
+*** buffer-size
+
+*** current-buffer
+
+*** insert-buffer-substring
+
+*** mark-whole-buffer
+
+*** other-buffer
+
+*** set-buffer
+
+*** swith-to-buffer
+
+*** get-buffer-create
+
+*** get-buffer
+
+*** copy-to-buffer
+
+*** insert-buffer
+
+*** erase-buffer
+
+*** bufferp
+
+** Mark
+
+*** push-mark
+
+** Narrowing
+
+*** save-restriction
+
+When the Lisp interpreter meets with save-restriction, it executes the code in the body of the save-restriction expression, and then undoes any changes to narrowing that the code caused.
+
+#+begin_src emacs-lisp
+(save-restriction
+  body… )  
+#+end_src
+
+
+*** widen
+
+** List Elements Related Oprations
+
+*** length
+
+*** nthcdr
+
+*** nth
+
+*** setcar
+
+*** setcdr
+
+** Combine Multiple Expressions (progn)
+Some of the functions requires only one expression to be executed but you want to execute several expressions.
+In this case, you can use progn to combine the several expressions to make them just like one expression.
+
+progn is a special form that causes each of its arguments to be evaluated in sequence and then returns the value of the last one.
+The preceding expressions are evaluated only for the side effects they perform.
+The values produced by them are discarded.
+
+#+begin_src emacs-lisp
+    (progn
+      body...)
+#+end_src
+
+
+** Error Handle (condition-case)
+#+begin_src emacs-lisp
+(condition-case
+  var
+  bodyform
+  error-handler…)  
+#+end_src
+
+
+The first argument, var, is sometimes bound to a variable that contains information about the error.
+If this argument is nil, that information is discared.
+
+The second argument, bodyform, is the code will be run if no rror occurs.
+
+The third argument, error-handler, have two parts, a condition-name and a body.
+If the condition-name part of an error handler matches a condition name generated by an error, then the body part of the error handler is run.
+The condition-name part of an error handler may be either a single condition name or a list of condition names.
+Also, a complete condition-case expression may contain more than one error handler.
+When an error occurs, the first applicable handler is run.
+
+** Function Call (funcall)
+funcall evaluates its first argument as a function. It passes its remaining arguments to its first argument.
+
+

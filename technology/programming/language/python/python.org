@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       FBD665E7-ADE3-4069-83C4-8715199F1FFC
+:END:
+#+title: python
+
+
+Python is a script language.
+Python files can be executed without compilation.
+Python files are executed by Python interpreter.
+Comparing to script languages, there are compiled languages.
+Compiled language must be compiled to be executed.
+Compiled languages include C, Java, Go and so on.
+
+
+
+
+

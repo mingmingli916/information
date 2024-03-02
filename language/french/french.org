@@ -1,0 +1,417 @@
+:PROPERTIES:
+:ID:       7CA456E7-E85E-42BC-9042-4303C5578351
+:END:
+#+title: french
+
+[[id:0F7FCA94-7B14-43B4-AFCC-C394B9D28819][memory]]
+
+
+* DONE La Prononciation 
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-01-05 Fri 23:19]
+:END:
+
+** Les Symboles Phonetiques 音标
+
+| Consonne     | b | d | f | k | l | m | n | p | s | t | v | z | g | ɲ | r | ʃ | ʒ | dʒ | ʧ | ŋ |
+| Voyelle      | a | e | ɪ | o | u | y | ø | œ | ɔ | ə | ɛ |   |   |   |   |   |   |    |   |   |
+| Semi-Voyelle | j | w | ɥ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |    |   |   |
+| Nasale       | ɑ̃ | ɔ̃ | ɛ̃ |   |   |   |   |   |   |   |   |   |   |   |   |   |   |    |   |   |
+
+** DONE l'Alphabet 
+:LOGBOOK:
+- State "DONE"       from              [2024-01-29 Mon 08:59]
+:END:
+
+
+| a [a]   | b [be] | c [se]      | d [de]  | e [ə]     |
+| f [ɛf]  | g [ʒe] | h [aʃ]      | i [ɪ]   | j [ʒɪ]    |
+| k [ka]  | l [ɛl] | m [ɛm]      | n [ɛn]  | o [o]     |
+| p [pe]  | q [ky] | r [ɛr]      | s [ɛs]  | t [te]    |
+| u [y]   | v [ve] | w [dubləve] | x [iks] | y [iɡrɛk] |
+| z [zɛd] |        |             |         |           |
+** DONE 发音规则
+:LOGBOOK:
+- State "DONE"       from              [2024-01-29 Mon 08:59]
+:END:
+
+最基本的发音规则：
+2. 辅音字母位于词末不发音，除了cflr(长发丽人)
+3. h永不发音
+4. 两个相同的字母发一个音
+
+
+
+*** 不在字母组合中，单个字母只有一种发音的情况
+
+大部分辅音字母只有一个发音。
+
+| Lettre | Phonetique | Example   |
+|--------+------------+-----------|
+| a      | [a]        | lama      |
+| b      | [b]        | habiter   |
+| d      | [d]        | dimanche  |
+| f      | [f]        | film      |
+| i      | [ɪ]        | timide    |
+| j      | [ʒ]        | jour      |
+| k      | [k]        | kilomètre |
+| l      | [l]        | libre     |
+| m      | [m]        | moi       |
+| n      | [n]        | nom       |
+| p      | [p]        | papa      |
+| r      | [r]        | français  |
+| t      | [t]        | timide    |
+| u      | [y]        | unique    |
+| v      | [v]        | vie       |
+| y      | [ɪ]        | système   |
+| z      | [z]        | zéro      |
+
+*** Les Lettre avec l'Accent 
+| é     | [e] | répéter          |
+| è,ê,ë | [ɛ] | lève, fête, Noël |
+| ï, î  | [ɪ] | maïs, île        |
+| ô     | [o] | hôpital          |
+| ç     | [s] | français         |
+
+*** 不在字母组合中，单个字母有多个发音的情况
+| 字母 | 发音  | 发音情况                       | 例子                                        |
+|-----+------+------------------------------+--------------------------------------------|
+| c   | [s]  | 在e,i,j前                     | ici, ce                                    |
+|     | [k]  | 不在e,i,j前                   | sac                                        |
+|-----+------+------------------------------+--------------------------------------------|
+| g   | [ʒ]  | 在e,i,j前                     | général                                    |
+|     | [g]  | 不在e,i,j前                   | gare                                       |
+|-----+------+------------------------------+--------------------------------------------|
+| o   | [ɔ]  | 一般情况下                     | porte                                      |
+|     | [o]  | 词末开音节                     | mot                                        |
+|     | [o]  | 在[z]前                       | rose                                       |
+|-----+------+------------------------------+--------------------------------------------|
+| s   | [s]  | 一般情况                       | si                                         |
+|     | [z]  | 两个元音之间                   | rose                                       |
+|-----+------+------------------------------+--------------------------------------------|
+| w   | [v]  | 一般情况                       | wagon                                      |
+|     | [w]  | 外来词                        | wifi                                       |
+|-----+------+------------------------------+--------------------------------------------|
+| x   | [ks] | 一般情况                       | taxi                                       |
+|     | [s]  | 短小词词末                     | six, dix                                   |
+|-----+------+------------------------------+--------------------------------------------|
+| e   | [ ]  | 词末不发音，但在单音节词中时发[ə] | ce                                         |
+|     | [ɛ]  | 闭音节中                       | merci, met                                 |
+|     | [ə]  | 开音节中                       | ceci                                       |
+|     | [ɛ]  | 两个相同的辅音前                | pelle[pɛl]                                 |
+|     | [ɑ]  | 在mm前                        | femme                                      |
+|     | [ ]  | 元音+辅音+e+辅音+元音           | samedi                                     |
+|     | [e]  | desc, dess, ess, eff在词首    | descendre, dessin, essai, effacer, essayer |
+
+*** 字母组合
+| gu                       | [g]    |              | guide                    |
+| qu                       | [k]    |              | qui                      |
+| ex                       | [ɛɡz]  | ex+元音       | exemple                  |
+|                          | [ɛks]  | ex+辅音       | excuse                   |
+| ai,ei,ay,ey              | [ɛ]    |              | faire,seize              |
+| oi                       | [wa]   |              | soir                     |
+| au,eau                   | [o]    |              | au, eau, beau            |
+| eu                       | [ø]    |              | bleu                     |
+|                          | [œ]    | 在r前         | leur                     |
+| oeu,œu                   | [œ]    |              | cœur                     |
+| gn                       | [ɲ]    |              | ligne                    |
+| ou, où, oû               | [u]    |              | où, bisou                |
+| an, am, en,em            | [ɑ̃]    |              | dans, enfant             |
+| on, om                   | [ɔ̃]    |              | mon, nombre              |
+| im, in, ym, yn, aim, ain | [ɛ̃]    |              | important, prince, plein |
+| um, un                   | [œ̃]    |              | un, lundi                |
+| tion                     | [sjɔ̃]  |              | attention                |
+|                          | [tjɔ̃]  | s+tion       | question                 |
+| sion                     | [sjɔ̃]  |              | passion                  |
+| ien                      | [jɛ̃]   | 词末          | canadien                 |
+| oin                      | [wɛ̃]   |              | loin, point              |
+| ch, sch                  | [ʃ]    |              | Chine, schéma            |
+| ph                       | [f]    |              | photo                    |
+| il                       | [j]    | 词末          | travail                  |
+| ill                      | [j]    | 元音+ill      | travailler               |
+|                          | [ij]   | 辅音+ill      | famille                  |
+| tiel                     | [sjɛl] | 词末          | essentiel                |
+| ent                      | []     | 动词变位的词末 | parlent                  |
+| er                       | [e]    | 动词原型词末   | parler                   |
+| ez                       | [e]    | 词末          | aimer, chez              |
+| es                       | [e]    | 单音节词末     | mes, des, ses            |
+
+** DONE La Liaison
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-02-27 Tue 18:26]
+:END:
+在同一节奏组jiez(le group rythmique)中，如果前一词以不发音的辅音字母结尾，后一词以元音字母开始时，前一词的词末辅音字母由不发音变为发音，与后面的元音组成一个音节，这种现象叫做liaison。
+
+Liaison基本原则是同一个节奏组中才能连读。
+
+le group rythmique的划分：
+- 辅助词 + 有关实词 :: chez elle
+- 固定词组或习惯用语 :: c'est-à-dire
+- 定语 + 被修饰成分 :: mon amis
+- 被修饰成分 + 单音节词定语 :: les pays-bas
+
+
+
+Liaisons obligatoires：
+- 限定词（冠词，数词，形容词等）+ 名词 :: mon amis
+- 人称代词 + 动词 :: Ils ont [il zɔ̃]
+- 副词 + 形容词 :: très important
+- 单音节词 + 其后单词 :: dans une heure
+- quand + 它后面的词 :: quand il arrive
+- 复合名词和短语中 :: vis-à-vis, de temps en temps
+- 主谓倒装结构中 :: Est-il allé à Pékin?
+- 无人称结构和强调结构（c'est, c'est… qui/que）中的est和其后单词 :: c'est à voir
+
+
+
+Liaisons interdites:
+- et :: un fils et une fille
+- 单数名词之后 :: un cours intéressant
+- 嘘音h前 :: un héros
+
+
+Liaison中的变音：
+- s,z,x :: [z]
+- d :: [t]
+
+
+
+
+** TODO La Intonation 语调
+* La Grammaire 
+** TODO 时态
+动词变位是动词根据语式、时态、人称、单复数等的不同而改变。
+但是这些变化大部分都是有规律可循的。
+这些动词分为3大类：
+1. er结尾
+2. ir结尾
+3. re结尾
+
+
+除却极少数的动词有不规则的变化形式外，相同结尾的动词有相同或者类似的变化形式。
+
+法语中的动词以：
+- er 结尾的有9630个
+- ir结尾的有597个
+- re结尾的有316个。
+*** Indicatif 
+
+陈述句。
+
+**** DONE Présent 
+:LOGBOOK:
+- State "DONE"       from              [2024-01-30 Tue 09:10] \\
+  粗略完成
+:END:
+
+陈述一种事实。
+比如：
+Je cours tous les matins. 我每天早晨跑步。
+
+
+变化规则：
+|        | je       | tu        | il       | nous           | vous          | ils           |
+| -er    | -e       | -es       | -e       | -ons           | -ez           | -ent          |
+| -ir    | -is      | -is       | -it      | -issons        | -issez        | -issent       |
+| -re    | -s       | -s        | -t       | -ons           | -ez           | -ent          |
+|--------+----------+-----------+----------+----------------+---------------+---------------|
+| parler | je parle | tu parles | il parle | nous parlons   | vous parlez   | ils parlent   |
+| finir  | je finis | tu finis  | il finit | nous finissons | vous finissez | ils finissent |
+| rompre | je romps | tu romps  | il rompt | nous rompons   | vous rompez   | ils rompent   |
+
+
+**** DONE Passé Composé 
+:LOGBOOK:
+- State "DONE"       from              [2024-01-30 Tue 09:12] \\
+  暂时完成
+:END:
+
+陈述过去发生的动作或者事件。
+比如：
+J'ai mangé. 我吃饭了。
+
+
+
+变化形式：助动词être或avoir的indicatif présent + 动词的participe passé。
+（大部分动词使用avoir作为助动词。）
+
+|      | être        | avoir      |
+| je   | je suis     | j'ai       |
+| tu   | tu es       | tu as      |
+| il   | il est      | il a       |
+| nous | nous sommes | nous avons |
+| vous | vous êtes   | vous avez  |
+| ils  | ils sont    | ils ont    |
+
+
+过去分词变化规则：
+| -er | -é |
+| -ir | -i |
+
+| aller | je suis allé | tu es allé | il est allé | nous sommes allés | vous êtes allés | ils sont allés |
+| finir | j'ai fini    | tu as fini | il a fini   | nous avons fini   | vous avez fini  | ils ont fini   |
+
+
+#+begin_example
+注意：
+使用être做助动词的时候，过去分词要根据单复数而进行变化。
+#+end_example
+
+**** DONE Imparfait
+:LOGBOOK:
+- State "DONE"       from              [2024-01-31 Wed 09:49]
+:END:
+
+陈述过去有延续性、重复性的动作，或过去一段时间内的状态。
+比如：
+Je mangeais. 我当时在吃饭。
+
+
+
+变化规则：
+nous的indicatif présent的变位去掉词尾的ons，分别加上ais, ais, ait, ions, iez, aient.
+
+|        | nous           | je          | tu          | il          | nous          | vous         | ils            |
+| manger | nous mange-ons | je mangeais | tu mangeais | il mangeait | nous mangions | vous mangiez | ils mangeaient |
+
+#+begin_example
+注意：
+mangions中没有e，不是mangeions。
+因为根据发音规则，g在e，i，j前发[ʒ]，因此此处的e需省略。
+#+end_example
+
+
+
+**** DONE Future Simple
+:LOGBOOK:
+- State "DONE"       from              [2024-01-31 Wed 10:00]
+:END:
+表示将来的动作或者事件。
+比如：
+Je voyagerai en France. 我将去法国旅行。
+
+
+变化规则：动词原型的基础上加ai, as, a, ons, ez, ont.
+|        | je          | tu          | il         | nous           | vous          | ils           |
+|        | -ai         | -as         | -a         | -ons           | -ez           | -ont          |
+| dormir | je dormirai | tu dormiras | il dormira | nous dormirons | vosu dormirez | ils dormiront |
+| manger | je mangerai | tu mangeras | il mangera | nous mangerons | vous mangerez | ils mangeront |
+
+**** Future Proche
+
+
+*** Subjonctif
+一种用于que引入的从句中，用来表达感情、意见、怀疑、愿望、不确定、可能性、假设或建议。
+常用的句式：sujet + verbe introducteur + que + sujet + verbe au subjonctif.
+
+
+**** Présent
+在indicatif présent的ils变位的基础上变化，去掉ent，然后加上e, es, e, ions, iez, ent.
+|       |               | je             | tu              | il            | nous                | vous               | ils              |
+| finir | ils finissent | que je finisse | que tu finisses | qu'il finisse | que nous finissions | que vous finissiez | qu'ils finissent |
+
+
+
+
+* Le Vocabulaire
+** DONE 词根
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-02-27 Tue 18:25]
+:END:
+
+** DONE Le Préfixe
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-02-16 Fri 01:43]
+:END:
+
+** DONE Le Suffixe
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-02-16 Fri 01:42]
+:END:
+| eur       | 阳性 名词后缀     | 表示人或者物（有时也可做形容词） | accélérateur, valeur  |
+| rice      | 阴性名词后缀      | 表示人或者物（有时也可做形容词） | accélératrice         |
+| aire      | 阳性名词后缀      | 表示抽象的名词                | inventaire            |
+| tion      | 名词后缀          |                             | transaction, question |
+| ment      | 副词后缀，名词后缀 |                             | vraiment, aliment     |
+| sceptique | 名词后缀          | 对···持怀疑态度的人            | climatosceptique      |
+
+** La Semaine 
+- lundi
+- mardi
+- mercredi
+- jeudi
+- vendredi
+- samedi
+- dimanche
+
+
+LMM: 李明明。 mercredi是lmm中最长的的。
+vendredi，samedi，dimanche是比较特殊的。
+jeudi单独记忆。
+
+
+** Le Mois 
+
+- janvier: similar to January.
+- février: similar to February.
+- mars: m放到就是3，3把火
+- avril: A类似4
+- mai: 单独记忆  
+- juin: 对比着juillet来记忆
+- juillet:
+- août: 唯一的一个月份，戴着帽子的。
+- septembre: similar to september
+- octobre: similar to october
+- novembre: similar to november
+- décembre: similar to december
+
+
+
+** Le Corps
+| Mot     | Masculine ou Feminine | Explication |
+|---------+-----------------------+-------------|
+| bedaine | m                     | 大肚子       |
+|         |                       |             |
+** 个别单词
+
+| Mot            | Masculine ou Feminine | Prononciation | Explication                                        | Example                                                           |
+|----------------+-----------------------+---------------+----------------------------------------------------+-------------------------------------------------------------------|
+| poids          | m                     |               | 重量                                                | poids requis                                                      |
+| atteindre      |                       |               | 追上，赶上，到达                                      | Nous atteindrons Shanghai avant la nuit                           |
+| atteint(e)     |                       |               | 得病的                                              | Il est atteit d'un cancer                                         |
+| régler         |                       |               | 校准，调整                                           |                                                                   |
+| réglage        | m                     |               | 校准，调整                                           | réglage manuel                                                    |
+| lourd(e)       |                       |               | 重的，沉重的                                         | Il fait lourd. 天气沉闷。                                           |
+| cadran         | m                     |               | 标度盘，刻度盘                                       | Régler le cadran à un nombre inférieur pour amincir les tranches. |
+| inférieur(e)   |                       |               | 下部的，下游的，次的                                  |                                                                   |
+| épaissir       |                       |               | 变厚，使变厚                                         | La crème épaissit. 奶油变稠了。                                     |
+| amincir        |                       |               | 使...变细，使...变薄                                 |                                                                   |
+| supérieur(e)   |                       |               | 上游的，优越的；长官                                  | être ~ à qn pour la taille 身材比某人高                             |
+| éviter         |                       |               | 避免，躲避                                           | éviter un accident 避免一场事故                                     |
+| essuyer        |                       |               | 拭； 擦干， 擦去                                     | essuyer ses mains avec une serviette 用毛巾把手擦干                 |
+| brancher       |                       |               | 晒在树枝上，分支，分流，接通                           | brancher un tuyau sur une conduite principale. 把管子接在总管上。    |
+| sécuritaire    |                       |               | 安全的                                              |                                                                   |
+| chariot        | m                     | [∫arjo]       | 四轮运货车，【机械】溜板, 拖板;滑架;滑动刀架             |                                                                   |
+| vitesse        | f                     |               | 迅速，速率                                           | changer de vitesse 换档                                            |
+| poussoir       | m                     |               | 按钮，【机械】推杆                                    |                                                                   |
+| épaisseur      | f                     |               | 厚度                                                | épaisseur de deux centimètres 2厘米的厚度                           |
+| lame           | f                     |               | （金属、玻璃、木头等的）薄片， 薄板，（刀、剑等的）身； 剑 |                                                                   |
+| inventaire     | m                     |               | 财产清单，清点财产                                    |                                                                   |
+| tranfert       | m                     |               | 转让，转移                                           | transfert de propriété产权转让                                      |
+| compte         | m                     |               | 账户，计数，计算                                      | faire un compte, au ~ de 依靠...，由...负责                         |
+| œuvre          | f                     |               | 工作，劳动，事业，著作                                 | main d'œuvre                                                      |
+| trésorier(ère) |                       |               | 财务官, 财务主管                                     | rapport de trésorier                                              |
+| transaction    | f                     |               | 和解，交易                                           | texe sur les transactions 交易税                                   |
+| déboursé       | m                     |               | 预付款                                              |                                                                   |
+| plateau        | m                     |               | 托盘                                                |                                                                   |
+| portion        | f                     |               | (食物、钱财等的)一客, 一份                             | portion de pain一份面包                                             |
+| breuvage       | m                     |               | 饮料                                                |                                                                   |
+| galette        | f                     |               | 饼，饼状物                                           | galette végé                                                      |
+| laïque         |                       |               | 世俗的，非宗教的                                      | école laïque 非教会学校, 公立学校                                    |
+| autisme        | m                     | [otism]       | 【心】自我中心主义，孤独性，【医】孤独症                 |                                                                   |
+| thérapie       | f                     |               | 治疗                                                | suivre une thérapie contre le SIDA进行抗艾滋病治疗                   |
+| pastèque       | f                     |               | melon d'eau                                        |                                                                   |
+| domestique     |                       |               | 家庭的，家养的                                       | travaux domestiques家务，animaux domestiques家畜                    |
+| appareil       | m                     |               | device                                             | appareil ménager家用电器                                            |
+| auditoire      | m                     |               | 听众，听课学生，读者                                  | auditoire attentif 专心听讲的听众                                   |
+|                |                       |               |                                                    |                                                                   |

@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       3E3773AD-6B20-4D3B-987D-1F7EF9CC8230
+:END:
+#+title: probability
+* 期望（expected value），方差（deviation），标准差（standard diviation），协方差（covariance）
+** 期望(expected value):
+\begin{equation}
+E(X) = \sum_i x_i P(x_i) \\
+E(X) = \int_a^b xP(x)dx
+\end{equation}
+期望常用字母 \mu 来表示。
+
+期望值也就是我们说的平均值，是数据的一种统计学特征。
+** 方差(deviation)
+\begin{equation}
+D(X) = \sum_i  (x_i - E(X) )^2 P(x_i) \\
+D(X) = \int_a^b  (x - E(X) )^2 P(x)dx
+\end{equation}
+方差常用 \sigma^2 来表示。
+
+方差表达了数据对期望值 \mu 的离散程度，是一种统计学特征。
+** 标准差
+方差开方得到标准差 \sigma 。
+** 协方差(covariance)
+\begin{equation}
+Cov(X,Y) = E( (X - E(X)) (Y-E(Y)) ) \\
+= E(XY) - 2E(X)E(Y) + E(X)(Y) \\
+= E(XY) - E(X)(Y)
+\end{equation}
+协方差是衡量线性独立的无量纲的数。
+
+
+* DONE 熵
+
+** 热力学的熵
+熵，热力学中表征物质状态的参量之一，其物理意义是体系混乱程度的度量。
+
+从微观角度看，$S=k\ln\Omega$ ,其中 \Omega 是微观状态数量，是一个系统混乱程度的度量，$k$ Boltzmann 常数。
+
+** 信息熵
+信息熵是从热力学中熵的概念引出来的，用来度量确定事件所需的信息量。
+信息熵越大，代表了越混乱。
+
+信息熵的计算公式为：
+\begin{equation}
+\label{info_entr}
+H(X) = -\sum_{i=1}^n P(x_i)\log_2P(x_i)
+\end{equation}
+其中，X表示随机变量，随机变量的取值为 $(x_1, ..., x_n)$ , $P(x_i)$ 表示事件 $x_i$ 发生的概率，且有 $\sum P(x_i)=1$ ，信息熵的单位为bit。
+
+事件 $x_i$ 的信息量和它发生的概率有直接的关系，需要确定一件小概率事件，需要的大量的信息，
+所以信息量函数应与事件概率成单调递减关系，同时两个独立事件$x_i, x_j$ 满足：$$P(x_i,x_j) = P(x_i)P(x_j)$$
+
+满足这两个条件的函数为：$$ -\log_2P(x_i)$$
+（取对数可以把累乘变为累加。）
+
+所以信息量函数为：$$\text{info}(x_i) = -\log_2P(x_i)$$
+信息熵为信息量的期望。
+
+
+
+
+
+** 高斯分布是最大熵分布
