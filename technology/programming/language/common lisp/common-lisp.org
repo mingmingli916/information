@@ -2929,7 +2929,10 @@ When you're defining your own representations for things (the print-functions of
 
 
 
-* Symbols
+* DONE Symbols
+:LOGBOOK:
+- State "DONE"       from              [2024-03-03 Sun 00:06]
+:END:
 
 ** DONE Symbol Names
 :LOGBOOK:
@@ -3039,7 +3042,10 @@ The package argument defaults to the current package, so the preceding expressio
 Not all symbols are interned. It can sometimes be useful to have an uninterned symbol, for the same reason that it can be useful to have an unlisted phone number. Uninterned symbols are called <<<gensyms>>>.
 
 
-** Multiple Packages
+** DONE Multiple Packages
+:LOGBOOK:
+- State "DONE"       from              [2024-03-02 Sat 08:38]
+:END:
 
 Larger programs are often divided up into multiple packages. If each part of a program is in its own package, then someone working on one part of the program will be able to use a symbol as the name of a function or variable without worrying that the name is already used elsewhere.
 
@@ -3082,7 +3088,10 @@ CL-USER> *package*
 #+end_src
 
 
-** Keywords
+** DONE Keywords
+:LOGBOOK:
+- State "DONE"       from              [2024-03-03 Sun 00:05]
+:END:
 Symbols in the =keyword= package (known as *<<<keywords>>>*) have two unique properties: they always evaluate to themselves, and you can refer to them anywhere simply as =:x=, instead of =keyword:x=. When keyword parameters were first introduced in [[*Parameter Lists]], it might have seemed more natural for the call to read =(member '(a) '((a) (z)) test: #' equal)= rather than =(member '(a) '((a) (z)) :test #'equal)=. Now we see why the unnatural-looking second form is actually the correct one. The colon prefixed to =test= is just to identify it as a keyword.
 
 
@@ -3131,7 +3140,10 @@ NIL
 
 
 
-** Symbols and Variables
+** DONE Symbols and Variables
+:LOGBOOK:
+- State "DONE"       from              [2024-03-03 Sun 00:06]
+:END:
 
 
 One potentially confusing thing about Lisp is that symbols are related to variables in two very different ways.
@@ -3148,7 +3160,10 @@ With lexical variables, things are completely different. A symbol used as a lexi
 Common Lisp has a rich set of numeric types and its features for manipulating numbers compare favorably with any language.
 
 
-** Types
+** DONE Types
+:LOGBOOK:
+- State "DONE"       from              [2024-03-03 Sun 00:11]
+:END:
 Common Lisp provides four distinct types of numbers: integer,floating-point numbers, ratios, and complex numbers. Most of the functions described in this chapter work on numbers of any type. A few, explicitly noted, accept all but complex numbers.
 
 
@@ -3160,6 +3175,7 @@ The predicates =integerp=, =floatp=, and =complexp= return true for numbers of t
 Figure [[fig:numeric-types]] shows the hierarchy of numeric types.
 #+caption: Numeric types
 #+label: fig:numeric-types
+#+attr_html: :width 50%
 [[file:images/numeric-types.png]]
 
 
@@ -3183,7 +3199,10 @@ CL-USER> (list (ratiop 2/2) (complexp #c(1 0)))
 #+end_src
 
 
-** Conversion and Extraction
+** DONE Conversion and Extraction
+:LOGBOOK:
+- State "DONE"       from              [2024-03-03 Sun 00:30]
+:END:
 Common Lisp provides functions for converting and extracting components of the four kinds of numbers.
 
 The function =float= converts any real number to a floating-point numbers:
