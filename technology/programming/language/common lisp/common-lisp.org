@@ -3156,7 +3156,10 @@ With lexical variables, things are completely different. A symbol used as a lexi
 
 
 
-* Numbers
+* DONE Numbers
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 08:46]
+:END:
 Common Lisp has a rich set of numeric types and its features for manipulating numbers compare favorably with any language.
 
 
@@ -3304,7 +3307,10 @@ CL-USER> (random 10.0)
 1.9508076  
 #+end_src
 
-** Comparison
+** DONE Comparison
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 07:58]
+:END:
 The predicate = returns true when its arguments are numerically equal — when the difference between them is zero. It is less strict than =eql=, which also requires its arguments to be of the same type.
 #+begin_src lisp
 CL-USER> (= 1 1.0)
@@ -3365,7 +3371,10 @@ CL-USER> (min 1 2 3 4 5)
 1  
 #+end_src
 
-** Arithmetic
+** DONE Arithmetic
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 08:31]
+:END:
 
 The functions for addition and subtraction are + and -. Both can take any number of arguments, including none, in which case they return 0. An expression of the form =(- n)= returns =—n=. An expression of the form
 #+begin_src lisp
@@ -3376,7 +3385,7 @@ is equivalent to
   (- (- x y) z)
 #+end_src
 
-There are also two functions =1+= and =1-=, which return their argument plus 1 and minus 1 respectively. The name =1-= is a bit misleading, because =(1- x)= returns =x - 1=,not =1 - x=. (-1 can not be a function name.)
+There are also two functions =1+= and =1-=, which return their argument plus 1 and minus 1 respectively. The name =1-= is a bit misleading, because =(1- x)= returns =x - 1=, not =1 - x=. 
 
 
 The macros =incf= and =decf= increment and decrement their argument, respectively. An expression of the form =(incf x n)= is similar in effect to =(setf x (+ x n))=, and =(decf x n)= to =(setf x (- x n))=. In both cases the second argument is optional and defaults to 1.
@@ -3409,7 +3418,10 @@ CL-USER> (float 22/21)
 #+end_src
 
 
-** Exponentiation
+** DONE Exponentiation
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 08:36]
+:END:
 To find $x^n$ we call =(expt x n)= and to find $log_n x$ we call =(log x n)=:
 #+begin_src lisp
 CL-USER> (expt 2 10)
@@ -3447,7 +3459,10 @@ CL-USER> (sqrt 9)
 
 
 
-** Trigonometric Functions
+** DONE Trigonometric Functions
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 08:38]
+:END:
 The constant =pi= is a floating-point representation of \pi. Its precision is implementation-dependent. The functions =sin=, =cos=, and =tan= find the sine, cosine, and tangent, respectively, of angles expressed in radians:
 #+begin_src lisp
 CL-USER> (let ((x (/ pi 4)))
@@ -3463,7 +3478,10 @@ The functions =asin=, =acos= and =atan= implement the inverse of sine, cosine, a
 Hyperbolic sine, cosine, and tangent are implemented by =sinh=, =cosh=, and =tanh=, respectively. Their inverses are likewise =asinh=, =acosh=, and =atanh=.
 
 
-** Representation
+** DONE Representation
+:LOGBOOK:
+- State "DONE"       from              [2024-03-05 Tue 08:46]
+:END:
 
 Common Lisp imposes no limit on the size of integers. Small integers fit in one word of memory and are called =fixnum=. When a computation produces an integer too large to fit in one memory word, Lisp switches to a representation (a =bignum=) that uses multiple words of memory. So the effective limit on the size of an integer is imposed by physical memory, not by the language.
 
@@ -3489,13 +3507,23 @@ T
 
 
 The limits on the values of floating-point numbers are implementation-dependent. Common Lisp provides up to four types of floating-point numbers: =short-float=, =single-float=, =double-float=, and =long-float=. Implementations are not required to use distinct formats for all four types.
+#+begin_src lisp
+CL-USER> most-positive-short-float
+3.4028235e38
+CL-USER> most-positive-single-float
+3.4028235e38
+CL-USER> most-positive-double-float
+1.7976931348623157d308
+CL-USER> most-positive-long-float
+1.7976931348623157d308  
+#+end_src
 
 The general idea is that a short float is supposed to fit in a single word, that single and double floats are supposed to provide the usual idea of single- and double-precision floating-point numbers, and that long floats can be something really big, if desired. But an implementation could perfectly well implement all four the same way.
 
 
 You can specify what format you want a floating-point number to be by substituting the letters =s, f, d, or l= for the =e= when a number is represented in scientific notation. (You can use uppercase too, and this is a good idea for long floats, because l looks so much like 1.) So to make the largest representation of 1.0 you would write 1L0.
 #+begin_src lisp
-CL-USER> 1E0
+CL-USER> 1S0
 1.0
 CL-USER> 1F0
 1.0
