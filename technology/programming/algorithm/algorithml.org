@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       285C698D-B909-453E-8775-CCC9FDE21A4D
-:END:
-#+title: algorithm

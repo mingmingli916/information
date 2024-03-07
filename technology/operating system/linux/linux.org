@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       6D120E9A-6BE2-4568-B58D-FAF3A53DE4AB
-:END:
-#+title: linux

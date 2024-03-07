@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       8C9AADD9-F4DD-4E34-8980-56AD1ECB035A
-:END:
-#+title: windows
