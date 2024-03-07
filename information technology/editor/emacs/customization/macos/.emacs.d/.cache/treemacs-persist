@@ -1,0 +1,24 @@
+* No Perspective
+** notebook
+ - path :: ~/notebook
+* No Tab
+** emacs-refactor
+ - path :: ~/notebook/emacs-refactor
+* Tab nil
+** deep-learning-refactor
+ - path :: ~/notebook/deep-learning-refactor
+* Tab lists.tex
+** notebook
+ - path :: ~/notebook
+* Tab machine_learning.org<it>
+** org-roam-backup
+ - path :: ~/note/org-roam-backup
+* Tab time.org
+** org-roam
+ - path :: ~/note/org-roam
+* Tab probability.tex
+** machine-learning
+ - path :: ~/note/notebook/machine-learning
+* Tab array.tex
+** algorithms
+ - path :: ~/note/notebook/algorithms

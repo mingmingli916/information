@@ -1,0 +1,36 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Tips}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cut, Copy and Paste}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Spotlight}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Close Apps From App Switcher}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Hide a Window}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Hide All Windows}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Switch Between Subwindows}{2}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Delete Files}{3}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Screenshots}{3}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Look for Your Mouse}{3}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Force Quit}{3}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Move Window Background}{3}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Startup Login Items}{3}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Accent Marks}{4}{section.1.13}%
+\contentsline {section}{\numberline {1.14}Rearrange Icons in Menu Bar}{4}{section.1.14}%
+\contentsline {section}{\numberline {1.15}Split View}{4}{section.1.15}%
+\contentsline {section}{\numberline {1.16}Finder Control}{4}{section.1.16}%
+\contentsline {section}{\numberline {1.17}Maximize and Unmaximize the Window}{5}{section.1.17}%
+\contentsline {section}{\numberline {1.18}What's Your Preference?}{5}{section.1.18}%
+\contentsline {section}{\numberline {1.19}A Really Smart Search}{5}{section.1.19}%
+\contentsline {section}{\numberline {1.20}Preview Shortcuts}{5}{section.1.20}%
+\contentsline {section}{\numberline {1.21}Minimize a Window}{6}{section.1.21}%
+\contentsline {section}{\numberline {1.22}Close a Window or Tab}{6}{section.1.22}%
+\contentsline {section}{\numberline {1.23}New a Tab}{6}{section.1.23}%
+\contentsline {section}{\numberline {1.24}Inspector}{6}{section.1.24}%
+\contentsline {chapter}{\numberline {2}Network}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Share your network through wifi}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Share your network through eth}{7}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Programming}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Matplotlib Chinese font}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Install Chinese font}{13}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Show all fonts}{13}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Configuration}{13}{subsection.3.1.3}%
+\contentsline {chapter}{\numberline {4}Customization}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Command history}{15}{section.4.1}%

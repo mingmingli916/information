@@ -1,0 +1,365 @@
+
+\chapter{Object oriented programming}
+\label{cha:object-orient-progr}
+
+\section{Attribute controlling}
+\label{sec:attr-contr}
+
+The \argument{\_\_slot\_\_} attribute in a class controls whether we can add or remove attributes to and from a class instance.
+
+
+When a class is created without the use of \argument{\_\_slot\_\_},
+behind the scences Python creates a private dictionary called \argument{\_\_dict\_\_} for each \keyword{instance}, and
+this dictionary holds the instances's data attributes.
+This is why we can add or remove attributes from object.
+
+
+
+If we only need objects where we access the original attributes and don't need to add or remove attributes, we can create classes that don't have a \argument{\_\_dict\_\_}.
+This is achieved simply by defining a class attribute called \argument{\_\_slot\_\_} whose value is a tuple of \keyword{attribute} names.
+(Here attributes is different from method.)
+Each object of such a class will have attributes of the specified names and no \argument{\_\_dict\_\_}; no attributes can be added or removed from such classes.
+
+
+
+
+\section{Special methods}
+\label{sec:special-methods}
+
+Special methods are methods start and end with two underscores.
+We can use different but convenient usage syntax to access those special methods. 
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\_\_}lll}
+    \toprule
+    \normal{\head{Special Method}} & \head{Usage} & \head{Description}\\
+    \midrule
+    delattr\_\_(self, name) & del x.n & Deletes object x's n attibute\\
+    dir\_\_(self) & dir(x) & Returns a list of x's attibute names\\
+    getattr(self, name) & x.n & Returns the value of object x’s n attribute if it isn’t found directly\\
+    setattr\_\_(self, name, value) & x.n = v & Sets object x’s n attribute’s value to v\\
+    \bottomrule
+  \end{tabular}
+  \caption{}
+  \label{tab:special-methods}
+\end{table}
+
+
+\section{Functors}
+\label{sec:functors}
+
+A \keyword{functor} is an object that can be called.
+Any class that has a \funcword{\_\_call\_\_()} special method is a functor.
+
+The key benefit that functors offer is that they can maintain some state information.
+\begin{lstlisting}
+class Strip:
+    def __init__(self, characters):
+        self.characters = characters
+
+    def __call__(self, string):
+        return string.strip(self.characters)
+  
+strip_punctuation = Strip(',;:.!?')
+print(strip_punctuation('Mingming Li!'))
+\end{lstlisting}
+
+The \funcword{Strip} class maintain a state of \argument{characters} and when the class instance is called it can use this state.
+
+This can also be implemented using a functor (also a closure\footnote{A closure is a function or method that captures some external state.}) but without using a class.
+
+\begin{lstlisting}
+def make_strip_function(characters):
+    def strip_function(string):
+        return string.strip(characters)
+
+    return strip_function  
+
+strip_punctuation = make_strip_function(',;:.!?')
+print(strip_punctuation('Mingming Li!')) 
+\end{lstlisting}
+
+
+\section{Context manager}
+\label{sec:context-manager}
+
+The syntax for using context managers is
+\begin{lstlisting}
+with expression as variable
+    suite
+\end{lstlisting}
+
+
+\keyword{Context managers} allow us to simplify code by ensuring that certain operations are performed before and after a particular block of code is executed.
+The behavior is achieved because context managers define two special methods, \funcword{\_\_enter\_\_()} and \funcword{\_\_exit\_\_()}.
+When a context manager is created in a \funcword{with} statement its \funcword{\_\_enter\_\_()} method is automatically called, and when the context manager goes out of scope after its with statement its \funcword{\_\_exit\_\_()} method is automatically called.
+
+If we want to create a custom context manager we must create a class that provides two methods: \funcword{\_\_enter\_\_()} and \funcword{\_\_exit\_\_()}.
+Whenever a \funcword{with} statement is used on an instance of such a class, the \funcword{\_\_enter\_\_()} method is called and the return value is used for the \funcword{as variable} (or thrown away if there isn’t one).
+When control leaves the scope of the \funcword{with} statement the \funcword{\_\_exit\_\_()} method is called (with details of an exception if one has occurred passed as arguments).
+
+
+\section{Descriptors}
+\label{sec:descriptors}
+
+
+Descriptors are \keyword{classes} which provide access control for the attributes of other \keyword{classes}.
+Any class that implements one or more of the descriptor special methods, \funcword{\_\_get\_\_()}, \funcword{\_\_set\_\_()}, and \funcword{\_\_delete\_\_()}, is called (and can be used as) a descriptor.
+
+
+\begin{lstlisting}
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+class LoggedAccess:
+
+    def __set_name__(self, owner, name):
+        self.public_name = name
+        self.private_name = '_' + name
+
+    def __get__(self, obj, objtype=None):
+        value = getattr(obj, self.private_name)
+        logging.info('Accessing %r giving %r', self.public_name, value)
+        return value
+
+    def __set__(self, obj, value):
+        logging.info('Updating %r to %r', self.public_name, value)
+        setattr(obj, self.private_name, value)
+
+class Person:
+
+    name = LoggedAccess()                # First descriptor instance
+    age = LoggedAccess()                 # Second descriptor instance
+
+    def __init__(self, name, age):
+        self.name = name                 # Calls the first descriptor
+        self.age = age                   # Calls the second descriptor
+
+    def birthday(self):
+        self.age += 1
+\end{lstlisting}
+
+The \argument{obj} in \argument{LoggedAccess} is the instance of \argument{Person}.
+
+
+When a class uses descriptors, it can inform each descriptor about which variable name was used.
+In this example, the \argument{Person} class has two descriptor instances, \argument{name} and \argument{age}.
+When the \argument{Person} class is defined, it makes a callback to \funcword{\_\_set\_name\_\_()} in \argument{LoggedAccess} so that the field names can be recorded, giving each descriptor its own \argument{public\_name} and \argument{private\_name}.
+
+
+
+An interactive session shows that the Person class has called \funcword{\_\_set\_name\_\_()} so that the field names would be recorded.
+Here we call \funcword{vars()} to look up the descriptor without triggering it:
+\begin{lstlisting}
+>>> vars(vars(Person)['name'])
+{'public_name': 'name', 'private_name': '_name'}
+>>> vars(vars(Person)['age'])
+{'public_name': 'age', 'private_name': '_age'}
+\end{lstlisting}
+
+The new class now logs access to both \argument{name} and \argument{age}:
+\begin{lstlisting}
+>>> pete = Person('Peter P', 10)
+INFO:root:Updating 'name' to 'Peter P'
+INFO:root:Updating 'age' to 10
+>>> kate = Person('Catherine C', 20)
+INFO:root:Updating 'name' to 'Catherine C'
+INFO:root:Updating 'age' to 20
+\end{lstlisting}
+
+
+The two Person instances contain only the private names:
+
+
+\begin{lstlisting}
+>>> vars(pete)
+{'_name': 'Peter P', '_age': 10}
+>>> vars(kate)
+{'_name': 'Catherine C', '_age': 20}
+\end{lstlisting}
+
+
+
+
+Descriptors get invoked by the dot operator during attribute lookup.
+If a descriptor is accessed indirectly with \lstinline|vars(some_class)[descriptor_name]|, the descriptor instance is returned without invoking it.
+
+Descriptors only work when used as class variables.
+When put in instances, they have no effect.
+
+The main motivation for descriptors is to provide a hook allowing objects stored in class variables to control what happens during attribute lookup.
+Traditionally, the calling class controls what happens during lookup. Descriptors invert that relationship and allow the data being looked-up to have a say in the matter.
+
+Descriptors are used throughout the language.
+It is how functions turn into bound methods.
+Common tools like \funcword{classmethod()}, \funcword{staticmethod()}, \funcword{property()}, and \funcword{functools.cached\_property()} are all implemented as descriptors.
+
+
+\section{Class decorators}
+\label{sec:class-decorators}
+
+
+Class decorators takes a class object and return a modified version of the class they decorate.
+
+
+
+In the following example, only \funcword{\_\_lt\_\_()} special method is supplied, and the other comparison method is created by the class decorator.
+\begin{lstlisting}
+@complete_comparisons
+class FuzzyBool:
+    def __init__(self, value=0.0):
+        self.__value = value if 0.0 <= value <= 1.0 else 0.0
+
+    def __lt__(self, other):
+        return self.__value < other.__value
+\end{lstlisting}
+
+
+Here's the decorator:
+\begin{lstlisting}
+def complete_comparisons(cls):
+    assert cls.__lt__ is not object.__lt__, (
+        f'{cls.__name__} must define < and ideally =='
+    )
+    if cls.__eq__ is object.__eq__:
+        cls.__eq__ = lambda self, other: (
+            not (cls.__lt__(self, other) or cls.__lt__(other, self))
+        )
+    cls.__ne__ = lambda self, other: not cls.__eq__(self, other)
+    cls.__gt__ = lambda self, other: cls.__lt__(other, self)
+    cls.__le__ = lambda self, other: not cls.__lt__(other, self)
+    cls.__ge__ = lambda self, other: not cls.__lt__(self, other)
+\end{lstlisting}
+
+\section{Abstract base classes}
+\label{sec:abstr-base-class}
+
+
+An \keyword{abstract base class} (ABC) is a class that cannot be used to create objects.
+Instead, the purpose of such classes is to define interface, that is, to in effect list the methods and properites that classes that inherit the abstract base class must provide.
+Abstract base classes are classes that have at least one abstract method or property.
+All ABCs must have a metaclass of \argument{abc.ABCMeta} (from the \argument{abc} module), or from one of its subclasses.
+The \argument{abc} module provides the metaclass \argument{ABCMeta} for defining ABCs and a helper class \argument{ABC} to alternatively define ABCs through inheritance.
+\argument{ABC} is a helper class that has \argument{ABCMeta} as its metaclass.
+The \argument{abc} model provides the \funcword{abstractmethod} decorator to define abstract method and property.
+
+
+
+
+\begin{lstlisting}
+class C(ABC):
+    @abstractmethod
+    def my_abstract_method(self, arg1):
+        ...
+    @classmethod
+    @abstractmethod
+    def my_abstract_classmethod(cls, arg2):
+        ...
+    @staticmethod
+    @abstractmethod
+    def my_abstract_staticmethod(arg3):
+        ...
+
+    @property
+    @abstractmethod
+    def my_abstract_property(self):
+        ...
+    @my_abstract_property.setter
+    @abstractmethod
+    def my_abstract_property(self, val):
+        ...
+
+    @abstractmethod
+    def _get_x(self):
+        ...
+    @abstractmethod
+    def _set_x(self, val):
+        ...
+    x = property(_get_x, _set_x)
+\end{lstlisting}
+
+
+\section{Multiple inheritance}
+\label{sec:multiple-inheritance}
+
+
+Multiple inheritance is where one class inherits from two or more other classes.
+One problem is that multiple inheritance can lead to the same class being inherited more than once and this means that the version of a method that is called depends on the method resolution order, which potentially makes classes that use multiple inheritance somewhat fragile.
+
+
+
+Multiple inheritance can generally ba avoided by:
+\begin{itemize}
+\item Using single inheritance and setting a metaclass if we want to support an additional API
+\item Using mutiple inheritance with one concrete class and one or more abstract base classes for addtional APIs
+\item Using single inheritance and aggregate instances of other classes
+\end{itemize}
+
+However multiple inheritance can be convenient and works well when the inheritance classes have no overlapping APIs.
+
+
+\section{Metaclasses}
+\label{sec:metaclasses}
+
+A metaclass is used to create classes, just as classes are used to create instances.
+
+\subsection{Register}
+\label{sec:register}
+
+The simplest use of metaclasses is to make custom classes fit into Python’s standard ABC hierarchy.
+\begin{lstlisting}
+import collections
+
+
+class SortedList:
+    pass
+
+
+collections.abc.Sequence.register(SortedList)
+\end{lstlisting}
+
+
+Registering a class like this makes it a \keyword{virtual subclass}.
+A virtual subclass reports that it is a subclass of the class or classes it it registed with, but does not inherit any data or methods from any of the classes it is registered with.
+Registering a class like this provides a promise that the class provides the API of the classes it is registered with, but does not provide any guarantee that it will honor its promise.
+
+
+\subsection{Guarantee}
+\label{sec:guarantee}
+
+We can use a metaclass to provide both a promise and a guarantee about a class's API.
+
+
+Suppose we want to create a group of classes that all provide \funcword{load()} and \funcword{save()} methods.
+We can do this by creating a class that when used as a metaclass, checks that these methods are present:
+
+\begin{lstlisting}
+# API guarantee
+class LoadableSavable(type):
+    def __init__(cls, classname, bases, dictionary):
+        super().__init__(classname, bases, dictionary)
+
+        assert (
+            hasattr(cls, 'load') and
+            isinstance(getattr(cls, 'load')), collections.abc.Callable
+        ), "class '" + classname + "' must provide a load() method"
+        assert (
+                hasattr(cls, 'save') and
+                isinstance(getattr(cls, 'save'), collections.abc.Callable)
+        ), "class '" + classname + "' must provide a save() method"
+\end{lstlisting}
+
+\subsection{Modify}
+\label{sec:modify}
+
+
+We can use metaclasses to change the classes use them.
+If the change involves the name, base classes, or dictionary of the class being created, the we need to reimplement the metaclass's \funcword{\_\_new\_\_()} method; but for other changes, such as adding methods or data attributes, reimplementing \funcword{\_\_init\_\_()} is sufficient.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "python"
+%%% End:

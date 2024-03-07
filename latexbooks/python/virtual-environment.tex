@@ -1,0 +1,37 @@
+
+\chapter{Virtual environments}
+\label{cha:virtual-environments}
+
+\section{With Python}
+\label{sec:with-python}
+
+You can create a virtual environment with the \funcword{python3} command:
+\begin{lstlisting}
+python3 -m venv virtual-environment-name
+\end{lstlisting}
+
+The \argument{-m venv} option runs the \argument{venv} package from the standard library as a standalone script, passing the desired name as an argument.
+
+When you want to start using a virtual environment, you have to ``activate'' it.
+If you are using a Linux or macOS computer, you can activate the virtual environment with this command:
+\begin{lstlisting}
+source venv/bin/activate
+\end{lstlisting}
+
+Where \argument{venv} is the virtual environment name you just created.
+
+In the virtual environment you can type \funcword{deactivate} to leave the virtual environment.
+\begin{lstlisting}
+deactivate
+\end{lstlisting}
+
+
+\section{With conda}
+\label{sec:with-conda}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "python"
+%%% End:

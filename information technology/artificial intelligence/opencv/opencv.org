@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       0B9D2B50-2CAE-4E12-97BA-B9CF99925DA7
+:END:
+#+title: opencv
+
+* 读取图片
+#+BEGIN_SRC python
+image = cv2.imread(path)
+#+END_SRC
+
+The function determines the type of an image by the content, not by the file extension.
+In the case of color images, the decoded images will have the channels stored in *BGR* order.
+The shape is (height, width, channels).
+* 获取图片属性
+*** 获取row, column, channels
+#+BEGIN_SRC python
+print(img.shape)
+#+END_SRC
+
+*** 获取pixels总数目
+#+BEGIN_SRC python
+print(img.size)
+#+END_SRC
+
+*** datatype
+#+BEGIN_SRC python
+print(img.dtype)
+#+END_SRC
+
+* ROI
+ROI: region of image （图片的一块区域）
+ROI is obtained using Numpy indexing.
+
+#+BEGIN_SRC python
+import cv2 as cv
+
+img = cv.imread('../data/dog.jpg')
+print(img.shape)
+print(img[100, 100])
+eye = img[56:76, 55:85]
+for i in range(0, 190, 30):
+    img[i:i + 20, i:i + 30] = eye
+
+cv.imshow('hack', img)
+cv.waitKey(0)
+#+END_SRC
+[[file:pics/cv-roi.png]]
+
+* 获取某个channel
+#+BEGIN_SRC python
+b = img[:, :, 0]
+img[:, :, 2] = 0
+#+END_SRC
+
+
+* 读取视频或摄像头
+#+BEGIN_SRC python
+    # videoCapture = cv2.VideoCapture(path)
+    videoCapture = cv2.VideoCapture(0)
+    # 读帧
+    success, frame = videoCapture.read()
+    while success:
+        ....
+        cv2.imshow('bala', frame)
+	cv2.waitKey(40)
+	success, frame = videoCapture.read()
+#+END_SRC
+* 颜色转化
+
+#+BEGIN_SRC python
+img2gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#+END_SRC
+* 写文字
+#+BEGIN_SRC python
+cv2.putText(...)
+#+END_SRC
+
+* 画框
+#+BEGIN_SRC python
+cv2.rectangle(...)
+#+END_SRC
+

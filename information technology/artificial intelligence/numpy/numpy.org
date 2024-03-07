@@ -1,0 +1,240 @@
+:PROPERTIES:
+:ID:       4AA354B6-708E-4BCE-B8EA-5B15DB957DA5
+:END:
+#+title: numpy
+
+numpy: Numerical Python
+是高性能科学计算和数据分析的基础包。
+部分功能如下：
+- 向量，矩阵的计算
+- 用整组数据进行快速运算的标准数学函数（无需写循环）
+- 线性代数，随机数，傅立叶变换
+
+* import
+#+BEGIN_SRC python
+import numpy as np
+#+END_SRC 
+
+* shape
+shape是属性，所以是shape而不是shape()
+shape的确定，从外到内，例如
+#+BEGIN_EXAMPLE
+[[1],[1]] # shape: (2,1)
+[ [ [1,1] ] [ [1,1] ] ] # shape (2,1,2)
+#+END_EXAMPLE
+
+* 数组转矩阵
+#+BEGIN_SRC python
+>>> lst = [[1,2],[3,4]]
+lst = [[1,2],[3,4]]
+>>> arr1 = np.array(lst)
+arr1 = np.array(lst)
+>>> arr1
+arr1
+array([[1, 2],
+       [3, 4]])
+#+END_SRC
+
+* 创建等间隔一维数组
+#+BEGIN_SRC python
+np.arange(2,20,2)
+# arange: array range
+# array([ 2,  4,  6,  8, 10, 12, 14, 16, 18])
+#+END_SRC
+* 创建单位矩阵
+#+BEGIN_SRC python
+>>> np.ones([2,3], dtype=int)
+array([[1, 1, 1],
+       [1, 1, 1]])
+
+#+END_SRC
+* 创建零矩阵
+#+BEGIN_SRC python
+>>> np.zeros([2,3])
+array([[0., 0., 0.],
+       [0., 0., 0.]])
+
+#+END_SRC
+* 矩阵切片
+#+BEGIN_SRC python
+import numpy as np
+
+np.random.seed(1)  # 使每次运行程序产生的随即样本相同
+sample = np.random.randint(1, 10, [2, 2])
+print(sample)
+
+# [[6 9]
+#  [6 1]]
+
+print(sample[0, :])  # [6 9]
+
+print(sample[:, 0])  # [6 6]
+
+print(sample[1, 1])  # 1
+#+END_SRC
+* 矩阵运算
+#+BEGIN_SRC python
+import numpy as np
+
+# add, subtract, multiply, divide, reciprocal, power, mod, dot
+np.random.seed(1)
+a = np.random.randint(1, 10, [2, 2])
+b = np.random.randint(1, 10, [2, 2])
+print(a)
+print(b)
+# [[6 9]
+#  [6 1]]
+# [[1 2]
+#  [8 7]]
+
+c = np.subtract(a, b)
+print(c)
+# [[ 5  7]
+#  [-2 -6]]
+c = a - b
+print(c)
+# [[ 5  7]
+#  [-2 -6]]
+#+END_SRC
+* 矩阵截取clip
+#+BEGIN_SRC python
+a=np.arange(1,13).reshape((3,4))
+print(a)
+print(np.clip(a,5,9))#最小5，最大9，小于5的都成了5，大于9的都成了9
+#+END_SRC
+* 转置
+#+BEGIN_SRC python
+A=np.arange(1,10).reshape(3,3)
+print(A)
+print(np.transpose(A))
+print(A.T)
+#+END_SRC
+* 统计函数
+#+BEGIN_SRC python
+# mean, max, min, std, median, sum
+a = np.arange(5)
+print(a)
+print(np.mean(a))
+print(np.max(a))
+print(np.std(a))
+
+# [0 1 2 3 4]
+# 2.0
+# 4
+# 1.4142135623730951
+#+END_SRC
+* 随机数和随机样本
+一些源码：
+#+BEGIN_SRC python
+# Some aliases:
+ranf = random = sample = random_sample
+__all__.extend(['ranf', 'random', 'sample'])
+#+END_SRC
+
+#+BEGIN_SRC python
+# 产生[0,1)之间的均匀分布的一个随即数
+print(np.random.rand())
+
+# 返回标准正太分布的一个随机数
+print(np.random.randn())
+
+# 随即整数
+print(np.random.randint(1, 10))
+#+END_SRC
+
+
+#+BEGIN_SRC python
+# Results are from the "continuous uniform" distribution over the
+# stated interval.  To sample :math:`Unif[a, b), b > a` multiply
+# the output of `random_sample` by `(b-a)` and add `a`::
+#    (b - a) * random_sample() + a
+
+print(np.random.random_sample([3, 3, 3]))
+# [[[0.80848879 0.07742857 0.18408582]
+#   [0.71534262 0.92277854 0.02594712]
+#   [0.94654033 0.78486133 0.0861656 ]]
+# 
+#  [[0.78783097 0.50163162 0.00963713]
+#   [0.27947727 0.36261856 0.20622495]
+#   [0.81018606 0.66324607 0.44896777]]
+# 
+#  [[0.02874924 0.50940814 0.41704826]
+#   [0.67650676 0.94305175 0.51620809]
+#   [0.7300231  0.59682459 0.63704211]]]
+
+
+
+print(np.random.randint(1, 10, [3, 3, 3]))
+# [[[3 4 6]
+#   [8 7 6]
+#   [9 4 1]]
+# 
+#  [[4 6 4]
+#   [1 8 6]
+#   [7 4 2]]
+# 
+#  [[6 8 7]
+#   [5 8 7]
+#   [8 4 5]]]
+#+END_SRC
+
+
+* line space
+主要用于图形绘制中的坐标轴
+#+BEGIN_SRC python
+x = np.linspace(-2, 1, 10)
+#+END_SRC
+* save and load
+#+BEGIN_SRC python
+import numpy as np
+
+np.random.seed(1)
+a = np.random.randint(1, 10, [2, 2])
+b = np.random.randint(1, 10, [2, 2])
+
+np.save('a.npy', a)
+a_load = np.load('a.npy')
+print(a_load)
+
+np.savez('ab.npz', a, b)
+ab = np.load('ab.npz')
+
+print(ab['arr_0'])
+
+np.savez('ab.npz', a=a, b=b)
+ab = np.load('ab.npz')
+
+print(ab['a'])
+#+END_SRC
+* 判断两个矩阵是否相同
+#+BEGIN_SRC python
+import numpy as np
+
+a = np.array([1, 1])
+b = a
+c = np.array([1, 2])
+print(a == b)
+print(a == c)
+
+print((a == b).all())
+print((a == c).all())
+#+END_SRC
+* vstack and hstack
+#+BEGIN_SRC python
+>>> a=np.random.randint(0,10,(2,2,2))
+>>> a
+array([[[8, 7],
+        [3, 6]],
+
+       [[5, 1],
+        [9, 3]]])
+>>> np.hstack(a)
+array([[8, 7, 5, 1],
+       [3, 6, 9, 3]])
+>>> np.vstack(a)
+array([[8, 7],
+       [3, 6],
+       [5, 1],
+       [9, 3]])
+
+#+END_SRC

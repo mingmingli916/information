@@ -1,0 +1,17 @@
+\babel@toc {english}{}
+\contentsline {chapter}{献词}{i}{chapter*.1}%
+\contentsline {chapter}{Contents}{iii}{chapter*.2}%
+\contentsline {part}{第一部分\hspace {1em}机遇}{1}{part.1}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}马太效应：英超球员的优势积累}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}10000小事定律：生于1955年的乔布斯和比尔 盖茨}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}智商与机遇：“特曼人”的谬误}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}社交与家庭：天才懒根的忧伤}{9}{chapter.4}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}最佳时代：乔 弗洛姆的律师生涯}{11}{chapter.5}%
+\contentsline {part}{第二部分\hspace {1em}文化传承}{13}{part.2}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}文化差异：小镇哈伦}{15}{chapter.6}%
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}权利距离指数：韩国飞机失事率}{17}{chapter.7}%
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}内在优势：亚洲人精神}{19}{chapter.8}%
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}扭转风气：玛丽塔之幸}{21}{chapter.9}%
+\contentsline {chapter}{\numberline {第十章\hspace {.3em}}结尾}{23}{chapter.10}%
+\contentsline {chapter}{List of Tables}{25}{chapter*.3}%
+\contentsline {chapter}{List of Figures}{27}{chapter*.4}%

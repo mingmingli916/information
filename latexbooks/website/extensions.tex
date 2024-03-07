@@ -1,0 +1,214 @@
+
+\chapter{Extensions}
+\label{cha:extensions}
+
+\section{Bootstrap}
+\label{sec:bootstrap}
+
+Bootstrap is an open-source web browser framework from Twitter that provides user interface components that help create clean and attractive web pages that are compatible with all modern web browsers used on desktop and mobile platforms.
+
+Bootstrap is a client-side framework, so the server is not directly involved with it. All the server needs to do is provide HTML responses that reference Bootstrap’s Cascading Style Sheets (CSS) and JavaScript files, and instantiate the desired user interface elements through HTML, CSS, and JavaScript code. this is in templates.
+
+
+The extension is Flask-Bootstrap:
+\begin{lstlisting}
+pip install flask-bootstrap
+\end{lstlisting}
+
+\begin{lstlisting}[language=html]
+{% extends "bootstrap/base.html" %}
+\end{lstlisting}
+
+
+\section{Moment}
+\label{sec:moment}
+
+There is an excellent open source library written in JavaScript that renders dates and times in the browser called Moment.js.
+Flask-Moment is an extension for Flask applications that makes the integration of Moment.js into Jinja2 templates very easy.
+\begin{lstlisting}
+pip install flask-moment
+\end{lstlisting}
+\begin{lstlisting}[caption={import the Moment.js library}]
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+\end{lstlisting}
+
+\section{Web forms}
+\label{sec:web-forms}
+
+The Flask-WTF extension makes working with web forms a much more pleasant experience.
+This extension is a Flask integration wrapper around the framework-agnostic WTForms package.
+
+
+\begin{lstlisting}[language=sh]
+pip install flask-wtf
+\end{lstlisting}
+
+
+This extension does not need initialization, but need to have a secret key configured.
+\begin{lstlisting}
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'hard to guess string'
+\end{lstlisting}
+
+\begin{lstlisting}
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
+class NameForm(FlaskForm):
+    name = StringField('What is your name?', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+\end{lstlisting}
+
+
+\section{SQLAIchemy}
+\label{sec:sqlaichemy}
+
+Flask-SQLAlchemy is a Flask extension that simplifies the use of SQLAlchemy inside Flask applications. SQLAlchemy is a powerful relational database framework that supports several database backends. It offers a high-level ORM and low-level access to the database’s native SQL functionality.
+
+\begin{lstlisting}
+pip install flask-sqlalchemy
+\end{lstlisting}
+
+In Flask-SQLAlchemy, a database is specified as a URL.
+Table \ref{} lists the format of the URLs for the three most popular database engines.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Database engine} & \head{URL}\\
+    \midrule
+    MySQL & \lstinline|mysql://username:password@hostname/database|\\
+    Postgres & \lstinline|postgresql://username:password@hostname/database|\\
+    SQLite (Linux, macOS) & \lstinline|sqlite:////absolute/path/to/database|\\
+    \bottomrule
+  \end{tabular}
+  \caption{SQLAlchemy}
+  \label{tab:sqlalchemy}
+\end{table}
+
+
+\begin{lstlisting}[caption={database configuration},label={lst:1}]
+import os
+from flask_sqlalchemy import SQLAlchemy
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+app = Flask(__name__) app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Model definition}]
+class Follow(db.Model):
+    __tablename__ = 'follows'
+    follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+\end{lstlisting}
+
+You can operate the database through the model class.
+For example
+\begin{lstlisting}
+user = User.query.filter_by(username=username).first()
+\end{lstlisting}
+
+
+\section{Migrate}
+\label{sec:migrate}
+
+Flask-SQLAlchemy creates database tables from models only when they do not exist already, so the only way to make it update tables is by destroying the old tables first—but of course, this causes all the data in the database to be lost.
+
+A better solution is to use a database migration framework.
+A database migration framework keeps track of changes to a database schema, allowing incre‐ mental changes to be applied.
+
+
+\begin{lstlisting}
+pip install flask-migrate
+
+
+from flask_migrate import Migrate
+#...
+migrate = Migrate(app, db)
+\end{lstlisting}
+
+
+To expose the database migration commands, Flask-Migrate adds a flask db com‐ mand with several subcommands. When you work on a new project, you can add support for database migrations with the init subcommand:
+\begin{lstlisting}
+flask db init
+\end{lstlisting}
+
+To make change to databases:
+\begin{lstlisting}
+# make migrations
+flask db migrate
+# apply the migrations
+flask db upgrade
+\end{lstlisting}
+
+
+\section{Mail}
+\label{sec:mail}
+
+Although the smtplib package from the Python standard library can be used to send email inside a Flask application, the Flask-Mail extension wraps smtplib and integrates it nicely with Flask.
+\begin{lstlisting}
+pip install flask-mail
+\end{lstlisting}
+
+The extension connects to a Simple Mail Transfer Protocol (SMTP) server and passes emails to it for delivery. If no configuration is given, Flask-Mail connects to localhost at port 25 and sends email without authentication.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}lll}
+    \toprule
+    \head{Key} & \head{Default} \head{Description}\\
+    \midrule
+    MAIL\_SERVER & localhost & Hostname or IP of the email server\\
+    MAIL\_PORT & 25 & Port of the email server\\
+    MAIL\_USE\_TLS & False & Enable Transport Layer Security (TLS) security\\
+    MAIL\_USE\_SSL & False & Enable Secure Sockets Layer (SSL) security\\
+    MAIL\_USERNAME & None & Mail account username \\
+    MAIL\_PASSWORD & None & Mail account password\\
+    \bottomrule
+  \end{tabular}
+  \caption{Mail configuration}
+  \label{tab:mail-configuration}
+\end{table}
+
+
+
+\begin{lstlisting}
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+\end{lstlisting}
+
+
+\section{Login}
+\label{sec:login}
+
+When users log in to the application, their authenticated state has to be recorded in the user session, so that it is remembered as they navigate through different pages. Flask-Login is a small but extremely useful extension that specializes in managing this particular aspect of a user authentication system, without being tied to a specific authentication mechanism.
+
+\begin{lstlisting}
+pip install flask-login
+\end{lstlisting}
+
+\section{HTTPAuth}
+\label{sec:httpauth}
+
+Because of the ``statless'' feature of the RESTful (the server is not allowed to “remember” anything about the client between requests), we can use HTTP authentication, user credentials are included in an Authorization header with all requests.
+
+
+\begin{lstlisting}
+pip install flask-httpauth
+\end{lstlisting}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "website"
+%%% End:

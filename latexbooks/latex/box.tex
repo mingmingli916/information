@@ -1,0 +1,90 @@
+
+\chapter{Box}
+
+\section{parbox}
+
+We used the command \lstinline{\parbox} to create a column.
+
+\begin{lstlisting}
+  \parbox[alignment]{width}{text}
+  \parbox[alignment][height][inner alignment]{width}{text}
+\end{lstlisting}
+
+\begin{description}
+\item[alignment] Optional argument for the vertical alignment. State t to align at the top line of the box; write b to align at its bottom line. The default behavior is to place the box such that its center is in line with the center of the current text line.
+\item[height] If this optional argument isn't given, the box will have just the natural height of the text inside. Use this argument if you want to change the height of the box to make it bigger or smaller.
+\item[inner alignment] Especially, if the height of the box is different to the natural height of the contained text, you might want to adjust the text position. The argument means:
+  \begin{itemize}
+  \item c: vertically center the text in the box
+  \item t: place text at the top of the box
+  \item b: place text at its bottom
+  \item s: stretch the text vertically if possible
+  \end{itemize}
+  
+\end{description}
+
+\begin{lstlisting}
+Text line
+\quad\fbox{\parbox[b]{1.8cm}{this parbox is aligned at its bottom line}}
+\quad\fbox{\parbox{1.5cm}{center-aligned parbox}}
+\quad\fbox{\parbox[t]{2cm}{another parbox aligned at its top line}}
+\end{lstlisting}
+
+
+Text line
+\quad\fbox{\parbox[b]{1.8cm}{this parbox is aligned at its bottom line}}
+\quad\fbox{\parbox{1.5cm}{center-aligned parbox}}
+\quad\fbox{\parbox[t]{2cm}{another parbox aligned at its top line}}
+
+
+\section{fbox}
+
+This command show the frame out.
+
+\begin{lstlisting}
+  \fbox{Example}
+\end{lstlisting}
+
+\fbox{Example}
+
+
+\section{minipage}
+\label{sec:minipage}
+
+Parboxes are suitable for boxes with only a little text inside.
+In case of a box containing a large amount of text, the closing brace could easily be forgotten or overlooked.
+The minipage environment would then be a better choice.
+
+
+\begin{lstlisting}
+  \begin{minipage}{3cm}
+    Hello World!
+  \end{minipage}
+\end{lstlisting}
+
+\begin{minipage}{3cm}
+  Hello World!
+\end{minipage}
+
+\section{mbox}
+\label{sec:mbox}
+
+
+\begin{lstlisting}
+  \mbox{Hello World}
+\end{lstlisting}
+
+\mbox{Hello World}
+
+\section{tcolorbox}
+\label{sec:tcolorbox}
+
+\begin{lstlisting}
+\begin{tcolorbox}
+  \mbox{Hello World}
+\end{tcolorbox}
+\end{lstlisting}
+
+\begin{tcolorbox}
+  \mbox{Hello World}
+\end{tcolorbox}

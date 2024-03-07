@@ -1,0 +1,84 @@
+
+\chapter{Python}
+\label{cha:python}
+
+Here we describe how to configure Emacs as a Python IDE for better Python development.
+
+\keyword{lsp-mode} (Lanuage Server Protocol) aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages like \argument{company, flycheck} and \argument{projectile}.
+
+
+\section{Installtion}
+\label{sec:installtion}
+
+\subsection{Client}
+\label{sec:client}
+
+
+
+You need first \argument{lsp-mode}, that is a Emacs client for an LSP server.
+Then you need to install the specific LSP server for your language.
+Finally, call \keyword{M-x lsp} or use the corresponding major mode hook to autostart the server.
+
+\begin{lstlisting}[language=elisp]
+;; Use package manager interface.
+(require 'package)
+
+;; Add melpa site to package archives.
+;; This is used define where to fetch package.
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+;; Load Emacs Lisp packages, and activate them.
+(package-initialize)
+
+
+;; The use-package macro allows you to isolate package configuration in your .emacs file
+;; in a way that is both performance-oriented and, well, tidy.
+(require 'use-package)
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=elisp]
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         ;; (XXX-mode . lsp)               
+         (python-mode . lsp)         
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+(use-package dap-python)
+
+;; optional if you want which-key integration
+(use-package which-key
+  :config
+  (which-key-mode))
+\end{lstlisting}
+
+
+\subsection{Install a language server}
+\label{sec:inst-lang-serv}
+
+
+Here we use Python LSP Server.
+
+\begin{lstlisting}[language=sh]
+pip install 'python-lsp-server[all]'
+\end{lstlisting}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

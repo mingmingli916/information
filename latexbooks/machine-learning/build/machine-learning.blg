@@ -1,0 +1,74 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: build/machine-learning.aux
+A level-1 auxiliary file: title.aux
+A level-1 auxiliary file: math.aux
+A level-1 auxiliary file: learning.aux
+A level-1 auxiliary file: model.aux
+A level-1 auxiliary file: training.aux
+A level-1 auxiliary file: cost-function.aux
+A level-1 auxiliary file: fc.aux
+A level-1 auxiliary file: cnn.aux
+A level-1 auxiliary file: metric.aux
+A level-1 auxiliary file: regularization.aux
+A level-1 auxiliary file: activation.aux
+A level-1 auxiliary file: machine-learning-process.aux
+A level-1 auxiliary file: diffusion-model.aux
+A level-1 auxiliary file: pytorch.aux
+A level-1 auxiliary file: numpy.aux
+A level-1 auxiliary file: preprocessing.aux
+A level-1 auxiliary file: deep-unsupervised-learning-using-nonequilibrium-thermodynamics.aux
+Case mismatch error between cite keys JS2015DEEP and js2015deep
+---line 18 of file deep-unsupervised-learning-using-nonequilibrium-thermodynamics.aux
+ : \citation{JS2015DEEP
+ :                     }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys JS2015DEEP and js2015deep
+---line 54 of file build/machine-learning.aux
+ : \citation{JS2015DEEP
+ :                     }
+I'm skipping whatever remains of this command
+The style file: plain.bst
+Database file #1: refs.bib
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            519 strings with 4427 characters,
+and the built_in function-call counts, 224 in all, are:
+= -- 20
+> -- 7
+< -- 0
++ -- 3
+- -- 2
+* -- 10
+:= -- 48
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 10
+empty$ -- 18
+format.name$ -- 2
+if$ -- 42
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 4
+preamble$ -- 1
+purify$ -- 3
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 5
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 2
+width$ -- 2
+write$ -- 12
+(There were 2 error messages)

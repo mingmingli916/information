@@ -1,0 +1,84 @@
+
+* TeX
+TeX is a powerful *text formatter* written by Donald Knuth.
+
+The TeX format has several variants.
+Emacs provides a TeX major mode for each of theses variants.
+| TeX    |                                                                                       | plain-tex-mode |
+| LaTeX  | a simplified input format for TeX                                                     | latex-mode     |
+| DocTeX | a format in which the LaTeX sources are written, combining sources with documentation | doctex-mode    |
+| SliTeX |                                                                                       | slitex-mode    |
+
+Emacs selects the appropriate mode by looking at the contents of the buffer. 
+(This is done by invoking the tex-mode command, which is normally called automatically when you visit a TeX-like file.)
+If the contents are insufficient to determine this, Emacs chooses the mode specified by the variable tex-default-mode; its default value is latex-mode. 
+
+* TeX Editing
+In TeX mode, ‘$’ has a special syntax code which attempts to understand the way TeX math mode delimiters match.
+
+| Bounding | Function                           | Description                                  |
+|----------+------------------------------------+----------------------------------------------|
+| C-c }    | up-list                            | move forward out of one level of parentheses |
+|----------+------------------------------------+----------------------------------------------|
+| "        | tex-insert-quote                   |                                              |
+| M-RET    | latex-insert-item                  |                                              |
+| C-c C-t  | latex-insert-block                 |                                              |
+| C-c C-o  | latex-insert-block                 |                                              |
+| C-c {    | tex-insert-braces                  |                                              |
+|----------+------------------------------------+----------------------------------------------|
+| C-c C-u  | tex-goto-last-unclosed-latex-block |                                              |
+| C-c C-e  | latex-close-block                  |                                              |
+| C-c /    | latex-close-block                  |                                              |
+| C-c ]    | latex-close-block                  |                                              |
+|----------+------------------------------------+----------------------------------------------|
+| C-c C-s  | latex-split-block                  |                                              |
+|----------+------------------------------------+----------------------------------------------|
+| C-c C-c  | tex-compile                        |                                              |
+|----------+------------------------------------+----------------------------------------------|
+| C-c C-v  | tex-view                           |                                              |
+|----------+------------------------------------+----------------------------------------------|
+| C-c C-l  | tex-recenter-output-buffer         |                                              |
+| C-RET    | tex-feed-input                     | Send input to the tex shell process.         |
+
+
+In TeX, the character " is not normally used; instead, quotations begin with `` and end with ''. 
+TeX mode therefore binds the " key to the =tex-insert-quote- command. 
+This inserts `` after whitespace or an open brace, " after a backslash, and '' after any other character. 
+As a special exception, if you type " when the text before point is either `` or '', Emacs replaces that preceding text with a single " character. 
+
+
+TeX uses braces as delimiters that must match. 
+
+Use C-c { to insert a pair of braces. It leaves point between the two braces so you can insert the text that belongs inside. 
+Afterward, use the command C-c } to move forward past the close brace.
+
+* TeX Printing Commands
+| Bounding | Function                   | Description                                                           |
+|----------+----------------------------+-----------------------------------------------------------------------|
+| C-c C-b  | tex-buffer                 | Invoke TeX on the entire current buffer.                              |
+| C-c C-r  | tex-region                 |                                                                       |
+| C-c C-f  | tex-file                   |                                                                       |
+|----------+----------------------------+-----------------------------------------------------------------------|
+| C-c C-v  | tex-view                   | Preview the output from the last text-buffer, text-region or tex-file |
+| C-c C-p  | tex-print                  | Print the output from the last text-buffer, text-region or tex-file   |
+|----------+----------------------------+-----------------------------------------------------------------------|
+| C-c C-l  | tex-recenter-output-buffer | Recenter the window showing output from TeX.                          |
+|----------+----------------------------+-----------------------------------------------------------------------|
+| C-c C-k  | tex-kill-job               | Kill the TeX subprocess.                                              |
+|----------+----------------------------+-----------------------------------------------------------------------|
+| C-c C-c  | tex-compile                | Run a command CMD on current TeX buffer’s file in DIR.                |
+
+
+After the C-c C-v, a PEF view will show up, "q" to exit it and return back to Emacs.
+ 
+Because most files of TeX input contain commands at the beginning to set parameters and define macros, without which no later part of the file will format correctly. To solve this problem, C-c C-r allows you to designate a part of the file as containing essential commands; it is included before the specified region as part of the input to TeX. 
+The designated part of the file is called the header. 
+
+To indicate the bounds of the header in Plain TeX mode, you insert two special strings in the file. 
+Insert ‘%**start of header’ before the header, and ‘%**end of header’ after it. 
+If ‘%**start of header’ does not appear within the first 100 lines of the buffer, C-c C-r assumes that there is no header. 
+
+In LaTeX mode, the header begins with ‘\documentclass’ or ‘\documentstyle’ and ends with ‘\begin{document}’. 
+
+
+

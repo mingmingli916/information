@@ -1,0 +1,110 @@
+
+\chapter{Deploy}
+\label{cha:deploy}
+
+flask + gunicorn +  nginx
+
+
+
+
+\section{Gunicorn}
+\label{sec:gunicorn}
+
+\subsection{Install Gunicorn}
+\label{sec:install-gunicorn}
+
+\begin{lstlisting}
+  pip install gunicorn
+\end{lstlisting}
+
+
+\subsection{Creating the WSGI Entry Point}
+\label{sec:application}
+
+create wsgi.py in you application.
+
+\begin{lstlisting}
+from myblog import app
+
+if __name__ == '__main__':
+    app.run()
+\end{lstlisting}
+
+
+
+\subsection{Start Gunicorn}
+\label{sec:start-gunicorn}
+
+\begin{lstlisting}
+  gunicorn --bind 0.0.0.0:8000 wsgi:app
+\end{lstlisting}
+
+
+\section{Nginx}
+\label{sec:nginx}
+
+
+\subsection{Install Nginx}
+\label{sec:install-nginx}
+
+\begin{lstlisting}
+  dnf install nginx
+\end{lstlisting}
+
+\subsection{Config}
+\label{sec:config}
+
+/etc/nginx/nginx.conf
+
+\begin{lstlisting}
+    server {
+        listen       80 default_server;
+        server_name  mingmingli.net www.mingmingli.net;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+	    proxy_pass http://127.0.0.1:8000/;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Prefix /;
+        }
+
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }  
+\end{lstlisting}
+
+
+
+\subsection{Tell Flask it is Behind a Proxy}
+
+myblog.py
+\begin{lstlisting}
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)  
+\end{lstlisting}
+
+
+\section{SSL}
+\label{sec:ssl}
+
+\url{https://certbot.eff.org/instructions}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "flask"
+%%% End:

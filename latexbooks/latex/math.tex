@@ -1,0 +1,396 @@
+
+\chapter{Math Formulas}
+\label{cha:math-formulas}
+
+\section{Math Mode}
+\label{sec:math-mode}
+
+Using math environments to enter math mode.
+
+\subsection{Embedding Math Expressions Within Text}
+\label{sec:embedd-math-expr}
+
+LaTeX provides the math environment in-text formulas:
+\begin{lstlisting}
+\begin{math}
+  expression
+\end{math}
+\end{lstlisting}
+
+
+Since it's very laborious to write this environment for each small expression or symbol, LaTeX offers an alias that's doing the same:
+\begin{lstlisting}
+\(
+expression
+\)
+% or
+\(expression\)
+\end{lstlisting}
+
+A third way is by using a shortcut, coming from TeX:
+\begin{lstlisting}
+$expression$
+\end{lstlisting}
+
+\subsection{Displaying Formulas}
+\label{sec:displaying-formulas}
+
+For displayed formulas, which have to be centered, LaTeX offers the displaymath environment:
+\begin{lstlisting}
+\begin{displaymath}
+  expression
+\end{displaymath}
+\end{lstlisting}
+
+The effect of this environment is that the paragraph will be ended, some vertical space follows, then the centered formula plus the following vertical space.
+As this math environment takes care of the spacing, don't leave empty lines before and after it!
+This would cause additional vertical space because of the superfluous paragraph breaks.
+
+A shortcut is:
+\begin{lstlisting}
+\[
+expression
+\]
+\end{lstlisting}
+
+\subsection{Numbering Equations}
+\label{sec:numbering-equations}
+
+Equations and formulas in general may be numbered.
+However, this applies only to displayed formulas.
+The equation environment is responsible for this:
+\begin{lstlisting}
+\begin{equation}
+  \label{key}
+  expression
+\end{equation}
+\end{lstlisting}
+
+\section{Common Formulas}
+\label{sec:common}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    \head{Source code} & \head{Output}\\
+    \midrule
+    \lstinline|x^2| & $x^{2}$ \\
+    \lstinline|x_2| & $x_{2}$ \\
+    \lstinline|\sqrt[3]{x}| & $\sqrt[3]{x}$\\
+    \lstinline|\frac{x}{y}| & $\frac{x}{y}$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Common}
+  \label{tab:common}
+\end{table}
+
+
+\section{Dots}
+\label{sec:dots}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash\ttfamily}ll}
+    \toprule
+    \normal{\head{Source code}} & \head{Output}\\
+    \midrule
+    ddots & $\ddots$\\
+    cdot & $\cdot$\\
+    ldots & $\ldots$\\
+    vdots & $\vdots$\\
+    dot\{\} & $\dot{}$\\
+    cdots & $\cdots$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Dots}
+  \label{tab:dots}
+\end{table}
+
+
+\section{Greek Letters}
+\label{sec:greek-letters}
+
+To get a lowercase Greek letter, just write the name with a backslash for the command.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash\ttfamily}ll>{\textbackslash\ttfamily}ll}
+    \toprule
+    \normal{\head{Source code}} & \head{Output} & \normal{\head{Source code}} & \head{Output}\\
+    \midrule
+    alpha & $\alpha$ & beta & $\beta$\\
+    gamma & $\gamma$ &  delta & $\delta$\\
+    epsilon & $\epsilon$ & zeta & $\zeta$\\
+    eta & $\eta$ & theta & $\theta$\\
+    iota & $\iota$ & kappa & $\kappa$\\
+    lambda & $\lambda$ & mu & $\mu$\\
+    nu & $\nu$ & xi & $\xi$\\
+    \normal{o} & o & pi & $\pi$\\
+    rho & $\rho$ & sigma & $\sigma$\\
+    tau & $\tau$ & upsilon & $\upsilon$\\
+    phi & $\phi$ & chi & $\chi$\\
+    psi & $\psi$ & omega & $\omega$\\
+    \midrule
+    varepsilon & $\varepsilon$ & vartheta & $\vartheta$\\
+    varpi & $\varpi$ & varrho & $\varrho$\\
+    varsigma & $\varsigma$ & varphi & $\varphi$\\
+    \midrule
+    Gamma & $\Gamma$ & Delta & $\Delta$\\
+    Theta & $\Theta$ & Lambda & $\Lambda$\\
+    Xi & $\Xi$ & Pi & $\Pi$\\
+    Sigma & $\Sigma$ & Upsilon & $\Upsilon$\\
+    Phi & $\Phi$ & Psi & $\Psi$\\
+    Omega & $\Omega$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Greek Letters}
+  \label{tab:greek-letters}
+\end{table}
+
+
+
+
+\section{Fonts}
+\label{sec:fonts}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash{}\ttfamily{}}l<{\{...\}}ll}
+    \toprule
+    \normal{\head{Source code}} & \head{Package} & \head{Output}\\
+    \midrule
+    mathrm &  & $\mathrm{abc\ 123}$\\
+    mathit & & $\mathit{abc\ 123}$\\
+    mathsf & & $\mathsf{abc\ 123}$\\
+    mathbb & amsfonts & $\mathbb{ABC}$\\
+    mathbbm & bbm & $\mathbbm{ABC}$\\
+    mathds & dsfont & $\mathds{ABC}$\\
+    mathfrak & eufrak & $\mathfrak{ABC\ 123}$\\
+    mathnormal & & $\mathnormal{ABC\ 123}$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Fonts}
+  \label{tab:fonts}
+\end{table}
+
+\section{Multi-line Formulas}
+\label{sec:multi-line-formulas}
+
+\begin{lstlisting}
+% package amsmath needed
+\begin{multline}
+\sum = a + b + c + d + e \\
+           + f + g + h + i + j \\
+           + k + l + m + n 
+\end{multline}
+
+
+\begin{gather}
+x + y + z = 0 \\ 
+y-z= 1
+\end{gather}
+
+
+\begin{align}
+  x + y + z &= 0 \\
+  y - z &= 1
+\end{align}
+\end{lstlisting}
+
+
+\begin{multline}
+\sum = a + b + c + d + e \\
+           + f + g + h + i + j \\
+           + k + l + m + n 
+\end{multline}
+
+
+\begin{gather}
+x + y + z = 0 \\ 
+y-z= 1
+\end{gather}
+
+
+\begin{align}
+  x + y + z &= 0 \\
+  y - z &= 1
+\end{align}
+
+\section{Operators}
+\label{sec:operators}
+
+Trigonometric functions, logarithm functions, and other analytic and algebraic functions are commonly written with upright Roman letters.
+Simply typing log would otherwise look like a product of the three variables, namely, l, o, and g.
+To ease the input, there are commands for many common functions or so called \keyword{operators}.
+Here's an alphabetical list of the predefined ones:
+\begin{lstlisting}
+\arccos, \arcsin, \arctan, \arg, \cos, \cosh, \cot, \coth, \scs, \deg, \det, \dim, \exp, \gcd, \hom, \inf, \ker, \lg, \lim, \liminf, \limsup, \ln, \log, \max, \min, \Pr, \sec, \sin, \sinh, \sup, \tan, \tanh
+\end{lstlisting}
+
+\newpage{}
+\section{Standard LaTeX Symbols}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash\ttfamily}ll>{\textbackslash{}\ttfamily{}}ll}
+    \toprule
+    \normal{\head{Source code}} & \head{Output} & \normal{\head{Source code}} & \head{Output}\\
+    \midrule
+    circ & $\circ$ & bigcirc & $\bigcirc$\\
+    star & $\star$ & ast & $\ast$\\
+    cup & $\cup$ & cap & $\cap$\\
+    ominus & $\ominus$ & oplus & $\oplus$\\
+    oslash & $\oslash$ & otimes & $\otimes$\\
+    times & $\times$ & div & $\div$\\
+    pm & $\pm$ & mp & $\mp$\\
+    odot & $\odot$ & bullet & $\bullet$\\
+    \midrule
+    approx & $\approx$ & equiv & $\equiv$\\
+    propto & $\propto$ & sim & $\sim$\\
+    simeq & $\simeq$\\
+    parallel & $\parallel$ & perp & $\perp$\\
+    subset & $\subset$ & supset & $\supset$\\
+    subseteq & $\subseteq$ & supseteq & $\supseteq$\\
+    \midrule
+    geq & $\geq$ & gg & $\gg$\\
+    leq & $\leq$ & ll & $\ll$\\
+    neq & $\neq$\\
+    \midrule
+    prod & $\prod$ & sum & $\sum$ \\
+    coprod & $\coprod$ & int & $\int$\\
+    oint & $\oint$\\
+    \midrule
+    rightarrow & $\rightarrow$ & Rightarrow & $\Rightarrow$\\
+    longrightarrow & $\longrightarrow$ & Longrightarrow & $\Longrightarrow$\\
+    hookleftarrow & $\hookleftarrow$ & hookrightarrow & $\hookrightarrow$\\
+    leftrightarrow & $\leftrightarrow$ & Leftrightarrow $\Longleftrightarrow$\\
+    \midrule
+    bot & $\bot$ & forall & $\forall$\\
+    ni & $\ni$ & top & $\top$\\
+    hbar & $\hbar$ & in & $\in$\\
+    exists & $\exists$ \\
+    \midrule
+    langle & $\langle$ & lceil & $\lceil$\\
+    lfloor & $\lfloor$ & | & $\|$\\
+    \midrule
+    sharp & $\sharp$ & nabla & $\nabla$\\
+    emptyset & $\emptyset$ & angle & $\angle$\\
+    flat & $\flat$ & neg & $\neg$\\
+    surd & $\surd$ & infty & $\infty$\\
+    prime & $\prime$ & triangle & $\triangle$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Standard latex sysmbols}
+  \label{tab:standard-latex-symbols}
+\end{table}
+
+\section{Math Structures}
+\label{sec:math-structures}
+
+\begin{lstlisting}
+\[
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]
+\end{lstlisting}
+
+\[
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]
+
+
+\begin{lstlisting}
+\[
+A = 
+\begin{pmatrix}
+  a_{11} & a_{12} \\
+  a_{21} & a_{22}
+\end{pmatrix}
+\]
+\end{lstlisting}
+
+\[
+A =
+\begin{pmatrix}
+  a_{11} & a_{12} \\
+  a_{21} & a_{22}
+\end{pmatrix}
+\]
+
+These are amsmath's matrix environments:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\ttfamily}ll}
+    \toprule
+    \normal{\head{Name}} & \head{Delimiters of the matrix}\\
+    \midrule
+    matrix & no delimiters\\
+    pmatrix & parentheses()\\
+    bmatrix & square brackets[]\\
+    Bmatrix & braces\{\}\\
+    vamtrix & $|$\\
+    Vmatrix & $\|$$\|$\\
+    smallmatrix & without delimiters, add them if needed, more compact\\
+    \bottomrule
+  \end{tabular}
+  \caption{Matrix}
+  \label{tab:matrix}
+\end{table}
+
+\section{Stakcing Expressions}
+\label{sec:stakcing-expressions}
+
+\subsection{Underlining and Overlining}
+\label{sec:underl-overl}
+
+\begin{lstlisting}
+\[s = \overline{AB}\]
+\[s = \underline{AB}\]
+\[N = \underbrace{1 + 1 + \cdots + 1}_n\]
+\[N = \overbrace{1 + 1 + \cdots + 1}_n\]
+\end{lstlisting}
+\[s = \overline{AB}\]
+\[s = \underline{AB}\]
+\[N = \underbrace{1 + 1 + \cdots + 1}_n\]
+\[N = \overbrace{1 + 1 + \cdots + 1}_n\]
+
+\subsection{Setting Accents}
+\label{sec:setting-accents}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash\ttfamily}l<{\{a\}}l>{\textbackslash{}\ttfamily{}}l<{\{a\}}l}
+    \toprule
+    \normal{\head{Source code}} & \head{Output} & \normal{\head{Source code}} & \head{Output}\\
+    \midrule
+    bar & $\bar{a}$ & acute & $\acute{a}$\\
+    check & $\check{a}$ & grave & $\grave{a}$\\
+    tilde & $\tilde{a}$ & ddot & $\ddot{a}$\\
+    hat & $\hat{a}$ & vec & $\vec{a}$\\
+    breve & $\breve{a}$ & dot & $\dot{a}$\\
+    mathring & $\mathring{a}$\\
+    widehat & $\widehat{abc}$ & widetilde & $\widetilde{a}$\\
+    \bottomrule
+  \end{tabular}
+  \caption{Accents}
+  \label{tab:accents}
+\end{table}
+
+
+\subsection{Puting a Symbol Above Another}
+\label{sec:puting-symbol-above}
+
+\begin{lstlisting}
+% package amsmath
+
+\[\underset{A}{\equiv}\]
+\[\overset{\equiv}{A}\]
+\end{lstlisting}
+
+\[\underset{A}{\equiv}\]
+\[\overset{\equiv}{A}\]
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

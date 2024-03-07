@@ -1,0 +1,96 @@
+
+\chapter{Model}
+\label{cha:model}
+
+What is a model?
+
+You can think a model as a function in math.
+For example,
+\begin{equation*}
+  ax + by = c
+\end{equation*}
+In this function, \(a, b\) and \(d\) are the parameters, \(x\) and \(y\) are input from data.
+Through adjusting the parameters \(a, b\) and \(d\), we can implement the learning process.
+This is also called training in machine learning.
+
+\section{Capacity}
+\label{sec:capacity}
+
+The capacity is the function space.
+It defines the limitation that can learn from data.
+
+For example,
+\begin{equation*}
+  ax + by = c  
+\end{equation*}
+This function can only learn linear function from data.
+\begin{equation*}
+  ax_{1}^{2} + bx_{2} = c
+\end{equation*}
+This function can learn curve function from data.
+
+
+\subsection{The no free lunch theorem}
+
+
+For any algorithms (functions) \(a_{1}\) and \(a_{2}\), at iteration step \(m\)
+\begin{equation}
+  \label{eq:1}
+  \sum P(d_{m}^{y}|f,m,a_{1}) = \sum P(d_{m}^{y}|f,m,a_{2})
+\end{equation}
+where \(d_{m}^{y}\) denotes the ordered set of size \(m\) of the cost values \(y\) associated to input values \(x \in X\), \(f:X\longrightarrow Y\) is the function being optimized and \(P(d_{m}^{y}|f,m,a)\) is the conditional probability of obtaining a given sequence of cost values from algorithm \(a\) run \(m\) times on function \(f\).
+
+The no free lunch theorem implies that we must design our machine learning algorithms to perform well on a specific task but not a universal task.
+
+\subsection{Universal approximation theorem}
+\label{sec:univ-appr-theor}
+
+A feed-forward network with a single hidden layer containing a finite number of neurons can
+approximate continuous functions on compact subsets of $R^n$ , under mild assumptions on the activation function. 
+
+Let $\varphi$ : R $\rightarrow$ R be a nonconstant, bounded, and continous functions.
+Let $I_m$ denote the m-dimensional unit hypercube $[0,1]^m$ .
+The space of real-value continous function on $I_m$ is denoted by $C(I_m)$ .
+Then, given any $\varepsilon > 0$ and function $f \in C(I_m)$ ,
+there exist an integer N, real constants $\upsilon_i, b_i \in R$ and real vectors $\omega_i \in R^m$ for $i = 1, \cdots, N$ , such that we may define:
+\begin{equation}
+F(x) = \sum_{i=1}^{N}\upsilon_i\varphi(\omega_i^Tx+b_i)
+\end{equation}
+as an approximate realization of the function f; that is
+\begin{equation}
+|F(x) - f(x)| < \varepsilon
+\end{equation}
+for all $x \in I_m$ .
+In other words, functions of the form $F(x)$ are dense in $C(I_m)$ .
+
+This still holds when replacing $I_m$ with any compact subset of $R^m$ .
+
+
+
+Kurt Hornik showed in 1991 that it is not the specific choice of the activation function, but rather the multilayer feedforward architecture itself which gives neural networks the potential of being universal approximators. The output units are always assumed to be linear. For notational convenience, only the single output case will be shown. The general case can easily be deduced from the single output case.
+
+In 2017 Lu et al. proved universal approximation theorem for width-bounded deep neural networks.
+
+This is the base of deep learning.
+
+\section{Overfitting and underfitting}
+
+
+We train model on training data but use test data (not used to train the model) to test out model.
+The ability to perform on test data is called \keyword{generalization}.
+We can use model on test data because we assume that the train data and the test has the same probability distribution (i.e. they have relationship).
+
+The error on training data is called \keyword{training error}.
+The error on test data is called \keyword{test error}.
+Underfitting occurs when the model is not able to obtain a sufficient low error value on the training set.
+Overfitting occurs when the gap between the training error and test error is too large.
+
+
+We can control whether a model is more likely to overfit or underfit by altering its \keyword{capacity}.
+The overfitting and underfitting happen because of the mismatch of capacity and the data.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

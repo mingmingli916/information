@@ -1,0 +1,142 @@
+
+\chapter{Developing Large Documents}
+\label{cha:devel-large-docum}
+
+
+\section{Spliting the Input}
+\label{sec:spliting-input}
+
+
+Using ``divide and conquer'' thought to develop large documents, i.e. break down a document into several sub-documents.
+
+There are two common commands to combine the sub-documents into a large document:
+\begin{lstlisting}
+\input{filename}
+\include{filename}
+\end{lstlisting}
+
+When LaTeX encounters \lstinline|\input| command, it reads in the file with the name \argument{filename} exactly as if its contents have been typed at that point.
+Accordingly, all commands in this file would be processed by the LaTeX compiler.
+You can even nest \lstinline|\input| — this command may be used inside an included file.
+
+The argument is treated the same way as \lstinline|\input|.
+However, there are some important differences:
+\begin{enumerate}
+\item \lstinline|\include| implicitly starts new pages. \lstinline|\include{filename}| behaves like:
+\begin{lstlisting}
+\clearpage
+\include{filename}
+\clearpage
+\end{lstlisting}
+  
+\item \lstinline|\include| cannot be nested.
+
+\item \lstinline|\include| supports a mechanism of choosing which parts of the document you wish to compile (\lstinline|\includeonly|).
+\end{enumerate}
+
+
+\begin{lstlisting}
+\includeonly{file list}
+\end{lstlisting}
+
+The argument may be a comma-separated list of filenames.
+If a file, \argument{name.tex}, is not specified within this argument, \lstinline|\include{name}| would not insert this file but just behave like \clearpage instead.
+This allows excluding chunks or whole chapters from compiling.
+If you work on a huge document, this speeds up compilation if you choose to include just your current chapter while keeping the labels and references of the excluded chapter this way.
+
+\section{Creating Front and Back Matter}
+\label{sec:creating-front-back}
+
+Books often begin with introductory material such as copyright information, a foreword, acknowledgements, or a dedication. This part, including the title page and the table of contents, is called the \keyword{front matter}.
+At the end, a book might include an afterword and supporting material like a bibliography, and an index. This part is called the \keyword{back matter}.
+
+
+\begin{lstlisting}
+\documentclass{article}
+\begin{document}
+
+% Pages are numbered with lowercase Roman numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\frontmatter 
+\include{dedication} 
+\tableofcontents 
+\listoftables
+\listoffigures
+
+% Pages are numbered with Arabic numbers.
+% Chapters are numbered and produce a table of contents entry.
+\mainmatter 
+\include{chapter1} 
+\include{chapter2} 
+
+% Pages are numbered with Arabic numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\backmatter
+\include{proofs}                
+\nocite{*} 
+\bibliographystyle{alpha} 
+\bibliography{tex}              % use tex.bib
+
+\end{document}
+
+\end{lstlisting}
+
+\section{Creating a Title Page}
+\label{sec:creating-title-page}
+
+
+\begin{lstlisting}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width=0.5\textwidth]{images/logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries \LaTeX}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{center} \large
+Mingming \textsc{Li}\\ % Your name
+\end{center}
+
+\end{minipage}\\[2cm]
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:
+
+\end{lstlisting}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

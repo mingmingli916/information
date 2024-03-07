@@ -1,0 +1,70 @@
+
+\chapter{Activation functions}
+\label{cha:activation-functions}
+
+Activation functions are usually added into neural network in order to help the network learn complex patterns.
+Because many of the patterns we want to learn are non-linear, we usually add non-linear activation functions into neural network to add the ability to learn non-learn patterns.
+Its function is to determine what information can be passed to the next neuron.
+
+
+\section{Desirable features}
+\label{sec:desirable-features}
+
+\begin{itemize}
+\item Differentiable. This is needed for optimization.
+\item Low computational expense.
+\item Zero-centered. 
+\end{itemize}
+
+\section{Sigmoid}
+\label{sec:sigmoid}
+
+\begin{equation}
+  \label{eq:9}
+  \text{sigmoid}(x)=\frac{1}{1+e^{-x}}
+\end{equation}
+
+
+It is no longer used in recent deep learning models because it is computationally expensive, causes vanishing gradient problem and not zero-centered.
+
+\section{Tanh}
+\label{sec:tanh}
+
+\begin{equation}
+  \label{eq:13}
+  \tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}=\frac{e^{2 x}-1}{e^{2 x}+1}
+\end{equation}
+
+Comparing to sigmoid, it solve the not zero-centered problem.
+
+\section{ReLU}
+\label{sec:relu}
+
+\begin{equation}
+  \label{eq:15}  
+  \text{relu}(x)=\max (0, x)
+\end{equation}
+
+This is a widely used activation function.
+
+
+\section{Leaky ReLU}
+\label{sec:leaky-relu}
+
+\begin{equation}
+  \label{eq:16}
+  \text{lrelu}(x)=\max (\alpha x, x)
+\end{equation}
+
+
+\section{Swish}
+\label{sec:swish}
+
+\begin{equation}
+  \label{eq:17}
+  \text{swish}(x)  = x * \operatorname{sigmoid}(x)  =x *(1+e^{-x})^{-1}
+\end{equation}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

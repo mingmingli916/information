@@ -1,0 +1,32 @@
+
+\chapter{Processes and threading}
+\label{cha:processes-threading}
+
+There are two main approaches to spreading the workload:
+\begin{itemize}
+\item multiple processes
+\item multiple threads
+\end{itemize}
+
+
+
+\begin{table}[htb!]
+  \centering
+  \begin{tabular}{p{0.2\columnwidth}p{0.35\columnwidth}p{0.35\columnwidth}}
+    \toprule{}
+    & \head{advantage} & \head{disadvantage} \\
+    \midrule
+    multiple processes & each process runs independently & communication and data sharing can be inconvenient \\
+    multiple threads & can communicate simply by data sharing & more complex than single-threaded program\\
+    \bottomrule
+  \end{tabular}
+  \caption{multiple processes and multiple threads}
+\end{table}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "python"
+%%% End:

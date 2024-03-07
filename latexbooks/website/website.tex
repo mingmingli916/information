@@ -1,0 +1,61 @@
+\documentclass[a4paper,10pt]{book}
+\input{preamble}
+\begin{document}
+
+
+% Pages are numbered with lowercase Roman numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\frontmatter{}
+\include{title}
+\cleardoublepage{}
+\phantomsection{}
+\tableofcontents{}
+\cleardoublepage{}
+\phantomsection{}
+\listoffigures{}
+\cleardoublepage{}
+\phantomsection{}
+\listoftables{}
+
+
+% Pages are numbered with Arabic numbers.
+% Chapters are numbered and produce a table of contents entry.
+\mainmatter{}
+
+
+% content
+
+\part{Flask}
+\label{part:flask}
+
+\include{installation}
+\include{application-strutcture}
+\include{template}
+\include{extensions}
+\include{deploy}
+
+
+% Pages are numbered with Arabic numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\backmatter{}
+\cleardoublepage{}
+\phantomsection{}
+\nocite{*}
+\bibliographystyle{plain}       % % plain, unsrt, alpha, abbrv
+\bibliography{lib}
+
+\cleardoublepage{}
+% just setting an anchor like \hypertarget{}{}
+% fix the problem that anchor point to the previous section
+\phantomsection{}                 
+\printindex{}
+\end{document}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,116 @@
+
+\chapter{Application structure}
+\label{cha:appl-struct}
+
+\usetikzlibrary{arrows,snakes,backgrounds}
+\tikzstyle{transition}=[rectangle,draw=black!50,thick, inner sep=0pt,minimum size=2cm]
+\tikzstyle{pre}=[<-,shorten <=1pt,>=stealth]
+\tikzstyle{post}=[->,shorten >=1pt,>=stealth]
+\begin{tikzpicture}
+  \draw (0,0) rectangle ++(10,10);
+  \node at (5,10.5) {Application};
+  \node[transition] (response) at (2,2) {response};
+  \node[transition] (view) at (8,2) {view}
+  edge [post] (response);
+  
+  \node[transition] (route) at (8,8) {route}
+  edge [post] (view);
+
+  \node[transition] (request) at (2,8) {request}
+  edge [post] node [auto] {dispatch} (route);
+
+  \node at (-2,8) {}
+  edge [post] (request);
+
+  \node at (-2,2) {}
+  edge [pre] (response);
+
+  
+\end{tikzpicture}
+
+
+\section{Initialization}
+\label{sec:initialization}
+
+All Flask applications must create an application instance.
+The web server passes all requests it receives from clients to this object for handling, using a protocol called Web Server Gateway Interface (WSGI).
+The application instance is an object of class Flask, usually created as follows:
+\begin{lstlisting}
+from flask import Flask
+app = Flask(__name__)
+\end{lstlisting}
+
+\section{Routes and view functions}
+\label{sec:rout-view-funct}
+
+The association between a URL and the function that handles it is called a route.
+\begin{lstlisting}
+@app.route('/')
+def index():
+    return '<h1>Hello World!</h1>'
+\end{lstlisting}
+
+
+\section{Responses}
+\label{sec:responses}
+
+\begin{lstlisting}
+from flask import make_response
+@app.route('/')
+def index():
+    response = make_response('<h1>This document carries a cookie!</h1>')
+    response.set_cookie('answer', '42')
+    return response
+\end{lstlisting}
+
+\section{Development server}
+\label{sec:development-server}
+
+Flask applications include a development web server.
+To start the hello.py application:
+\begin{lstlisting}
+flask run hello.py
+
+# or
+export FLASK_APP=hello.py
+flask run
+
+# to enable debug mode
+flask run hello.py --debug
+# or
+export FLASK_DEBUG=1
+flask run
+\end{lstlisting}
+
+\section{Extensions}
+\label{sec:extensions}
+
+To use extensions:
+\begin{enumerate}
+\item Install the extension, for example
+\begin{lstlisting}
+pip install flask-bootstrap
+\end{lstlisting}
+  
+\item Initialize the extension.
+\begin{lstlisting}
+from flask_bootstrap import Bootstrap
+# ...
+bootstrap = Bootstrap(app)
+\end{lstlisting}
+  
+  Here's another method to initialize the extension:
+\begin{lstlisting}
+bootstrap = Bootstrap()
+bootstrap.init_app(app)
+\end{lstlisting}
+\item Use it in the template or in the code.
+\begin{lstlisting}
+{% extends "bootstrap/base.html" %}
+\end{lstlisting}
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "website"
+%%% End:

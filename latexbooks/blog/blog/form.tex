@@ -1,0 +1,37 @@
+\chapter{Form}
+
+pip install django-cripsy-forms
+
+
+Add to installed app:
+
+\begin{lstlisting}
+  INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
+    'books.apps.BooksConfig',
+    'articles.apps.ArticlesConfig',
+    'od.apps.OdConfig',
+    'crispy_forms'
+]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+  
+\end{lstlisting}
+
+
+
+  
+How to use in html file:
+\begin{lstlisting}
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form|crispy }}
+            <button type="submit">{% translate 'Submit' %}</button>
+        </form>  
+\end{lstlisting}

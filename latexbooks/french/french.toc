@@ -1,0 +1,94 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{i}{chapter*.1}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}前言}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}听}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}说}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}读}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}写}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}语法}{3}{section.1.5}%
+\contentsline {part}{第一部分\hspace {1em}发音}{5}{part.1}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}音标}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}元音}{7}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}辅音}{8}{subsection.2.1.1}%
+\contentsline {subsubsection}{清辅音}{8}{subsubsection*.2}%
+\contentsline {subsubsection}{浊辅音}{8}{subsubsection*.3}%
+\contentsline {subsubsection}{鼻音}{9}{subsubsection*.4}%
+\contentsline {subsubsection}{其他}{9}{subsubsection*.5}%
+\contentsline {subsection}{\numberline {2.1.2}半元音}{9}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}鼻元音}{9}{section.2.2}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}字母表}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}发音规则}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}单个字母在单词中的单一音}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}四大拼读规则}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}一个字母多个发音}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}c}{15}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}g}{15}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}o}{15}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}q}{16}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}s}{16}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}w}{16}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}x}{17}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}e}{17}{subsection.4.3.8}%
+\contentsline {section}{\numberline {4.4}带字符的字母}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}字母组合的发音}{18}{section.4.5}%
+\contentsline {section}{\numberline {4.6}鼻化元音衍生音}{22}{section.4.6}%
+\contentsline {section}{\numberline {4.7}其他}{24}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}ent}{25}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}er}{25}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}ez}{25}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}tiel}{26}{subsection.4.7.4}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}口音}{27}{chapter.5}%
+\contentsline {part}{第二部分\hspace {1em}语法}{29}{part.2}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}动词变位（congugaison）}{31}{chapter.6}%
+\contentsline {section}{\numberline {6.1}直陈式现在时（Indicatif Présent）}{31}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}er}{31}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}ir}{33}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}re}{34}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}直陈式复合过去式（Indicatif Passé composé)}{35}{section.6.2}%
+\contentsline {section}{\numberline {6.3}直陈式 未完成过去时(Indicatif Imparfait)}{36}{section.6.3}%
+\contentsline {section}{\numberline {6.4}直陈式更早过去式（indicatif plus-que-parfait）}{37}{section.6.4}%
+\contentsline {section}{\numberline {6.5}直陈式 简单将来时(Indicatif futur simple)}{38}{section.6.5}%
+\contentsline {section}{\numberline {6.6} 虚拟现在时(subjonctif présent)}{38}{section.6.6}%
+\contentsline {section}{\numberline {6.7}条件式现在时(Conditionnel Présent)}{40}{section.6.7}%
+\contentsline {section}{\numberline {6.8}动词变位助记}{40}{section.6.8}%
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}否定（négation）}{43}{chapter.7}%
+\contentsline {section}{\numberline {7.1}L'example}{44}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Le contraire}{44}{section.7.2}%
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}喜欢程度}{45}{chapter.8}%
+\contentsline {section}{\numberline {8.1}les Questions}{45}{section.8.1}%
+\contentsline {section}{\numberline {8.2}les Réponses}{45}{section.8.2}%
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}连读（liaison）}{47}{chapter.9}%
+\contentsline {section}{\numberline {9.1}什么是连读?}{47}{section.9.1}%
+\contentsline {section}{\numberline {9.2}连读中字母的发音}{47}{section.9.2}%
+\contentsline {section}{\numberline {9.3}什么时候连读}{48}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}必须的连读}{48}{subsection.9.3.1}%
+\contentsline {subsubsection}{名词群}{48}{subsubsection*.6}%
+\contentsline {subsubsection}{动词群}{48}{subsubsection*.7}%
+\contentsline {subsubsection}{副词、连词和单音节介词}{48}{subsubsection*.8}%
+\contentsline {subsubsection}{Quand + est-ce que }{49}{subsubsection*.9}%
+\contentsline {subsubsection}{固定搭配}{49}{subsubsection*.10}%
+\contentsline {subsection}{\numberline {9.3.2}禁止的连读}{49}{subsection.9.3.2}%
+\contentsline {subsubsection}{嘘音（aspiré）h前}{49}{subsubsection*.11}%
+\contentsline {subsubsection}{onze和 oui前}{49}{subsubsection*.12}%
+\contentsline {subsubsection}{人名后}{50}{subsubsection*.13}%
+\contentsline {subsubsection}{单数名词后}{50}{subsubsection*.14}%
+\contentsline {subsubsection}{et后}{50}{subsubsection*.15}%
+\contentsline {subsubsection}{疑问副词和toujours后}{50}{subsubsection*.16}%
+\contentsline {subsubsection}{倒装后}{50}{subsubsection*.17}%
+\contentsline {subsection}{\numberline {9.3.3}可选的连读}{50}{subsection.9.3.3}%
+\contentsline {chapter}{\numberline {第十章\hspace {.3em}}特殊符号}{51}{chapter.10}%
+\contentsline {chapter}{\numberline {第十一章\hspace {.3em}}基于某个时间节点的时间}{53}{chapter.11}%
+\contentsline {chapter}{\numberline {第十二章\hspace {.3em}}比较级（le comparatif）}{55}{chapter.12}%
+\contentsline {chapter}{\numberline {第十三章\hspace {.3em}}形容词的位置（positionnement de l'adjectif）}{57}{chapter.13}%
+\contentsline {section}{\numberline {13.1}放名词前面的形容词}{57}{section.13.1}%
+\contentsline {chapter}{\numberline {第十四章\hspace {.3em}}宾语代词（pronom complement）}{59}{chapter.14}%
+\contentsline {chapter}{\numberline {第十五章\hspace {.3em}}名词的阴阳性}{61}{chapter.15}%
+\contentsline {section}{\numberline {15.1}人的阴阳性}{61}{section.15.1}%
+\contentsline {section}{\numberline {15.2}动物的阴阳性}{62}{section.15.2}%
+\contentsline {section}{\numberline {15.3}物体的阴阳性}{62}{section.15.3}%
+\contentsline {section}{\numberline {15.4}名词阴阳性的转变}{64}{section.15.4}%
+\contentsline {chapter}{\numberline {第十六章\hspace {.3em}}时间}{65}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Le mois}{65}{section.16.1}%
+\contentsline {section}{\numberline {16.2}La semaine}{66}{section.16.2}%
+\contentsline {section}{\numberline {16.3}La saison}{66}{section.16.3}%
+\contentsline {section}{\numberline {16.4}La journée}{67}{section.16.4}%

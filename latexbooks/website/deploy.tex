@@ -1,0 +1,131 @@
+
+\chapter{Flask Deploy}
+\label{cha:deploy}
+
+Here we used the Flask to develop the web site and used gunicorn and nginx to deploy it.
+
+
+
+\section{Gunicorn}
+\label{sec:gunicorn}
+
+\subsection{Install Gunicorn}
+\label{sec:install-gunicorn}
+
+\begin{lstlisting}
+  pip install gunicorn
+\end{lstlisting}
+
+
+\subsection{Creating the WSGI Entry Point}
+\label{sec:application}
+
+Create \keyword{wsgi.py} in you application.
+The content of the file is as follows:
+
+\begin{lstlisting}
+from myblog import app
+
+if __name__ == '__main__':
+    app.run()
+\end{lstlisting}
+
+
+
+\subsection{Start Gunicorn}
+\label{sec:start-gunicorn}
+
+\begin{lstlisting}
+  gunicorn --bind 0.0.0.0:8000 wsgi:app
+\end{lstlisting}
+
+
+\subsection{Build a Gunicorn Service}
+\label{sec:build-gunic-serv}
+
+Create the file \keyword{/etc/systemd/system/myblog.service}:
+\begin{lstlisting}
+[Unit]
+Sescription=Gunicorn instance to serve myblog
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/myblog
+Environment="PATH=/var/www/myblog/venv/bin"
+ExecStart=/var/www/myblog/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 wsgi:app
+
+[Install]
+WantedBy=multi-user.target  
+\end{lstlisting}
+
+After the creation, you can start the service and enable it to start at the server starts up:
+\begin{lstlisting}
+  systemclt start myblog
+  systemctl enable myblog
+\end{lstlisting}
+
+
+
+\section{Nginx}
+\label{sec:nginx}
+
+
+\subsection{Install Nginx}
+\label{sec:install-nginx}
+
+\begin{lstlisting}
+  dnf install nginx
+  # or
+  apt install nginx
+\end{lstlisting}
+
+\subsection{Config}
+\label{sec:config}
+
+Create the file \keyword{/etc/nginx/sites-available/myblog}:
+\begin{lstlisting}
+server {
+    listen 80;
+    server_name mingmingli.site www.mingmingli.site;
+
+    location / {
+        include proxy_params;       
+        proxy_pass http://127.0.0.1:8000/;
+    }
+}  
+\end{lstlisting}
+
+Then create a link:
+\begin{lstlisting}
+  ln -s /etc/nginx/sites-available/myblog /etc/nginx/sites-enabled/
+\end{lstlisting}
+
+You can test the configuration is correct or not:
+\begin{lstlisting}
+  nginx -t
+\end{lstlisting}
+
+\subsection{Tell Flask it is Behind a Proxy}
+
+myblog.py
+\begin{lstlisting}
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)  
+\end{lstlisting}
+
+
+\section{SSL}
+\label{sec:ssl}
+
+\url{https://certbot.eff.org/instructions}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "website"
+%%% End:

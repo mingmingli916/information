@@ -1,0 +1,6 @@
+;; To resolve the "unable to resolve links" problem when you export to html
+;; in org mode.
+(org-id-update-id-locations (directory-files-recursively "~/info" "\\.org$"))
+
+;; Add all org files under directory "info" into agenda view.
+(setq org-agenda-files (directory-files-recursively "~/info/" "\\.org$"))

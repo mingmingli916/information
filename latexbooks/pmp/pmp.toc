@@ -1,0 +1,35 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{i}{chapter*.2}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}价值观与方法论}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}基本要素}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}生命周期}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}项目，项目集，项目组合}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}五大过程组（做事的哲学方法）}{3}{section.2.3}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}计算}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}投资回报率}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}投资回收期}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.3}内部收益率}{5}{section.3.3}%
+\contentsline {section}{\numberline {3.4}效益成本比率}{5}{section.3.4}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}整合}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}错题分析}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}范围}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}概念}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}错题解析}{15}{section.5.2}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}进度}{31}{chapter.6}%
+\contentsline {section}{\numberline {6.1}常用概念及经验}{31}{section.6.1}%
+\contentsline {section}{\numberline {6.2}错题}{31}{section.6.2}%
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}成本}{41}{chapter.7}%
+\contentsline {section}{\numberline {7.1}错题}{41}{section.7.1}%
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}质量}{47}{chapter.8}%
+\contentsline {section}{\numberline {8.1}概念}{47}{section.8.1}%
+\contentsline {section}{\numberline {8.2}错题}{47}{section.8.2}%
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}资源}{63}{chapter.9}%
+\contentsline {section}{\numberline {9.1}错题分析}{63}{section.9.1}%
+\contentsline {chapter}{\numberline {第十章\hspace {.3em}}沟通}{71}{chapter.10}%
+\contentsline {section}{\numberline {10.1}错题}{71}{section.10.1}%
+\contentsline {chapter}{\numberline {第十一章\hspace {.3em}}风险}{79}{chapter.11}%
+\contentsline {section}{\numberline {11.1}错题分析}{79}{section.11.1}%
+\contentsline {chapter}{\numberline {第十二章\hspace {.3em}}采购}{87}{chapter.12}%
+\contentsline {section}{\numberline {12.1}错题分析}{87}{section.12.1}%
+\contentsline {chapter}{\numberline {第十三章\hspace {.3em}}相关方}{93}{chapter.13}%
+\contentsline {section}{\numberline {13.1}错题解析}{93}{section.13.1}%

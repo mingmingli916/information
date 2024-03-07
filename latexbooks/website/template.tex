@@ -1,0 +1,91 @@
+
+\chapter{Templates}
+\label{cha:templates}
+
+A template is a file that contains the text of a response, with placeholder variables for the dynamic parts that will be known only in the context of a request.
+The process that replaces the variables with actual values and returns a final response string is called rendering.
+For the task of rendering templates, Flask uses a powerful template engine called Jinja2.
+
+
+\section{Rendering templates}
+\label{sec:rendering-templates}
+
+\begin{lstlisting}[caption={templates/user.html},label={lst:user}]
+<h1>Hello, {{ name }}!</h1>
+\end{lstlisting}
+
+\begin{lstlisting}[caption=rendering a template]
+from flask import Flask, render_template
+
+# ...
+
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
+\end{lstlisting}
+
+\section{Variables}
+\label{sec:variables}
+
+The \lstinline|{{ name }}| construct used in the template shown in Listing \ref{lst:user} references a variable, a special placeholder that tells the template engine that the value that goes in that place should be obtained from data provided at the time the template is rendered.
+
+\section{Control structures}
+\label{sec:control-structures}
+
+\begin{lstlisting}
+{% if condition %}
+    ...
+{% else %}
+    ...
+{% endif %}
+
+
+
+{% for i in iterable %}
+    ...
+{% endfor %}
+
+
+
+{% macro func(params) %}
+    ...
+{% endmacro %}
+
+
+{% import 'macros.html' as macros %}
+
+
+{% include 'common.html' %}
+
+
+
+{% block block_name %}
+    ...
+{% endblock %}
+
+
+{% extends 'base.html' %}
+\end{lstlisting}
+
+In general, the code part is placed in the \lstinline|{% %}|.
+
+\section{Links}
+\label{sec:links}
+
+Flask provides the \lstinline|url_for()| helper function, which gener‐ ates URLs from the information stored in the application's URL map.
+This function can also be used to link static files.
+
+\begin{lstlisting}
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+\end{lstlisting}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "website"
+%%% End:

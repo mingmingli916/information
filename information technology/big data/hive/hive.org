@@ -1,0 +1,117 @@
+* commands
+** command client
+#+begin_src sh
+  beeline -u jdbc:hive2://<ip>:<port>/<database> -n <name> -p <password>
+#+end_src
+
+
+** show create table
+#+begin_src sh
+  show create table like '*09011*';
+#+end_src
+
+
+
+** create table
+#+begin_src sh
+create table <table_name> (...)
+partitioned by (
+`month_id` string,
+`day_id` string,
+`hour_id` string)
+row format delimited fields terminated by '|'
+stored as inputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat';
+
+#+end_src
+
+** select with partition
+#+begin_src sh
+  select * from <table_name> where month_id=<month_id>;
+#+end_src
+
+
+
+** show databases
+#+begin_src sh
+  show databases;
+#+end_src
+
+
+** use database
+#+begin_src sh
+  use hiveica;
+#+end_src
+
+
+** show tables
+#+begin_src sh
+  show tables;
+#+end_src
+
+
+** exit or quit
+
+#+begin_src sh
+  !quit
+#+end_src
+
+
+
+
+
+** create table with gbk
+#+begin_src sh
+create table csv_table_gbk(name string, gender string)
+row format serde 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+with serdeproperties(
+"field.delim" = ",",
+"serialization.encoding" = "GBK"
+)
+stored as textfile;
+
+#+end_src
+
+
+
+
+** create table with utf-8
+#+begin_src sh
+create table csv_table(name string, gender string)
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties(
+"separatorChar" = ",",
+"quoteChar" = "'",
+"escapeChar" = "\\"
+)
+stored as textfile;
+
+#+end_src
+
+
+** load data
+#+begin_src sh
+load data [local] inpath "/home/ocdp/hive-csv/person.csv" into table csv_table_gbk;
+#+end_src
+
+
+** load data with partition
+#+begin_src sh
+load data [local] inpath "/home/ocdp/hive-csv/person.csv" into table csv_table_gbk partition month_id=<month_id>,day_id=<day_id>,hour_id=<hour_id>;
+#+end_src
+
+
+
+** time format
+#+begin_src sh
+select from_unixtime(cast(substring(f12,1,10) as bigint),'yyyy-MM-dd HH:mm:ss') from jtsc_mme_out_2 limit 10;
+#+end_src
+
+
+
+** time
+#+begin_src sh
+  from_unixtime(unix_timestamp(f11,'yyyyMMddHHmmss'),'yyyyMMdd HH:mm:ss')
+#+end_src
+
+
+

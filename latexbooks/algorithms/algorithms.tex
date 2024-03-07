@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt]{book}
+\input{preamble}
+\begin{document}
+
+
+% Pages are numbered with lowercase Roman numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\frontmatter{}
+\include{title}
+\cleardoublepage{}
+\phantomsection{}
+\tableofcontents{}
+\cleardoublepage{}
+\phantomsection{}
+\listoffigures{}
+\cleardoublepage{}
+\phantomsection{}
+\listoftables{}
+
+
+% Pages are numbered with Arabic numbers.
+% Chapters are numbered and produce a table of contents entry.
+\mainmatter{}
+
+\part{Theory}
+\label{part:theory}
+
+\include{base}
+
+
+\part{Data Structure}
+\label{part:data-structure}
+
+\include{array}
+\include{linked-list}
+\include{binary-tree}
+\include{n-ary-tree}
+\include{trie}
+\include{queue-and-stack}
+\include{hash-table}
+
+\part{Algorithm}
+\label{part:algorithm}
+
+\include{binary-search}
+\include{sorting}
+
+% Pages are numbered with Arabic numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\backmatter{}
+\cleardoublepage{}
+\phantomsection{}
+\nocite{*}
+\bibliographystyle{plain}       % % plain, unsrt, alpha, abbrv
+\bibliography{tex}
+
+\cleardoublepage{}
+% just setting an anchor like \hypertarget{}{}
+% fix the problem that anchor point to the previous section
+\phantomsection{}                 
+\printindex{}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+

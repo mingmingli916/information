@@ -1,0 +1,139 @@
+\contentsline {chapter}{Contents}{iii}{section*.1}%
+\contentsline {chapter}{List of Figures}{ix}{section*.2}%
+\contentsline {chapter}{List of Tables}{xi}{section*.3}%
+\contentsline {chapter}{\numberline {1}Emacs Basics}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}What is Emacs?}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Why You Should Use Emacs}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Files and Buffers}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Modes}{1}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Display}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Commands}{2}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Kill Ring}{3}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Pointer and Cursor}{3}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Backup Files}{3}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Auto Save Files}{3}{section.1.10}%
+\contentsline {chapter}{\numberline {2}Start With Emacs}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Start Emacs}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Exit Emacs}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Working With Files}{5}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Editing}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Moving Cursor}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Marking}{8}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Deleting, Copying and Pasting}{8}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Transposition and Capitalization}{8}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Rectangle Editing}{9}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Search and Replace}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Different Kinds of Searches}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Bindings}{12}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Buffers, Windows and Frames}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Concepts}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Buffer Commands}{14}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Buffer List}{14}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}Window Commands}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Package "ace-window"}{16}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Frame Commands}{16}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Macro}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Macro Commands}{17}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Saving Macros}{17}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Macro with Input}{18}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Adding a Query to a Macro}{18}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Working Environment}{19}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Spell Checking}{19}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Flyspell}{20}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Bookmarks}{21}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Bookmark Commands}{21}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Bookmark List}{21}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Shell}{22}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}One Command at a Time}{22}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Shell Mode}{22}{subsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.4.3}Eshell, Shell and Term}{23}{subsection.7.4.3}%
+\contentsline {section}{\numberline {7.5}Directory Editor}{24}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Calendar}{25}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Useful Features}{27}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Get Help}{27}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Auto Fill}{27}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Dynamic Expanding}{27}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Auto Correct Word}{27}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Auto Fill Commands}{27}{subsection.8.2.3}%
+\contentsline {section}{\numberline {8.3}Canceling Commands}{28}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Undoing Changes}{28}{section.8.4}%
+\contentsline {section}{\numberline {8.5}History Commands}{28}{section.8.5}%
+\contentsline {section}{\numberline {8.6}C-u}{28}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Saving Positions in Registers}{29}{section.8.7}%
+\contentsline {section}{\numberline {8.8}rgrep}{29}{section.8.8}%
+\contentsline {chapter}{\numberline {9}Customization}{31}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Using Options}{31}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Using Custom}{32}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Modifying the .emacs File Directly}{32}{section.9.3}%
+\contentsline {chapter}{\numberline {10}LaTeX}{35}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Installation}{35}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Configuration}{35}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Skim}{38}{subsection.10.2.1}%
+\contentsline {section}{\numberline {10.3}Basic Commands}{38}{section.10.3}%
+\contentsline {chapter}{\numberline {11}Version Control}{41}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Installation}{41}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Basic}{41}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Show Status Buffer}{41}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Stage and Unstage}{42}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Commit}{42}{subsection.11.2.3}%
+\contentsline {subsection}{\numberline {11.2.4}Push}{42}{subsection.11.2.4}%
+\contentsline {subsection}{\numberline {11.2.5}Transient prefix commands}{43}{subsection.11.2.5}%
+\contentsline {subsection}{\numberline {11.2.6}Summary}{44}{subsection.11.2.6}%
+\contentsline {section}{\numberline {11.3}Interface Concepts}{44}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Modes and Buffers}{44}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Sections}{44}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Transient Commands}{45}{subsection.11.3.3}%
+\contentsline {subsection}{\numberline {11.3.4}Transient Arguments and Buffer Variables}{45}{subsection.11.3.4}%
+\contentsline {subsection}{\numberline {11.3.5}Running Git}{47}{subsection.11.3.5}%
+\contentsline {section}{\numberline {11.4}Inspecting}{48}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Manipulating}{49}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Transferring}{50}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Org}{51}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Document Structure}{51}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Headlines}{51}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.2}Motion}{51}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.3}Visibility Cycling}{52}{subsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.1.4}Structure Editing}{53}{subsection.12.1.4}%
+\contentsline {subsection}{\numberline {12.1.5}Sparse Tree}{53}{subsection.12.1.5}%
+\contentsline {subsection}{\numberline {12.1.6}Drawers}{54}{subsection.12.1.6}%
+\contentsline {subsection}{\numberline {12.1.7}Block}{54}{subsection.12.1.7}%
+\contentsline {section}{\numberline {12.2}Plain Lists}{54}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Checkboxes}{55}{subsection.12.2.1}%
+\contentsline {section}{\numberline {12.3}Hyperlinks}{55}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Link Format}{55}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.2}Internal Links}{56}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}External Links}{56}{subsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.3.4}Handling Links}{57}{subsection.12.3.4}%
+\contentsline {subsection}{\numberline {12.3.5}Link Abbreviations}{57}{subsection.12.3.5}%
+\contentsline {subsection}{\numberline {12.3.6}Search Options in File Links}{58}{subsection.12.3.6}%
+\contentsline {subsection}{\numberline {12.3.7}Summary}{58}{subsection.12.3.7}%
+\contentsline {section}{\numberline {12.4}TODO items}{58}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Basic TODO Functionality}{58}{subsection.12.4.1}%
+\contentsline {subsection}{\numberline {12.4.2}Extended Use of TODO Keywords}{59}{subsection.12.4.2}%
+\contentsline {subsection}{\numberline {12.4.3}Progress Logging}{59}{subsection.12.4.3}%
+\contentsline {subsection}{\numberline {12.4.4}Priorities}{59}{subsection.12.4.4}%
+\contentsline {subsection}{\numberline {12.4.5}Breaking Down Tasks into Subtasks}{60}{subsection.12.4.5}%
+\contentsline {section}{\numberline {12.5}Dates and Times}{60}{section.12.5}%
+\contentsline {subsection}{\numberline {12.5.1}Timestamps}{60}{subsection.12.5.1}%
+\contentsline {subsection}{\numberline {12.5.2}Creating Timestamps}{61}{subsection.12.5.2}%
+\contentsline {subsection}{\numberline {12.5.3}Deadlines and Scheduling}{63}{subsection.12.5.3}%
+\contentsline {subsubsection}{Repeated tasks}{63}{table.caption.54}%
+\contentsline {subsection}{\numberline {12.5.4}Clocking Work Time}{65}{subsection.12.5.4}%
+\contentsline {subsubsection}{Effort Estimates}{65}{table.caption.55}%
+\contentsline {subsubsection}{Relative Timer}{65}{table.caption.56}%
+\contentsline {section}{\numberline {12.6}Tags}{66}{section.12.6}%
+\contentsline {section}{\numberline {12.7}Agenda Views}{66}{section.12.7}%
+\contentsline {subsection}{\numberline {12.7.1}Agenda Files}{67}{subsection.12.7.1}%
+\contentsline {subsection}{\numberline {12.7.2}The Agenda Dispatcher}{67}{subsection.12.7.2}%
+\contentsline {section}{\numberline {12.8}org-roam}{67}{section.12.8}%
+\contentsline {subsection}{\numberline {12.8.1}Installation}{68}{subsection.12.8.1}%
+\contentsline {subsection}{\numberline {12.8.2}The Basic}{68}{subsection.12.8.2}%
+\contentsline {subsubsection}{The Org-roam Node}{68}{subsection.12.8.2}%
+\contentsline {subsubsection}{Links between Nodes}{68}{subsection.12.8.2}%
+\contentsline {subsubsection}{Setting up Org-roam}{69}{subsection.12.8.2}%
+\contentsline {subsubsection}{Creating and Linking Nodes}{70}{lstnumber.-16.38}%
+\contentsline {chapter}{\numberline {13}Python}{71}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Installtion}{71}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Client}{71}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Install a language server}{72}{subsection.13.1.2}%
+\contentsline {chapter}{Bibliography}{73}{section*.60}%

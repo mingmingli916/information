@@ -1,0 +1,63 @@
+\chapter{Figure}
+
+\argument{graphicx} is need to insert figure into you document.
+
+
+LaTeX supports the following file types:
+\begin{itemize}
+\item \argument{PNG, JPG}, and \argument{PDF} if you directly compile
+  to PDF (\keyword{pdfLaTeX})
+\item \argument{EPS} if you compile to DVI and convert to PS and PDF (traditional LaTeX)
+\end{itemize}
+
+
+\begin{tcolorbox}
+  \begin{itemize}
+  \item PS: PostScript
+  \item EPS: Encapsulated PostScript
+  \item DVI: Device Independent Format
+  \end{itemize}
+\end{tcolorbox}
+
+
+You don't need to specify a filename extension, it will be
+automatically added.
+Don't use blanks in the filename or path!
+Blanks and special characters may cause problems with \lstinline|\includegraphics|.
+If such symbols in filenames are required, load the package
+\argument{grffile} to try to fix it.
+
+
+\begin{lstlisting}
+  \usepackage[demo]{graphicx}
+  \begin{figure}
+    \centering
+    \includegraphics{test}
+    \caption{Test figure}
+  \end{figure}
+\end{lstlisting}
+
+Because we specified the \argument{demo} option, \argument{graphicx}
+doesn't require a file \argument{test.png} or any other file; instead
+it's just printing a black filled rectangle. This is useful for
+testing or if you would like to discuss a LaTeX problem in an online
+forum, but don't wish to publish your pictures.
+
+
+\begin{lstlisting}
+  % syntax
+  \includegraphics[k=v]{file name}
+\end{lstlisting}
+
+Here are the most popular ones:
+\begin{itemize}
+\item \argument{width}: \lstinline|width=0.8\textwidth|
+\item \argument{height}
+\item \argument{scale}: \lstinline|scale=0.5|
+\item \argument{angle}: \lstinline{angle=90}
+\end{itemize}
+
+
+
+
+

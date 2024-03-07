@@ -1,0 +1,75 @@
+
+\chapter{Metric}
+\label{cha:metric}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ll|ll}
+    \toprule
+    \multicolumn{2}{l}{} & \multicolumn{2}{c}{Real value}\\
+    \multicolumn{2}{l}{} & positive & negative \\
+    \midrule
+    \multirow{2}{*}{Predict value} & positive & true positive & false positive\\
+    & negative & false negative & true negative\\
+    \bottomrule
+  \end{tabular}
+  \caption{Confusion matrix}
+  \label{tab:metric}
+\end{table}
+
+\section{Precision}
+\label{sec:precision}
+
+
+
+\begin{equation}
+  \label{eq:2}
+  \mbox{precision} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}}
+\end{equation}
+
+
+Of all the predicted positive values, the ratio of the true positive values (the real value is positive and the predicted value is positive).
+
+
+
+\section{Recall}
+\label{sec:recall}
+
+
+
+\begin{equation}
+  \label{eq:3}
+  \mbox{recall} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}}
+\end{equation}
+
+
+Of all the real positive values, the ratio of the true positive values.
+
+
+\section{Accuracy}
+\label{sec:accuracy}
+
+\begin{equation}
+  \label{eq:4}
+  \mbox{accuracy} = \frac{\mbox{TP} + \mbox{TN}}{\mbox{TP} + \mbox{TN} + \mbox{FP} + \mbox{FN}}
+\end{equation}
+
+Of all the values, the ratio of correctly predicted values.
+The disadvantage is that it is not suitable for unbalanced data.
+
+
+\section{F-score}
+\label{sec:f-score}
+
+\begin{equation}
+  \label{eq:5}
+  \text{F} = \frac{(\alpha^{2}+1) \times \text{precision} \times \text{recall}}{\alpha^{2} \times \text{precision} + \text{recall}}
+\end{equation}
+
+
+When determining the value of the parameter \(\alpha\), if we pay more attention to recall (compared to precision), we should choose a larger \(\alpha\).
+The F-1 score is the expression when \(\alpha = 1\) 
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

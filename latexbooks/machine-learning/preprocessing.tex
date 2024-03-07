@@ -1,0 +1,44 @@
+
+\chapter{Preprocessing}
+\label{cha:preprocessing}
+
+Preprocessing is not necessary.
+We preprocess the data because we can not get what we want from the data directly.
+
+
+\section{Not valued based data}
+\label{sec:not-valued-based}
+
+The computer can only process number-based data.
+For not number-based data, we need to convert them into number-based data.
+For example, convert a string into a number list.
+For null values, we can drop them or compute them with other not null values.
+
+
+
+\begin{lstlisting}
+from sklearn.preprocessing import LabelBinarizer
+
+data = ['dog', 'cat', 'dog', 'horse']
+print('data: ', data)
+binarizer = LabelBinarizer()
+binarizer.fit(data)
+print(binarizer.transform(data))
+print(binarizer.transform(['dog']))
+
+"""
+data:  ['dog', 'cat', 'dog', 'horse']
+[[0 1 0]
+ [1 0 0]
+ [0 1 0]
+ [0 0 1]]
+[[0 1 0]]
+"""
+\end{lstlisting}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

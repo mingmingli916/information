@@ -1,0 +1,216 @@
+
+
+\chapter{\LaTeX\xspace Base}
+
+
+\section{What is \LaTeX}
+\label{sec:what-latex}
+
+\LaTeX\index{latex} is a document markup language\footnote{Just like HTML}. It separate format from content.
+
+\section{Reason to Use It}
+
+
+Because \LaTeX \xspace{} is a markup language, you should learn it before you can use it.
+So why should you spend so much time to learn it while there is so much document creator like Word, Pages?
+
+There is several reasons that push me to select it.
+\begin{itemize}
+\item It provides powerful edit ability. You can almost get whatever you want to show, especially the mathematical equations.
+\item Because it separate the format and the content, it is easy to do format alteration in the full document domain.
+\item Once you create your own template, it is easy to wreate document with the template applied, saving so much time in format. 
+\end{itemize}
+
+
+
+\section{Logical formatting}
+\index{latex!{logical formatting}}
+\lstset{language=TeX}
+\begin{lstlisting}
+  \documentclass{article}
+  \begin{document}
+  \title{Example}
+  \author{Mingming Li}
+  \date{2022/11/04}
+  \maketitle{}
+  \section{Logical Formatting}
+  This example show logical formatting.
+  \end{document}
+\end{lstlisting}
+
+We do not specify the font family, font size, and so on, instead we tell \LaTeX \ the \keyword{class}, the \keyword{author}, or the \keyword{section} and let \LaTeX{} to format it.
+
+
+
+\section{Command}
+\index{latex!command}
+LaTeX commands begin with a backslash, followed by big or small letters.
+LaTeX commands are usually named with small letters and in a descriptive way.
+There are exceptions: a backslash and just one special character.
+Commands may have arguments, given in curly braces or in square brackets.
+
+Calling a command looks like the following:
+
+
+\begin{lstlisting}
+  \command
+  \command{argument}
+  \command[optional argument]{argument}
+\end{lstlisting}
+
+For example
+
+\begin{lstlisting}
+  {\large Title}
+  \include{preamble}
+  \documentclass[12pt]{article}
+\end{lstlisting}
+
+\section{Comment}
+\index{latex!comment}
+The percent sing(\%) introduces a \keyword{comment}.
+
+
+\begin{lstlisting}
+  \include{preamble}  % include preamble tex file
+\end{lstlisting}
+
+\section{Environment}
+\label{sec:environment}
+\index{latex!environment}
+\begin{lstlisting}
+  % This is the environment syntax.
+  \begin{name}[optional argument]{argument}
+    ...
+  \end{name}
+\end{lstlisting}
+
+
+\section{Breaks and Empty Lines}
+\label{sec:breaks-empty-lines}
+
+LaTeX treats multiple spaces just like a single space.
+Also, a single line break has the same effect like a single space.
+It doesn't matter how you arrange your text in the editor using spaces or breaks, the output will stay the same.
+A blank line denotes a paragraph break.
+Like spaces, multiple empty lines are treated as one.
+Briefly said, spaces separate words, empty lines separate paragraphs.
+
+
+\section{Special Symbols}
+\label{sec:special-symbols}
+\index{latex!symbols}
+By putting a backslash before such a special symbol, we turned it into a LaTeX command.
+This command has the only purpose of printing out that symbol.
+
+
+
+\begin{lstlisting}
+  \%  % just print % symbol
+  \textbackslash % just print \ symbol
+\end{lstlisting}
+
+
+
+
+\section{Create Your Own Commands}
+
+\begin{lstlisting}
+  % This is the full definition of creating you own command.
+  \newcommand{command}[arguments][optional]{definition}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+  % With no arguments.
+  \newcommand{\TUG}{TeX Users Group\xspace}
+  \TUG
+
+  % With arguments.
+  \newcommand{\keyword}[1]{\textbf{#1}}
+  \keyword{declrations}
+
+  % With optional arguments.
+  \newcommand{\keyword2}[2][\bfseries]{{#1#2}}
+  \keyword2[\itshape]{declarations}
+\end{lstlisting}
+
+
+\section{Get Help}
+Three ways to get help about the package:
+\begin{enumerate}
+  
+\item 
+\begin{lstlisting}[language=sh]
+    texdoc <package>
+\end{lstlisting}
+
+\item
+\begin{lstlisting}[language=sh]
+    kpsewhich <package>.sty
+\end{lstlisting}
+
+\item Visit the website: \url{http://ctan.org/pkg}
+
+\end{enumerate}
+
+\section{Install Extra Packages}
+\label{sec:inst-extra-pack}
+
+The easy way is to use the terminal to install extra packages:
+
+\begin{lstlisting}[language=sh]
+# Tex Live manager
+tlmgr install <package>
+\end{lstlisting}
+
+
+
+
+\section{Floats}
+\index{latex!float}
+
+
+\LaTeX\xspace provides two floating environments, namely,
+\argument{figure} and \argument{table}. They are briefly called
+\keyword{floats}. Their content may float to a place where it's the
+optimum for the page layout.
+
+
+Here's the float placement options:
+\begin{itemize}
+\item h: here. The float may appear where it's been written in the source code.
+\item t: top. Placing at the top of a page is permitted.
+\item b: bottom. The float may appear at the bottom of a page.
+\item p: page. The float is allowed to appear on a separate page,
+  where only floats may reside but no normal text.
+\item !: tells LaTeX to try harder! Some constraints may be ignored,
+  easing the placement.
+\end{itemize}
+
+
+The most flexible is using the placement \argument{[!htbp]}, allowing a float
+everywhere.
+
+
+
+
+
+
+
+\section{Modes}
+\label{sec:modes}
+
+LaTeX knows three general \keyword{modes}:
+\begin{itemize}
+\item The \keyword{paragraph mode}: The text is typeset as a sequence of words in lines, paragraphs, and pages.
+\item The \keyword{left-to-right mode}: The text is also considered to be a sequence of words, but LaTeX typesets it from left to right without breaking the line. 
+\item The \keyword{math mode}: Letters are treated as math symbols. A lot of symbols can be used, most of them exclusively in this mode. Such symbols are roots, sum signs, relation signs, math accents, arrows, and various delimiters like brackets and braces. Space characters between letters and symbols are ignored. 
+\end{itemize}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

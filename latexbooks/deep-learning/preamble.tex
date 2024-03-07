@@ -1,0 +1,153 @@
+%%%%%%%%%% packages and setups %%%%%%%%%%
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{booktabs}           % provide beautiful table lines
+\setlength{\abovetopsep}{3pt}  % 10pt space would be added below the caption and above the top line of the table.
+\usepackage{tcolorbox}
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=2cm, bottom=3cm, bindingoffset=1cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{fancyhdr}           % fancy header
+\fancyhf{}                      % clear the headers and footers
+% \leftmark is used by the book class to store the chapter title together with the chapter number. 
+% LE stands for left-even and means that this chapter title will be put on the left side of the header on even-numbered pages.
+\fancyhead[LE]{\leftmark}       
+% \rightmark is used by the book class to store the section title together with its number. 
+% RO stands for right-odd and means that this section heading shall be displayed on right side of the header on odd-numbered pages.
+\fancyhead[RO]{\nouppercase{\rightmark}} 
+\fancyfoot[LE,RO]{\thepage}     % \thepage prints the page number.
+% All those commands are used to modify a page style provided by fancyhdr;
+% this style is called fancy. We had to tell LaTeX to use this style and we did it through \pagestyle{fancy}.
+\pagestyle{fancy}
+\usepackage{paralist}           % can produce compact list
+\usepackage{enumitem}           % user change enumerate, itemize and description labels
+% \setlist sets properties valid for all types of lists .
+% Here we specified nolistsep to achieve very compact lists analogous % to the compact paralist environment.
+\setlist{nolistsep}
+% \setitemize modifies properties of bulleted lists .
+\setitemize[1]{label=$\varheartsuit$}
+% \setenumerate sets properties valid for numbered lists .
+\setenumerate[1]{label=\bfseries\arabic*,font=\sffamily{}}
+\usepackage{array}
+\setlength{\heavyrulewidth}{2pt} % set top bottom line width
+\usepackage{multirow}
+\usepackage[font=large,labelfont=bf,margin=1cm]{caption}
+\usepackage[section]{placeins}  % can be used to prevent cross section floating
+% This package introduces font expansion to tweak the justification and uses hanging punctuation
+% to improve the optical appearance of the margins. This may reduce the need of hyphenation and improves the "grayness" of the output.
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}     % utf8 symbols not just latin symbols
+\usepackage[T1]{fontenc}        % TeX macros are translated into special characters. 
+\usepackage{graphicx}           % used to insert figures
+\graphicspath{{images/}}
+\usepackage{pdfpages}           % can insert pdf into current docuement
+\usepackage{varioref}           % intelligent referencing
+\usepackage{xr}                 % external referencing
+\usepackage{hyperref}           % hyperlink capability
+\hypersetup{
+  colorlinks=true,
+  linkcolor=red,
+  pdfauthor={Mingming Li},
+  pdftitle={Deep Learning},
+  pdfsubject={Deep Learning},
+  pdfkeywords={Deep Learning}
+}
+\usepackage{float}              % provide H option to floating environment
+\usepackage{index}              % index
+\makeindex{}
+\usepackage{lmodern}            % font package
+% automatically add bibliography, index, TOC, LOF, and LOT to the table of contents.
+% tocbibind conficts with minitoc
+\usepackage{tocbibind}          
+\usepackage{titlesec}           % modify headings
+% specify layout and font of the chapter headings
+\titleformat{\chapter}[display]
+{\normalfont\sffamily\Large\bfseries\centering}
+{\chaptertitlename\ \thechapter}{0pt}{\Huge}
+% section heading
+\titleformat{\section}
+{\normalfont\sffamily\large\bfseries\centering}
+{\thesection}{1em}{}
+% section heading
+\titleformat{\subsection}
+{\normalfont\sffamily\large\bfseries\centering}
+{\thesubsection}{1em}{}
+% adjust the chapter headings spacing
+\titlespacing*{\chapter}{0pt}{30pt}{20pt}
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{tex-comment-color}{rgb}{0.38,0.59,0.03}
+\definecolor{tex-background-color}{rgb}{0.94,0.94,0.91}
+\usepackage{textcomp}
+\usepackage{listings}
+\lstset{
+  language=python,
+  basicstyle=\small\ttfamily,   % print whole listing small
+  keywordstyle=\color{blue},     
+  identifierstyle=,                       % nothing happens
+  commentstyle=\color{tex-comment-color}, % self defined comment color
+  stringstyle=\ttfamily,        % typewriter type for strings
+  showstringspaces=false,       % no special string spaces
+  numbers=left,                 % show line number on left
+  numberstyle=\tiny,            % tiny line number
+  stepnumber=1,                 % every 1 step to print a number
+  numbersep=10pt,               % number separate from the code
+  % frame=trBL,
+  % frameround=fttt,
+  backgroundcolor=\color{tex-background-color},
+  breaklines=true,
+  upquote=true,
+  literate={’}{\textquoteright{}}1 {‘}{\textquoteleft{}}1  
+}
+\usepackage{amsfonts}           % math fonts
+\usepackage{bbm}                % math fonts
+\usepackage{dsfont}             % math fonts
+\usepackage{eufrak}             % math fonts
+\usepackage{amsmath}            % multiline equations
+% Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
+\usepackage{longtable}          % make multi-page table
+\usepackage[indent, skip=10pt plus1pt]{parskip}
+\usepackage{indentfirst}        % indent paragraph
+\setlength{\parindent}{2em}
+\usepackage{xsavebox}           % lrbox, savebox et al environments
+\newsavebox{\lstbox}
+\usepackage{tablefootnote}      % show footnote in table
+\usepackage{txfonts}            % provides heart symbol
+\usepackage{pmboxdraw}          % provide special symbol support in listings
+\usepackage{fontawesome}        % this package provides some social icons
+
+
+%%%%%%%%%% user defined style %%%%%%%%%%
+\renewcommand{\footnoterule}{\noindent\smash{\rule[3pt]{\textwidth}{1pt}}}
+% renamed the figures and the list heading 
+\renewcommand{\figurename}{Figures}
+\renewcommand{\listfigurename}{List of Figures}
+% renamed the table and the list heading 
+\renewcommand{\tablename}{Tables}
+\renewcommand{\listtablename}{List of Tables}
+
+
+
+%%%%%%%%%% user defined commands %%%%%%%%%%
+% color: blue brown cyan gray green lime magenta olive orange pink purple red teal violet yellow
+\newcommand{\keyword}[1]{{\color{cyan}\textbf{#1}}}
+\newcommand{\argument}[1]{{\color{olive}\texttt{#1}}}
+\newcommand{\warningword}[1]{{\color{orange}\textbf{#1}}}
+\newcommand{\funcword}[1]{{\color{brown}\textbf{#1}}}
+
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\newcommand{\normal}[1]{\multicolumn{1}{l}{#1}}
+
+\newcommand{\auctex}{AUC\TeX\xspace}
+
+\newcommand{\myfigure}[2][0.6]{\includegraphics[width=#1\textwidth]{#2}}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "deep-learning"
+%%% End:

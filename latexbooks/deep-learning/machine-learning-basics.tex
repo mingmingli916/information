@@ -1,0 +1,78 @@
+
+\chapter{Machine Learning Basics}
+
+
+\section{Learning Algorithms}
+
+A machine learning algorithm is an algorithm that is able to learn from data.
+But what do we mean by learning?
+Mitchell provides a succinct definition:
+``A computer program is said to learn from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if its performance at tasks in $T$, as measured by $P$, improves with experience $E$''
+Now, how does the learn happen?
+The model or algorithm learns by adjusting the parameters contained in it.
+
+
+\section{Capacity, Overfitting, Underfitting and Regularization}
+We train model on training data but use test data (not used to train the model) to test out model.
+The ability to perform on test data is called \keyword{generalization}.
+We can use model on test data because we assume that the train data and the test has the same probability distribution (i.e. they have relationship).
+
+The error on training data is called \keyword{training error}.
+The error on test data is called \keyword{test error}.
+Underfitting occurs when the model is not able to obtain a sufficient low error value on the training set.
+Overfitting occurs when the gap between the training error and test error is too large.
+
+
+We can control whether a model is more likely to overfit or underfit by altering its \keyword{capacity}.
+The capacity is the pattern space (family of functions) we can learn from.
+
+\keyword{Regularization} is any modification we make to a learnining algorithm that is intended to reduce its generalization error.
+
+\begin{tcolorbox}
+  Machine learning algorithm will generally perform best when their capacity is appropriate for the true complexity of the task and the amount of training data.
+\end{tcolorbox}
+
+
+
+\subsection{The No Free Lunch Theorem}
+
+
+For any algorithms \(a_{1}\) and \(a_{2}\), at iteration step \(m\)
+\begin{equation}
+  \label{eq:1}
+  \sum P(d_{m}^{y}|f,m,a_{1}) = \sum P(d_{m}^{y}|f,m,a_{2})
+\end{equation}
+where \(d_{m}^{y}\) denotes the ordered set of size \(m\) of the cost values \(y\) associated to input values \(x \in X\), \(f:X\longrightarrow Y\) is the function being optimized and \(P(d_{m}^{y}|f,m,a)\) is the conditional probability of obtaining a given sequence of cost values from algorithm \(a\) run \(m\) times on function \(f\).
+
+The no free lunch theorem implies that we must design our machine learning algorithms to perform well on a specific task but not a universal task.
+
+
+\section{Hyperparameters and validation sets}
+
+\keyword{hyperparameters} are parameters used to control the algorithm's behavior but can or should not be learned by the learning algorithm.
+
+
+In practice, we usually split training data into two disjoint subsets: training set and validation set (generally, 8:2n).
+The validation set is used to adjust the hyperparameters.
+
+
+
+
+\section{Building a machine learning algorithm}
+
+Nearly all deep learning algorithms can be described as particular instances of a fairly simple recipe:
+\begin{itemize}
+\item a specification of a dataset
+\item a cost function
+\item an optimization procedure
+\item a model
+\end{itemize}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "deep-learning"
+%%% End:

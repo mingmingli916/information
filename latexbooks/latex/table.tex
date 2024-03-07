@@ -1,0 +1,101 @@
+\chapter{Tables}
+
+\section[Table]{tabular}
+\label{sec:tabular}
+
+
+LaTeX provides the \argument{tabular} environment for typesetting simple and complex tables which can be nested.
+
+
+\begin{lstlisting}
+  \newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+  \begin{tabular}{ccc}
+    \hline                      % Draw a horizontal line over whole width of the table
+    \head{Command} & \head{Declaration} & \head{Output} \\
+    \hline
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \hline
+  \end{tabular}
+\end{lstlisting}
+
+
+\begin{tabular}{ccc}
+  \hline
+  \head{Command} & \head{Declaration} & \head{Output} \\
+  \hline
+  \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+  \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+  \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+  \hline
+\end{tabular}
+
+Within tabular, three types of lines may be used:
+\begin{itemize}
+\item \lstinline|\hline|: draws a horizontal line over the whole width of the table
+\item \lstinline|\cline{m-n}|: draws a horizontal line starting at the beginning of column \argument{m} and ending at the end of column \argument{n}
+\item \lstinline|vline|: draws a vertical line over the full height and depth of the current row
+\end{itemize}
+
+
+The options understood by the \argument{tabular} environment are as follows:
+\begin{itemize}
+\item \argument{l}: for left alignment.
+\item \argument{c}: for centered alignment.
+\item \argument{r}: for right alignment.
+\item \lstinline|p{width}|: for a "paragraph" cell of a certain width. . If you place several \argument{p} cells next to each other, they will be aligned at their top line. It's equivalent to using \lstinline|\parbox[t]{width}| within a cell.
+\item \lstinline|@{code}| inserts \argument{code} instead of empty space before or after a column. This might also be some text or it could be left empty to avoid this space.
+\item \argument{|}: stands for a vertical line.
+\item \lstinline|*{n}{options}| is equivalent to \argument{n} copies of options, where n is a positive integer and options may consist of one or more column specifiers including * as well.
+\end{itemize}
+
+
+
+
+
+\section[Multiple Columns]{Spanning Entries Over Multiple Columns}
+\label{sec:spann-entr-over}
+
+
+\begin{lstlisting}
+\begin{tabular}{@{}l*2{>{\textbackslash\ttfamily}l}l<{Example text}@{}}
+  \toprule
+  & \multicolumn{2}{c}{\head{Input}} & \multicolumn{1}{c}{\head{Output}}\\
+  & \normal{\head{Command}} & \normal{\head{Declaration}} & \normal{}\\
+  \cmidrule(lr){2-3}\cmidrule(l){4-4}
+  Family & textrm&rmfamily & \rmfamily\\
+  & textsf & sffamily & \sffamily\\
+  & texttt & ttfamily & \ttfamily\\
+  \bottomrule
+\end{tabular}
+  
+\end{lstlisting}
+
+\begin{tabular}{@{}l*2{>{\textbackslash\ttfamily}l}l<{Example text}@{}}
+  \toprule
+  & \multicolumn{2}{c}{\head{Input}} & \multicolumn{1}{c}{\head{Output}}\\
+  & \normal{\head{Command}} & \normal{\head{Declaration}} & \normal{}\\
+  \cmidrule(lr){2-3}\cmidrule(l){4-4}
+  Family & textrm&rmfamily & \rmfamily\\
+  & textsf & sffamily & \sffamily\\
+  & texttt & ttfamily & \ttfamily\\
+  \bottomrule
+\end{tabular}
+
+
+\section{Adding Captions to Tables}
+\label{sec:adding-capt-tabl}
+
+
+\begin{lstlisting}
+\begin{table}
+  \centering
+  \begin{tabular}{}
+    
+  \end{tabular}
+  \caption{Caption}
+  \label{tab:caption}
+\end{table}  
+\end{lstlisting}
+

@@ -1,0 +1,93 @@
+
+\chapter{Macro}
+\label{cha:macro}
+
+In Emacs, a macro is simply a group of recorded keystrokes you can play back over and over again.
+Macros are a great way to save yourself \keyword{repetitive} work.
+
+
+\section{Macro Commands}
+\label{sec:macro-commands}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}ll}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{2}{*}{define a macro} & C-x ( & start macro definition\\
+                 & C-x ) & end macro definition\\
+    \midrule
+    \multirow{2}{*}{execute macro} & C-x e & call the last defined macro\\
+                 & C-x C-k r & apply last macro to all lines in region\\
+    \midrule
+    edit macro & C-x C-k e & edit macro\\
+    \midrule
+    \multirow{4}{*}{macro ring} & C-x C-k C-d & delete current macro from macro ring\\
+                 & C-x C-k C-t & swap first two elements in macro ring\\
+                 & C-x C-k C-p & move to previous macro in macro ring\\
+                 & C-x C-k C-n & move to next macro in macro ring\\
+    \midrule
+    bind macro & C-x C-k b & bind macro\\
+    \midrule
+    name macro & C-x C-k n & name macro\\
+    \bottomrule
+  \end{tabular}
+  \caption{Macro Commands}
+  \label{tab:macro-commands}
+\end{table}
+
+
+
+\section[Saving Macros]{Naming, Saving, and Executing Your Macros}
+
+\begin{enumerate}
+\item Define a macro.
+\item name it with \keyword{C-x C-k n}.
+\item Open a file.
+\item \keyword{M-x insert-kbd-macro RET <macroname> RET}.
+\item add \lstinline[language=elisp]|(load-file "<your macro file>")| to \argument{.emacs}.
+\item add \lstinline[language=elisp]|(global-set-key "\C-x\C-k<your key>" '<your macro name>)| to \argument{.emacs}.
+\end{enumerate}
+
+
+
+
+\section[Macro with Input]{Pausing a Macro for Keyboard Input}
+\label{sec:paus-macro-keyb}
+
+When you’re defining a macro, type \keyword{C-u C-x q} at the point where you want the recursive edit to occur.
+Emacs enters a recursive edit.
+You can tell you’re in a recursive edit because square brackets appear on the mode line.
+Nothing you type during the recursive edit becomes a part of the macro.
+You can type whatever you want to and then press \keyword{C-M-c} to exit the recursive edit. 
+
+
+
+\section{Adding a Query to a Macro}
+\label{sec:adding-query-macro}
+
+When you’re defining a macro, type \keyword{C-x q} at the point where you want to add a query.
+Nothing happens immediately; go on defining the macro as you normally would.
+When you execute the macro and it gets to the point in the macro where you typed \keyword{C-x q}, Emacs prints a query in the minibuffer:
+\begin{verbatim}
+Proceed with macro? (y, n, RET, C-l, C-r)
+\end{verbatim}
+
+Here's the meaning of the options:
+\begin{itemize}
+\item \keyword{y} means to continue and go on to the next repetition, if any.
+\item \keyword{n} means to stop executing the macro but go on to the next repetition, if any.
+\item \keyword{Enter} means to stop executing the macro and cancel any repetitions.
+\item \keyword{C-r} C-r starts a recursive edit. To exit a recursive edit, press \keyword{C-M-c}.
+\item \keyword{C-l} puts the line the cursor in on in the middle of the screen.
+\end{itemize}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

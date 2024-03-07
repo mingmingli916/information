@@ -1,0 +1,4 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{1}{chapter*.1}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}逆商的四个纬度}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}LEAD}{5}{chapter.2}%

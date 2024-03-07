@@ -1,0 +1,165 @@
+
+\chapter{Algorithm}
+
+
+\section{What is Algorithm?}
+\label{sec:what-algorithm}
+
+The following relation show what is an algorithm.
+\begin{tcolorbox}
+input -> \keyword{algorithm} -> output  
+\end{tcolorbox}
+
+
+An algorithm is a sequence of computational steps that transform the input into the output.
+An algorithm describes a specific computational procedure for achieving the input/output relationship.
+
+\section{Instance of a Problem}
+\label{sec:instance-problem}
+
+
+An instance of a problem is the input needed to compute a solution to the problem.
+
+\section{Correct Algorithms}
+\label{sec:correct-algorithms}
+
+
+For every input instance, the algorithm halts out the correct output.
+We say the algorithm is correct.
+
+
+\section[Two Characteristics]{Two Characteristics of Many Algorithms}
+\label{sec:two-char-many}
+
+\begin{itemize}
+\item There are many candidate solutions, but finding the one that solve or the one is best is challenge.
+\item They have practical applications.
+\end{itemize}
+
+\section{Data Structure}
+\label{sec:data-structure}
+
+
+Data structure is a way to store and organize data in order to facilitate access and modifications.
+No single data structure works well for all purposes, and it is important to know the strengths and limitations of several of them.
+
+\section{The Core Technique}
+\label{sec:core-technique}
+
+
+learn the technique of algorithm design and analysis.
+
+\section{Hard Problems}
+\label{sec:hard-problems}
+
+
+Like the NP-complete problem, there are problem that has no efficient solutions.
+Before you delve into the real problem, take a overview of it.
+
+
+\section{Algorithm Efficiency}
+\label{sec:algorithm-efficiency}
+
+
+Computers are not infinitely fast and memory is not free, thus the efficiency of a algorithm matters.
+
+\section{Algorithms as a Technology}
+\label{sec:algor-as-techn}
+
+
+Algorithms are at the core of most technologies.
+
+
+
+\section{Loop Invariant}
+\label{sec:loop-invariant}
+
+
+Loop invariant is used to help us to understand why an algorithm is correct.
+The three elements of loop invariant:
+
+
+\begin{description}
+\item[Initialization] It is true prior to the first iteration of the   loop.
+\item[Maintenance] If it is true before an iteration of the loop, it   remains true before the next iteration.
+\item[Termination] When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.
+\end{description}
+
+
+
+
+\section{Analyzing Algorithms}
+\label{sec:analyzing-algorithms}
+
+
+Analyzing an algorithm is to predict the resources usage.
+Resources include time and space (memory, communication bandwidth, computer hardware, computational time\ldots).
+
+\section{Resource Model}
+
+Before analyzing an algorithm, there must be a model to measure the resource cost.
+
+
+\section[The Information in Algorithm]{The Information You Used in You Algorithm}
+
+The are much information in you problem.
+The general is that the more information you use, the more efficient your algorithm is.
+Data structure is on way of using the information in you problem.
+
+
+\section{Core Idea in Modeling}
+\label{sec:core-idea-modeling}
+
+
+When you do algorithm modeling, remember to show the important characteristics of algorithms and suppress the tedious details.
+
+\section{Analysis of a Algorithm}
+\label{sec:analysis-algorithm}
+
+
+In general, the time grows with the size of the input, so it is traditional to describe the running time as the function of the size of its input.
+
+
+\section{Worst-Case Analysis}
+\label{sec:worst-case-analysis}
+
+
+Because the behavior of an algorithm may be different for each possible input, we need a means for summarizing that behavior in simple, easily understood formulas.
+
+
+The reason to analyze worst-case running time is:
+\begin{itemize}
+\item It gives an upper bound on the running time.
+\item Worst case ocurrs fairly often.
+\item The ``average case'' is often roughly as bad as the worst case.
+\end{itemize}
+
+\section{Abstraction}
+\label{sec:abstraction}
+
+
+We often use some simplifying abstractions to ease the algorithm analysis.
+These abstractions are:
+\begin{itemize}
+\item Ignore the actual cost of each statement, using the constants $c_i$ to represent these costs.
+\item Ignore the abstract costs $c_i$ ( $an^2 + bn + c$ ).
+\item We only use rate of growth or order of growth of the running time ( $\Theta(n^2)$ ) (pronounced ``theta of n-squared'') instead of exact running time function. 
+
+\end{itemize}
+
+
+\section{Growth of Functions}
+\label{sec:growth-functions}
+
+
+Although we can sometimes determine the exact running time of an algorithm, the extra procision is not usually worth the effort of computing it.
+When we look at input sizes large enought to make only the order of growth of the running time relevant, we are studying the ``asymptotic efficiency of algorithms''.
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "algorithms"
+%%% End:

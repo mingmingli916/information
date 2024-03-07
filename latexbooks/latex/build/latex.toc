@@ -1,0 +1,147 @@
+\contentsline {chapter}{Contents}{i}{chapter*.1}%
+\contentsline {chapter}{List of Figures}{v}{chapter*.2}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}\LaTeX \xspace Base}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}What is \LaTeX }{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Reason to Use It}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Logical formatting}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Command}{1}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Comment}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Environment}{2}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Breaks and Empty Lines}{2}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Special Symbols}{2}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Create Your Own Commands}{2}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Get Help}{3}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Install Extra Packages}{3}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Floats}{3}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Modes}{3}{section.1.13}%
+\contentsline {chapter}{\numberline {2}Emacs}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Commands and Environments}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Commands}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Environments}{8}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Font}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Shape}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Size}{12}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Box}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}parbox}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}fbox}{13}{section.5.2}%
+\contentsline {section}{\numberline {5.3}minipage}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}mbox}{14}{section.5.4}%
+\contentsline {section}{\numberline {5.5}tcolorbox}{14}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Lists}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Bulleted Lists}{15}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Numbered Lists}{15}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Definition Lists}{15}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Tables}{17}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Table}{17}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Multiple Columns}{18}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Adding Captions to Tables}{18}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Figure}{19}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Listing Content and References}{21}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Table of Content}{21}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Adding entries manually}{21}{subsection.9.1.1}%
+\contentsline {section}{\numberline {9.2}Creating and Customizing Lists of Figures}{22}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Creating and Customizing Lists of Tables}{22}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Generating an Index}{22}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Specifying Page Ranges}{23}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Symbols in the Index}{23}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}Referring to Other Index Entries}{23}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}Fine-tuning Page Numbers}{24}{subsection.9.4.4}%
+\contentsline {subsection}{\numberline {9.4.5}Designing the Index Layout}{24}{subsection.9.4.5}%
+\contentsline {section}{\numberline {9.5}Creating a Bibliography}{24}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Bibtex}{24}{subsection.9.5.1}%
+\contentsline {section}{\numberline {9.6}Changing the Headings}{25}{section.9.6}%
+\contentsline {chapter}{\numberline {10}Math Formulas}{27}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Math Mode}{27}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Embedding Math Expressions Within Text}{27}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Displaying Formulas}{27}{subsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.1.3}Numbering Equations}{28}{subsection.10.1.3}%
+\contentsline {section}{\numberline {10.2}Common Formulas}{28}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Dots}{28}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Greek Letters}{28}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Fonts}{29}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Multi-line Formulas}{29}{section.10.6}%
+\contentsline {section}{\numberline {10.7}Operators}{30}{section.10.7}%
+\contentsline {section}{\numberline {10.8}Standard LaTeX Symbols}{31}{section.10.8}%
+\contentsline {section}{\numberline {10.9}Math Structures}{31}{section.10.9}%
+\contentsline {section}{\numberline {10.10}Stakcing Expressions}{32}{section.10.10}%
+\contentsline {subsection}{\numberline {10.10.1}Underlining and Overlining}{32}{subsection.10.10.1}%
+\contentsline {subsection}{\numberline {10.10.2}Setting Accents}{33}{subsection.10.10.2}%
+\contentsline {subsection}{\numberline {10.10.3}Puting a Symbol Above Another}{33}{subsection.10.10.3}%
+\contentsline {chapter}{\numberline {11}Using Fonts}{35}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Installing Additional Fonts}{35}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Choosing the Main Font}{35}{section.11.2}%
+\contentsline {chapter}{\numberline {12}Developing Large Documents}{37}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Spliting the Input}{37}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Creating Front and Back Matter}{38}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Creating a Title Page}{38}{section.12.3}%
+\contentsline {chapter}{\numberline {13}Using Packages}{43}{chapter.13}%
+\contentsline {section}{\numberline {13.1}listings}{43}{section.13.1}%
+\contentsline {section}{\numberline {13.2}xspace}{43}{section.13.2}%
+\contentsline {section}{\numberline {13.3}url}{43}{section.13.3}%
+\contentsline {section}{\numberline {13.4}microtype}{43}{section.13.4}%
+\contentsline {section}{\numberline {13.5}inputenc}{44}{section.13.5}%
+\contentsline {section}{\numberline {13.6}parskip}{44}{section.13.6}%
+\contentsline {section}{\numberline {13.7}geometry}{44}{section.13.7}%
+\contentsline {section}{\numberline {13.8}setspace}{44}{section.13.8}%
+\contentsline {section}{\numberline {13.9}fancyhdr}{44}{section.13.9}%
+\contentsline {section}{\numberline {13.10}paralist}{45}{section.13.10}%
+\contentsline {section}{\numberline {13.11}enumitem}{46}{section.13.11}%
+\contentsline {section}{\numberline {13.12}array}{46}{section.13.12}%
+\contentsline {section}{\numberline {13.13}booktabs}{47}{section.13.13}%
+\contentsline {section}{\numberline {13.14}multirow}{48}{section.13.14}%
+\contentsline {section}{\numberline {13.15}caption}{48}{section.13.15}%
+\contentsline {section}{\numberline {13.16}graphicx}{48}{section.13.16}%
+\contentsline {section}{\numberline {13.17}pdfpages}{49}{section.13.17}%
+\contentsline {section}{\numberline {13.18}eso-pic}{49}{section.13.18}%
+\contentsline {section}{\numberline {13.19}textpos}{49}{section.13.19}%
+\contentsline {section}{\numberline {13.20}float}{49}{section.13.20}%
+\contentsline {section}{\numberline {13.21}wrapfig}{49}{section.13.21}%
+\contentsline {section}{\numberline {13.22}subfig}{50}{section.13.22}%
+\contentsline {section}{\numberline {13.23}varioref}{50}{section.13.23}%
+\contentsline {section}{\numberline {13.24}xr}{50}{section.13.24}%
+\contentsline {section}{\numberline {13.25}hyperref}{50}{section.13.25}%
+\contentsline {section}{\numberline {13.26}tocloft}{51}{section.13.26}%
+\contentsline {section}{\numberline {13.27}minitoc}{51}{section.13.27}%
+\contentsline {section}{\numberline {13.28}tocbibind}{52}{section.13.28}%
+\contentsline {section}{\numberline {13.29}index}{52}{section.13.29}%
+\contentsline {section}{\numberline {13.30}fontenc}{52}{section.13.30}%
+\contentsline {section}{\numberline {13.31}titlesec}{52}{section.13.31}%
+\contentsline {section}{\numberline {13.32}color}{53}{section.13.32}%
+\contentsline {section}{\numberline {13.33}xcolor}{53}{section.13.33}%
+\contentsline {section}{\numberline {13.34}tikz}{54}{section.13.34}%
+\contentsline {section}{\numberline {13.35}amsmath}{54}{section.13.35}%
+\contentsline {section}{\numberline {13.36}longtable}{55}{section.13.36}%
+\contentsline {section}{\numberline {13.37}xsavebox}{55}{section.13.37}%
+\contentsline {section}{\numberline {13.38}tablefootnote}{56}{section.13.38}%
+\contentsline {section}{\numberline {13.39}fncychap}{56}{section.13.39}%
+\contentsline {section}{\numberline {13.40}fontawesome}{56}{section.13.40}%
+\contentsline {chapter}{\numberline {14}TikZ}{57}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Basics}{57}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}Setting up the endironment}{57}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}Straight path}{57}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}Curved path}{57}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}Circle path}{58}{subsection.14.1.4}%
+\contentsline {subsection}{\numberline {14.1.5}Rectangle path}{58}{subsection.14.1.5}%
+\contentsline {subsection}{\numberline {14.1.6}Grid path}{58}{subsection.14.1.6}%
+\contentsline {subsection}{\numberline {14.1.7}Arc path}{58}{subsection.14.1.7}%
+\contentsline {subsection}{\numberline {14.1.8}Clipping a path}{59}{subsection.14.1.8}%
+\contentsline {subsection}{\numberline {14.1.9}Filling}{59}{subsection.14.1.9}%
+\contentsline {subsection}{\numberline {14.1.10}Shading}{59}{subsection.14.1.10}%
+\contentsline {subsection}{\numberline {14.1.11}Specifying coordinates}{60}{subsection.14.1.11}%
+\contentsline {subsection}{\numberline {14.1.12}Adding arrow tips}{60}{subsection.14.1.12}%
+\contentsline {subsection}{\numberline {14.1.13}Scoping}{60}{subsection.14.1.13}%
+\contentsline {subsection}{\numberline {14.1.14}Transformations}{61}{subsection.14.1.14}%
+\contentsline {subsection}{\numberline {14.1.15}For-loops}{61}{subsection.14.1.15}%
+\contentsline {subsection}{\numberline {14.1.16}Adding text}{62}{subsection.14.1.16}%
+\contentsline {subsection}{\numberline {14.1.17}Load library packages}{63}{subsection.14.1.17}%
+\contentsline {subsection}{\numberline {14.1.18}Set style}{63}{subsection.14.1.18}%
+\contentsline {subsection}{\numberline {14.1.19}Set color}{63}{subsection.14.1.19}%
+\contentsline {subsection}{\numberline {14.1.20}Local definition}{63}{subsection.14.1.20}%
+\contentsline {subsection}{\numberline {14.1.21}Node}{63}{subsection.14.1.21}%
+\contentsline {subsection}{\numberline {14.1.22}Snake line}{64}{subsection.14.1.22}%
+\contentsline {section}{\numberline {14.2}Examples}{65}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}A picture for Karl’s students}{65}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}A Petri-Net for Hagen}{66}{subsection.14.2.2}%
+\contentsline {chapter}{\numberline {15}Reference}{69}{chapter.15}%
+\contentsline {chapter}{Bibliography}{71}{chapter*.19}%

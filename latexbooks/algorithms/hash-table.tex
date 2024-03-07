@@ -1,0 +1,168 @@
+
+\chapter{Hash Table}
+
+\keyword{Hash Table} is a data structure which organizes data using hash functions in order to support quick insertion and search.
+
+The key idea of Hash Table is to use a hash function to map keys to buckets.
+To be more specific,
+\begin{itemize}
+\item When we insert a new key, the hash function will decide which bucket the key should be assigned and the key will be stored in the corresponding bucket;
+\item When we want to search for a key, the hash table will use the \keyword{same} hash function to find the corresponding bucket and search only in the specific bucket.
+\end{itemize}
+
+For example in Figure:
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.7\textwidth{}]{hash-table.png}
+  \caption{Hash table}
+  \label{fig:hash-table}
+\end{figure}
+
+
+\section{Designing a Hash Table}
+\label{sec:designing-hash-table}
+
+There are two essential factors that you should pay attention to when you are going to design a hash table: hash function and collision resolution.
+
+\subsection{Hash Function}
+\label{sec:hash-function}
+
+The hash function is the most important component of a hash table which is used to map the key to a specific bucket.
+The hash function will depend on \keyword{the range of key values} and \keyword{the number of buckets}.
+It is an open problem to design a hash function.
+The idea is to try to assign the key to the bucket as \keyword{uniformly} as you can.
+Ideally, a perfect hash function will be a one-one mapping between the key and the bucket.
+However, in most cases, a hash function is not perfect and it is a tradeoff between the amount of buckets and the capacity of a bucket.
+
+
+\subsection{Collision Resolution}
+\label{sec:collision-resolution}
+
+Ideally, if our hash function is a perfect one-one mapping, we will not need to handle collisions.
+Unfortunately, in most cases, collisions are almost inevitable.
+
+A collision resolution algorithm should solve the following questions:
+\begin{enumerate}
+\item How to organize the values in the same bucket?
+\item What if too many values are assigned to the same bucket?
+\item How to search for a target value in a specific bucket?
+\end{enumerate}
+
+These questions are related to the capacity of the bucket and the number of keys which might be mapped into the same bucket according to our hash function. 
+Let's assume that the bucket, which holds the maximum number of keys, has N keys.
+Typically, if N is constant and small, we can simply use an array to store keys in the same bucket.
+If N is variable or large, we might need to use height-balanced binary search tree instead.
+
+ 
+
+
+
+
+
+\section{Built-in Hash Table}
+
+The typical design of built-in hash table is:
+\begin{enumerate}
+\item The key can be any \keyword{hashable} type. And a key with belongs to a hashable type will have a \keyword{hashcode}. This code will be used in the mapping function to get the bucket index.
+\item Each bucket contains \keyword{an array} to store all the values in the same bucket initially.
+\item If there are two many values the same bucket, these values will be maintained in a \keyword{height-balanced binary search tree} instead.
+\end{enumerate}
+
+The average time complexity of both insertion and search is still \keyword{O(1)}.
+And the time complexity in the worst case is \keyword{O(logN)} for both insertion and search by using height-balanced BST.
+
+
+
+\section{Designing a Key Example}
+
+Sometimes you have to think it over to design a suitable key when using a hash table.
+
+
+For example:
+
+
+Given an array of strings, group anagrams\footnote{An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.} together.  
+
+
+
+
+As we know, a hash map can perform really well in grouping information by key.
+But we cannot use the original string as key directly.
+We have to design a proper key to present the type of anagrams.
+For instance,  "eat" and "ate" should be in the same group.
+While "eat" and "act" should not be grouped together.
+
+
+When you design a key, you need to guarantee that:
+\begin{enumerate}
+\item All values belong to the same group will be mapped in the same group.\label{item:1}
+\item Values which needed to be separated into different groups will not be mapped into the same group.\label{item:2}
+\end{enumerate}
+
+
+\begin{lstlisting}[language=python]
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = collections.defaultdict(list)
+        for s in strs:
+            hashkey = self.hash(s)
+            d[hashkey].append(s)
+        return list(d.values())
+
+    def hash(self, s: str) -> str:
+        return ''.join(sorted(s))        
+\end{lstlisting}
+
+This process is similar to design a hash function, but here is an essential difference.
+A hash function satisfies rule \ref{item:1} but might not satisfy rule \ref{item:2}.
+But your mapping function should satisfy both of them.
+
+
+
+
+
+
+\subsection{Summary}
+
+Here are some takeaways about how to design the key for you:
+\begin{enumerate}
+\item When the order of each element in the string/array doesn't matter, you can use the \keyword{sorted string/array} as the key.
+\item If you only care about the offset of each value, usually the offset from the first value, you can use the \keyword{offset} as the key.
+\item In a tree, you might want to directly use the \keyword{TreeNode} as key sometimes. But in most cases, the \keyword{serialization of the subtree} might be a better idea.
+\item In a matrix, you might want to use \keyword{the row index} or \keyword{the column index} as key.
+\item In a Sudoku, you can combine the row index and the column index to identify which \keyword{block} this element blongs to.
+\item Sometimes, in a matrix, you might want to aggregate the values in the same \keyword{diagonal line}. $(i,j) \rightarrow i+j$, $(i,j) \rightarrow i-j$
+\end{enumerate}
+
+
+
+\section{Conclusion}
+
+A typical thinking process to solve problems by hash table is show in Figure \ref{fig:how-to-apply-hash-table}:
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{how-to-apply-hash-table}
+  \caption{Thinking process by hash table}
+  \label{fig:how-to-apply-hash-table}
+\end{figure}
+
+
+
+What's more, we will meet more complicated problems sometimes. We might need to:
+
+\begin{itemize}
+\item use several hash tables together
+\item combine the hash table with other data structure
+\item combine the hash table with other algorithms
+\item ...
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "algorithms"
+%%% End:
+
+\section{Examples}
+\label{sec:examples-6}
+
+Here are some examples on \href{https://github.com/mingmingli916/algorithms/tree/main/hash_table}{Github}

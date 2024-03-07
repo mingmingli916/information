@@ -1,0 +1,42 @@
+\documentclass[a4paper,10pt]{book}
+\input{preamble}
+\begin{document}
+\frontmatter{}
+\include{title}
+\cleardoublepage{}
+\phantomsection{}
+\tableofcontents{}
+\cleardoublepage{}
+\phantomsection{}
+\listoffigures{}
+\cleardoublepage{}
+\phantomsection{}
+\listoftables{}
+
+\mainmatter{}
+\include{introduction}
+\include{list-data-types}
+\include{numbers}
+\include{strings-and-characters}
+\include{lists}
+\include{sequences}
+\include{records}
+
+\backmatter{}
+\cleardoublepage{}
+\phantomsection{}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{tex}
+\cleardoublepage{}
+\phantomsection{}
+\printindex{}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+

@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Les lettres individuelles}{3}{section.1}%
+\contentsline {section}{\numberline {2}Quatre règles de prononciation}{3}{section.2}%
+\contentsline {section}{\numberline {3}Les lettres avec plusieurs prononciations}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}c}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}g}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}o}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}q}{4}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}s}{5}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}w}{5}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}x}{5}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}e}{5}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Les lettres avec l'accent}{6}{section.4}%
+\contentsline {section}{\numberline {5}Les combinaisons de lettres}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ai, ei, ay, ey}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}oi}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}au, eau}{6}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}eu}{7}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}{\fontencoding {T3}\selectfont \oe u}}{7}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}gn}{7}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}ou}{7}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}an, am, en, em}{7}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}om, on}{8}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.10}im, in, aim, ain, ein, yn, ym}{8}{subsection.5.10}%
+\contentsline {subsection}{\numberline {5.11}um, un}{9}{subsection.5.11}%
+\contentsline {subsection}{\numberline {5.12}tion}{9}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}sion}{9}{subsection.5.13}%
+\contentsline {subsection}{\numberline {5.14}ien}{9}{subsection.5.14}%
+\contentsline {subsection}{\numberline {5.15}tien}{10}{subsection.5.15}%
+\contentsline {subsection}{\numberline {5.16}oin}{10}{subsection.5.16}%
+\contentsline {subsection}{\numberline {5.17}il}{10}{subsection.5.17}%
+\contentsline {subsection}{\numberline {5.18}ill, ille}{11}{subsection.5.18}%
+\contentsline {subsection}{\numberline {5.19}ch, sch}{11}{subsection.5.19}%
+\contentsline {subsection}{\numberline {5.20}ph}{11}{subsection.5.20}%
+\contentsline {subsection}{\numberline {5.21}ent}{11}{subsection.5.21}%
+\contentsline {subsection}{\numberline {5.22}er}{11}{subsection.5.22}%
+\contentsline {subsection}{\numberline {5.23}tiel}{12}{subsection.5.23}%

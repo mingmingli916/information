@@ -1,0 +1,339 @@
+
+\chapter{Listing Content and References}
+\label{cha:list-cont-refer}
+
+
+
+\section{Table of Content}
+\label{sec:table-content}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\textbackslash\ttfamily}ll}
+    \toprule
+    \normal{\head{Command}} & \head{Level}\\
+    \midrule
+    part & -1 (\argument{book} and \argument{report} class)\\
+    chapter & 0 (not available in \argument{article})\\
+    section & 1\\
+    subsection & 2\\
+    subsubsection & 3\\
+    paragraph & 4\\
+    subparagraph & 5\\
+    \bottomrule
+  \end{tabular}
+  \caption{Depth of the TOC}
+  \label{tab:depth-of-toc}
+\end{table}
+
+
+There's a variable representing the level, namely, \lstinline|\tocdepth|.
+It's an integer variable which we call a \keyword{counter}.
+
+There are two basic ways to adjust a counter value:
+\begin{lstlisting}
+% specifies an integer value of 'n' for the counter 'name'.
+\setcounter{name}{n}            
+% adds the integer value of 'n' to value of the counter 'name'. 'n' may be negative.
+\addtocounter{name}{n}          
+
+
+\setcounter{tocdepth}{3}
+% you can raise or lower the level without knowing its number.
+\addtocounter{tocdepth}{1}
+\end{lstlisting}
+
+
+\subsection{Adding entries manually}
+\label{sec:adding-entr-manu}
+
+\begin{lstlisting}
+% file extension:
+% toc: table of contents file
+% lof: list of figures file
+% lot: list of tables file
+
+% sectional unit: part, chapter, section, subsection, paragraph, subparagraph
+\addcontentsline{file extension}{sectional unit}{text}
+
+% In contrary to \addcontentsline, the argument entry is written directly to the file
+% without any additional formatting. You may choose any formatting you like.
+\addtocontents{file extension}{entry}
+
+
+% Examples
+\addcontentsline{toc}{chapter}{Preface}
+\addcontentsline{toc}{part}{Appendix}
+
+\addtocontents{toc}{\bigskip}
+% extends the text height such that one additional line fits to the contents page.
+\addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+% causes a page break in the TOC.
+\addtocontents{toc}{\protect\newpage} 
+% changes the page style of the current TOC page to fancy.
+\addtocontents{toc}{\protect\thispagestyle{fancy}} 
+
+\end{lstlisting}
+
+
+
+\section{Creating and Customizing Lists of Figures}
+\label{sec:creat-cust-lists}
+
+\begin{lstlisting}
+% renamed the figures and the list heading 
+\renewcommand{\figurename}{Diagram}
+\renewcommand{\listfigurename}{List of Diagrams}
+\listoffigures
+\end{lstlisting}
+
+
+\section{Creating and Customizing Lists of Tables}
+\label{sec:creat-cust-lists-1}
+
+\begin{lstlisting}
+\renewcommand{\tablename}{Diagram}
+\renewcommand{\listtablename}{List of Diagrams}
+\listoffigures
+\end{lstlisting}
+
+
+\section{Generating an Index}
+\label{sec:generating-an-index}
+
+Steps to generating index list:
+\begin{enumerate}
+\item load the index package and add the command to create the index
+\begin{lstlisting}
+\usepackage{index}
+\makeindex{}
+\end{lstlisting}
+
+\item mark index point
+\begin{lstlisting}
+% simple entry
+\index{entry}
+% example \index{enterprise}                   
+
+% subentry
+\index{entry!subentry}          
+% example \index{enterprise!organization}
+
+% subsubentry
+\index{entry!subentry!subsubentry} 
+% example \index{enterprise!organization!operation}
+
+This will be written to a file with the extension .idx.
+\end{lstlisting}
+
+\item create an entry for the index for the table of contents
+\begin{lstlisting}
+\clearpage
+\addcontentsline{toc}{chapter}{Index}
+\end{lstlisting}
+
+\item in the next line, typeset the index
+\begin{lstlisting}
+\printindex{}
+\end{lstlisting}
+
+\item use shell command to typeset the tex document \label{item:1}
+\begin{lstlisting}[language=sh]
+xelatex latex.tex               # .tex is optional
+# or
+pdflatex latex.tex              # .tex is optional
+\end{lstlisting}
+  
+\item use shell command to produce \argument{.idx} file.
+\begin{lstlisting}[language=sh]
+makeindex latex.idx             # .idx is optional
+\end{lstlisting}
+  
+\item typeset the tex document again, refer to \ref{item:1}
+  
+\end{enumerate}
+
+
+\subsection{Specifying Page Ranges}
+\label{sec:spec-page-rang}
+
+\begin{lstlisting}
+% Example
+\index{network|(}
+...
+\index{network|)}
+\end{lstlisting}
+
+
+\subsection[Symbols in the Index]{Using Symbols in the Index}
+\label{sec:using-symbols-macros}
+
+\argument{makeindex} sorts the entries alphabetically.
+If you would like to include symbols in the index, for example, Greek letters, chemical formulas, or math symbols, you could face the problem of integrating them into the sorting.
+For this purpose, \lstinline|\index| understands a sort key.
+Use this key as prefix for the entry, separated by an @ symbol, for instance:
+\begin{lstlisting}
+\index{Gamma@$\Gamma$}
+\end{lstlisting}
+
+\subsection{Referring to Other Index Entries}
+\label{sec:referr-other-index}
+
+
+Different words may stand for the same concept.
+For such cases, it's possible to add a cross-reference to the main phrase without a page number.
+Adding the code \lstinline.see{entry list}. achieves that, for example:
+\begin{lstlisting}
+\index{network|see{WLAN}}
+\index{WLAN}
+\end{lstlisting}
+
+As such references don't print a page number, their position in the text doesn't matter. You could collect them in one place of your document.
+
+
+\subsection{Fine-tuning Page Numbers}
+\label{sec:fine-tuning-page}
+
+If an index entry refers to several pages, you might want to emphasize one page number to indicate it as the primary reference.
+You could define a command for emphasizing as follows:
+\begin{lstlisting}
+\newcommand{\main}[1]{\emph{#1}}
+\index{WLAN|main}
+\end{lstlisting}
+
+
+\subsection{Designing the Index Layout}
+\label{sec:design-index-layo}
+
+LaTeX provides some index styles called \keyword{latex} (the default), \keyword{gind, din}, and \keyword{iso}.
+To use another style, specify it using the \argument{–s} option of the makeindex program, for example:
+\begin{lstlisting}[language=sh]
+makeindex -s iso latex
+\end{lstlisting}
+
+
+\section{Creating a Bibliography}
+\label{sec:creat-bibl}
+
+\begin{lstlisting}
+\begin{thebibliography}{widest label}
+   \bibitem[label]{key} author, title, year etc.
+   \bibitem...
+   ...
+\end{thebibliography}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+% Example
+To study \TeX\ in depth, see \cite{DK86}. 
+For writing math texts, see \cite{DK89}.
+
+
+\begin{thebibliography}{8}
+\bibitem{DK86} D.E. Knuth, \emph{The {\TeX}book}, 1986
+\bibitem{DK89} D.E. Knuth, \emph{Typesetting Concrete Mathematics}, 1989
+\end{thebibliography}
+\end{lstlisting}
+
+Each item is specified using the command \lstinline|\bibitem|.
+This command requires a mandatory argument determining the \argument{key}.
+We may simply refer to this key by \lstinline|\cite{key}| or \lstinline|\cite{key1,key2}|.
+\lstinline|\cite| accepts an optional argument stating a page range, for example, \lstinline|\cite[p.\,18--20]{key}|.
+You may choose a label by the optional argument of \lstinline|\bibitem|.
+If no label has been given, LaTeX will number the items consecutively in square brackets.
+
+
+\subsection[Bibtex]{Using Bibliography Databases With Bibtex}
+\label{sec:using-bibl-datab}
+
+
+\begin{enumerate}
+\item Create a new document. For example \argument{latex.bib}.
+\begin{lstlisting}
+@book{DK86,
+author = "D.E. Knuth",
+title = "The {\TeX}book",
+publisher = "Addison Wesley",
+year = 1986
+}
+
+@article{DK89,
+author = "D.E. Knuth",
+title = "Typesetting Concrete Mathematics",
+journal = "TUGboat",
+volume = 10,
+number = 1,
+pages = "31--36",
+month = apr,
+year = 1989
+}
+\end{lstlisting}
+
+\item Include the database in to your tex document. For example \argument{latex.tex}.
+\begin{lstlisting}
+\bibliographystyle{alpha}       % plain, unsrt, alpha, abbrv
+\bibliography{latex}            % latex stands for latex.bib here
+\end{lstlisting}
+  
+\item Typeset one time with \keyword{pdfLaTeX} or \keyword{xelatex}.
+\begin{lstlisting}
+xelatex latex
+\end{lstlisting}
+  
+\item \argument{bibtex} document.
+\begin{lstlisting}[language=sh]
+bibtex latex                    # here latex is the documentname
+\end{lstlisting}
+  
+\item Typeset again the tex file.
+\end{enumerate}
+
+\section{Changing the Headings}
+\label{sec:changing-headings}
+
+You can use \lstinline|\renewcommand| to change the headings.
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\textbackslash\ttfamily}ll}
+    \toprule
+    \head{List} & \normal{\head{Heading Command}} & \head{Default heading}\\
+    \midrule
+    Table of contents & contentsname & \keyword{Contents}\\
+    List of figures & listfigurename & \keyword{List of figures}\\
+    List of tables & listtablename & \keyword{List of tables}\\
+    \multirow{2}{*}{Bibliography} & bibname in book and report & \keyword{Bibliography} in book and report\\
+                & refname in article & \keyword{References} in article\\
+    Index & indexname & \keyword{index}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Headings name}
+  \label{tab:headings}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\textbackslash\ttfamily}l>{\bfseries}l}
+    \toprule
+    \head{Name} & \normal{\head{Heading Command}} & \head{Default heading}\\
+    \midrule
+    figure & figurename & Figure\\
+    table & tablename & Table\\
+    part & partname & Part\\
+    chapter & chaptername & Chapter\\
+    abstract & abstractname & Abstract\\
+    appendix & appendixname & Appendix\\
+    \bottomrule
+
+  \end{tabular}
+  \caption{Macros name}
+  \label{tab:macros-name}
+\end{table}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

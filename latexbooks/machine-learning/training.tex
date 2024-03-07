@@ -1,0 +1,121 @@
+
+\chapter{Training (optimization)}
+\label{cha:training}
+
+Training is the process of learning.
+By inputting the data, we adjust the parameters in the model to achieve better performance.
+In machine learning this is also called the optimization.
+
+
+\section{SGD}
+\label{sec:sgd}
+Stochastic gradient descent (SGD) is a very basic and important algorithm.
+
+The cost function used by a machining learning algorithm often decomposes as a sum over training examples of some per-example loss function.
+
+\begin{equation}
+  J(\bm{\theta}) = \mathbb{E}_{\mathrm{x},y \sim \hat{p}_{data}} L(\bm{x},y,\bm{\theta}) = \frac{1}{m}\sum_{i=1}^m L(\bm{x}^{(i)},y^{(i)},\bm{\theta}),
+\end{equation}
+
+Where \(L\) is the loss function, \(x\) and \(y\) are the input data and labels, \(\theta\) is the parameters in the model, \(m\) is the number of samples.
+
+
+The gradient is
+\begin{equation}
+  \nabla_{\bm{\theta}} J(\bm{\theta}) = \frac{1}{m}\sum_{i=1}^m L(\bm{x}^{(i)},y^{(i)},\bm{\theta}).
+\end{equation}
+
+The computational cost of this operation is $O(m)$.
+As the training set size grows to billions of examples, the time to take a single gradient step becomes prohibitively long.
+
+The insight of SGD is that the gradient is an expectation.
+The expectation may be approximately estimated using a small set of samples.
+Specifically, on each step of the algorithm, we can sample a \keyword{minibatch} of examples $\mathbb{B}=\{\bm{x}^{(1)},\cdots,\bm{x}^{(m)}\}$ drawn uniformly from the training set.
+The minibatch size $m'$ is typically chosen to be a relatively small number of examples, ranging from one to a few hundred.
+
+The estimator of the gradient is formed as
+\begin{equation}
+  \bm{g} = \frac{1}{m'} \nabla_{\bm{\theta}} \sum_{i=1}^{m'} L(\bm{x}^{(i)},y^{(i)},\bm{\theta})
+\end{equation}
+using examples from the minibatch $\mathbb{B}$.
+The stocastic gradient descent algorithm then follows the estimated gradient downhill:
+\begin{equation}
+  \bm{\theta} \leftarrow \bm{\theta} - \epsilon \bm{g},
+\end{equation}
+where $\epsilon$ is the learning rate.
+
+\section{Momentum}
+\label{sec:momentum}
+
+The method of momentum is designed to accelerate learning in SGD.
+The momentum algorithm accumulates an exponentially decaying moving average of past gradients and continues to move in their direction.
+
+
+\begin{equation}
+\boldsymbol{v} \leftarrow \alpha \boldsymbol{v}-\epsilon{} \boldsymbol{g}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{\theta} \leftarrow \boldsymbol{\theta}+\boldsymbol{v} .
+\end{equation}
+
+Where $g$ is the gradient, $\alpha \in [0,1]$ determines how quickly the contributions of previous gradients exponentially decay.
+
+\section{Nesterov momentum}
+\label{sec:nesterov-momentum}
+
+Nesterov Momentum is a variant of the Momentum algorithm.
+The difference between Nesterov momentum and standard momentum is where the gradient is evaluated.
+With Nesterov momentum the gradient is evaluated after the current velocity is applied. 
+
+
+\begin{equation}
+\boldsymbol{g} = \frac{1}{m^{'}}\nabla_{\boldsymbol{\theta}} \sum_{i=1}^{m^{'}} L(\boldsymbol{x},y,\boldsymbol{\theta} + \alpha \boldsymbol{v})
+\end{equation}
+
+\section{AdaGrad}
+\label{sec:adagrad}
+
+
+
+AdaGrad is designed to converge rapidly when applied to a convex function.
+Comparing to SGD, AdaGrad algorithm individually adapts the learning rates of all model parameters by scaling them inversely proportional to the square root of the sum of all of their historical squared values.
+
+\begin{equation}
+\boldsymbol{\theta}=\boldsymbol{\theta} - \frac{\epsilon}{\sqrt{\delta \boldsymbol{I}+\operatorname{diag}\left(G \right)}} \odot \boldsymbol{g}
+\end{equation}
+
+where $\boldsymbol{\theta}$ is the parameter to be updated, $\epsilon$ is the initial learning rate, $\delta$ is some small quantity that used to avoid the division of zero, $\boldsymbol{I}$ is the identity matrix, $\boldsymbol{g}$ is the gradient estimate.
+
+\begin{equation}
+\boldsymbol{G} = \sum_{\tau = 1}^{t} \boldsymbol{g_{\tau} g_{\tau}^{T}}
+\end{equation}
+
+
+AdaGrad shrinks the learning rate according to the entire history of the squared gradient and may have made the learning rate too small before arriving at such a convex structure.
+
+\section{Adam}
+\label{sec:adam}
+
+The RMSProp algorithm modifies AdaGrad to perform better in the non-convex setting by changing the gradient accumulation into an exponentially weighted moving average. 
+RMSProp uses an exponentially decaying average to discard history from the extreme past so that it can converge rapidly after finding a convex bowl.
+
+\begin{equation}
+\boldsymbol{r} \leftarrow \boldsymbol{r} + \boldsymbol{g} \odot \boldsymbol{g}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \frac{\epsilon}{\delta + \sqrt{\boldsymbol{r}}} \odot \boldsymbol{g}
+\end{equation}
+
+Where $\boldsymbol{g}$ is the gradient, $\boldsymbol{\theta}$ is the parameters in a model, $\boldsymbol{r}$ is initialized to $0$..
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

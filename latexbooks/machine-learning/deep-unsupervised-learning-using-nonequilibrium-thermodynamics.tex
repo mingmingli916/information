@@ -1,0 +1,132 @@
+
+\chapter{Deep Unsupervised Learning using Nonequilibrium Thermodynamics\protect{\cite{js2015deep}}}
+\label{cha:deep-unsup-learn}
+
+
+The algorithm consists of two trajectories: forward (inference) diffusion process and inverse (generative) diffusion process.
+The forward diffusion process converts complex data distribution into a simple, tractable distribution and the inverse diffusion process learn a finite-time reversal of the forward diffusion process which define a generative model distribution.
+
+\section{Algorithm}
+\label{sec:algorithm}
+
+
+
+\subsection{Forward trajectory}
+\label{sec:forward-trajectory}
+\begin{equation}
+  \label{eq:18}
+  \pi(\mathbf{y})=\int d \mathbf{y}^{\prime} T_\pi\left(\mathbf{y} \mid \mathbf{y}^{\prime} ; \beta\right) \pi\left(\mathbf{y}^{\prime}\right)
+\end{equation}
+
+Where \(\pi(\mathbf{y})\) is a well behaved (analyti- cally tractable) distribution.
+\(T_\pi\left(\mathbf{y} \mid \mathbf{y}^{\prime} ; \beta\right)\) is a Markov diffusion kernel.
+\(\beta\) is the diffusion rate.
+
+\begin{equation}
+  \label{eq:29}
+  q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)=T_\pi\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)} ; \beta_t\right)
+\end{equation}
+
+The forward trajectory, corresponding to starting at the data distribution and performing \(T\) steps of diffusion is
+\begin{equation}
+  \label{eq:30}
+  q\left(\mathbf{x}^{(0 \cdots T)}\right)=q\left(\mathbf{x}^{(0)}\right) \prod_{t=1}^T q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)
+\end{equation}
+
+Where \(q\left(\mathbf{x}^{(0)}\right)\) is the initial data distribution.
+
+\subsection{Reverse Trajectory}
+\label{sec:reverse-trajectory}
+The generative distribution will be trained to describe the same trajectory, but in reverse,
+\begin{equation}
+  \label{eq:31}
+  p\left(\mathbf{x}^{(T)}\right)=\pi\left(\mathbf{x}^{(T)}\right)
+\end{equation}
+\begin{equation}
+  \label{eq:32}
+  p\left(\mathbf{x}^{(0 \cdots T)}\right)=p\left(\mathbf{x}^{(T)}\right) \prod_{t=1}^T p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)
+\end{equation}
+
+For both Gaussian and binomial diffusion, for continuous diffusion (limit of small step size $\beta$ ) the reversal of the diffusion process has the identical functional form as the forward process.
+Since $q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)$ is a Gaussian (binomial) distribution, and if $\beta_t$ is small, then $q\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)$ will also be a Gaussian (binomial) distribution.
+The longer the trajectory the smaller the diffusion rate $\beta$ can be made.
+
+During learning only the mean and covariance for a Gaussian diffusion kernel, or the bit flip probability for a binomial kernel, need be estimated.
+
+
+\section{Model probability}
+\label{sec:model-probability}
+
+The probability the generative model assigns to the data is
+\begin{equation}
+  \label{eq:33}
+p\left(\mathbf{x}^{(0)}\right)=\int d \mathbf{x}^{(1 \cdots T)} p\left(\mathbf{x}^{(0 \cdots T)}\right)  
+\end{equation}
+
+Naively this integral is intractable – but taking a cue from annealed importance sampling and the Jarzynski equality, we instead evaluate the relative probability of the forward and reverse trajectories, averaged over forward trajectories
+\begin{equation}
+  \label{eq:34}
+\begin{aligned}
+& p\left(\mathbf{x}^{(0)}\right)=\int d \mathbf{x}^{(1 \cdots T)} p\left(\mathbf{x}^{(0 \cdots T)}\right) \frac{q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right)}{q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right)} \\
+&=\int d \mathbf{x}^{(1 \cdots T)} q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right) \frac{p\left(\mathbf{x}^{(0 \cdots T)}\right)}{q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right)} \\
+&=\int d \mathbf{x}^{(1 \cdots T)} q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right) \cdot p\left(\mathbf{x}^{(T)}\right) \prod_{t=1}^T \frac{p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)}{q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)}
+\end{aligned}  
+\end{equation}
+
+
+\section{Training}
+\label{sec:training}
+
+Training amounts to maximizing the model log likelihood,
+\begin{equation}
+  \label{eq:35}
+\begin{aligned}
+L= & \int d \mathbf{x}^{(0)} q\left(\mathbf{x}^{(0)}\right) \log p\left(\mathbf{x}^{(0)}\right) \\
+= & \int d \mathbf{x}^{(0)} q\left(\mathbf{x}^{(0)}\right) \cdot 
+ \log \left[\begin{array}{c}
+\int d \mathbf{x}^{(1 \cdots T)} q\left(\mathbf{x}^{(1 \cdots T)} \mid \mathbf{x}^{(0)}\right) . \\
+p\left(\mathbf{x}^{(T)}\right) \prod_{t=1}^T \frac{p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)}{q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)}
+\end{array}\right],
+\end{aligned}
+\end{equation}
+
+
+which has a lower bound provided by Jensen's inequality,
+\begin{equation}
+  \label{eq:37}
+L \geq  \int d \mathbf{x}^{(0 \cdots T)} q\left(\mathbf{x}^{(0 \cdots T)}\right) \cdot  \log \left[p\left(\mathbf{x}^{(T)}\right) \prod_{t=1}^T \frac{p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)}{q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right)}\right] .  
+\end{equation}
+
+
+
+
+for our diffusion trajectories this reduces to,
+\begin{equation}
+  \label{eq:36}
+L  \geq K 
+\end{equation}
+\begin{equation}
+  \label{eq:39}
+  \begin{aligned}
+K= & -\sum_{t=2}^T \int d \mathbf{x}^{(0)} d \mathbf{x}^{(t)} q\left(\mathbf{x}^{(0)}, \mathbf{x}^{(t)}\right) \\
+& D_{K L}\left(q\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}, \mathbf{x}^{(0)}\right)|| p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)\right) \\
++ & H_q\left(\mathbf{X}^{(T)} \mid \mathbf{X}^{(0)}\right)-H_q\left(\mathbf{X}^{(1)} \mid \mathbf{X}^{(0)}\right)-H_p\left(\mathbf{X}^{(T)}\right)
+  \end{aligned}
+\end{equation}
+
+where the entropies and KL divergences can be analytically computed. The derivation of this bound parallels the derivation of the log likelihood bound in variational Bayesian methods.
+
+If the forward and reverse trajectories are identical, corresponding to a quasi-static process, then the inequality in Equation \ref{eq:36} becomes an equality.
+
+Training consists of finding the reverse Markov transitions which maximize this lower bound on the log likelihood,
+\begin{equation}
+  \label{eq:38}
+\hat{p}\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)=\underset{p\left(\mathbf{x}^{(t-1)} \mid \mathbf{x}^{(t)}\right)}{\operatorname{argmax}} K .  
+\end{equation}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:
+

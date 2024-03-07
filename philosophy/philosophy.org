@@ -6,9 +6,206 @@
 
 phi...phy
 
+* 唯物论
+** 世界的基本特征
+世界是普遍联系的，永恒发展的。
+
+*** 普遍联系
+世界是一个有机的整体，世界上的一切事物都处于相互影响、相互作用、相互制约之中。
+
+联系具有客观性、普遍性和多样性。
+
+联系的客观性：联系是事物本身所固有、不以人的主观意志为转移的，既不能被创造，也不能被消灭。
+联系的普遍性：联系包括横向的与周围事物的联系，也包括纵向的与历史未来的联系。一切事物、现象和过程，及其内部各要素、部分、环节，都不是孤立存在的，它们相互作用、相互影响、相互制约。但另一方面事物又存在着相对独立性，即任何事物都同其他事物相区别而相对独立地存在。事物的普遍联系和事物的相对独立存在是互为前提的。
+联系的多样性：从大的方面说，联系可分为内部联系和外部联系、本质联系和非本质联系、必然联系和偶然联系、主要联系和次要联系、直接联系和间接联系，等等。
+
+
+矛盾（即对立统一）是事物普遍联系的根本内容。所谓矛盾，在辩证法中是指“事物内部或事物之间的对立统一的辩证关系”；矛盾的双方总是“相比较而存在，相斗争而发展”的。
+*** 永恒发展
+世界是一个过程，过程是由状态组成的，状态是过程中的状态；世界上没有永恒的事物，有生必有灭，无灭必无生；旧事物灭亡的同时，就意味着新事物的产生。
+
+
+
+** 唯物辩证法的基本规律
+规律是事物本身所固有的、本质的、必然的、稳定的联系，是发展的必然趋势。规律具有客观性、稳定性、可重复性和普遍性。
+
+
+唯物辩证法的基本规律有三条，即对立统一规律（矛盾的规律）、质量互变规律和否定之否定规律。
+
+*** 对立统一
+一切存在的事物都由既相互对立、又相互统一的一对矛盾组合而成。矛盾着的双方既对立又统一，从而推动着事物的发展。因此对立统一规律揭示了事物发展的源泉和动力。
+
+*** 质量互变
+事物的属性具有质和量两个属性。量是指衡量事物处在的某种状态的数量或具体形式；质是指事物成为它自身并区别于另一事物的内在规定性。量变是事物连续的、逐渐的、不显著的变化，是事物在数量上的变化；质变是事物根本的变化，是一种飞跃，往往表现为突变。
+
+*** 辩证否定
+事物的发展是一个过程连着一个过程的，过程的更替要通过否定来实现。在事物发展的长链条中，经过两次否定，三个阶段——即肯定、否定、否定之否定——就表现为一个周期。因此说，否定之否定规律揭示了事物发展的趋势和道路。
+
+否定之否定后的状态并不是原有的肯定的状态，而是一种更上层楼后的“扬弃”。
+
+#+begin_src example
+  使用emacs，小拇指痛，使用kinesis键盘。
+  使用emacs编程，使用pycharm，使用emacs。
+#+end_src
+
+
 * 方法论
 
+
+
+
 * 认知论
+** 编程
+获得能达到某种目的的可执行的二进制码。
+*** 算法
+
+
+算法是你根据当前的数据状态，经过一系列的思维步骤，达到你想要的数据状态。
+这个思维步骤就是算法。
+
+**** 当前数据状态
+1. 数据结构是什么
+2. 数据量
+**** 目标数据状态   
+1. 数据结构
+2. 数据量
+
+**** 思维模式
+
+**** 稳定性
+**** 数学表达式
+**** 时空复杂度
+
+   
+
+*** 数据结构
+
+
+数据结构就是数据的组织方式，它体现了数据之间的关系。
+
+**** 组织方式
+
+**** 数学公式
+
+**** 操作
+
+
+
+
+
+
+
+
+*** 编程语言
+
+
+编程语言本质是一门语言，语言是用于交互的规范，而编程语言是人机交互的规范。
+
+**** 数据类型
+**** 语法
+
+**** 库（lib）
+
+代码的集合，目的是供程序员调用，减少重复代码的编写，提高编程效率。
+**** 编译
+
+**** 编程规范
+
+*** 架构
+*** 框架
+
+功能完备的代码的集合，目的是省去架构的编写，大幅提高编程效率。
+
+*** 操作系统
+
+
+管理计算机硬件资源的软件系统。
+
+
+** 函数（数学）
+一种映射关系。
+
+*** 自变量
+
+**** 定义域
+*** 因变量
+**** 值域
+
+*** 映射表达式
+
+*** 连续性
+
+*** 可导性
+
+*** 凹凸性
+
+
+
+
+
+
+** 机器学习
+可以学习的算法。
+*** 数据
+
+*** 模型
+
+*** 数学公式
+
+*** 代码实现
+
+*** loss function
+
+*** optimizer
+
+
+
+
+** linux命令
+
+
+linux命令其实是一段可执行的二进制码，这段二进制码的目的就是执行某些任务。
+该二进制码由代码编译获得。
+
+*** option
+
+*** argument
+
+*** 任务
+
+*** 存储位置
+
+*** 源码
+
+
+
+
+
+** 现象
+
+现象是我们的五官所感知到的客观存在。
+*** 如何观察
+1. 五官的感知是什么
+2. 整体与局部的联系
+3. 过去，现在，未来有什么变化
+*** 背后原理  
+*** 利用现象
+*** 如何改变现象
+
+** 将来的效率
+This weekend, I learn a complete example of tikz. In order to draw output the desired diagram, I learn some much knowledge (shape: line, circle, ractangle, node, ...; property: dashed, red, shadow, thick, thin, radius, ...;). I find that it is tedious to draw a diagram. This make me depressed. There is a moment that I think learning it is a wast of time and I want to quit.
+
+Later, I rethink it. I review my learning of Emacs. It takes me 2 monthes before I can use it commonly. But after mastering Emacs, it does benefit me in making notes. The most importance is the idea during my learning of Emacs.
+1. Time spent in developing a good habbit is time well spent.
+2. It's possible to absorb a lot from one reading, but you can form only a few new habit each day. Don't feel obliged to learn them all at once.
+3. You can not learning something without using it.
+
+
+
+Before you do something, think if it is necessary to do that. List the approves and disapproves. If it is necessary, just do it.
+
+
+If you feel bored, think the scense after you have grasped it.
 
 * 实践
 

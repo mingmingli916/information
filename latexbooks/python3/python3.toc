@@ -1,0 +1,158 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{1}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Creating and running Pyton programs}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Python's "Beautiful Heart"}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Data types}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Object references}{8}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Collection data types}{9}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Logical operations}{10}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}The identity operator}{11}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Comparison operators}{11}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}The membership operator}{12}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Logical operators}{12}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Control flow statements}{13}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}The if statement}{14}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}The while statement}{14}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}The for ... in statement}{14}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Basic exception handling}{14}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}Arithmetic operators}{15}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Input/output}{16}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Creating and calling functions}{17}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Data types}{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Identifiers and keywords}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Integral types}{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Integers}{20}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Booleans}{22}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Floating-point types}{22}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Floating-point numbers}{23}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Complex numbers}{24}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Decimal numbers}{24}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Strings}{24}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Comparing strings}{26}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Slicing and striding strings}{26}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}String operators and methods}{27}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}String formatting with the str.format() method}{29}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Field names}{29}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}conversions}{30}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}Format specifications}{31}{subsection.2.4.7}%
+\contentsline {subsubsection}{Specification for string}{31}{section*.3}%
+\contentsline {subsubsection}{Specification for integer}{31}{section*.4}%
+\contentsline {subsubsection}{Specification for floating}{32}{section*.5}%
+\contentsline {subsubsection}{Character encodings}{33}{section*.6}%
+\contentsline {chapter}{\numberline {3}Collection data types}{35}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Sequence types}{35}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Tuples}{36}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Named tuples}{36}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Lists}{37}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}List comprehensions}{38}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Set types}{39}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Sets}{39}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Set comprehensions}{41}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Frozen sets}{41}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Mapping types}{41}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Dictionaries}{42}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Dictionary comprehensions}{43}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Default dictionaries}{44}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Ordered dictionaries}{44}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Iterating and copying collections}{45}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Iterators and iterable operations and functions}{45}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Copying collections}{47}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Control structures and functions}{49}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Control structures}{49}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Conditional branching}{49}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Looping}{50}{subsection.4.1.2}%
+\contentsline {subsubsection}{while loops}{50}{section*.7}%
+\contentsline {subsubsection}{for loops}{50}{section*.8}%
+\contentsline {section}{\numberline {4.2}Exception handling}{51}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Catching and raising exceptions}{51}{subsection.4.2.1}%
+\contentsline {subsubsection}{Rasing exceptions}{52}{section*.9}%
+\contentsline {subsection}{\numberline {4.2.2}Custom exceptions}{52}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Costom functions}{55}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Names and docstrings}{57}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Argument and parameter unpacking}{58}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Accessing variables in the global scope}{59}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Lambda functions}{60}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Assertions}{60}{subsection.4.3.5}%
+\contentsline {chapter}{\numberline {5}Modules}{63}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Modules and packages}{63}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Packages}{64}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Custom modules}{65}{subsection.5.1.2}%
+\contentsline {subsubsection}{The TextUtil module}{65}{section*.10}%
+\contentsline {section}{\numberline {5.2}Overview of Python’s standard library}{68}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Strings}{68}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Dates and Times}{68}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Algorithms and collection data types}{68}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}File formats, encodings, and data persistence}{69}{subsection.5.2.4}%
+\contentsline {chapter}{\numberline {6}Object-oriented programming}{71}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Costom classes}{71}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Attributes and methods}{71}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Inheritance and plymorphism}{73}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Using properties to control attribute access}{74}{subsection.6.1.3}%
+\contentsline {chapter}{\numberline {7}File handling}{77}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Advanced programming techniques}{79}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Further procedural programming}{79}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Branching using dictionaries}{79}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Generator expressions and functions}{80}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}Dynamic code execution and dynamic imports}{81}{subsection.8.1.3}%
+\contentsline {subsubsection}{Dynamic code execution}{81}{section*.11}%
+\contentsline {subsubsection}{Dynamic importing modules}{82}{section*.12}%
+\contentsline {subsection}{\numberline {8.1.4}Local and recursive functions}{87}{subsection.8.1.4}%
+\contentsline {subsection}{\numberline {8.1.5}Functions and method decorators}{87}{subsection.8.1.5}%
+\contentsline {subsection}{\numberline {8.1.6}Function annotations}{89}{subsection.8.1.6}%
+\contentsline {section}{\numberline {8.2}Further object-oriented programming}{91}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Controlling attribute access}{92}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Functors}{94}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Context manager}{95}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Descriptors}{97}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Class decorators}{101}{subsection.8.2.5}%
+\contentsline {subsubsection}{Example: delegate}{101}{section*.13}%
+\contentsline {subsubsection}{Example: complete comparisons}{102}{section*.14}%
+\contentsline {subsection}{\numberline {8.2.6}Abstract base classes}{104}{subsection.8.2.6}%
+\contentsline {subsubsection}{Example: Appliance}{104}{section*.15}%
+\contentsline {subsubsection}{Example: TextFilter}{105}{section*.16}%
+\contentsline {subsubsection}{Example: Abstract}{107}{section*.17}%
+\contentsline {subsection}{\numberline {8.2.7}Multiple inheritance}{108}{subsection.8.2.7}%
+\contentsline {subsection}{\numberline {8.2.8}Metaclasses}{109}{subsection.8.2.8}%
+\contentsline {subsubsection}{Register}{109}{section*.18}%
+\contentsline {subsubsection}{Guarantee}{110}{section*.19}%
+\contentsline {subsubsection}{Modify}{110}{section*.20}%
+\contentsline {section}{\numberline {8.3}Functional-style programming}{112}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Partial function application}{113}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Coroutines}{114}{subsection.8.3.2}%
+\contentsline {subsubsection}{Composing pipelines}{114}{section*.21}%
+\contentsline {chapter}{\numberline {9}Debugging, testing, and profiling}{117}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Debugging}{117}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Dealing with syntax errors}{117}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Dealing with runtime errors}{118}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Scientific debugging}{118}{subsection.9.1.3}%
+\contentsline {section}{\numberline {9.2}Unit testing}{119}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Profiling}{119}{section.9.3}%
+\contentsline {chapter}{\numberline {10}Processes and threading}{123}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Using the multiprocessing module}{123}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Using the threading module}{126}{section.10.2}%
+\contentsline {chapter}{\numberline {11}Networking}{131}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Console tool}{131}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Creating a TCP client}{133}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Creating a TCP server}{135}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Summary}{139}{section.11.4}%
+\contentsline {chapter}{\numberline {12}Database Programming}{141}{chapter.12}%
+\contentsline {section}{\numberline {12.1}DBM databases}{141}{section.12.1}%
+\contentsline {section}{\numberline {12.2}SQL databases}{141}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Regular Expressions}{143}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Python's regular expression language}{143}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Character and character classes}{144}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Quantifiers}{145}{subsection.13.1.2}%
+\contentsline {subsection}{\numberline {13.1.3}Grouping and capturing}{146}{subsection.13.1.3}%
+\contentsline {subsection}{\numberline {13.1.4}Assertions and flags}{147}{subsection.13.1.4}%
+\contentsline {section}{\numberline {13.2}The regular expression module}{148}{section.13.2}%
+\contentsline {chapter}{\numberline {14}Introduction to parsing}{155}{chapter.14}%
+\contentsline {section}{\numberline {14.1}BNF syntax and parsing terminology}{156}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Parsing manners}{157}{section.14.2}%
+\contentsline {chapter}{\numberline {15}Introduction to GUI programming}{159}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Dialog-style programs}{160}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Main-window-style programs}{163}{section.15.2}%
+\contentsline {chapter}{\numberline {16}Environment}{165}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Repo}{165}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Freeze and install packages}{165}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Upgrade pip}{165}{section.16.3}%

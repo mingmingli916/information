@@ -1,0 +1,1827 @@
+
+
+* DONE Outlines
+CLOSED: [2023-11-30 Thu 19:22]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-30 Thu 19:22]
+:END:
+
+Org mode is implemented on top of Outline mode.
+Org headlines start on the left margin with one or more stars followed by a space.
+** DONE Visibility
+CLOSED: [2023-11-22 Wed 11:15]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-22 Wed 11:15]
+:END:
+| TAB             | Subtree cycling. (point on headline)                                                                                                                                              |
+| C-u TAB         | Same as S-TAB.                                                                                                                                                                    |
+| C-u C-u TAB     | Switch bach to the startup visibility.                                                                                                                                            |
+| C-u C-u C-u TAB | Show all, including drawers.                                                                                                                                                      |
+| C-c C-r         | Reveal context around point, showing the current entry, the following heading and the hierarchy above.                                                                            |
+| C-c C-k         | Expose all the headings of the subtree, but not their bodies.                                                                                                                     |
+| C-c TAB         | Expose all direct children of the subtree. With a numeric prefix argument N, expose all children down to level N.                                                                 |
+| C-c C-x b       | Show the current subtree in an indirect buffer. With a numeric prefix argument N, go up to level N and then take that tree. With a C-u prefix, do not remove the previously used indirect buffer. |
+| C-c C-x v       | Copy the visible text in the region into the kill ring.                                                                                                                           |
+
+** DONE Motion
+CLOSED: [2023-11-23 Thu 18:23]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-23 Thu 18:23]
+:END:
+| C-c C-n | Next heading.                                                           |
+| C-c C-p | Previous heading.                                                       |
+| C-c C-f | Next heading same level.                                                |
+| C-c C-b | Previous heading same level.                                            |
+| C-c C-u | Backward to higher level heading.                                       |
+| C-c C-j | Jump to a different place without changing the current line visibility. |
+
+** DONE Structure Editing
+CLOSED: [2023-11-23 Thu 18:28]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-23 Thu 18:28]
+:END:
+| M-RET          | Insert a new heading, item or row                                                                                                                                             |
+| C-RET          | Insert a new heading at the end of the current subtree.                                                                                                                       |
+| M-S-RET        | Insert new TODO entry with same level as current heading.                                                                                                                     |
+| C-S-RET        | Insert new TODO entry with same level as current heading. The new headline is inserted after the current subtree.                                                             |
+| TAB            | In a new entry with out text yet, the first TAB demotes the entry to become a child of the previous one. The next TAB makes it a parent, and so on, all the way to top level. |
+| M-LEFT/RIGHT   | Promote or demote current heading by one level.                                                                                                                               |
+| M-S-LEFT/RIGHT | Promote or demote current subtree by one level.                                                                                                                               |
+| M-UP/DOWN      | Move subtree up/down.                                                                                                                                                         |
+| C-c @          | Mark the subtree at point.                                                                                                                                                    |
+| C-c C-x C-w    | Kill subtree.                                                                                                                                                                 |
+| C-c C-x M-w    | Copy subtree.                                                                                                                                                                 |
+| C-c C-x c      | Clone a subtree by making a sibling copies of it.                                                                                                                             |
+| C-c ^          | Sort same level entries.                                                                                                                                                      |
+| C-x n s        | Narrow buffer to current subtree.                                                                                                                                             |
+| C-x n b        | Narrow buffer to current block.                                                                                                                                               |
+| C-x n w        | Widen.                                                                                                                                                                        |
+| C-c *          | Turn a normal line or plain list item into a headline.                                                                                                                        |
+
+** DONE Sparse Trees
+CLOSED: [2023-11-30 Thu 19:22]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-30 Thu 19:22]
+:END:
+An important feature of Org mode is the ability to construct sparse trees for selected information in an outline tree, so that the entire document is folded as much as possible, but the selected information is made visible along with the headline structure above it
+| C-c / | Prompts for an extra key to select a sparse-tree creating command |
+| M-g n | Jumpt to the next sparse tree match.                              |
+| M-g p | Jumpt to the previous sparse tree match.                          |
+
+* DONE Plain Lists
+CLOSED: [2023-12-03 Sun 10:59]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-03 Sun 10:59]
+:END:
+Org knows ordered lists, unordered lists, and description lists.
+- unordered list items start with '-', '+' or '*' as bullets. (Whe using \ast as a bullet, lines must be indented.)
+- Ordered list items start with a numberal followed by either a period or a right parenthesis.
+- Description list items are unordered list items and contain the separator '::' to distringuish the description term from the description.
+
+| M-RET          | Insert new item at current level.                                               |
+| M-S-RET        | Insert a new item with a checkbox.                                              |
+| M-UP/DOWN      | Move the item including subitem up/down.                                        |
+| M-LEFT/RIGHT   | Decrease/increase the indentation of an item, leaving children alone.           |
+| M-S-LEFT/RIGHT | Decrease/increase the indentation of an item, including subitems.               |
+| C-c C-c        | Toggle the state of the checkbox or verify bullets and indentation consistency. |
+| C-c -          | Cycle the entire list level through the different itemize/enumerate bullets.    |
+| C-c *          | Turn a plain list item into a headline.                                         |
+| C-c C-*        | Turn the whole plain list into a subtree of the current heading.                |
+| S-LEFT/RIGHT   | Cycle bullet styles.                                                            |
+| C-c ^          | Sort the plain list.                                                            |
+
+** DONE Checkboxes
+CLOSED: [2023-12-05 Tue 11:04]
+:PROPERTIES:
+:ORDERED:  t
+:END:
+:LOGBOOK:
+- State "DONE"       from              [2023-12-05 Tue 11:04]
+:END:
+Every item in a plain list can be made into a checkbox by starting it with the string [ ].
+This feature is similar to TODO items, but is more lightweight.
+Checkboxes are not included into the global TODO list, so they are often great to split a task into a number of simple steps.
+
+#+begin_example
+ * light task [25%]
+   - [-] task 1 [33%]
+     - [X] task 1-1
+     - [ ] task 1-2
+     - [ ] task 1-3
+   - [ ] task 2
+   - [X] task 3
+   - [ ] task 4
+#+end_example
+
+
+
+
+
+- C-c C-c :: Toggle checkbox status or presence. With a single prefix argument, add en empty checkbox or remove the current one. With a double prefix argument, set it to '[-]'.
+- M-S-RET :: Insert a new item with checkbox.
+- C-c C-x o :: Toggle the 'ORDERED' property of the entry.
+- C-c # :: Update the statistics cookie in the current outline entry. When called with a C-u prefix, update the entire file.
+
+
+
+
+* DONE Drawers
+CLOSED: [2023-12-05 Tue 11:06]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-05 Tue 11:06]
+:END:
+
+Drawers let you keep information associated with an entry, but normally do not show it.
+| C-c C-x d     | Insert a drawer                                 |
+| C-u C-c C-x d | Create a 'PROPERTIES' drawer.                   |
+| C-c C-x p     | Set a proerty.                                  |
+| C-c C-z       | Add a time-stamped not to the 'LOGBOOK' drawer. |
+
+Properties are key-value pairs associated with an entry. They live in a special drawer with the name ‘PROPERTIES’. Each property is specified on a single line, with the key (surrounded by colons) first, and the value after it.
+
+When you are in the properties, you can use C-c C-c to do property operations.
+
+
+* DONE Habit
+CLOSED: [2023-12-07 Thu 12:23]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-07 Thu 12:23]
+:END:
+
+A habit in Emacs is just a TODO item with some properitis to track the consistency of what you want to do.
+To enable habit module, add the following code to your configuration file.
+#+begin_src elisp
+(add-to-list 'org-modules 'org-habit t)
+#+end_src
+
+A habit has the following properties:
+1. It is a TODO item.
+2. The property =style= is set to 'habit'.
+3. It has a schedule date with interval.
+
+
+Here's a example:
+#+begin_example
+ ** Habit
+ SCHEDULED: <2023-11-13 Mon .+1d>
+ :PROPERTIES:
+ :STYLE:    habit
+ :END:
+#+end_example
+
+In agenda view, you can change if only show habit for today by pressing C-u K.
+
+* Table
+
+Any line with '|' as the first non-whitespace character is considered of a tablel.
+'|' is also the column separator.
+
+** DONE Table Editor
+CLOSED: [2023-12-13 Wed 17:39]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-13 Wed 17:39]
+:END:
+| Commands             | Meaning                                                                                                                                                                                                      |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c \vert            | Create or convert a region into table. You can use a prefix argument to force a specific separator: C-u forces CSV, C-u C-u forces TAB, C-u C-u C-u prompts for a regular expression to match the separator. |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c C-c              | Re-align the table.                                                                                                                                                                                          |
+| TAB                  | Re-align the table, move to the next field. Creates a new row if necessary.                                                                                                                                  |
+| S-TAB                | Re-align the table, move to the previous field.                                                                                                                                                              |
+| RET                  | Re-align the table, move to the next row. Creates a new row if necessary. At the beginning or end of a line, RET still inserts a new line, so it can be used to split a table.                               |
+| M-a                  | Move to beginning of the current table field, or on to the previous field.                                                                                                                                   |
+| M-e                  | Move to end of the current table field, or on to the next field.                                                                                                                                             |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| M-LEFT/RIGHT         | Move the current column left/right.                                                                                                                                                                          |
+| M-S-LEFT             | Kill the current column.                                                                                                                                                                                     |
+| M-S-RIGHT            | Insert a new column at point position. Move the recent column and all cells to the right of this column to the right.                                                                                        |
+| M-UP/DOWN            | Move the current row up/down.                                                                                                                                                                                |
+| M-S-UP               | Kill the current row or horizontal line.                                                                                                                                                                     |
+| M-S-DOWN             | Insert a new row above the current row.                                                                                                                                                                      |
+| S-UP/DOWN/LEFT/RIGHT | Move cell up/down/left/right by swapping with adjcent cell.                                                                                                                                                  |
+| C-c -                | Insert a horizontal line below current row. With a prefix argument, the line is created above the current line.                                                                                              |
+| C-c RET              | Insert a horizontal line below current row, and move point into the row below that line.                                                                                                                     |
+| C-c ^                | Sort the table lines in the region.                                                                                                                                                                          |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c C-x M-w          | Copy cell.                                                                                                                                                                                                   |
+| C-c C-x C-w          | Cut cell.                                                                                                                                                                                                    |
+| C-c C-x C-y          | Paste cell.                                                                                                                                                                                                  |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c +                | Sum the numbers in the current column, or in the rectangle defined by the active region. The result is shown in the echo area and can be inserted with C-y.                                                  |
+| S-RET                | When current field is empty, copy from first non-empty field above. When not empty, copy current field down to next row and move point along with it.                                                        |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| C-c `                | Edit the current field in a separate window. This is useful for fields that are not fully visible.                                                                                                           |
+
+** DONE Column Width and Alignment
+CLOSED: [2023-12-13 Wed 17:40]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-13 Wed 17:40]
+:END:
+| C-c TAB         | Shrink or expand current column.                           |
+| C-u C-c TAB     | Shrink all columns with a column width. Expand the others. |
+| C-u C-u C-c TAB | Expand all columns.                                        |
+
+You can ajust the width and alignment with the speificications:
+#+begin_example
+| <l>         |         <r> |     <c>     | <l10>                          |
+| hello       | hello world |    hello    | hello world. I am mingming li. |
+| hello world |       hello | hello world | hello                          |
+
+#+end_example
+
+** DONE Column Groups
+CLOSED: [2023-12-13 Wed 17:40]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-13 Wed 17:40]
+:END:
+In order to specify column groups, you can use a special row where the first field contains only ‘/’.
+The further fields can either contain ‘<’ to indicate that this column should start a group, ‘>’ to indicate the end of a column, or ‘<>’ (no space between ‘<’ and ‘>’) to make a column a group of its own.
+
+#+begin_example
+| N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
+|---+-----+-----+-----+---------+------------|
+| / |  <  |     |  >  |       < |          > |
+| 1 |  1  |  1  |  1  |       1 |          1 |
+| 2 |  4  |  8  | 16  |  1.4142 |     1.1892 |
+| 3 |  9  | 27  | 81  |  1.7321 |     1.3161 |
+|---+-----+-----+-----+---------+------------|
+#+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))
+
+#+end_example
+
+| N | N^{2} | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
+|---+-------+-----+-----+---------+------------|
+| / |     < |     |   > |       < |          > |
+| 1 |     1 |   1 |   1 |       1 |          1 |
+| 2 |     4 |   8 |  16 |  1.4142 |     1.1892 |
+| 3 |     9 |  27 |  81 |  1.7321 |     1.3161 |
+|---+-------+-----+-----+---------+------------|
+#+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))
+
+** The Spreadsheet
+
+
+** Plot
+
+
+To use this function, you need to install Gnuplot and gnuplot mode in your Emacs.
+
+#+Name: mytable
+|---+--------+-------------+---------|
+|   | Grades | Mathematics | Physics |
+|---+--------+-------------+---------|
+| # | Ben    |         9.2 |     9.9 |
+| # | Tom    |         6.7 |     7.7 |
+| # | Tim    |         7.5 |     6.7 |
+| # | Dean   |         8.0 |     7.0 |
+
+#+BEGIN_SRC gnuplot :var  data=mytable :file images/output.png :export results
+set title "Grades in Physics and Mathematics"
+set style data histogram
+set xlabel "Student"
+set ylabel "Grades"
+set auto x
+plot data using 2:xtic(1) ti col, '' u 3 ti col
+#+END_SRC
+
+#+RESULTS:
+[[file:images/output.png]]
+
+* DONE Hyperlinks
+CLOSED: [2023-12-07 Thu 12:24]
+:PROPERTIES:
+:custom_id: hello
+:END:
+:LOGBOOK:
+- State "DONE"       from              [2023-12-07 Thu 12:24]
+:END:
+
+
+
+The general link format:
+#+begin_example
+[[LINK][DESCRIPTION]]
+or
+[[LINK]]
+#+end_example
+
+| C-c C-l | Insert a link. With a C-u prefix, prompts for a file to link to. When point is on an existing link, edit the link and description parts of the link. |
+| C-c C-o | Open the link.                                                                                                                                       |
+| M-n     | Next link.    [fn:1]                                                                                                                                 |
+| M-p     | Previous link.                                                                                                                                       |
+
+
+** Internal Links
+A link that does not look like a URL—i.e., does not start with a known scheme or a file name—refers to the current document.
+
+
+
+#+begin_example
+[[#my-costom-id]]
+[[*Hyperlinks]]
+[[my-target]]
+#+end_example
+
+The links shown above link to the following position
+#+begin_example
+
+ * Some Topics
+ :PROPERTIES:
+ :CUSTOM_ID: my-custom-id
+ :END:
+
+
+ * Hyperlinks
+
+
+ <<my-target>>
+#+end_example
+
+A construct like =[[#my-costom-id]]= specifically targets the entry with the ‘CUSTOM_ID’ property set to ‘my-custom-id’.
+Also, an internal link looking like =[[*Some section]]= points to a headline with the name ‘Some section’.
+A link that does not look like a URL—i.e., does not start with a known scheme or a file name—refers to the current document.
+
+** Radio Targets
+Org can automatically turn any occurrences of certain target names in normal text into a link.
+So without explicitly creating a link, the text connects to the target radioing its position.
+Radio targets are enclosed by triple angular brackets.
+For example, a target ‘<<<My Target>>>’ causes each occurrence of ‘my target’ in normal text to become activated as a link.
+The Org file is scanned automatically for radio targets only when the file is first loaded into Emacs.
+To update the target list during editing, press C-c C-c with point on or at a target.
+
+
+
+
+
+* DONE Tags
+CLOSED: [2023-12-07 Thu 12:24]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-07 Thu 12:24]
+:END:
+
+An excellent way to implement labels and contexts for cross-correlating information is to assign tags to headlines.
+Every headline can contain a list of tags; they occur at the end of the headline.
+Tags are normal words containing letters, numbers, ‘_’, and ‘@’.
+Tags must be preceded and followed by a single colon, e.g., ‘:work:’.
+Several tags can be specified, as in ‘:work:urgent:’.
+
+
+
+** Tag Inheritance
+Tags make use of the hierarchical structure of outline trees.
+If a heading has a certain tag, all subheadings inherit the tag as well.
+
+
+** Setting Tags
+
+
+
+| C-c C-q | Set tags                                                    |
+| C-c C-c | When point is in a headline, this does the same as C-c C-q. |
+
+
+Org supports tag insertion based on a list of tags.
+By default this list is constructed dynamically, containing all tags currently used in the buffer.
+You may also globally specify a hard list of tags with the variable org-tag-alist.
+Finally you can set the default tags for a given file using the ‘TAGS’ keyword, like
+#+begin_example
+#+TAGS: work home
+#+end_example
+
+
+If you have globally defined your preferred set of tags using the variable org-tag-alist, but would like to use a dynamic tag list in a specific file, add an empty ‘TAGS’ keyword to that file:
+#+begin_example
+#+TAGS:
+#+end_example
+
+
+** Tag Hierarchy
+
+** Tag Searches
+| C-c / m | Create a sparse tree with all headlines matching a tags search. With a C-u prefix argument, ignore headlines that are not a TODO line. |
+| C-c a m | Create a global list of tag matches from all agenda files.                                                                             |
+| C-c a M | Create a global list of tag matches from all agenda files, but check only TODO items.                                                  |
+
+
+
+
+
+* Properites And Columns
+A property is a key-value pair associated with an entry.
+Keys are case-insensitive.
+
+Properties can be conveniently edited and viewed in column view.
+
+** Property syntax
+  :PROPERTIES:
+  :END:
+#+BEGIN_EXAMPLE
+     * CD collection
+     ** Classic
+     *** Goldberg Variations
+         :PROPERTIES:
+         :Title:     Goldberg Variations
+         :Composer:  J.S. Bach
+         :Artist:    Glen Gould
+         :Publisher: Deutsche Grammophon
+         :NDisks:    1
+         :END:
+#+END_EXAMPLE
+
+You may define the allowed values for a particular property ‘:Xyz:’ by setting a property ‘:Xyz_ALL:’. 
+This special property is inherited, so if you set it in a level 1 entry, it will apply to the entire tree.
+#+BEGIN_EXAMPLE
+     * CD collection
+       :PROPERTIES:
+       :NDisks_ALL:  1 2 3 4
+       :Publisher_ALL: "Deutsche Grammophon" Philips EMI
+       :END:
+#+END_EXAMPLE
+
+
+If you want to set properties that can be inherited by any entry in a file, use a line like 
+#+BEGIN_EXAMPLE
+  #+PROPERTY: NDisks_ALL 1 2 3 4
+#+END_EXAMPLE
+
+
+
+If you want to add to the value of an existing property, append a + to the property name. 
+The following results in the property var having the value “foo=1 bar=2”.
+#+BEGIN_EXAMPLE
+     #+PROPERTY: var  foo=1
+     #+PROPERTY: var+ bar=2
+#+END_EXAMPLE
+
+
+| Key Bounding | Functions           | Description                                                            |
+|--------------+---------------------+------------------------------------------------------------------------|
+| C-c C-x p    | org-set-property    | Set a property                                                         |
+| C-c C-c      | org-property-action | With the cursor in a property drawer, this executes property commands. |
+| S-LEFT       |                     | Switch property at point to the previous allowed value.                |
+| S-RIGHT      |                     | Switch property at point to the next allowed value.                    |
+
+
+
+| Variable                     | Description                                      |
+|------------------------------+--------------------------------------------------|
+| org-use-property-inheritance | Determine the property inheritance.              |
+| org-global-properties        | Property values can be inherited by all entries. |
+|                              |                                                  |
+
+
+** Special properties
+Special properties provide an alternative access method to Org mode features.
+This interface exists so that you can include these states in a column view, or to use them in queries.
+
+The following property names are special and should not be used as keys in the properties drawer: 
+#+BEGIN_EXAMPLE
+     ALLTAGS      All tags, including inherited ones.
+     BLOCKED      "t" if task is currently blocked by children or siblings.
+     CLOCKSUM     The sum of CLOCK intervals in the subtree.  org-clock-sum must be run first to compute the values in the current buffer.
+     CLOCKSUM_T   The sum of CLOCK intervals in the subtree for today. org-clock-sum-today must be run first to compute the values in the current buffer.
+     CLOSED       When was this entry closed?
+     DEADLINE     The deadline time string, without the angular brackets.
+     FILE         The filename the entry is located in.
+     ITEM         The headline of the entry.
+     PRIORITY     The priority of the entry, a string with a single letter.
+     SCHEDULED    The scheduling timestamp, without the angular brackets.
+     TAGS         The tags defined directly in the headline.
+     TIMESTAMP    The first keyword-less timestamp in the entry.
+     TIMESTAMP_IA The first inactive timestamp in the entry.
+     TODO         The TODO keyword of the entry.
+#+END_EXAMPLE
+
+** Property inheritance
+Org does not turn property inheritance on by default.
+| Variable                     |
+|------------------------------|
+| org-use-property-inheritance |
+
+Org mode has a few properties for which inheritance is hard-coded, at least for the special applications for which they are used: 
+#+BEGIN_EXAMPLE
+COLUMNS
+CATEGORY
+ARCHIVE
+LOGGING
+#+END_EXAMPLE
+
+
+** Column view
+A great way to view and edit properties is column view.
+In column view, each outline node is turned into a table row. 
+Columns in this table provide access to properties of the entries.
+Org mode implements columns by overlaying a tabular structure over the headline of each item.  
+
+*** Defining columns
+Setting up a column view first requires defining the columns. 
+
+| Variable                   |
+|----------------------------|
+| org-columns-default-format |
+
+**** Scope of column definitions
+To define a column format for an entire file, use a line like
+#+BEGIN_EXAMPLE
+     #+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+#+END_EXAMPLE
+
+To specify a format that only applies to a specific tree, add a :COLUMNS: property to the top node of that tree, for example:
+#+BEGIN_EXAMPLE
+     ** Top node for columns view
+        :PROPERTIES:
+        :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO
+        :END:
+#+END_EXAMPLE
+
+
+If a :COLUMNS: property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it. 
+
+**** Column attributes
+A column definition sets the attributes of a column. The general definition looks like this:
+#+BEGIN_EXAMPLE
+%[width]property[(title)][{summary-type}]
+#+END_EXAMPLE
+Except for the percent sign and the property name, all items are optional. 
+
+The individual parts have the following meaning: 
+#+BEGIN_EXAMPLE
+     width           An integer specifying the width of the column in characters. If omitted, the width will be determined automatically.
+     property        The property that should be edited in this column.
+                     Special properties representing meta data are allowed here as well
+     title           The header text for the column.  If omitted, the property name is used.
+     {summary-type}  The summary type.  If specified, the column values for parent nodes are computed from the children.
+                     Supported summary types are:
+                     {+}       Sum numbers in this column.
+                     {+;%.1f}  Like ‘+’, but format result with ‘%.1f’.
+                     {$}       Currency, short for ‘+;%.2f’.
+                     {min}     Smallest number in column.
+                     {max}     Largest number.
+                     {mean}    Arithmetic mean of numbers.
+                     {X}       Checkbox status, ‘[X]’ if all children are ‘[X]’.
+                     {X/}      Checkbox status, ‘[n/m]’.
+                     {X%}      Checkbox status, ‘[n%]’.
+                     {:}       Sum times, HH:MM, plain numbers are hours.
+                     {:min}    Smallest time value in column.
+                     {:max}    Largest time value.
+                     {:mean}   Arithmetic mean of time values.
+                     {@min}    Minimum age (in days/hours/mins/seconds).
+                     {@max}    Maximum age (in days/hours/mins/seconds).
+                     {@mean}   Arithmetic mean of ages (in days/hours/mins/seconds).
+                     {est+}    Add ‘low-high’ estimates.
+#+END_EXAMPLE
+
+
+
+Example:
+
+#+BEGIN_EXAMPLE
+     :COLUMNS:  %25ITEM %9Approved(Approved?){X} %Owner %11Status %10Time_Estimate{:} %CLOCKSUM %CLOCKSUM_T
+     :Owner_ALL:    Tammy Mark Karl Lisa Don
+     :Status_ALL:   "In progress" "Not started yet" "Finished" ""
+     :Approved_ALL: "[ ]" "[X]"
+#+END_EXAMPLE
+
+
+
+*** TODO Using column view
+
+**** Turning column view on and off
+| Key Bounding | Functions   | Description         |
+|--------------+-------------+---------------------|
+| C-c C-x C-c  | org-columns | Turn on clumn view. |
+|              |             |                     |
+
+#+BEGIN_EXAMPLE
+Core: org-columns-map (variable)
+
+| ! :  33  |  " :  34  |  # :  35  |  $ :  36  |  % :  37  |  & :  38  |  ' :  39  |  ( :  40  |  ) :  41  |  * :  42  | 
+| + :  43  |  , :  44  |  - :  45  |  . :  46  |  / :  47  |  0 :  48  |  1 :  49  |  2 :  50  |  3 :  51  |  4 :  52  | 
+| 5 :  53  |  6 :  54  |  7 :  55  |  8 :  56  |  9 :  57  |  : :  58  |  ; :  59  |  < :  60  |  = :  61  |  > :  62  | 
+| ? :  63  |  @ :  64  |  A :  65  |  B :  66  |  C :  67  |  D :  68  |  E :  69  |  F :  70  |  G :  71  |  H :  72  | 
+| I :  73  |  J :  74  |  K :  75  |  L :  76  |  M :  77  |  N :  78  |  O :  79  |  P :  80  |  Q :  81  |  R :  82  | 
+| S :  83  |  T :  84  |  U :  85  |  V :  86  |  W :  87  |  X :  88  |  Y :  89  |  Z :  90  |  [ :  91  |  \ :  92  | 
+| ] :  93  |  ^ :  94  |  _ :  95  |  ` :  96  |  a :  97  |  b :  98  |  c :  99  |  d : 100  |  e : 101  |  f : 102  | 
+| g : 103  |  h : 104  |  i : 105  |  j : 106  |  k : 107  |  l : 108  |  m : 109  |  n : 110  |  o : 111  |  p : 112  | 
+| q : 113  |  r : 114  |  s : 115  |  t : 116  |  u : 117  |  v : 118  |  w : 119  |  x : 120  |  y : 121  |  z : 122  | 
+| { : 123  |  | : 124  |  } : 125  |  ~ : 126  |
+
+#+END_EXAMPLE
+
+| Key Bounding | Functions                         | Description                                                     | Mode & Cursor                       |
+|--------------+-----------------------------------+-----------------------------------------------------------------+-------------------------------------|
+| r/g          | org-columns-redo                  | Construct the column display again.                             | On column view line (all the below) |
+| q            | org-column-quit                   | Exit column view                                                |                                     |
+| 0..9         |                                   | Directly select the Nth allowed value, 0 select the 10th value. |                                     |
+| n            | org-column-next-allowd-value      | Switch to the nextallowed value of the field.                   |                                     |
+| p            | org-column-previous-allowed-value | Switch to the previous allowed value of the field.              |                                     |
+| e            | org-column-edit-value             | Edit the property at point                                      |                                     |
+| C-c C-c      | org-column-set-tags-or-toggle     | When there is a checkbox at point, toggle it.                   |                                     |
+| v            | org-columns-show-value            | View the full value of this property.                           |                                     |
+| a            | org-column-edit-allowed           | Edit the list of allowed values for this property.              |                                     |
+| <            | org-column-narrow                 |                                                                 |                                     |
+| >            | org-column-widen                  |                                                                 |                                     |
+| M-S-RIGHT    |                                   | Insert a new column, to the left of the current column.         |                                     |
+| M-S-LEFT     | org-column-delete                 | Delete the current column.                                      |                                     |
+
+
+
+* Date And Time
+
+The specially formatted string carrying the date and/or time information is called a timestamp in Org mode.
+This may be a little confusing becuase timestamp is often used to indicate when something was created or last changed.
+However, in Org mode this term is used in a much wider sense.
+
+** Timestamps
+
+*** Plain timestamp
+#+BEGIN_EXAMPLE
+<2016-11-01 Wed 19:15>
+<2006-11-02 Thu 20:00-22:00>
+#+END_EXAMPLE
+
+*** Timestamp with repeater interval
+It applies not only on the given date, but again and again after a certain interval of
+N days(d), weeks(w), months(m), or years(y).
+#+BEGIN_EXAMPLE
+<2007-05-16 Wed 12:30 +1w>
+#+END_EXAMPLE
+
+*** Time/Date range
+#+BEGIN_EXAMPLE
+<2004-08-23 Mon>--<2004-08-26 Thu>
+#+END_EXAMPLE
+
+*** Inactive timestamp
+These timestamp are inactive in the sense 
+that they do not trigger an entry to show up in the agenda.
+#+BEGIN_EXAMPLE
+[2006-11-01 Wed]
+#+END_EXAMPLE
+
+** Creating timestamps
+=C-c .= (=org-time-stamp=)
+Prompt for a date and insert a corresponding timestamp.
+When the cursor is at an existing timestamp, 
+the command is used to modify this timestamp.
+When this command is used twice in succession,
+a time range is inserted.
+
+=C-c != (=org-time-stamp-inactive=)
+Like =C-c .=, but insert a inactive timestamp
+that will not cause an agenda entry.
+
+=C-u C-c .=
+=C-u C-c !=
+Like =C-c .= and =C-c !=, but use the alternative format 
+which contains date and time.
+
+=C-c C-c=
+Normalize timestamp, insert/fix day name if missing or wrong.
+
+=C-c <= (=org-date-from-calendar=)
+Insert a timestamp corresponding to the cursor date in the Calendar.
+
+=C-c >= (=org-goto-calendar=)
+Access the Emacs calendar for the current date.
+If there is a timestamp in the current line,
+go to the corresponding date instead.
+
+=C-c C-o= (=org-open-at-point=)
+Access the agenda for the date given by the timestamp or -rang at point.
+
+
+=S-left= (=org-timestamp-down-day=)
+=S-right= (=org-timestamp-up-day=)
+Change date at cursor by one day.
+
+
+=S-up= (=org-timestamp-up=)
+=S-down= (=org-timestamp=down=)
+Change the item under the cursor in a timestamp.
+The cursor can be on bracket, year, month, day, hour or minute.
+When the timestamp contains a time range like '15:30-16:30',
+modifying the first time will also shift the second, 
+shifting the time block with constant length.
+To change the length, modify the second time.
+
+=C-c C-y= (=org-evaluate-time-range=)
+Evaluate a time range by computing the difference between start and end.
+With a prefix argument, insert result after the time range.
+
+
+
+*** Custom time format
+=org-display-custom-times=
+=org-time-stamp-custom-formats=
+
+=C-c C-x C-t= (=org-toggle-time-stamp-overlays=)
+Toggle the display of custom formats for dates and times.
+
+
+
+[2018-12-28 17:18:17]
+** Deadlines and scheduling
+A timestamp may be preceded by special keywords to facilitate planning.
+Both the timestamp and the keyword have to be positioned immediately
+after the task they refer to.
+
+*** DEADLINE
+Meaning: the task is supposed to be finished on that date.
+
+On the deadline date, the task will be listed in the agenda.
+In addition, the agenda for today will carry a warning about
+the approaching or missed deadline, starting =org-deadline-warning-days=
+before the due date, and continuing until the entry is marked DONE.
+
+#+BEGIN_EXAMPLE
+          *** TODO write article about the Earth for the Guide
+              DEADLINE: <2004-02-29 Sun>
+#+END_EXAMPLE
+
+You can specify a different lead time for warnings for a specific deadline.
+Here is an example with a warning period of 5 days DEADLINE: <2004-02-29 Sun -5d>. 
+This warning is deactivated if the task gets scheduled and 
+you set =org-agenda-skip-deadline-prewarning-if-scheduled= to t. 
+
+*** SCHEDULED
+Meaning: you are planning to start working on that task on the given date.
+
+The headline will be listed under the given date.
+In addition, a reminder that the scheduled date has passed will be presented
+in compilation for today, until the entry is marked DONE.
+
+#+BEGIN_EXAMPLE
+          *** TODO Call Trillian for a date on New Years Eve.
+              SCHEDULED: <2004-12-25 Sat>
+#+END_EXAMPLE
+
+If you want to delay the display of this task in the agenda, 
+use SCHEDULED: <2004-12-25 Sat -2d>: the task is still scheduled on the 25th 
+but will appear two days later. 
+In case the task contains a repeater, 
+the delay is considered to affect all occurrences; 
+if you want the delay to only affect the first scheduled occurrence of the task, 
+use --2d instead. 
+
+=org-scheduled-delay-days=
+=org-agenda-skip-scheduled-delay-if-deadline=
+
+
+In Org mode, scheduling means setting a date when you want to start working on an action item.
+
+*** Inserting deadline/schedule
+
+=C-c C-d= (=org-deadline=)
+Insert DEADLINE keyword along with a stamp.
+When called with a prefix arg, an existing deadline will be removed from the entry.
+Depending on the variable =org-log-redeadline=, a note will be taken 
+when changing an existing deadline.
+
+=C-c C-s= (=org-schedule=)
+Insert SCHEDULED keyword along with a stamp.
+When called with a prefix argument, remove the scheduling date from the entry.
+Depending on the variable =org-log-reschedule=, a note will be taken
+when changing an existing scheduling.
+
+=C-c / d= (=org-check-deadline=)
+=C-c / b= (=org-check-before-date=)
+=C-c / a= (=org-check-after-date=)
+
+
+*#+STARTUP: C-M-i*
+
+*** Repeated tasks
+If you need both a repeater and a special warning period, 
+the repeater should come first and the warning period last:
+<2005-10-01 Sat +1m -3d>
+
+
+When you try to mark a repeated entry DONE, 
+it will shift the base date of the repeating timestamp 
+by the repeater interval, and immediately set the entry state back to TODO.
+
+
+*** TODO how to close a task with repeater
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-28 Fri 16:33]
+   :END:      
+
+
+A timestamp will be added under the deadline,
+depending on the variabl =org-log-repeat=,
+to keep a record that you actually acted on 
+the previous instance of this deadline.
+
+
+With the ‘+1m’ cookie, the date shift will always be exactly one month. 
+So if you have not paid the rent for three months, 
+marking this entry DONE will still keep it as an overdue deadline. 
+
+
+Depending on the task, this may not be the best way to handle it. 
+For example, if you forgot to call your father for 3 weeks, 
+it does not make sense to call him 3 times in a single day to make up for it. 
+Finally, there are tasks like changing batteries 
+which should always repeat a certain time after the last time you did it. 
+For these tasks, Org mode has special repeaters ‘++’ and ‘.+’. 
+
+#+BEGIN_EXAMPLE
+     ** TODO Call Father
+        DEADLINE: <2008-02-10 Sun ++1w>
+        Marking this DONE will shift the date by at least one week,
+        but also by as many weeks as it takes to get this date into
+        the future.  However, it stays on a Sunday, even if you called
+        and marked it done on Saturday.
+     ** TODO Empty kitchen trash
+        DEADLINE: <2008-02-08 Fri 20:00 ++1d>
+        Marking this DONE will shift the date by at least one day, and
+        also by as many days as it takes to get the timestamp into the
+        future.  Since there is a time in the timestamp, the next
+        deadline in the future will be on today's date if you
+        complete the task before 20:00.
+     ** TODO Check the batteries in the smoke detectors
+        DEADLINE: <2005-11-01 Tue .+1m>
+        Marking this DONE will shift the date to one month after
+        today.
+#+END_EXAMPLE
+
+
+** Clocking work time
+Org mode allows you to clock the time you spend on specific tasks in a project. 
+
+When you start working on an item, you can start the clock. 
+When you stop working on that task, or when you mark the task done, 
+the clock is stopped and the corresponding time interval is recorded. 
+
+
+To save the clock history across Emacs sessions:
+#+BEGIN_SRC emacs-lisp
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+#+END_SRC
+
+[2018-12-28 17:57:59]
+*** Clocking commands
+=C-c C-x C-i= (=org-clock-in=)
+Start the clock on the current item.
+With =C-u C-u= prefixes, clock into the task at point and mark it as the default task.
+
+
+=C-c C-x C-o= (=org-clock-out=)
+Stop the clock.
+
+
+=C-c C-x C-x= (=org-clock-in-last=)
+Reclock the last clocked task.
+With =C-u= prefix, select the task from the clock history. 
+Witch =C-u C-u= prefix, start clocking *from the time* when you clocked out the previous task. 
+
+
+=C-c C-x C-e= (=org-clock-modify-effort=estimate=)
+Add to or set the effort estimate of the item currently being clocked.
+
+=C-c C-c= (=org-evaluate-time-range=)
+Recompute the time interval after changing one of the timestamps.
+This is only necessary if you edit the timestamps directly.
+
+
+=C-S-<up/down>= (=org-clock-timestamps-up/down=)
+On CLOCK log lines, incrase/decrease both timestamps so that the clock duration keeps the same.
+
+
+=M-S-<up/down>= (=org-timestamps-up/down=)
+On CLOCK log lines, incrase/decrease the timestamps at point
+and the one of the previous (or the next clock) timestamp by the same duration.
+
+
+=C-c C-t= (=org-todo=)
+Changing the TODO state to DONE automatically stops the clock if it is running in this same item.
+
+
+=C-c C-x C-q= (=org-clock-cancel=)
+Cancel the current clock.
+
+
+=C-c C-x C-j= (=org-clock-goto=)
+Jump to the headline of the currently clocked in task.
+With a =C-u= prefix arg, select the target task from a list of recently clocked tasks. 
+
+
+=C-c C-x C-d= (=org-clock-display=)
+Display time summaries for each subtree in the current buffer.
+This puts overlays at the end of each headline, showing 
+the total time recorded under that heading, including the time of any subheadings. 
+You can use visibility cycling to study the tree, 
+but the overlays disappear when you change the buffer(=org-remove-highlights-with-change=) or press =C-c C-c=. 
+
+
+*** TODO The clock table                                             :detail:
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-29 Sat 14:11]
+   :END:      
+Org mode can produce quite complex reports based on the time clocking information.
+Such a report is called a clock table, because it is formatted as one or several Org tables.
+
+=C-c C-x C-r= (=org-clock-report=)
+Insert a dynamic block containing a clock report as 
+an Org mode table into the current file.
+When the cursor is at an existing clock table, just update it.
+
+
+=C-c C-c= or =C-c C-x C-u= (=org-dblock-update=)
+Update dynamic block at point.
+
+=C-u C-c C-x C-u=
+Update all dynamic blocks.
+
+
+#+BEGIN_EXAMPLE
+#+BEGIN: clocktable :maxlevel 2 :scope subtree 
+#+CAPTION: Clock summary at [2018-12-28 Fri 20:52]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *8:03* |
+|--------------+--------|
+| DONE clock 2 | 8:03   |
+#+END:
+#+END_EXAMPLE
+
+
+The ‘BEGIN’ line specifies a number of options to define the scope, structure, and formatting of the report. 
+Defaults for all these options can be configured in the variable =org-clocktable-defaults=. 
+
+The formatter options are interpreted by the function =org-clocktable-write-default=,
+but you can specify your own function using the =:formatter= parameter.
+
+*put the cursor at the end of the BEGIN line, press C-M-i*
+
+
+*** Resolving idle time and continuous clocking
+By customizing the variable =org-clock-idle-time= to some integer, 
+Emacs can alert you when you get back to your computer after being
+idle for that many minutes, and ask what you want to do with the 
+idle time.
+
+=C-c C-x C-z= (=org-resolve-clocks=)
+Resovle all currently open org-mode clocks
+
+
+[2018-12-29 00:06:06]
+** DONE Effort estimates
+  :LOGBOOK:  
+  - State "DONE"       from "TODO"       [2019-01-01 Tue 11:31]
+  - State "TODO"       from ""           [2018-12-29 Sat 00:38]
+  :END:     
+
+If you want to plan your work in a very detailed way, 
+or if you need to produce offers with quotations of the estimated work effort, 
+you may want to assign effort estimates to entries. 
+If you are also clocking your work, 
+you may later want to compare the planned effort with 
+the actual working time, a great way to improve planning estimates. 
+
+#+BEGIN_EXAMPLE
+at the file name line, like
+
+U:**- test      All L237  (Org)  [0:08/0:30] (review)
+
+0:08 for used time in clock
+0:30 for effort estimate
+review for the headline with the current clock running
+#+END_EXAMPLE
+
+
+
+
+
+=C-c C-x e= (=org-set-effort=)
+Set the effort estimate for the current entry.
+With a numberic prefix argument, set it to the Nth allowed value. 
+
+=C-c C-x C-e= (=org-clock-modify-effort-estimate=)
+Modify the effort estimate of item currently being clocked.
+
+The best way to work with effort estimates is through column view. 
+
+
+=org-global-perperties=
+=org-columns-default-format=
+
+** Taking notes with a timer
+Org provides two types of timers: a relative timer that counts up and a countdown timer.
+The relative and countdown are started with separate commands. 
+
+=C-c C-x 0= (=org-timer-start=)
+Start or reset the relative timer. 
+By default, the timer is set to 0. 
+When called with a C-u prefix, prompt the user for a starting offset. 
+If there is a timer string at point, this is taken as the default, providing a 
+convenient way to restart taking notes after a break in the process. 
+
+=C-c C-x ;= (=org-timer-set-timer=)
+Start a countdown timer. The user is prompted for a duration. 
+=org-timer-default-timer= sets the default countdown value. 
+Giving a numeric prefix argument overrides this default value. 
+
+
+
+Once started, relative and countdown timers are controlled with the same commands. 
+
+=C-c C-x .=     (=org-timer=)
+Insert the value of the current relative or countdown timer into the buffer. 
+If no timer is running, the relative timer will be started. 
+When called with a prefix argument, the relative timer is restarted.
+
+=C-c C-x -=     (=org-timer-item=)
+Insert a description list item with the value of the current relative or countdown timer. 
+With a prefix argument, first reset the relative timer to 0.
+
+
+=M-<RET>=     (=org-insert-heading=)
+Once the timer list is started, you can also use M-<RET> to insert new timer items.
+
+C-c C-x ,   (=org-timer-pause-or-continue=)
+Pause the timer, or continue it if it is already paused.
+
+=C-c C-x _=     (=org-timer-stop=)
+Stop the timer. After this, you can only start a new timer, not continue the old one. 
+This command also removes the timer from the mode line.
+
+* DONE Todo Items
+
+Org mode does not maintain TODO lists as separate documents.
+Instead, TODO items are an integral part of the notes file,
+because TODO items usually come up while taking notes!
+
+** Todo basics
+Any headline become a TODO item when it starts with the word 'TODO'.
+
+=C-c C-t= (=org-todo=)
+rotate the TODO state of the current item (ummarked, TODO, DONE)
+
+
+=S-right= =S-left=
+Select the following/preceding TODO state, similar to cycling.
+
+
+=C-c / t= (=org-show-todo-tree=)
+View TODO items in a sparse tree.
+
+
+=M-S-RET= (=org-insert-todo-heading=)
+Insert a new TODO entry below the current one.
+
+=C-S-RET= (=org-insert-todo-heading-respect-content=)
+
+
+** Todo extensions
+By default, marked TODO entries have one of only two states: TODO and DONE. 
+Org mode allows you to classify TODO items in more complex ways with TODO keywords (=org-todo-keywords=).
+
+*** Todo keywords as workflow states
+You can use TODO keywords to indicate different sequential states in the process of working on an item, for example:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+#+END_SRC
+
+The vertical bar separates the TODO keywords (states that need action) 
+from the DONE states (which need no further action). If you don't provide
+the separator bar, the last state is used as DONE state. With this step,
+the command =C-c C-t= will cycle an entry from TODO to FEEDBACK, then
+VERIFY, and finally to DONE and DELEGATED.
+
+
+[2018-12-26 20:44:02]
+*** Todo keyworks as types
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((type "Fred" "Hack" "Lucy" "|" "DONE")))
+#+END_SRC
+
+In this case, different keywords do not indicate a sequence, but rather different types. 
+So the normal work flow would be to assign a task to a person, and later to mark it DONE.
+
+*** Multiple keywords sets in one file
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE")
+        (sequence "REPORT" "BUG" "KNOWNCAUSE" "|" "FIXED")
+        (sequence "|" "CANCELED")))
+#+END_SRC
+
+In this setup, C-c C-t only operates within a subsequence.
+
+=C-u C-u C-c C-t=
+=C-S-right=
+=C-S-left=
+These keys jump from one TODO subset to the next.
+
+=S-right=
+=S-left=
+Walk through all keywords from all sets.
+
+*** Fast access to TODO states
+If you would like to quickly change an entry to an arbitrary TODO state instead of cycling through the states, 
+you can set up keys for single-letter access to the states.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+#+END_SRC
+
+If you then press =C-c C-t= followed by the selection key, the entry will be switched to this state. 
+
+
+*** Setting up keywords for individual files
+It can be very useful to use different aspects of the TODO mechanism in different files. 
+You need one of the following lines anywhere in the file: 
+#+BEGIN_EXAMPLE
+#+TODO: TODO FEEDBACK VERIFY | DONE CANCELED
+#+END_EXAMPLE
+(you may also write #+SEQ_TODO to be explicit about the interpretation, but it means the same as #+TODO), or 
+#+BEGIN_EXAMPLE
+#+TYP_TODO: Fred Hack Lucy | DONE
+#+END_EXAMPLE
+
+Several sets in parallel:
+#+BEGIN_EXAMPLE
+#+TODO: TODO | DONE
+#+TODO: REPORT BUG KNOWNCAUSE | FIXED
+#+TODO: | CANCELED
+#+END_EXAMPLE
+
+*To make sure you are using the correct keyword, type ‘#+’ into the buffer and then use C-M-i completion.*
+
+*After changing one of these lines, use C-c C-c with the cursor still in the line to make the changes known to Org mode.*
+
+*** Faces for TODO keywords
+Org mode highlights TODO keywords with special faces: 
+=org-todo= for keywords indicating that an item still has to be acted upon, 
+and =org-done= for keywords indicating that an item is finished. 
+If you are using more than 2 different states, you might want to use special faces for some of them. 
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) 
+        ("STARTED" . "yellow")
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+#+END_SRC
+
+*** Todo dependencies
+The structure of Org files (hierarchy and lists) makes it easy to define TODO dependencies.
+
+=org-enforce-todo-dependencies=
+Non-nil means undone TODO entries will block switching the parent to DONE.
+Also, if a parent has an :ORDERED: property, switching an entry to DONE will
+be blocked if any prior sibling is not yet done.
+
+| C-c C-x o           | org-toggle-ordered-property | Toggle the ORDERED property of the current entry       |
+| C-u C-u C-u C-c C-t |                             | Change TODO state, circumventing anying state blocking |
+
+
+[2018-12-27 03:11:44]
+** Progress logging
+Org mode can automatically record a timestamp and possibly a note 
+when you mark a TODO item as DONE, or even each time you change 
+the state of a TODO item.
+
+*** Closing items
+The most basic logging is to keep track of when a certain TODO item was finished. 
+
+#+BEGIN_SRC emacs-lisp
+(setq org-log-done 'time)
+#+END_SRC
+
+Then each time you turn an entry from a TODO (not-done) state 
+into any of the DONE states, a line ‘CLOSED: [timestamp]’ will
+be inserted just after the headline.
+
+*** Tracking TODO state changes
+To keep track of when a state change occurred and maybe take a note about this change:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)))
+#+END_SRC
+
+Since it is normally too much to record a note for every state, 
+Org mode expects configuration on a per-keyword basis for this.
+This is achieved by adding special markers ‘!’ (for a timestamp) 
+or ‘@’ (for a note with timestamp) in parentheses after each keyword.
+
+To record a timestamp without a note for TODO keywords configured with ‘@’, 
+just type C-c C-c to enter a blank note when prompted. 
+
+The setting for WAIT is even more special: 
+the ‘!’ after the slash means that in addition to the note taken when entering the state, 
+a timestamp should be recorded when leaving the WAIT state, 
+if and only if the target state does not configure logging for entering it.
+
+
+In order to define logging settings that are local to a subtree or a single item, 
+define a LOGGING property in this entry. 
+*enter :P C-M-i*
+*put the cursor on property line, press C-c C-c*
+
+When taking a lot of notes, you might want to get the notes out of the way into a drawer. 
+Customize =org-log-into-drawer= to get this behavior — the recommended drawer for this is called LOGBOOK. 
+You can also overrule the setting of this variable for a subtree by setting a LOG_INTO_DRAWER property
+
+*** TODO Tracking your habits
+
+** Priorities
+Prioritizing can be done by placing a 'priority cookie' into the headline item.
+
+#+BEGIN_EXAMPLE
+ *** TODO [#A] Write letter to Sam Fortune
+#+END_EXAMPLE
+
+By default, Org mode supports three priorities: ‘A’, ‘B’, and ‘C’. 
+‘A’ is the highest priority. 
+An entry without a cookie is treated just like priority ‘B’. 
+
+=C-c ,= (=org-priority=)
+Set the priority of the current headline.
+
+=S-up= 
+=S-down=
+Increase/decrease priority of current headline.
+
+** Breaking down tasks
+Break down large tasks into smaller, manageable subtasks by 
+creating an outline tree below a TODO item, 
+with detailed subtasks on the tree.
+
+To keep the overview over the fraction of subtasks that are already completed, 
+insert either ‘[/]’ or ‘[%]’ anywhere in the headline.
+These cookies will be updated each time the TODO status of a child changes, 
+or when pressing C-c C-c on the cookie
+
+#+BEGIN_EXAMPLE
+     * TODO Organize Party [33%]
+     ** TODO Call people [1/2]
+     *** TODO Peter
+     *** DONE Sarah
+     ** TODO Buy food
+     ** DONE Talk to neighbor
+#+END_EXAMPLE
+
+
+If you would like to have the statistics cookie count any TODO entries in the subtree (not just direct children), 
+configure =org-hierarchical-todo-statistics=. 
+To do this for a single subtree, include the word ‘recursive’ into the value of the COOKIE_DATA property. 
+
+#+BEGIN_EXAMPLE
+     * Parent capturing statistics [2/20]
+       :PROPERTIES:
+       :COOKIE_DATA: todo recursive
+       :END:      
+#+END_EXAMPLE
+
+
+If you would like a TODO entry to automatically change to DONE when all children are done.
+#+BEGIN_SRC emacs-lisp
+     (defun org-summary-todo (n-done n-not-done)
+       "Switch entry to DONE when all subentries are done, to TODO otherwise."
+       (let (org-log-done org-log-states)   ; turn off logging
+         (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+     
+     (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+#+END_SRC
+
+To keep subtasks out of the global TODO list, customize =org-agenda-todo-list-sublevels=.
+
+** Checkboxes
+Checkboxes are not included in the global TODO list, 
+so they are often great to split a task into a number of simple steps.
+
+#+BEGIN_EXAMPLE
+     * TODO Organize party [2/4]
+       - [-] call people [1/3]
+         - [ ] Peter
+         - [X] Sarah
+         - [ ] Sam
+       - [X] order food
+       - [ ] think about what music to play
+       - [X] talk to the neighbors
+#+END_EXAMPLE
+
+In a headline, a cookie can count either checkboxes below the heading or 
+TODO states of children, and it will display whatever was changed last. 
+Set the property COOKIE_DATA to either ‘checkbox’ or ‘todo’ to resolve this issue. 
+
+
+=C-c C-c= (=org-toggle-checkbox=)
+Toggle checkbox status.
+With a single prefix argument, add an empty checkbox or remove the current one. 
+With a double prefix argument, set it to ‘[-]’, which is considered to be an intermediate state. 
+
+=C-c C-x C-b= (=org-toggle-checkbox=)
+Can work on region.
+
+=M-S-RET= (=org-insert-todo-heading=)
+Insert a new item with a checkbox.
+
+=C-c C-x o= (=org-toggle-ordered-property=)
+Toggle the ORDERED property of the current entry.
+
+
+=C-c #= (=org-update-statistics-cookies=)
+Update the statistics cookie, either from TODO or from checkboxes.
+When called with a C-u prefix, update the entire file.
+Don't need to put the cursor on the cookie.
+
+
+
+
+
+* Typeface
+
+
+| bold        | *hack* |
+| italic      | /hack/ |
+| deleteline  | +hack+ |
+| underline   | _hack_ |
+| subscript   | h_ack  |
+| superscript | h^ack  |
+| monospace   | =hack= |
+
+
+* Blocks
+Org mode uses begin...end blocks for various purposes from including source code examples to capturing time logging information. 
+     #+BEGIN_EXAMPLE
+     Some example from a text file.
+     #+END_EXAMPLE
+
+     #+BEGIN_SRC emacs-lisp
+       (defun org-xor (a b)
+          "Exclusive or."
+          (if a (not b) b))
+     #+END_SRC
+These blocks can be folded and unfolded by pressing <TAB> in the begin line. 
+You can also get all blocks folded at startup by configuring the option =org-hide-block-startup= or on a per-file basis by using
+     #+BEGIN_EXAMPLE
+     #+STARTUP: hideblocks
+     #+STARTUP: nohideblocks
+     #+END_EXAMPLE
+
+
+
+
+* Footnote
+A footnote is started by a footnote marker in square brackets in column 0, no indentation allowd.
+For example:
+
+#+BEGIN_EXAMPLE
+The Org homepage[fn:1] now looks a lot better than it used to.
+...
+[fn:1] The link is: https://orgmode.org
+#+END_EXAMPLE
+
+Org mode extends the number-based syntax to /named/ footnotes and optional inline definition.
+
+
+#+BEGIN_EXAMPLE
+[fn:name]
+[fn:name:a definition]
+[fn::this is the inline defintion of this footnote]
+#+END_EXAMPLE
+
+=C-c C-x f=
+org-footnote-action
+When at a footnote reference, jump to the definition.
+When at a definition, jump to the references if they exist, offer to create them otherwise.
+When neither at definition or reference, create a new footnote, interactively.
+With prefix, offer additional commands in a menu. (=C-u C-c C-x f=)
+
+
+* Org syntax
+To explore the abstract structure of an Org buffer, run this in a buffer:
+=M-: (org-element-parse-buffer) <RET>=
+
+| M-: | eval-expression |
+
+
+
+     
+
+* Agenda
+
+[2018-12-30 20:04:37]
+
+Due to the way Org works, TODO items, time-stamped items, and tagged headlines can be scattered throughout a file or even a number of files. 
+To get an overview of open action items, or of events that are important for a particular date, this information must be collected, sorted and displayed in an organized way. 
+
+Org can select items based on various criteria and display them in a separate buffer. Six different view types are provided:
+
+- an agenda :: that is like a calendar and shows information for specific dates,
+- a TODO list :: that covers all unfinished action items,
+- a match view :: showings headlines based on the tags, properties, and TODO state associated with them,
+- a text search view :: that shows all entries from multiple files that contain specified keywords,
+- a stuck projects view :: showing projects that currently don't move along, and
+- custom views :: that are special searches and combinations of different views. 
+
+The extracted information is displayed in a special agenda buffer. 
+This buffer is read-only, but provides commands to visit the corresponding locations in the original Org files, and even to edit these files remotely. 
+
+By default, the report ignores commented and archived entries. 
+You can override this by setting =org-agenda-skip-comment-trees= and =org-agenda-skip-archived-trees= to nil. 
+
+
+- =org-agenda-window-setup= :: how the agenda buffer is displayed
+- =org-agenda-restore-windows-after-quit= :: whether the window configuration is restored when the agenda exits
+
+
+** Agenda files
+The information to be shown is normally collected from all agenda files, the files listed in the variable =org-agenda-files=. 
+If an entry is a directory, all files in that directory that are matched by
+=org-agenda-file-regexp= will be part of the file list.
+
+Thus, even if you only work with a single Org file, that file should be put into the list. 
+You can customize =org-agenda-files=, but the easiest way to maintain it is through the following commands 
+
+- C-c [ (org-agenda-file-to-front) ::
+     Add current file to the list of agenda files. The file is added to the front of the list. 
+     If it was already in the list, it is moved to the front. 
+     With a prefix argument, file is added/moved to the end.
+
+- C-c ] (org-remove-file) :: 
+     Remove current file from the list of agenda files.
+
+- C-, (org-cycle-agenda-files) :: 
+     Cycle through the files in ‘org-agenda-files’.
+     If the current buffer visits an agenda file, find the next one in the list.
+     If the current buffer does not, find the first agenda file.
+
+
+To restrict the agenda scope for an extended period, use the following commands:
+- C-c C-x < :: (org-agenda-set-restriction-lock)
+               Permanently restrict the agenda to the current subtree. 
+               When with a prefix argument, or with the cursor before the first headline in a file, the agenda scope is set to the entire file. 
+               This restriction remains in effect until removed with C-c C-x >, or by typing either < or > in the agenda dispatcher. 
+               If there is a window displaying an agenda view, the new restriction takes effect immediately.
+
+- C-c C-x > :: (org-agenda-remove-restriction-lock)
+               Remove the permanent restriction.
+
+** Four Org Commands to bound globally
+The four Org commands =org-store-link, org-capture, org-agenda, and org-switchb= should be accessible through global keys.
+Here are suggested bindings for these keys.
+
+#+BEGIN_SRC emacs-lisp
+     (global-set-key "\C-cl" 'org-store-link)
+     (global-set-key "\C-ca" 'org-agenda)
+     (global-set-key "\C-cc" 'org-capture)
+     (global-set-key "\C-cb" 'org-switchb)
+#+END_SRC
+
+** The agenda dispatcher
+The views are created through a dispatcher.
+
+- =C-c a (org-agenda)= ::
+     Dispatch agenda commands to collect entries to the agenda buffer.
+
+
+** The built-in agenda views
+*** Weekly/daily agenda
+The purpose of the weekly/daily agenda is to act like a page of a paper agenda, showing all the tasks for the current week or day. 
+
+- C-c a a     (org-agenda-list) ::
+     Compile an agenda for the current week from a list of Org files. The agenda shows the entries for each day. 
+
+**** Calendar/Diary integration
+In order to include entries from the Emacs diary into Org mode's agenda, you only need to customize the variable
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-include-diary t)
+#+END_SRC
+After that, all diary entries including holidays, anniversaries, etc., will be included in the agenda buffer.
+
+
+
+*** Global TODO list
+The global TODO list contains all unfinished TODO items formatted and collected into a single place.
+
+- C-c a t     (org-todo-list) ::
+     Show the global TODO list. 
+     This collects the TODO items from all agenda files into a single buffer. 
+- C-c a T     (org-todo-list) ::
+     Like the above, but allows selection of a specific TODO keyword. 
+     You are prompted for a keyword, and you may also specify several keywords by separating them with ‘|’ as the boolean OR operator. 
+     With a numeric prefix, the Nth keyword in =org-todo-keywords= is selected. 
+     The r key in the agenda buffer regenerates it, and you can give a prefix argument to this command to change the selected TODO keyword, for example 3 r. 
+     
+
+Normally the global TODO list simply shows all headlines with TODO keywords. 
+This list can become very long. There are two ways to keep it more compact: 
+1. View a TODO item that has been scheduled for execution or have a deadline as no longer open. 
+   Configure the variables =org-agenda-todo-ignore-scheduled, org-agenda-todo-ignore-deadlines, org-agenda-todo-ignore-timestamp= and/or =org-agenda-todo-ignore-with-date= to exclude such items.
+2. TODO items may have sublevels to break up the task into subtasks. In such cases it may be enough to list only the highest level TODO headline and omit the sublevels from the global list. 
+   Configure the variable =org-agenda-todo-list-sublevels= to get this behavior.
+   
+*** Matching tags and properties
+
+- C-c a m     (org-tags-view) ::
+     Produce a list of all headlines that match a given set of tags. The command prompts for a selection criterion, which is a boolean logic expression with tags.
+- C-c a M     (org-tags-view) ::
+     Like C-c a m, but only select headlines that are also TODO items in a not-DONE state and force checking subitems (see =variable org-tags-match-list-sublevels=). 
+     To exclude scheduled/deadline items, see the variable =org-agenda-tags-todo-honor-ignore-options=. Matching specific TODO keywords together with a tags match is also possible.
+
+
+**** Match syntax
+- & :: and
+- | :: or
+- + :: and
+- - :: not
+- {} :: regular expression
+
+
+#+BEGIN_EXAMPLE
+work
+work&boss
++work-boss
+work|laptop
+work|latptop+night
+work+{^boss.*}
+work+TODO="WAITING"
+work+TODO="WAITING"|home+TODO="WAITING"
++work-boss+PRIORITY="A"+Coffee="unlimited"+Effort<2+With={Sarah\|Denny}+SCHEDULED>="<2008-10-11>"
+#+END_EXAMPLE
+Group tags (see Tag hierarchy) are expanded as regular expressions.
+E.g., if ‘:work:’ is a group tag for the group ‘:work:lab:conf:’, then searching for ‘work’ will search for ‘{\(?:work\|lab\|conf\)}’ and 
+searching for ‘-work’ will search for all headlines but those with one of the tags in the group (i.e., ‘-{\(?:work\|lab\|conf\)}’). 
+
+*** Search View
+This agenda view is a general text search facility for Org mode entries. It is particularly useful to find notes. 
+
+- C-c a s     (org-search-view) ::
+     This is a special search that lets you select entries by matching a substring or specific words using a boolean logic. 
+
+Note that in addition to the agenda files, this command will also search the files listed in =org-agenda-text-search-extra-files=. 
+
+
+*** Stuck projects
+A stuck project is a project that has no defined next actions, so it will never show up in the TODO lists Org mode produces. 
+
+- C-c a #     (org-agenda-list-stuck-projects) ::
+     List projects that are stuck.
+- C-c a ! ::
+            Customize the variable org-stuck-projects to define what a stuck project is and how to find it. 
+
+
+You almost certainly will have to configure this view before it will work for you. 
+The built-in default assumes that all your projects are level-2 headlines, and that 
+a project is not stuck if it has at least one entry marked with a TODO keyword TODO or NEXT or NEXTACTION. 
+
+
+** Presentation and sorting
+Before displaying items in an agenda view, Org mode visually prepares the items and sorts them. Each item occupies a single line.
+The line starts with a /prefix/ that contains the /category/ of the item and other important information. 
+
+=org-agenda-tags-column=
+=org-agenda-prefix-format=
+
+*** Categories
+The category is a broad label assigned to each agenda item.
+By default, the category is simply derived from the file name.
+
+Specify a buffer with
+#+BEGIN_EXAMPLE
+#+CATEGORY: Thesis
+#+END_EXAMPLE
+
+Specify a single entry or a (sub)tree with 
+#+BEGIN_EXAMPLE
+:PROPERTIES: 
+:CATEGORY: Thesis
+:END:
+#+END_EXAMPLE
+
+
+The display in the agenda buffer looks best if the category is not longer than 10 characters. 
+You can set up icons for category by customizing the =org-agenda-category-icon-alist= variable. 
+
+*** Time-of-day specifications
+Org mode checks each agenda item for a time-of-day specification.
+
+For agenda display, Org mode extracts the time and displays it in a standard 24 hour format as part of the prefix. 
+
+If the agenda is in single-day mode, or for the display of today, the timed entries are embedded in a time grid.
+(=org-agenda-use-time-grid=, =org-agenda-time-grid=)
+
+*** Sorting agenda items
+Before being inserted into a view, the items are sorted. How this is done depends on the type of view. 
+Sorting can be customized using the variable =org-agenda-sorting-strategy=.
+
+*** DONE Filtering/limiting agenda items
+   :LOGBOOK:  
+   - State "DONE"       from "TODO"       [2018-12-31 Mon 19:14]
+   - State "TODO"       from ""           [2018-12-30 Sun 23:12]
+   :END:      
+Agenda built-in or customized commands are statically defined. 
+Agenda filters and limits provide two ways of dynamically narrowing down the list of agenda entries: /filters/ and /limits/. 
+Filters only act on the display of the items, while limits take effect before the list of agenda entries is built. 
+Filters are more often used interactively, while limits are mostly useful when defined as local variables within custom agenda commands. 
+
+**** Filtering in the agenda
+- / (org-agenda-filter-by-tag) ::
+     <SPC> mean any tag at all.
+     <TAB> at prompt will offer use completion to select a tag.
+     When called with prefix arg, remove the entries that do have the tag.
+     A second / at the prompt will turn off the filter.
+     +/- switch between filtering and excluding the next tag.
+
+- [ ] { } (in search view) ::
+     add new search words ([ and ]) or new regular expressions ({ and }) to the query string.
+     The opening bracket/brace will add a positive search term prefixed by ‘+’, indicating that this search term must occur/match in the entry. 
+     The closing bracket/brace will add a negative search term which must not occur/match in the entry for it to be selected.
+
+- < (org-agenda-filter-by-category) :: 
+     Filter the current agenda view with respect to the category of the item at point.
+     Pressing < another time will remove this filter. 
+     When called with a prefix argument exclude the category of the item at point from the agenda.
+
+- = (org-agenda-filter-by-regexp) :: 
+     Filter the agenda view by a regular expression.
+     When called with a prefix argument, it will filter out entries matching the regexp.
+     With two universal prefix arguments, it will remove all the regexp filters, which can be accumulated.
+
+- | (org-agenda-filter-remove-all) :: 
+     Remove all filters in the current agenda view.
+
+**** Setting limits for the agenda
+=org-agenda-max-entries=
+=org-agenda-max-effort=
+=org-agenda-max-todos=
+=org-agenda-max-tags=
+
+** Commands in the agenda buffer
+
+*C-h o org-agenda-mode*
+
+Entries in the agenda buffer are linked back to the Org file or diary file where they originate. 
+You are not allowed to edit the agenda buffer itself, but commands are provided to show and jump to the original entry location, and to edit the Org files “remotely” from the agenda buffer. 
+In this way, all information is stored only once, removing the risk that your agenda and note files may diverge. 
+
+*** Motion
+| n | org-agenda-next-line     | next line     |
+| p | org-agenda-previous-line | previous line |
+| N | org-agenda-next-item     | next item     |
+| P | org-agenda-previous-item | previous item |
+
+*** View/Go to Org file
+- <SPC> (org-agenda-show-and-scroll-up) ::
+     Display the original location of the item in another window.
+     With prefix arg, make sure that drawers stay folded.
+- L (org-agenda-recenter) :: 
+     Dispaly original location and recenter that window.
+- <TAB> (org-agenda-goto) :: 
+     Go to the original location of the item in another window.
+- <RET> (org-agenda-switch-to) :: 
+     Go to the Org-mode file which contains the item at point.
+- F (org-agenda-follow-mode) :: 
+     Toggle Follow mode.
+     In Follow mode, as you move the cursor through the agenda buffer, the other window always shows the corresponding location in the Org file.
+     The initial setting for this mode in new agenda buffers can be set with the variable =org-agenda-start-with-follow-mode=
+- C-c C-x b (org-agenda-tree-to-indirect-buffer) :: 
+     Display the entire subtree of the current item in an indirect buffer.
+
+*** Change display
+| A           |                                    | Interactively select another agenda view and append it to the current view.                     |
+| o           |                                    | Delete other windows.                                                                           |
+| v d         | org-agenda-day-view                |                                                                                                 |
+| v w         | org-agenda-week-view               |                                                                                                 |
+| v t         | org-agenda-fortnight-view          | fortnight: two weeks.                                                                           |
+| v m         | org-agenda-month-view              |                                                                                                 |
+| v y         | org-agenda-year-view               |                                                                                                 |
+| v <SPC>     | org-agenda-reset-view              | Switch to day/week/month/year view. 3-v-m means jump to month 3.                                |
+| f           | org-agenda-later                   | Go forward in time to display the following =org-agenda-current-span= days.                     |
+| b           | org-agenda-earlier                 | Go backward in time to display earlier dates.                                                   |
+| .           | org-agenda-goto-today              |                                                                                                 |
+| j           | org-agenda-godo-date               | Prompt for a date and go there.                                                                 |
+| J           | org-agenda-clock-goto              | Go to the currently clocked in task in the agenda buffer.                                       |
+| D           | org-agenda-toggle-diary            | Toggle the inclusion of diary entries.                                                          |
+| v l         | org-agenda-log-mode                | Toggle Logbook mode. =org-agenda-log-mode-items=                                                |
+| v [         | org-agenda-manipulate-query-add    | Include inactive timestamps into the current view. Only for weekly/daily agenda.                |
+| v a         | org-agenda-archives-mode           | Toggle Archive mode. Trees that are marked ARCHIVED are also scanned when producing the agenda. |
+| v A         | org-agenda-archives-mode 'files    | Toggle Archive mode. All archive files are included.                                            |
+| v R         | org-agenda-clockreport-mode        | Toggle Clockreport mode.                                                                        |
+| v c         |                                    | clockcheck                                                                                      |
+| v E         | org-agenda-entry-text-mode         | Toggle entry text mode. In this mode, a number of lines will be displayed below the line.       |
+| G           | org-agenda-toggle-time-grid        | Toggle the time grid on and off. =org-agenda-use-time-grid= and =org-agenda-time-grid=          |
+| r/g         | org-agenda-redo                    | Recreate the agenda buffer.                                                                     |
+| s           | org-save-all-org-buffers           | Save all Org buffers, and also the locations of IDs.                                            |
+| C-c C-x C-c | org-agenda-columns                 | Invoke column view in the agenda buffer.                                                        |
+| C-c C-x >   | org-agenda-remove-restriction-lock | Remove the restriction lock on the agenda.                                                                                               |
+
+
+[2018-12-31 17:36:47]
+*** Secondary filtering and query editing
+- /     (org-agenda-filter-by-tag) ::
+     Filter the agenda view with respect to a tag and/or effort estimates.
+- <     (org-agenda-filter-by-category) ::
+     Filter the current agenda view with respect to the category of the item at point.
+- ^     (org-agenda-filter-by-top-headline) ::
+     Filter the current agenda view and only display the siblings and the parent headline of the one at point.
+- =     (org-agenda-filter-by-regexp) ::
+     Filter the agenda view by a regular expression.
+- |     (org-agenda-filter-remove-all) ::
+     Remove all filters in the current agenda view.
+
+*** Remote editing
+| 0--9        |                                              | Digit argument                                                                                                 |
+| C-_         | org-agenda-undo                              | Undo a change duo to a remote editing command.                                                                 |
+| t           | org-agenda-todo                              | Change the TODO state of the item.                                                                             |
+| C-k         | org-agenda-kill                              | Delete the current agenda item along with the entire subtree belonging to it in the original Org file.         |
+| C-c C-w     | org-agenda-refile                            |                                                                                                                |
+| a           | org-agenda-archive-default-with-confirmation | Archive the subtree corresponding to the entry at point                                                        |
+| C-c C-x a   | org-agenda-toggle-archive-tag                | Toggle the ARCHIVE tag for the current headline.                                                               |
+| C-c C-x A   | org-agenda-archive-to-archive-sibling        | Move the subtree corresponding to the current entry to its archive sibling.                                    |
+| C-c C-x C-s | org-agenda-archive                           | Archive the subtree corresponding to the current headline.                                                     |
+| T           | org-agenda-show-tags                         | Show all tags associated with the current item.                                                                |
+| :           | org-agenda-set-tags                          | Set tags for the current headline.                                                                             |
+| ,           | org-agenda-priority                          | Set the priority for the current item. If you reply with <SPC>, the priority cookie is removed from the entry. |
+| S-<up>      | org-agenda-priority-up                       |                                                                                                                |
+| S-<down>    | org-agenda-priority-down                     |                                                                                                                |
+| C-c C-z     | org-agenda-add-not                           | Add a note to the entry.                                                                                       |
+| C-c C-a     | org-attach                                   | Dispatcher for all command related to attachments.                                                             |
+| C-c C-s     | org-agenda-schedule                          |                                                                                                                |
+| C-c C-d     | org-agenda-deadline                          |                                                                                                                |
+| S-<right>   | org-agenda-do-date-later                     | Change the timestamp by one day into the future.                                                               |
+| S-<left>    | org-agenda-do-date-earlier                   |                                                                                                                |
+| >           | org-agenda-date-prompt                       | Change the timestamp associated with the current line.                                                         |
+| I           | org-agenda-clock-in                          | Start the clock on the current item. If a clock is running already, it is stopped first.                       |
+| O           | org-agenda-clock-out                         | Stop the previous started clock.                                                                               |
+| X           | org-agenda-clock-cancel                      |                                                                                                                |
+| J           | org-agenda-clock-goto                        | Jump to the running clock in another window.                                                                   |
+| k           | org-agenda-capture                           | Like =org-capture=, but use the date at point as the default date for the capture template.                    |
+
+*** Dragging agenda lines forware/backward
+| M-<up>   | org-agenda-drag-line-backward | Drag the line at point backword one line. |
+| M-<down> | org-agenda-drag-line-backward | Drag the line at point forward one line.  |
+
+*** Bulk remote editing selected entries
+| m   | org-agenda-bulk-mark             | Mark the entry at point for bulk action. With numeric prefix argument, mark that many successive entries. |
+| *   | org-agenda-bulk-mark-all         | Mark all visible agenda entries for bulk action.                                                          |
+| u   | org-agenda-bulk-unmark           | Unmark entry at point for bulk action.                                                                    |
+| U   | org-agenda-bulk-remove-all-marks | Unmark all marked entries for bulk action.                                                                |
+| M-m | org-agenda-bulk-toggle           | Toggle mark of the entry at point for bulk action.                                                        |
+| M-* | org-agenda-bulk-toggle-all       |                                                                                                           |
+| %   | org-agenda-bulk-mark-regexp      | Mark entries matching a regular expression for bulk action.                                               |
+
+- B (org-agenda-bulk-action) :: Bulk action: act on all marked entries in the agenda.
+  - * :: Toggle persistent marks.
+  - $ :: Archive all selected entries.
+  - A :: Archive entries by moving them to their respective archive siblings.
+  - t :: Change to TODO state.
+  - + :: Add a tag to all selected entries.
+  - - :: Remove a tag from all selected entries.
+  - s :: Schedule all items to a new date. To shift existing schedule dates by a fixed number of days, use something starting with double plus at the prompt, for example ‘++8d’ or ‘++2w’.
+  - d :: Set deadline to a specific date.
+  - r :: Prompt for a single refile target and move all entries.
+  - S :: Reschedule randomly into the comming N days.
+  - f :: Apply a function to marked entries.
+
+*** TODO Calendar commands (wrong type argument)
+   :LOGBOOK:  
+   - State "TODO"       from ""           [2018-12-31 Mon 21:23]
+   :END:      
+| c | org-agenda-goto-calendar  | Open the Emacs calendar and move to the date at the agenda cursor.                        |
+| c | org-calendar-goto-agenda  | When in the Calendar, compute and show the Org mode agenda for the date at the cursor.    |
+| i | org-agenda-diary-entry    | Insert a new entry into the diary, using the date at the curosr and the date at the mark. |
+| M | org-agenda-phases-of-moon | Show the phase of the moon for the three months around current date.                      |
+| S | org-agenda-sunrise-sunset |                                                                                           |
+| C | org-agenda-convert-date   | Convert the date at cursor into many other cultural and historic calendars.               |
+| H | org-agenda-holidays       | Show holidays for three months around the cursor date.                                    |
+
+*** Exporting to a file
+- C-x C-w (org-agenda-write) ::
+     Write the agenda view to a file. 
+     Depending on the extension of the selected file name, the view will be exported as HTML (.html or .htm), Postscript (.ps), PDF (.pdf), Org (.org) and plain text (any other extension). 
+     When exporting to Org, only the body of original headlines are exported, not subtrees or inherited tags. 
+     When called with a C-u prefix argument, immediately open the newly created file. 
+     Use the variable =org-agenda-exporter-settings= to set options for =ps-print= and for =htmlize= to be used during export.
+
+*** Quit and Exit
+- q (org-agenda-quit) ::
+     Quit agenda, remove the agenda buffer.
+- x (org-agenda-exit) :: 
+     Exit agenda, remove the agenda buffer and all buffers loaded by Emacs for the compilation of the agenda.
+     Buffers created by the user to visit Org files will be removed.
+
+
+
+
+[2019-12-31 22:54:55]
+** TODO Custom agenda views
+
+** TODO Exporting agenda views
+
+** TODO Agenda column view
+

@@ -1,0 +1,21 @@
+\message{ !name(emacs.tex)}\documentclass[a4paper,10pt]{book}
+\input{preamble}
+\begin{document}
+
+\message{ !name(useful-features.tex) !offset(112) }
+ switches to the buffer recorded in register \keyword{r}, pushes a mark, and moves point to the recorded position.
+(The mark is not pushed if point was already at the recorded position, or in successive calls to the command.)
+The contents of the register are not changed, so you can jump to the saved position any number of times.
+
+
+
+\message{ !name(emacs.tex) !offset(38) }
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+

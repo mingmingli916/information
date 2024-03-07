@@ -1,0 +1,35 @@
+\documentclass[a4paper,10pt]{ctexbook}
+\input{preamble}
+\begin{document}
+\frontmatter{}
+\include{title}
+\cleardoublepage{}
+\phantomsection{}
+\tableofcontents{}
+\cleardoublepage{}
+\phantomsection{}
+\listoffigures{}
+\cleardoublepage{}
+\phantomsection{}
+\listoftables{}
+
+\mainmatter{}
+
+\include{perception}
+
+
+\backmatter{}
+\cleardoublepage{}
+\phantomsection{}
+% \nocite{*}
+\bibliographystyle{plain}
+\bibliography{tex}
+\cleardoublepage{}
+\phantomsection{}
+\printindex{}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

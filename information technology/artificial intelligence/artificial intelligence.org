@@ -1,0 +1,629 @@
+:PROPERTIES:
+:ID:       1A64F002-AF71-46B8-B672-E5D7890B785E
+:END:
+#+title: ai
+
+You may need to learn [[id:6E2E2BCD-B887-4057-B586-1D1FDE43BAB3][linear algebra]], [[id:3E3773AD-6B20-4D3B-987D-1F7EF9CC8230][probability]] and [[id:B5DF4CBA-4748-4D0E-8CB6-49E496321C9D][calculus]].
+The platform is [[id:22B1088C-A196-43C1-A621-77FD75DFC5B8][pytorch]].
+
+
+
+* AI, ML and DL
+Artificial intelligence (AI) is the intelligence of machines or software, as opposed to the intelligence of humans or animals.
+It is a field of study in computer science that develops and studies intelligent machines.
+Such machines may be called AIs.
+
+
+Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions.
+The solution is to allow computers to learn from experience (data) and understand the world in terms of a hierarchy of concepts, with each concept defined through its relation to simpler concepts.
+
+
+
+Deep learning (DL) is the subset of machine learning methods based on artificial neural networks with representation learning.
+The adjective "deep" refers to the use of multiple layers in the network.
+
+
+Thus in the scope view, AI > ML > DL.
+
+The age of “Big Data” has made machine learning much easier because the key burden of statistical estimation – generalizing well to new data after observing only a small amount of data – has been considerably lightened.
+
+
+
+
+
+
+* DONE Learning
+CLOSED: [2023-12-13 Wed 18:18]
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-12-13 Wed 18:18]
+:END:
+A program is said to learn from experience E with respect to task T and performance measure P, if it’s performance at tasks in T, as measured by P, improves with experience E.
+
+
+How this happens?
+A program (or a model) has lots of parameters.
+By adjusting the parameters, the performance measure P may increase or decrease.
+In the domain of AI, the processing of adjusting the parameters is called training.
+One commonly used algorithm to adjust the parameters is stochastic gradent descent (SGD).
+
+
+
+
+
+
+
+* DONE Numerical Computation
+*numerical computation*: typically refers to algorithms that solve mathematical problems by methods that update estimates of the solution via an iterative process.
+
+*optimization*: finding the value of an argument that minimizes or maximizes a function.
+
+** overflow and underflow
+*underflow*: occurs when numbers near zero are rounded to zero.
+*overflow*: occurs when numbers with large magnitude are approximated as $\infty$ or $-\infty$.
+
+*softmax functon*:
+\begin{equation}
+\mathrm{softmax}(x)_i = \frac{\exp(x_i)}{\sum_{j=1}^n\exp(x_j)}
+\end{equation}
+
+
+** poor conditioning
+*conditioning*: how rapidly a function changes with respect to small changes in its inputs.
+
+Functions that change rapidly when their inputs are perturbed slightly can be problemic for scientific computation because rounding errors in the inputs can result in large changes in the output.
+
+\begin{equation}
+f(x)=A^{-1}x
+\end{equation}
+When $A \in \mathbb{R}^{n\times n}$ has an eigenvalue decompositon, 
+its *condition number* is :
+\begin{equation}
+\max_{i,j}\left | \frac{\lambda_i}{\lambda_j}\right |
+\end{equation}
+This is the ratio of the magnitude of the largest and the smallest eigenvalue.
+
+
+** gradient-based optimization
+*objective function* or *criterion*: the function we want to minimize or maximize.
+When we are minimizing it, we also call it the *cost function*, *loss function*, or *error function*.
+
+We often denote the value that minimizes or maximizes a function with a superscript *. like: $x^*=\arg\min f(x)$
+
+
+*gradient descent* or *method of steepest descent*: reducing f(x) by moving x in small steps with the opposite sign of the derivative.
+\begin{equation}
+x^{'} = x - \epsilon\nabla_x f(x)
+\end{equation}
+
+$\epsilon$ is the *learning rate*, a positive scalar determining the size of the step.
+*linear search*: evaluate $f(x-\epsilon\nabla_xf(x))$ for several values of $\epsilon$ and choose the one that result in the smallest objective function value.
+
+*directional derivative*: in direction $u$ (a unit vector) is the slop of the functions $f$ in direction $u$.
+\begin{equation}
+u^{\top}\nabla_xf(x)
+\end{equation}
+
+*critical points* or *stationary points*: points where $f^{'}(x)=0$.
+
+*local minimum*: a point where $f(x)$ is lower than at all neighboring points.
+*local maximum*: a point where $f(x)$ is greater than at all neighboring points.
+*saddle points*: critical points are neither maxima nor minima.
+
+*global minimum*: a point that obtain the absolute lowest value of $f(x)$.
+
+
+** Jacobian and Hessian Matrices
+*Jacobian matrix*:
+if we have a function $f: \mathbb{R}^m \rightarrow \mathbb{R}^n$,
+then the Jacobian matrix $J \in \mathbb{R}^{n\times m}$ of $f$ is defined:
+\begin{equation}
+J_{i,j}=\frac{\partial}{\partial x_j}f(x)_i
+\end{equation}
+
+*Hessian matrix*:
+\begin{equation}
+H(f)(x)_{i,j} = \frac{\partial^2}{\partial x_i \partial x_j}f(x)
+\end{equation}
+
+Equivalently, the Hessian is the Jacobian of the gradient.
+
+Anywhere that the second parital derivatives are continous, the differential operators are commutative:
+\begin{equation}
+\frac{\partial^2}{\partial x_i \partial x_j}f(x) = \frac{\partial^2}{\partial x_j \partial x_i}f(x) 
+\end{equation}
+
+
+The second derivative in a specific direction represented by a unit vector $d$ is given by $d^\top Hd$.
+
+*first-order optimization algorithms*: optimization algorithms that use only the gradient.
+*second-order optimization algorithms*: optimization algorithms that use the Hessian matrix.
+
+
+Deep learning algorithms tend to lack guarantees because the family of functions used in deep learning is quite complicated.
+
+In the context of deep learning, we sometimes gain some guarantees by restricting ourselves to functions that are either Lipschitz continuous or have Lipschitz continuous derivatives.
+
+*Lipschitz continuous function*:
+\begin{equation}
+\forall x, \forall y, |f(x)-f(y)| \le \mathcal{L} ||x-y||_2
+\end{equation}
+$\mathcal{L}$ is *Lipschitz constant*.
+
+The condition number of the Hessian measures how much the second derivatives differ from each other.
+When the Hessian has a poor condition number, gradient descent performs poorly.
+1. in one direction, the derivative increase rapidly, while in another direction, it increase slowly.
+2. makes choosing a good step size difficult.
+
+
+** constrained optimization
+*constrained optimization*: finding the maximal or minimal value of $f(x)$ for value $x$ in some set $\mathbb{S}$.
+Points $x$ that line within the set $\mathbb{S}$ are called *feasible* points.
+
+The *Karush-Kuhn-Tucker* (KKT) approch provides a very general solution to constrained optimization.
+
+With KKT approch, we introduce a new function called a *generalized Lagrangian* or *generalized Lagrange function*.
+
+To define the Lagrangian, we first need to describe $\mathbb{S}$ in terms of equations and inequalities.
+\begin{equation}
+\mathbb{S} = \{x |\ \forall i, g^{(i)}(x) = 0 \quad \mathrm{and}\quad \forall j, h^{(j)}(x) \le 0\}
+\end{equation}
+
+The equations involving $g^{(i)}$ are called the *equality constraints* and the inequalities involving $h^{(j)}$ are called *inequality constraints*.
+
+We introduce new variables $\lambda_i$ and $\alpha_j$ for each constraint, these are called the KKT multipliers. 
+The *generalized Lagrangian* is then defined as:
+\begin{equation}
+\mathrm{L}(x,\lambda,\alpha) = f(x) + \sum_i \lambda_i g^{(i)}(x) + \sum_j \alpha_j h^{(j)}(x)
+\end{equation}
+
+
+We say that a constraint $h^{(i)}(x)$ is *active* if $h^{(i)}(x^*)=0$.
+
+
+
+* DONE Machine Learning Basics
+Most machine learning algorithms have settings called *hyperparameters*, which must be determined outside the learning algorithms itself.
+
+Machine learning is essentially _a form of applied statistics_ _with increased emphasis on the use of computers to statistically estimate complicated functions_ and _a decreased emphasis on proving confidence intervals around these functions_.
+
+Two approches to statistics:
+1. frequentist estimators
+2. Bayesian inference
+
+** DONE learning algorithms
+A machine learning algorithm is an algorithm that is able to learn from data.
+
+*A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E*.
+
+An *example* is a collection of *features* that have been quantitatively measured from some object or event that we want the machine learning system to process.
+
+*accuracy*: the proportion of examples for which the model produces the correct output.
+*error rate*: the proportion of examples for which the model produces the incorrect output.
+
+*test set*: separate from the data used for training the machine learning system.
+
+*dataset*: a collection of many examples. Sometimes we call examples *data point*.
+
+*Unsupervised learning algorithms* experience a dataset containing many features, then learn useful properties of the structure of this dataset.
+
+
+*Supervised learning* algorithms experience a dataset containing features, but each example is also associated with a *label* or *target*.
+
+*reinforcement learning* algorithms interact with an environment, so there is a feedback loop between the learning system and its experiences.
+
+A *design matrix* is a matrix containing a different example in each row.
+
+** DONE capacity, overfitting and underfitting
+*generalization*: the *ability* to perform well on previously *unobserved* inputs.
+
+
+What separates *machine learning from optimization* is that we want the *generalization error* , also called the *test error* , to be low as well. The *generalization error* is defined as the expected value of the error on a new input.
+
+
+How can we affect performance on the test set when we get to observe only the training set? 
+The field of *statistical learning theory* provides some answers. 
+If the training and the test set are collected arbitrarily, there is indeed little we can do.
+If we are allowed to make some *assumptions* about how the training and test set are collected, then we can make some progress.
+
+*data generating process*: a probability distribution over datasets generates the train and test data.
+
+
+*i.i.d. assumptions*:
+the examples in each dataset are *independent* from each other, and that the train set and test set are *identically distributed*, drawn from the same probability distribution as each other.
+
+We call that shared underlying distribution the *data generating distribution*, denoted $p_{data}$.
+
+The factors determining how well a machine learning algorithm will perform are its ability to:
+1. Make the training error small.
+2. Make the gap between training and test error small.
+
+These two factors correspond to the two central challenges in machine learning: *underfitting* and *overfitting*. 
+Underfitting occurs when the model is not able to obtain a sufficiently low error value on the training set. 
+Overfitting occurs when the gap between the training error and test error is too large.
+
+
+A model’s *capacity* is its ability to fit a wide variety of functions.
+
+*hypothesis space*: the set of functions that the learning algorithm is allowed to select as being the solution.
+
+
+A model specifies which family of functions the learning algorithm can choose from when varying the parameters in order to reduce a training objective. This is called the *representational capacity* of the model.
+
+
+In practice, the learning algorithm does not actually find the best function, but merely one that significantly reduces the training error. These additional limitations, such as the imperfection of the optimization algorithm, mean that the learning algorithm’s *effective capacity* may be less than the *representational capacity* of the model family.
+
+*Occam’s razor*: among competing hypotheses that explain known observations equally well, one should choose the “simplest” one.
+
+
+To reach the most extreme case of arbitrarily high capacity, we introduce the concept of *nonparametric* models.
+
+Parametric models learn a function described by a parameter vector whose size is finite and fixed before any data is observed. Non-parametric models have no such limitation.
+
+
+The error incurred by an oracle making predictions from the true distribution $p_{(x,y)}$ is called the *Bayes error*.
+
+
+The *no free lunch theorem* for machine learning states that, averaged over all possible data generating distributions, every classification algorithm has the same error rate when classifying previously unobserved points.
+
+The goal of machine learning research is not to seek a universal learning algorithm or the absolute best learning algorithm. Instead, our goal is to understand what kinds of distributions are relevant to the “real world” that an AI agent experiences, and what kinds of machine learning algorithms perform well on data drawn from the kinds of data generating distributions we care about.
+
+
+
+*Regularization is any modification we make to a learning algorithm that is intended to reduce its generalization error but not its training error.*
+
+
+** DONE hyperparameters and validation sets
+*validation set* is used for setting *hyperparameters*.
+
+** DONE estimators, bias, variance
+In order to distinguish estimates of parameters from their true value, our convention will be to denote a point estimate of a parameter $\theta$ by $\hat{\theta}$.
+
+Let $\{x_{(1)},... , x_{(m)}\}$ be a set of $m$ independent and identically distributed (i.i.d.) data points. A *point estimator* or *statistic* is any function of the data:
+\begin{equation}
+\hat{\theta}_m = g(x^{(1)},...,x^{(m)})
+\end{equation}
+
+The *bias* of an estimator is defined as:
+\begin{equation}
+\mathrm{bias}(\hat{\theta}_m) = \mathbb{E}(\hat{\theta}_m) - \theta
+\end{equation}
+
+An estimator $\hat{\theta}_m$ is said to be *unbiased* if $\mathrm{bias}(\hat{\theta}_m)=0$.
+An estimator  $\hat{\theta}_m$ is said to be *asymptotically unbiased* if $\lim_{m\rightarrow \infty}\mathrm{bias}(\hat{\theta}_m) = 0$.
+
+
+A common estimator of the Gaussian mean parameter is known as the *sample mean*:
+\begin{equation}
+\hat{\mu}_m = \frac{1}{m}\sum_{i=1}^m x^{(i)}
+\end{equation}
+
+*sample variance*:
+\begin{equation}
+\hat{\sigma}^2_m = \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\hat{\mu_m})^2
+\end{equation}
+
+*unbiaed sample variance*:
+\begin{equation}
+\hat{\sigma}^2_m = \frac{1}{m-1}\sum_{i=1}^m(x^{(i)}-\hat{\mu_m})^2
+\end{equation}
+
+
+*central limit theorem*: the mean will be approximately distributed with a normal distribution.
+
+
+*consistency*:
+\begin{equation}
+p\lim_{m\rightarrow\infty}\hat{\theta}_m=0
+\end{equation}
+
+** DONE maximum likelihood estimation
+Rather than guessing that some function might make a good estimator and then analyzing its bias and variance, we would like to have some priciple from which we can derive specific functions that are good estimators for different models.
+
+The most common such principle is the maximum likelihood estimation.
+
+\begin{equation}
+\theta_{\mathrm{ML}} = \mathop{\arg\max}_\theta p_{\mathrm{model}}(\mathbb{X};\theta) =  {\arg\max}_\theta \prod_{i=1}^m p_{\mathrm{model}}(x^{(i)};\theta) 
+\end{equation}
+
+processed to:
+\begin{equation}
+\theta_{\mathrm{ML}} = \mathop{\arg\max}_\theta  \mathbb{E}_{x\sim \hat{p}_{data}}  \log p_{\mathrm{model}}(x;\theta)
+\end{equation}
+NNL: negative log-likelihood
+
+
+The main appeal of the maximum likelihood estimation is:
+under some appropriate conditions, 
+1. The true distribution $p_{\mathrm{data}}$ must line within the model family $p_{\mathrm{model}}(\cdot;\theta)$
+2. The true distribution $p_{\mathrm{data}}$ must correspond to exactly one value of $\theta$.
+the maximum likelihood estimator has the property of consistency.
+
+
+*statistic efficiency*: 
+one consistent estimator may obtain lower generalization error for a fixed number of samples $m$, or equivalently, may require fewer examples to obtain a fixed level of generalization error.
+
+
+For these reasons (consistency and efficiency), maximum likelihood is often considered the preferred estimator to use for machine learning.
+
+** DONE supervised learning algorithms
+\begin{equation}
+w^\top x + b = b + \sum_{i=1}^m\alpha_i x^\top x^{(i)}
+\end{equation}
+
+\begin{equation}
+f(x) = b + \sum_{i}\alpha_i k(x,x^{(i)})
+\end{equation}
+$k(x,x^{(i)})$ is called a *kernel*.
+
+
+*radial basis function* (RBF):
+\begin{equation}
+k(u,v) = \mathcal{N}(u-v;0;\sigma^2I)
+\end{equation}
+
+The category of algorithms that employ the kernel trick is known as *kernel machines* or *kernel methods*.
+
+
+The insight of *stochastic gradient descent* is that the gradient is an expectation.
+The expectation may be approximately estimated using a small set of samples.
+
+** DONE building a machine learning algorithm
+1. model
+2. cost function
+3. optimization procedure
+
+
+
+** DONE Chanllenges movivating deep learning
+*curse of dimensionality*: 
+machine learning problems become exceedingly difficult when the number of dimension is high.
+
+
+*smoothness prior* or *local constancy prior*: the function should not change very much within a small region.
+
+
+*local kernel*: 
+$k(u,v)$ is large when $u=v$ and descrease as $u$ and $v$ grow further apart from each other.
+
+The term “manifold,” in machine learning tends to be used more loosely to designate a connected set of points that can be approximated well by considering only a small number of degrees of freedom, or dimensions, embedded in a higher-dimensional space.
+
+
+*Manifold learning* algorithms surmount the  obstacle(to learn functions with interesting variations across all of $\mathbb{R}^n$ ) by assuming that most of $\mathbb{R}^n$ consists of invalid inputs, and that interesting inputs occur only along a collection of manifolds containing a small subset of points, with interesting variations in the output of the learned function occurring only along directions that lie on the manifold, or with interesting variations happening only when we move from one manifold to another.
+
+
+* Processes of Machine Learning
+1. Load data
+2. Pre-precessing (Optional)
+3. Model
+4. Loss function
+5. Optimizer
+6. Train and fine-tuning
+7. Predict
+
+
+* Least Mean Square (LMS)
+
+* K-Nearest Neighbors (KNN)
+
+* Support Vector Machine (SVM)
+
+* Decision Tree
+
+* Random Forest
+
+* Boost
+
+* Linear Regression
+
+* Logistic Regression
+* Distances
+
+** Euclidean Distance
+
+** Cosine Distance
+
+** Manhattan Distance
+
+** Mahalanob Distance
+
+** Pearson Correlation
+
+** KL Divergence
+
+** Cross Entropy
+
+** Hamming Distance
+
+** Edit Distance
+
+** Chebyshev Distance
+
+** Inner Distance
+
+** Jaccard Distance
+
+* Metrics
+** Precision, Recall, Accuracy and F1
+Suppose the real value is $y$ and the predicted value is $\hat{y}$.
+
+Here's all the relations between $y$ and $\hat{y}$.
+|                    | $y$ is true         | $y$ is false        |
+| $\hat{y}$ is true  | true positive (TP)  | false positive (FP) |
+| $\hat{y}$ is false | false negative (FN) | true negative (TN)  |
+
+\begin{equation}
+\text{precision (P)}=\frac{TP}{TP+FP}
+\end{equation}
+
+Precision reflects the ability in predicted positive samples.
+It focuses on predicted positive samples.
+
+\begin{equation}
+\text{recall (R)}=\frac{TP}{TP+FN}
+\end{equation}
+
+Recall reflects the ability in real positive samples.
+It focuses on real positive samples.
+
+\begin{equation}
+\text{accuracy}=\frac{TP+TN}{TP+FP+FN+TN}
+\end{equation}
+
+
+Accuracy reflects the ability in predicted samples.
+It focuses on true positive and true negative.
+
+\begin{equation}
+\text{F1}= (\frac{R^{-1} + P^{-1}}{2}^{})^{-1} = 2\frac{P\cdot R}{P + R}
+\end{equation}
+
+It focuses on false negative and false positive.
+
+
+
+* DONE Deep Feedforward Networks
+
+* DONE Regularization for Deep Learning
+* DONE Optimization for Training Models
+* DONE Convolutional Networks
+* Sequence Modeling: Recurrent and Recursive Nets
+Recurrent neural networks, or RNNs are a family of neural networks for processing sequential data.
+
+To go from multilayer networks to recurrent networks, we need to take advantage of one of the early ideas: sharing parameters across different parts of a model.
+
+The convolution operation allows a network to share parameters across time but is shallow. Recurrent networks share parameters in a different way. Each member of the output is a function of the previous members of the output.
+
+** Unfolding Computational Graphs
+A classical form of a dynamic system:
+\begin{equation}
+\label{dynamic-system}
+s^{(t)} = f(s^{(t-1)};\theta),
+\end{equation}
+where $s^{(t)}$ is called the state of the system.
+
+Equation \eqref{dynamic-system} is recurrent because the definition of $s$ at time $t$ is refers back to the same definition at time $t-1$.
+
+For a finite number of time steps $\tau$, the graph can be unfolded by applying the definition $\tau -1$ times.
+
+A dynamic system driven by an external signal $x^{(t)}$,
+\begin{equation}
+s^{(t)} = f(s^{(t-1)},x^{(t)};\theta),
+\end{equation}
+
+[[file:pics/rnn-unfolding.png]]
+
+Unfolding is the operation that maps a circuit to a computational graph with repeated pieces.
+
+The unfolding process introduces two major advantages:
+1. Regardless of the sequence length, the learned model always has the same input size.
+2. It is possible to use the same transition function $f$ with the same parameters at every time step.
+
+
+** Recurrent Neural Networks
+Some examples of important design patterns for recurrent neural networks:
+- Recurrent networks that produce an output at each time step and have recurrent connections between hidden units.
+[[file:pics/rnn-example1.png]]
+- Recurrent networks that produce an output at each time step and have recurrent connections only from the output at one time step to the hidden units at the next time step.
+[[file:pics/rnn-example2.png]]
+- Recurrent networks with recurrent connections between hidden units, that read an entire sequence and then produce a single output.
+[[file:pics/rnn-example3.png]]
+
+For each time step from $t=1$ to $t=\tau$:
+\begin{equation}
+a^{(t)}  = b + Wh^{(t-1)} + Ux^{(t)},
+\end{equation}
+
+\begin{equation}
+h^{(t)} = \tanh(a^{(t)}),
+\end{equation}
+
+\begin{equation}
+o^{(t)}=c+Vh^{(t)},
+\end{equation}
+
+\begin{equation}
+\hat{y}^{(t)} = \mathrm{softmax}(o^{(t)}).
+\end{equation}
+where the parameter are the bias vectors $b$ and $c$ along with the weight matrices $U,V$ and $W$ respectively, for input-to-hidden, hidden-to-output and hidden-to-hidden cnnections.
+
+
+
+Some common ways of providing an extra input to an RNN are:
+1. as an extra input at each time step, or
+2. as the initial state $h^{(0)}$, or
+3. both
+
+
+** Bidirectional RNNs
+RNN: to output a prediction of $y^{(t)}$ that may depend on the whole input sequence.
+[[file:pics/bidirectional-rnn.png]]
+
+** Encoder-Decoder Sequence-to-Sequence Architectures
+[[file:pics/encoder-decoder.png]]
+
+One clear limitation of thie architecture is when the context C output by encoder RNN has a dimension that is too small to properly summarize a long sequence.
+
+
+** Deep Recurrent Networks
+The computation in most RNNs can be decompose into three blocks of parameters ans associated tranformations:
+1. from the input to the hidden state,
+2. from the previous hidden state to the next hidden state, and
+3. from the hidden state to the output.
+
+[[file:pics/deep-rnn.png]]
+
+** Recursive Neural Networks
+[[file:pics/recursive-nn.png]]
+
+
+** The Challenge of Long-Term Dependencies
+The basic problem is that gradient propagated over man stages tend to either vanish (most of the time) or explode (rarely, but with much damage to the optimization).
+
+** Echo State Networks
+The recurrent weights mapping from $h^{(t-1)}$ to $h&{(t)}$ and the input weights mapping from $x^{(t)}$ to $h^{(t)}$ are some of the most difficult parameters to learn in a recurrent network. 
+One proposed approach to avoiding this difficulty is to set the recurrent weights such that the recurrent hidden units do a good job of capturing the history of past inputs, and only learn the output weights.
+
+
+The original idea was to make the eigenvalues of the Jacobian of the state-to-state transition function be close to 1.
+
+** Leaky Units and Other Stratergies for Multiple Time Scales
+One way to deal with long-term dependencies is to design a model that operates at multiple time scales, so that some parts of the model operate at fine-grained time scales and can handle small details, while other parts operate at coarse time scales and transfer information from the distant past to the present more efficiently.
+
+** The Long Short-Term Memory and Other Gated RNNs
+Like leaky units, gated RNNs are based on the idea of creating paths through time that have derivatives that neither vanish nor explode. Leaky units did this with connection weights that were either manually chosen constants or were parameters. Gated RNNs generalize this to connection weights that may change at each time step.
+
+The clever idea of introducing self-loops to produce paths where the gradient can flow for long durations is a core contribution of the initial long short-term memory (LSTM) model
+
+** Optimization for Long-Term Dependencies
+
+*** Clipping Gradients
+1. clip the parameter gradient from minibatch element-wise
+2. clip the norm $||g||$ of the gradient g
+
+*** Regularizing to Encourage Information Flow
+Gradient clipping helps to deal with exploding gradients, but it does not help with vanishing gradients.
+
+regularize or constrain the parameters so as to encourage "information flow".
+
+** Explicit Memory
+Intelligence requires knowledge and acquiring knowledge can be done via learning, which has motivated the development of large-scale deep architectures.
+
+[[file:pics/explicit-memory.png]]
+
+
+
+
+* TODO [#C] Object Detection [0/3]
+
+** Intersection over Union (IoU)
+** TODO [#C] Faster R-CNN
+** TODO [#C] Mask R-CNN
+** TODO [#C] YOLO
+
+* TODO [#C] Segmentation
+* TODO Transformer
+* TODO [#C] Diffusion
+* TODO Reinforcement Learning
+* TODO Generative Learning
+* OCR
+* Large Language Model (LLM)

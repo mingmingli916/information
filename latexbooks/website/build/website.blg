@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: build/website.aux
+A level-1 auxiliary file: title.aux
+A level-1 auxiliary file: installation.aux
+A level-1 auxiliary file: application-strutcture.aux
+A level-1 auxiliary file: template.aux
+A level-1 auxiliary file: deploy.aux
+The style file: plain.bst
+Database file #1: lib.bib
+Warning--to sort, need author, editor, or key in 
+Warning--empty author and editor in 
+Warning--empty publisher in AZ21
+Warning--empty publisher in IG16
+You've used 9 entries,
+            2118 wiz_defined-function locations,
+            549 strings with 4624 characters,
+and the built_in function-call counts, 1975 in all, are:
+= -- 177
+> -- 57
+< -- 0
++ -- 26
+- -- 16
+* -- 95
+:= -- 343
+add.period$ -- 26
+call.type$ -- 9
+change.case$ -- 28
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 106
+empty$ -- 199
+format.name$ -- 16
+if$ -- 414
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 15
+newline$ -- 47
+num.names$ -- 16
+pop$ -- 63
+preamble$ -- 1
+purify$ -- 26
+quote$ -- 0
+skip$ -- 56
+stack$ -- 0
+substring$ -- 65
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 4
+while$ -- 18
+width$ -- 10
+write$ -- 89
+(There were 4 warnings)

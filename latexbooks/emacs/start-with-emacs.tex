@@ -1,0 +1,52 @@
+
+\chapter{Start With Emacs}
+\label{cha:start-with-emacs}
+
+\section{Start Emacs}
+\label{sec:start-emacs}
+
+There are two ways to start Emacs:
+\begin{itemize}
+\item Click the Emacs icon \parbox{2em}{\includegraphics[width=2em]{logo}}.
+\item Use the command \argument{emacs} in your terminal.
+\end{itemize}
+
+
+\begin{lstlisting}[language=sh]
+# To get emacs usage.
+emacs --help
+
+# To simply start the Emacs
+emacs
+\end{lstlisting}
+
+
+\section{Exit Emacs}
+\label{sec:exit-emacs}
+
+In Emacs, use \keyword{C-x C-c} (x: execute; c: clear) to exit.
+
+
+\section{Working With Files}
+\label{sec:working-with-files}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}lp{0.5\textwidth}}
+    \toprule
+    Binding & \head{Meaning}\\
+    \midrule
+    C-x C-f (f: file)& Open or create a file.\\
+    C-x C-v & Read an alternate file, replacing the one read with \keyword{C-x C-f}.\\
+    C-x i (i: insert) & Insert file at cursor position.\\
+    C-x C-s (s: save) & Save buffer.\\
+    C-x C-w (w: write) & Save buffer as another file.\\
+    \bottomrule
+  \end{tabular}
+  \caption{Working with files}
+  \label{tab:working-with-files}
+\end{table}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

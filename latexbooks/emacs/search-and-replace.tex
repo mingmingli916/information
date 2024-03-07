@@ -1,0 +1,100 @@
+
+\chapter{Search and Replace}
+\label{cha:search-replace}
+
+\section{Different Kinds of Searches}
+\label{sec:diff-kinds-search}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lp{0.5\textwidth}}
+    \toprule
+    \head{Name} & \head{Meaning}\\
+    \midrule
+    simple search & give a string and find the next occurrence\\
+    incremental search & start to search as soon as you type the first character and continues to search as you type more characters\\
+    word search & like a simple search, but search only for full words and phrases\\
+    regular expression search & search a pattern \\
+    incremental regular expression search & combination of incremental search and regular search\\
+    \midrule
+    simple search and replace & replace all occurrences \\
+    query replace & conditional replace a string\\
+    query replace word & like query replace, but replace only for full words and phrase\\
+    regular expression replace & use pattern to find string and replace\\
+    \bottomrule
+  \end{tabular}
+  \caption{Search and replace}
+  \label{tab:search-and-replace}
+\end{table}
+
+
+By default, searches are case-insensitive.
+One exception: if you type any uppercase letters, Emacs makes the whole search string case-sensitive.
+\newpage{}
+
+\section{Bindings}
+\label{sec:bindings}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}ll}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{2}{*}{search} & C-s & incremental search\\
+                 & C-M-s or C-u C-s & incremental regular expression search\\
+    \midrule
+    \multirow{3}{*}{replace} & M-\% & query replace\\
+                 & C-u M-\% & query replace word\\
+                 & C-M-\% & regular expression replace\\
+    \bottomrule
+  \end{tabular}
+  \caption{Search and replace}
+  \label{tab:search-and-replace-cmd}
+\end{table}
+
+
+\begin{tcolorbox}
+  Remember:\\
+  Type \keyword{C-h k C-s} to get the help information to learn how to use incremental search well.
+\end{tcolorbox}
+
+Here are some useful bindings from the help page:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}lp{0.6\textwidth{}}}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    C-j & match end of line, need directly follow \keyword{C-s}\\
+    C-w & yank next word or character in buffer\\
+    C-y & yank last killed text\\
+    M-y & yank previous killed text\\
+    \midrule
+    C-s & next matched string\\
+    C-r & previous matched string\\
+    RET & exit, leaving point at location found\\
+    \midrule
+    M-c (c: case) & toggle case-sensitivity\\
+    M-e (e: edit)& edit the search sting in the minibuffer\\
+    \midrule
+    M-s M-< & go to the first match\\
+    M-s M-> & got to the last match\\
+    M-s w & toggle word mode\\
+    \midrule
+    M-n & search for the next item in the search ring\\
+    M-p & search for the previous item in the search ring\\
+    C-M-i & complete the search string using the search ring\\
+    \bottomrule
+  \end{tabular}
+  \caption{Commands in incremental search}
+  \label{tab:commands-in-incremental-search}
+\end{table}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

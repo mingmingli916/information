@@ -1,0 +1,115 @@
+
+\chapter[Commands and Environments]{Common Commands and Environments}
+
+\section{Commands}
+\label{sec:commands}
+
+
+\lstset{language=TeX}
+\begin{lstlisting}
+% produces some space.
+\quad                           
+
+% ended a line.
+\\ or \newline                  
+
+% prevents a line break at the current position.
+\nolinebreak                    
+
+%  `` and '' is the quotation in latex. 
+``hello''                       
+
+% ragged left  
+{\raggedleft Example text}      
+% ragged right
+{\raggedright Example text}     
+% centering 
+{\centering Example text}        
+
+
+% tells LaTeX to produce a file with the extension .toc. 
+% This file will be used to generate a table of contents. 
+% We had to typeset twice: in the first run, the .toc file
+% was written and in the second run, LaTeX read it and processed it.
+\tableofcontents{}              
+
+
+% causes a page break. Furthermore, the text has been 
+% stretched to fill the page down to the bottom.
+\pagebreak{}
+% breaks the page as well, but it doesn't stretch the
+% text: the remaining space of the page will stay empty.
+\newpage{}
+% forbids page breaking
+\nopagebreak{}
+
+
+% to squeeze more text onto a page. 
+\enlargethispage{2\baselineskip}
+
+
+
+% placed a superscripted number at the current position.
+% Further, it prints its argument text into the bottom of 
+% the page, marked by the same number
+\footnote{text}
+% modify the line that separates footnotes from the text 
+% is produced by the command \footnoterule.
+\renewcommand{\footnoterule}{\noindent\smash{\rule[3pt]{\textwidth}{0.4pt}}}
+
+\rule[raising]{width}{height}
+% draw a line 1pt at thick, as wide as text, raised a bit by 3 pt
+\rule[3pt]{\textwidth}{1pt}
+
+% \smash, we let our line pretend to have a height and a depth of 
+zero, so it's occupying no vertical space at all
+
+
+% when we use \footnote inside an argument, there will be an error. 
+% \protect simply prevents this processing error. 
+\protect{}
+\section{Section \protect{\footnote{text}}}
+% to avoid footnote appearing in heading and table of content
+\section[title without footnote]{Section \protect{\footnote{text}}}
+
+
+
+% ends the current page and causes all already defined figures and
+tables to be printed out.
+\clearpage{}
+
+\cleardoublepage{}
+
+
+% To be able to refer to a certain point, we have to mark it by a label.
+% We can reference to the name of that label afterwards.
+% notice , typeset twice to produce the cross reference
+\label % marks the position
+\ref % prints the number of the element we refer to 
+\pageref % prints the page number of that element
+
+
+\end{lstlisting}
+
+
+\section{Environments}
+\label{sec:environments}
+
+
+\begin{lstlisting}
+% quote long text
+\begin{quotation}
+\end{quotation}
+\end{lstlisting}
+
+\begin{lstlisting}
+% center environment
+\begin{center}
+\end{center}
+\end{lstlisting}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

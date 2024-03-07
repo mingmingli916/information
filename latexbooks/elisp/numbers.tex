@@ -1,0 +1,307 @@
+
+\chapter{Numbers}
+\label{cha:numbers}
+
+GNU Emacs support two numeric data types: \keyword{integers} and \keyword{floating-point numbers}.
+
+\section{Iteger Basics}
+\label{sec:iteger-basics}
+
+The Lisp reader reads an integer as nonempty sequence of decimal digits with optional initial sign and optional final period.
+\begin{lstlisting}
+1
+1.
++1
+-1
+0
+-0
+\end{lstlisting}
+
+The syntax for integers in bases other than 10 consists of \argument{\#} followed by a radix indication followed by one or more digits.
+\begin{lstlisting}
+;; binary
+#b101100                                ; 44
+;; octal
+#o54                                    ; 44
+;; hex
+#x2c                                    ; 44
+;; #radix r integer, radix=24
+#24r1k                                  ; 44
+\end{lstlisting}
+
+Many of the functions described in this chapter accept markers for arguments in place of numbers.
+Since the actual arguments to such functions may be either numbers or markers, we often give these arguments the name \argument{number-or-marker}.
+When the argument value is a marker, its position value is used and its buffer is ignored.
+
+
+In Emacs Lisp, text characters are represented by integers.
+Any integer between zero and the value of \lstinline|(max-char)|, inclusive, is considered to be valid as a character.
+
+
+Integers in Emacs Lisp are not limited to the machine word size.
+Under the hood, though, there are two kinds of integers: smaller ones, called \keyword{fixnums}, and larger ones, called \keyword{bignums}.
+
+\begin{lstlisting}
+most-positive-fixnum                    ; 2305843009213693951
+most-negative-fixnum                    ; -2305843009213693952
+;; Maximum number N of bits in safely-calculated integers.
+integer-width                           ; 65536
+\end{lstlisting}
+
+
+\section{Floating-Point Basics}
+\label{sec:float-point-basics}
+
+The range of floating-point numbers is the same as the range of the C data type \argument{double} on the machine you are using.
+
+The read syntax for floating-point numbers requires either a decimal point, an exponent, or both.
+Optional signs (\argument{+} or \argument{-}) precede the number and its exponent.
+\begin{lstlisting}
+;; 1500
+1500.0
++15e2
+15.0e+2
++1500000e-3
+.15e4
+\end{lstlisting}
+Emacs Lisp requires at least one digit after a decimal point in a floating-point number that does not have an exponent.
+\argument{1500.} is an integer.
+
+\begin{lstlisting}
+;; read syntaxes for special floating-point values.
+1.0e+INF                                ; 1.0e+INF
+-1.0e+INF                               ; -1.0e+INF
+0.0e+NaN                                ; 0.0e+NaN
+-0.0e+NaN                               ; -0.0e+NaN
+\end{lstlisting}
+
+The following functions are specialized for handling floating-point numbers:
+\begin{itemize}[itemsep=10pt]
+\item \lstinline|(isnan x)|\\
+  This predicate returns \argument{t} if its floating-point argument is a \argument{NaN}, \argument{nil} otherwise.
+\item \lstinline|(frexp x)|\\
+  This function returns a cons cell \argument{(s . e)}, where \argument{s} and \argument{e} are respectively the significand and exponent of the floating-point number \argument{x}.
+\item \lstinline|(ldexp s e)|\\
+  Given a numeric significand \argument{s} and an integer exponent \argument{e}, this function returns the floating point number \argument{\(s2^{e}\)}.
+\item \lstinline|(copysign x1 x2)|\\
+  This function copies the sign of \argument{x2} to the value of \argument{x1}, and returns the result.
+  \argument{x1} and \argument{x2} must be floating point.
+\item \lstinline|(logb x)|\\
+  This function returns the binary exponent of \argument{x}.
+\end{itemize}
+
+\section{Type Predicates for Numbers}
+\label{sec:type-pred-numb}
+
+\begin{itemize}
+\item bignump 
+\item fixnump 
+\item floatp 
+\item integerp
+\item numberp 
+\item natnump
+\item zerop 
+\end{itemize}
+
+natnum stands for natural number.
+
+\section{Comparison of Numbers}
+\label{sec:comparison-numbers}
+
+\begin{itemize}[itemsep=10pt]
+\item \lstinline|(= number-or-marker &rest number-or-markers)|\\
+  This function tests whether all its arguments are numerically equal, and returns \argument{t} if so, \argument{nil} otherwise.
+\item \lstinline|(eql value1 value2)|\\
+  This function acts like \argument{eq} except when both arguments are numbers.
+  It compares numbers by type and numeric value.
+  Floating-point values with the same sign, exponent and fraction are \argument{eql}.
+  This differs from numeric comparison: \lstinline|(eql 0.0 -0.0)| returns \argument{nil} and \lstinline|(eql 0.0e+NaN 0.0e+NaN)| returns \argument{t}, whereas \argument{=} does the opposite.
+\item \lstinline|(/= number-or-marker1 number-or-marker2)|\\
+  This function tests whether its arguments are numerically equal, and returns \argument{t} if they are not, and \argument{nil} if they are.
+\item \lstinline|(< number-or-marker &rest number-or-markers)|\\
+  This function tests whether each argument is strictly less than the following argument.
+  It returns \argument{t} if so, \argument{nil} otherwise.
+\item \lstinline|(<= number-or-marker &rest number-or-markers)|\\
+  This function tests whether each argument is less than or equal to the following argument.
+  It returns \argument{t} if so, \argument{nil} otherwise.
+\item \lstinline|(> number-or-marker &rest number-or-markers)|\\
+  This function tests whether each argument is strictly greater than the following argument.
+  It returns \argument{t} if so, \argument{nil} otherwise.  
+\item \lstinline|>= number-or-marker &rest number-or-markers|\\
+  This function tests whether each argument is greater than or equal to the following argument.
+  It returns \argument{t} if so, \argument{nil} otherwise.  
+\item \lstinline|(max number-or-marker &rest numbers-or-markers)|\\
+  This function returns the largest of its arguments.
+\item \lstinline|min number-or-marker &rest numbers-or-markers|\\
+  This function returns the smallest of its arguments.
+\item \lstinline|(abs number)|\\
+  This function returns the absolute value of number.
+\end{itemize}
+
+\section{Numeric Conversions}
+\label{sec:numeric-conversions}
+
+\begin{itemize}[itemsep=10pt]
+\item \lstinline|(float number)|\\
+  This returns \argument{number} converted to floating point.
+  If \argument{number} is already floating point, \argument{float} returns it unchanged.
+  
+\item \lstinline|(truncate number &optional divisor)|\\
+  This returns \argument{number}, converted to an integer by rounding towards zero.
+\item \lstinline|(floor number &optional divisor)|\\
+  This returns number, converted to an integer by rounding downward (towards negative infinity).
+\item \lstinline|(ceiling number &optional divisor)|\\
+  This returns \argument{number}, converted to an integer by rounding upward (towards positive infinity).
+\item \lstinline|(round number &optional divisor)|\\
+  This returns \argument{number}, converted to an integer by rounding towards the nearest integer.
+\end{itemize}
+
+\section{Arithmetic Operations} 
+\label{sec:arithm-opera}
+
+\begin{itemize}[itemsep=10pt]
+\item \lstinline|(1+ number-or-marker)|\\
+  This function returns number-or-marker plus 1. 
+\item \lstinline|(1- numbers-or-markers)|\\
+  This function returns number-or-marker minus 1.
+\item \lstinline|(+ &rest numbers-or-markers)|\\
+  This function adds its arguments together. When given no arguments, + returns 0.
+\item \lstinline|(- &optional number-or-marker &rest more-numbers-or-markers)|\\
+  The \argument{-} function serves two purposes: negation and subtraction.
+  When \argument{-} has a single argument, the value is the negative of the argument.
+  When there are multiple arguments, \argument{-} subtracts each of the \argument{more-numbers-or-markers} from \argument{number-or-marker}, cumulatively.
+  If there are no arguments, the result is 0.
+\item \lstinline|(* &rest numbers-or-markers)|\\
+  This function multiplies its arguments together, and returns the product.
+  When given no arguments, \argument{*} returns 1.
+\item \lstinline|(/ number &rest divisors)|\\
+  With one or more \argument{divisors}, this function divides \argument{number} by each divisor in \argument{divisors} in turn, and returns the quotient.
+  With no \argument{divisors}, this function returns 1/\argument{number}.
+  Each argument may be a number or a marker.
+  If all the arguments are integers, the result is an integer, obtained by rounding the quotient towards zero after each division.
+\item \lstinline|(% dividend divisor)|\\
+  This function returns the integer remainder after division of \argument{dividend} by \argument{divisor}.
+  The arguments must be integers or markers.
+\item \lstinline|(mod dividend divisor)|\\
+  This function returns the value of \argument{dividend} modulo \argument{divisor}; in other words, the remainder after division of \argument{dividend} by \argument{divisor}, but with the same sign as \argument{divisor}.
+  The arguments must be numbers or markers.
+  
+  Unlike \argument{\%}, \argument{mod} permits floating-point arguments; it rounds the quotient downward (towards minus infinity) to an integer, and uses that quotient to compute the remainder.
+  
+
+\end{itemize}
+
+\section{Rounding Operations}
+\label{sec:rounding-operations}
+
+The functions \argument{ffloor, fceiling, fround}, and \argument{ftruncate} take a floating-point argument and return a floating-point result whose value is a nearby integer.
+
+\begin{lstlisting}
+(floor 1.1)                             ; 1
+(ffloor 1.1)                            ; 1.0
+\end{lstlisting}
+
+\section{Bitwise Opeartions on Integers}
+\label{sec:bitw-opeart-iteg}
+
+The bitwise operations in Emacs Lisp apply only to integers.
+
+\begin{itemize}[itemsep=10pt]
+\item \lstinline|(ash integer1 count)|\\
+  \argument{ash} (arithmetic shift) shifts the bits in \argument{integer1} to the left \argument{count} places, or to the right if \argument{count} is negative.
+  Left shifts introduce zero bits on the right; right shifts discard the rightmost bits.
+\item \lstinline|(lsh integer1 count)|\\
+  \argument{lsh} (logical shift) shifts the bits in \argument{integer1} to the left \argument{count} places, or to the right if \argument{count} is negative, bringing zeros into the vacated bits.
+\begin{lstlisting}
+;; -7 = ...111111111111111111111111111001
+(ash -7 -1)                   ; -4 = ...111111111111111111111111111100
+(lsh -7 -1)           ; 536870908  = ...011111111111111111111111111100
+\end{lstlisting}
+\item \lstinline|(logand &rest ints-or-markers)|\\
+  This function returns the bitwise AND of the arguments: the nth bit is 1 in the result if, and only if, the nth bit is 1 in all the arguments.
+  If \argument{logand} is not passed any argument, it returns a value of -1.
+  This number is an identity element for \argument{logand} because its binary representation consists entirely of ones.
+  If \argument{logand} is passed just one argument, it returns that argument.
+\item \lstinline|(logior &rest ints-or-markers)|\\
+  This function returns the bitwise inclusive OR of its arguments: the nth bit is 1 in the result if, and only if, the nth bit is 1 in at least one of the arguments.
+  If there are no arguments, the result is 0, which is an identity element for this operation.
+  If \argument{logior} is passed just one argument, it returns that argument.
+\item \lstinline|(logxor &rest ints-or-markers)|\\
+  This function returns the bitwise exclusive OR of its arguments: the nth bit is 1 in the result if, and only if, the nth bit is 1 in an odd number of the arguments.
+  If there are no arguments, the result is 0, which is an identity element for this operation.
+  If \argument{logxor} is passed just one argument, it returns that argument.
+\item \lstinline|(lognot integer)|\\
+  This function returns the bitwise complement of its argument: the nth bit is one in the result if, and only if, the nth bit is zero in \argument{integer}, and vice-versa. 
+\item \lstinline|(logcount integer)|\\
+  This function returns the \keyword{Hamming weight} of \argument{integer}: the number of ones in the binary representation of \argument{integer}.
+  If \argument{integer} is negative, it returns the number of zero bits in its two’s complement binary representation.
+  The result is always nonnegative.
+\end{itemize}
+
+\section{Standard Mathematical Functions}
+\label{sec:stand-math-funct}
+
+These mathematical functions allow integers as well as floating-point numbers as arguments.
+\begin{itemize}
+\item \lstinline|(sin arg)|
+\item \lstinline|(cos arg)|
+\item \lstinline|(tan arg)|
+\item \lstinline|(asin arg)|
+\item \lstinline|(acos arg)|
+\item \lstinline|(atan y &optional x)|
+\item \lstinline|(exp arg)|
+\item \lstinline|(log arg &optional base)|
+\item \lstinline|(expt x y)|
+\item \lstinline|(sqrt arg)|
+\item \lstinline|float-e|
+\item \lstinline|float-pi|
+\end{itemize}
+
+\section{Random Numbers}
+\label{sec:random-numbers}
+
+A deterministic computer program cannot generate true random numbers.
+For most purposes, \keyword{pseudo-random numbers} suffice.
+A series of pseudo-random numbers is generated in a deterministic fashion.
+The numbers are not truly random, but they have certain properties that mimic a random series.
+For example, all possible values occur equally often in a pseudo-random series.
+
+
+
+Pseudo-random numbers are generated from a \keyword{seed} value.
+Starting from any given seed, the random function always generates the same sequence of numbers.
+By default, Emacs initializes the random seed at startup, in such a way that the sequence of values of random (with overwhelming likelihood) differs in each Emacs run.
+
+
+Sometimes you want the random number sequence to be repeatable.
+For example, when debugging a program whose behavior depends on the random number sequence, it is helpful to get the same behavior in each program run.
+To make the sequence repeat, execute \lstinline|(random "")|.
+This sets the seed to a constant value for your particular Emacs executable (though it may differ for other Emacs builds).
+You can use other strings to choose various seed values.
+
+\begin{lstlisting}
+(random &optional limit)
+\end{lstlisting}
+This function returns a pseudo-random integer.
+Repeated calls return a series of pseudo-random integers.
+
+If \argument{limit} is a positive integer, the value is chosen to be nonnegative and less than \argument{limit}.
+Otherwise, the value might be any fixnum.
+If \argument{limit} is \argument{t}, it means to choose a new seed as if Emacs were restarting, typically from the system entropy.
+On systems lacking entropy pools, choose the seed from less-random volatile data such as the current time.
+If \argument{limit} is a string, it means to choose a new seed based on the string’s contents.
+
+
+\section{Summary}
+\label{sec:summary-1}
+
+\begin{figure}[H]
+  \centering
+  \myfigure[0.8]{numbers}
+  \caption{Numbers}
+\end{figure}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "elisp"
+%%% End:

@@ -1,0 +1,29 @@
+
+\chapter{Text Preprocessing}
+\label{cha:text-preprocessing}
+
+To convert text to a data format that is easier for computer to train a model, we need text preprocessing.
+Here are the common preprocessing steps for text:
+\begin{enumerate}
+\item Load text as strings into memory.
+\item Split strings into tokens (e.g., words or characters).
+\item Build a table of vocabulary to map the split tokens to numerical indices.
+\item Convert text into sequences of numerical indices.
+\end{enumerate}
+
+
+A \keyword{token} is the basic unit in text, for example, word or character.
+The string type of the token is inconvenient to be used by models.
+We build a dictionary called vocabulary to map string tokens into numerical indices starting from 0.
+To do so, we first count the unique tokens in all the documents from the training set, namely a \keyword{corpus}, and then assign a numerical index to each unique token according to its frequency.
+Rarely appeared tokens are often removed to reduce the complexity.
+Any token that does not exist in the corpus or has been removed is mapped into a special unknown token "<unk>".
+We can also add a list of reserved tokens, such as “<pad>” for padding, “<bos>” to present the beginning for a sequence, and “<eos>” for the end of a sequence.
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "deep-learning"
+%%% End:

@@ -1,0 +1,46 @@
+
+\chapter{Pip}
+\label{cha:pip}
+
+Pip is a Python packages manager.
+
+\section{Install packages}
+\label{sec:install-packages}
+
+\begin{lstlisting}
+pip install package-name
+# To get the help information
+# pip install --help
+\end{lstlisting}
+
+
+The common commands used for installation:
+\begin{lstlisting}
+# install a package
+pip install package-name
+
+# install a package to the user site
+pip install --user package-name
+
+# install specified version package
+pip install package-name==1.4
+
+# install all packages from a freeze file
+pip install -r requirements.txt
+\end{lstlisting}
+
+\section{Freeze}
+\label{sec:freeze}
+
+\begin{lstlisting}
+pip freeze > requirements.txt
+\end{lstlisting}
+
+This command will write all the install packages with the versions in the \argument{requirements.txt} file.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "python"
+%%% End:

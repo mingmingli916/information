@@ -1,0 +1,63 @@
+
+\chapter{Language Model}
+\label{cha:language-model}
+
+The goal of a language model is to estimate the joint probability of the sequence
+\begin{equation}
+  \label{eq:language-model}
+  P(x_{1},\ldots,x_{T})
+\end{equation}
+Where \(T\) is a constant.
+
+
+Generally, the probability of \((x_{1},\ldots,x_{T})\) is:
+\begin{equation}
+  \label{eq:language-model-p}
+  P(x_{1},\ldots,x_{T}) = \prod_{t=1}^{T}P(x_{t}|x_{t-1},\ldots,x_{1})
+\end{equation}
+
+\section{Markov Model}
+\label{sec:markov-model}
+
+
+In probability theory, a Markov model is a stochastic model used to model pseudo-randomly changing systems.
+It is assumed that future states depend only on the current state, not on the events that occurred before it (that is, it assumes the Markov property).
+Generally, this assumption enables reasoning and computation with the model that would otherwise be intractable.
+
+Where \(T\) is a constant.
+
+
+
+The simplest Markov model is the Markov chain.
+\begin{equation}
+  \label{eq:markov-chain}
+  P(x_{t}|x_{1},\ldots,x_{t-1}) = P(x_{t}|x_{t-1})
+\end{equation}
+
+In this case, we have a \keyword{first-order Markov model} and \(P(x)\) is given by:
+\begin{equation}
+  \label{eq:first-order-markov-model}
+  P(x_{1},\ldots,x_{T}) = \prod_{t=1}^{T} P(x_{t}|x_{t-1}).
+\end{equation}
+
+\section{n-grams}
+\label{sec:n-grams}
+
+\begin{gather}
+  \label{eq:n-gram-1}
+  P(x_{1},\ldots,x_{T}) = \prod_{t-1}^{T} P(x_{t})\\
+  \label{eq:n-gram-2}
+  P(x_{1},\ldots,x_{T}) = \prod_{t-1}^{T} P(x_{t}|x_{t-1})\\ 
+  \label{eq:n-gram-3} 
+  P(x_{1},\ldots,x_{T}) = \prod_{t-1}^{T} P(x_{t}|x_{t-1},x_{t-2})
+\end{gather}
+
+Formula \ref{eq:n-gram-1} \ref{eq:n-gram-2} and \ref{eq:n-gram-3} refers to \keyword{unigram}, \keyword{bigram} and \keyword{trigram}.
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "deep-learning"
+%%% End:

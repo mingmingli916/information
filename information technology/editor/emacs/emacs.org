@@ -1,0 +1,649 @@
+:PROPERTIES:
+:ID:       407DD6EF-92B9-4C80-83CA-9B8F0B6DB516
+:END:
+#+title: emacs
+
+
+[[id:A194CD53-E934-452A-B9F4-3348F7E77DBA][elisp]]
+
+
+* Emacs
+Emacs is a text editor. Emacs is important because of the integration of different things you need to do. It's more than just an editor; it's a complete environment that can change the way you work.
+
+Learning to use an editor is a matter of learning finger habits. The finger-habits approach implies the way to learn Emacs. You can form only a few new habits each day.
+
+
+
+** Buffer
+You don't edit files with Emacs. Instead, Emacs copies the contents of a file into a temporary buffer and you eidt that. The file on disk doesn't change until you save the buffer. 
+
+This feature used the thought "keep the original data safe".
+
+
+
+** Mode
+There are many tasks or needs around us and modes exists for them. A mode collect all the feature you need.
+
+Modes allows Emacs to be the kind of editor you want for different tasks. A buffer can be in only one major mode at a time. Minor modes defines a particular aspect of Emacs’s behavior and can be turned on and off within a major mode.
+
+** Backup File
+
+A backup file is a copy of the old contents of a file you are editing. Emacs makes a backup file the first time you save a buffer into its visited file. The contents of the backup file normally remain unchanged once it exists. During the editing, you may save the buffer several times and the content of the original file will change accordingly.
+
+The name of the backup file is the same as the name of the file you’re editing, with a tilde added. For example, if you are editing the file text, the backup file is text~.
+
+** Auto Save Files
+The save files are used save the content of current buffer if you forget to save the buffer and the Emacs or system crashed.
+
+Emacs will auto save you files from time to time into auto-save files. The name of an auto-save file is the same as the name of the file you are editing, with a sharp (#) added to the beginning and the end. For example, if you are editing the file text, its auto-save file is #text#.
+
+
+** Point, Cursor and Mark
+A cursor is on the top the char. The point is immediately before the character. The mark is another position in the buffer. The part of the buffer between point and mark is called the region.
+
+** Kill Ring
+
+Kill ring is a ring used to keep the content you deleted (in Emacs, called "kill"). This feature enable you to recover or paste the content you deleted not only recently but also long time ago (depending the kill ring size you set).
+
+
+What exactly goes into the kill ring? Only the text delete by Del and C-d (without numeric argument) does not go into kill ring. All the else will go into kill ring.
+
+
+
+** Binding
+All the action you did in Emacs is a calling to Emacs Lisp function. Some functions are very long. To save the typing, you bind the functions to a sequence of key stroke. This is called binding.
+
+** Display
+
+[[file:images/display.png]]
+
+* DONE Helps
+CLOSED: [2023-12-03 Sun 10:56]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-03 Sun 10:56]
+:END:
+=C-h C-h= or =C-h ?=
+
+
+
+* DONE Editing
+CLOSED: [2023-12-03 Sun 10:57]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-03 Sun 10:57]
+:END:
+
+** DONE Moving the Cursor
+
+| C-f     | forward one char               |
+| C-b     | backward one char              |
+| C-n     | next line                      |
+| C-p     | previous line                  |
+|---------+--------------------------------|
+| M-f     | forward one word               |
+| M-b     | backward one word              |
+|---------+--------------------------------|
+| C-a     | head of the line               |
+| C-e     | end of the line                |
+|---------+--------------------------------|
+| M-a     | forward one sentence           |
+| M-e     | backward one sentence          |
+|---------+--------------------------------|
+| M-}     | forward one paragraph          |
+| M-{     | backward one paragraph         |
+|---------+--------------------------------|
+| C-v     | forward one screen             |
+| M-v     | backward one screen            |
+| C-l     | recenter                       |
+|---------+--------------------------------|
+| C-x ]   | forward one page               |
+| C-x [   | backward one page              |
+|---------+--------------------------------|
+| M-<     | beginning of buffer            |
+| M->     | end of bufferf                 |
+|---------+--------------------------------|
+| M-m     | first non-whitespace character |
+|---------+--------------------------------|
+| M-g M-g | go to a specified line         |
+
+** DONE Marking the Region
+CLOSED: [2023-11-13 Mon 11:17]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-13 Mon 11:17] \\
+  All marking related commands.
+:END:
+| C-Space or C-@ | set the mark              |
+| C-x C-x        | exchange pointer and mark |
+| M-h            | mark paragraph            |
+| C-x h          | mark buffer               |
+| M-@            | mark word                 |
+| C-M-@          | mark Lisp expression      |
+| C-M-h          | mark Lisp defun           |
+| C-x C-p        | mark page                 |
+
+Mark command can be pressed multiple times to mark several specified regions.
+
+** DONE Editing
+CLOSED: [2023-11-14 Tue 14:52]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-14 Tue 14:52] \\
+  Basic editing.
+:END:
+| Backspace   | delete backward char                             |
+| C-d         | delete current char                              |
+| M-Backspace | delete between beginning of word and pointer     |
+| M-d         | delete between cursor and end of word            |
+| C-k         | delete between cursor and end of line            |
+| M-k         | delete between cursor and end of sentence        |
+| M-- M-k     | delete between beginning of sentence and pointer |
+|-------------+--------------------------------------------------|
+| C-w         | copy marked region                               |
+|-------------+--------------------------------------------------|
+| C-y         | paste most recently deleted or copied text       |
+|-------------+--------------------------------------------------|
+| M-c         | Capitalize                                       |
+| M-u         | Upper                                            |
+| M-l         | Lower                                            |
+
+
+
+
+* DONE Search and Replace
+CLOSED: [2023-11-29 Wed 20:11]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-29 Wed 20:11]
+:END:
+| C-s              | incremental search                    |
+| C-u C-s or C-M-s | incremental regular expression search |
+|------------------+---------------------------------------|
+| M-%              | query replace                         |
+| C-u M-%          | query replace word                    |
+| C-M-%            | regular expression replace            |
+
+You can type C-h k C-s to get the help information to learn how to use incremental search well.
+
+* Windows and Frames
+
+* DONE Directory Editor
+:LOGBOOK:
+- State "DONE"       from              [2024-01-09 Tue 19:17]
+:END:
+
+
+** DONE Navigating
+CLOSED: [2023-11-19 Sun 08:50]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-19 Sun 08:50]
+:END:
+All the usual Emacs cursor motion commmands are available in Dired buffers.
+| n           | Next line.                                                                                                                                                 |
+| p           | Previous line.                                                                                                                                             |
+| DEL         | Move up and unflag                                                                                                                                         |
+| j           | Prompts for a file name using the minibuffer and jump to that line.                                                                                        |
+| M-s f C-s   | Performs a forward incremental search in the Dired buffer, looking for matches only amongst the file names and ignoring the rest of the text in the buffer |
+| M-s f M-C-s | Does the same, using a regular expression search.                                                                                                          |
+
+** DONE Flagging for Deletion
+CLOSED: [2023-11-19 Sun 08:54]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-19 Sun 08:54]
+:END:
+Flag the files for deletions.
+| d | Flag this file for deletion.       |
+| u | Unflag.                            |
+| x | Delete files flagged for deletion. |
+
+This commands flag many files for deletion.
+| #   | Flag all auto-save files for deletion.                                                                                                         |
+| ~   | Flag all backup files for deletion.                                                                                                            |
+| .   | Flag excess numeric backup files for deletion. The oldest and newest few backup files of any one file are exempt; the middle ones are flagged. |
+| % & | Flag files whose names match the regular expression specified by the variable dired-garbage-files-regexp.                                      |
+| % d | Flags all files whose names match a specified regular expression                                                                               |
+
+** DONE Visiting Files
+CLOSED: [2023-11-27 Mon 23:35]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-27 Mon 23:35]
+:END:
+To visit or examine the files.
+| f   | Visit the file.                                                                                                      |
+| RET | Equivalent to f.                                                                                                     |
+| e   | Equivalent to f.                                                                                                     |
+| o   | Like f, but uses another window.                                                                                     |
+| C-o | Visit the file and display the buffer in another window, but do not select that window.                              |
+| v   | View the file with View mode. View mode provides convenient commands to navigate the buffer but forbids changing it. |
+| ^   | Visit the parent directory.                                                                                          |
+
+** DONE Marking
+- State "DONE"       from              [2023-12-22 Fri 23:18]
+Instead of flagging a file with ‘D’, you can mark the file with some other character (usually ‘*’).
+Most Dired commands to operate on files use the files marked with ‘*’.
+The only command that operates on flagged files is x, which deletes them.
+| m                                 | Mark the current file.                                                                                      |
+| * N                               | Report what the number and size of the marked files.                                                        |
+| * *                               | Mark all executable files. With a numeric argument, unmark all those files.                                 |
+| * @                               | Mark all symbolic links. With a numeric argument, unmark all those files.                                   |
+| * /                               | Mark all files which are directories, except for . and ... With a numeric argument, unmark all those files. |
+| * s                               | Mark all the files in the current subdirectory, aside from . and ...                                        |
+| u                                 | Remove any mark on this line.                                                                               |
+| Del                               | Move point to previous line and remove any mark on that line.                                               |
+| U                                 | Unmark all.                                                                                                 |
+| * ? /markchar/                    | Remove all marks that use the character /markchar/.                                                         |
+| M-}                               | Move down to the next marked file.                                                                          |
+| M-{                               | Move up to the previous marked file.                                                                        |
+| t                                 | Toggle all marks. (Files marked with *)                                                                     |
+| * c /old-markchar/ /new-markchar/ | Replace all marks that use the character /old-markchar/ with marks that use the character /new-markchar/.   |
+| % m /regexp/ RET                  | Mark (with *) all files whose names match /regexp/.                                                         |
+| % g /regexp/                      | Mark (with *) all files whose contents contain a match for /regexp/.                                        |
+
+** DONE Operating on Files
+:LOGBOOK:
+- State "DONE"       from              [2023-12-22 Fri 23:26]
+:END:
+
+
+This commands operate on one file or several files.
+All of them let you specify the files to manipulate in these ways:
+- If you give the command a numeric prefix argument n, it operates on the next n files, starting with the current file. (If n is negative, the command operates on the −n files preceding the current line.)
+- Otherwise, if some files are marked with ‘*’, the command operates on all those files.
+- Otherwise, the command operates on the current file only.
+| C /new/ RET             | Copy the file. (Like cp in shell)                                                             |
+| D                       | Delete the specified files.                                                                   |
+| R /new/ RET             | Rename the specified files. (Like mv in shell)                                                |
+| H /new/ RET             | Make hard links. (Like ln in shell)                                                           |
+| S /new/ RET             | Make symbolic links. (Like ls -s in shell)                                                    |
+| Y /new/ RET             | Make relative symbolic links.                                                                 |
+| M /modspec/ RET         | Change the mode (permission bits).                                                            |
+| G /newgroup/ RET        | Chanage the group.                                                                            |
+| O /newowner/ RET        | Change the owner.                                                                             |
+| Z                       | Compress/uncompress the specified files. Each marked file is compressed into its own archive. |
+| c                       | Compress the specified files into a single archive.                                           |
+| L                       | Load the specified Emacs Lisp files.                                                          |
+| B                       | Byte compile the specified Emacs Lisp files.                                                  |
+| A /regexp/ RET          | Search all the specified files for the /regexp./                                              |
+| Q /regexp/ RET /to/ RET | Replace matches for /regexp/ with the string /to/.                                            |
+|-------------------------+-----------------------------------------------------------------------------------------------|
+| :e                      | Encrypt the specified files.                                                                  |
+| :d                      | Decrypt the specified files.                                                                  |
+| :s                      | Digitally sign the specified files.                                                           |
+| :v                      | Vevify digital signatures on the specified files.                                             |
+
+** DONE Shell Commands
+:LOGBOOK:
+- State "DONE"       from              [2023-12-22 Fri 23:26]
+:END:
+
+| ! | Reads a shell command string in the minibuffer, and runs that shell command on one or more files. |
+| X | A synonym for !                                                                                   |
+| & | Does the same, except that it runs the shell command asynchronously.                              |
+When the command operates on more than one file, it runs multiple parallel copies of the specified shell command, one for each file.
+As an exception, if the specified shell command ends in ';' or ';&', the shell command is run in the background on each file sequentially.
+
+** DONE Transforming File Names
+:LOGBOOK:
+- State "DONE"       from              [2024-01-09 Tue 19:17]
+:END:
+| % u                     | Rename each of the selected files to an upper-case name.                                        |
+| % l                     | lower-case name.                                                                                |
+| % R /from/ RET /to/ RET | Rename computing the new name by regular-expression substitution from the name of the old file. |
+| % C /from/ RET /to/ RET | Copy.                                                                                           |
+| % H /from/ RET /to/ RET | Make hard links.                                                                                |
+| % S /from/ RET /to/ RET | Make soft links.                                                                                |
+| % Y /from/ RET /to/ RET | Make relative soft links.                                                                       |
+
+** DONE Subdirectories
+CLOSED: [2023-11-28 Tue 08:44]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-28 Tue 08:44]
+:END:
+
+
+| i     | Insert the content of a subdirectory.                                                    |
+| C-u i | Insert subdirectory with specified ls switches.                                          |
+| l     | Update the subdirectory's contents.                                                      |
+| C-u l | Change the ls swithces of already inserted subdirectory (on subdirectory header line).   |
+| C-u k | Remove the subdirectory listing (on subdirectory header line).                           |
+| C-M-n | Go to next subdirectory header line, regardless of level.                                |
+| C-M-p | Go to previous subdirectory header line, regardless of level.                            |
+| C-M-u | Go up to the parent diretory header line.                                                |
+| C-M-d | Go down in the diretory tree, to the first subdirectory's header line.                   |
+| <     | Move up to the previous directory-file line.                                             |
+| >     | Move down to the next directory-file line.                                               |
+| M-G   | Prompt for a directory and move to its directory-file line.                              |
+| $     | Hide or show the subdirectory that point is in, and move point to the next subdirectory. |
+| M-$   | hide or show all subdirectories.                                                         |
+
+
+
+If the subdirectory's contents are already present in the buffer, the i command moves to it.
+In either case, i sets the Emacs mark before moveing, so C-u C-SPC returns to your previous position in the Dired buffer.
+
+** DONE Updating the Dired Buffer
+CLOSED: [2023-11-29 Wed 09:48]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-29 Wed 09:48]
+:END:
+| g                    | Update the entire contents.                                                                                               |
+| l                    | Update the specified files.                                                                                               |
+| k                    | Delete the specified file lines - not the files, just the lines. (on next n files for marked files, not on current file.) |
+| s                    | Toggle between alphabetical order and date/time order.                                                                    |
+| C-u s /switches/ RET | Refresh the Dired buffer using /switches/.                                                                                |
+
+
+** DONE Editing the Dired Buffer
+CLOSED: [2023-11-29 Wed 09:51]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-29 Wed 09:51]
+:END:
+Wdired is a special mode that allows you to perform file operations by editing the Dired buffer directly (the “W” in “Wdired” stands for “writable”).
+To enter Wdired mode, type C-x C-q (dired-toggle-read-only) while in a Dired buffer.
+
+| C-x C-q | Enter Wdired mode |
+
+** DONE Other Featuers
+CLOSED: [2023-11-29 Wed 09:52]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-29 Wed 09:52]
+:END:
+| + | Create a directory                                                 |
+| w | Puts the names of the marked (or next n) files into the king ring. |
+| W | Use the standard configured brower to view that file.              |
+
+
+* EasyPG
+EasyPG Assistant is an Emacs user interface to GNU Privacy Guard (GnuPG).
+EasyPG Assistant is a part of the package called EasyPG, an all-in-one GnuPG interface for Emacs.
+EasyPG also contains the library interface called EasyPG Library.
+
+** GnuPG
+To install the package (on MacOS):
+#+begin_src shell
+  brew install gnupg
+#+end_src
+
+
+*** Generating a New Keypair
+#+begin_src shell
+  gpg --gen-key
+#+end_src
+
+
+EasyPG Assistant commands are prefixed by 'epa-'.
+
+When decryping a file, it may produce the error:
+#+begin_example
+Error while decrypting with "/usr/local/bin/gpg":
+
+gpg: encrypted with cv25519 key, ID C1349F68EF9FE731, created 2023-11-16
+      "Mingming Li <mingmingli916@gmail.com>"
+gpg: public key decryption failed: Inappropriate ioctl for device
+gpg: decryption failed: Inappropriate ioctl for device
+#+end_example
+
+This can be solved by setting the environment:
+#+begin_src shell
+  export GPG_TTY=$(tty)
+#+end_src
+
+
+
+* DONE Shell
+:LOGBOOK:
+- State "DONE"       from              [2024-01-09 Tue 19:17]
+:END:
+| M-! /cmd/ RET     | Run the shell command /cmd/ and display the output. With a numeric argument, it insert output into the current buffer.      |
+| M-\vert /cmd/ RET | Run the shell command /cmd/ with region content as intput. With a numeric argument, it replaces the old region with output. |
+| M-& /cmd/ RET     | Run the shell command /cmd/ asynchronously.                                                                                 |
+| M-x shell         | Run a subshell with input and output throught an Emacs buffer.                                                              |
+| M-x term          | Run a subshell with input and output through an Emacs buffer. Full terminal emulation is available.                         |
+| M-x eshell        | Invokes a shell implemented entirely in Emacs.                                                                              |
+
+
+** Term Mode
+
+The terminal emulator uses Term mode, which has two input modes.
+In line mode, Term basically acts like Shell mode.
+In char mode, each character is sent directly to the subshell, as terminal input; the sole exception is the terminal escape character, which by default is C-c.
+| C-c C-j | Switch to line mode. Do nothing if already in line mode  |
+| C-c C-k | Switch to char mode. Do nothing if already in char mode. |
+| C-c C-q | Toggle the page-at-a-time featuer.                       |
+
+The following commands are only available in char mode:
+| C-c C-c    | Send a literal C-c to the sub-shell               |
+| C-c /char/ | This is equivalent to C-x /char/ in normal Emacs. |
+
+* DONE Spell
+CLOSED: [2023-12-02 Sat 16:57]
+:LOGBOOK:
+- State "DONE"       from              [2023-12-02 Sat 16:57]
+:END:
+
+** Ispell
+
+Emacs provide Ispell interface.
+We say "interfaces" because Emacs does not include the executable.
+
+On MacOSX, There are two popular software manager MacPorts and Homebrew.
+You can use any of it to install Ispell.
+After installation, use command which ispell in terminal to locate the Ispell executable file.
+In Emacs, type C-h a ispell to get all functions containing the keyword ispell.
+You can find the function ispell-check-version.
+Type M-x ispell-check-version to check whether Ispell is working correctly.
+
+You may encounter the problem that says:
+#+begin_example
+can not find hunspell dictionary with a .affix
+#+end_example
+
+You can use the command:
+#+begin_src shell
+  hunspell -D
+#+end_src
+to check the available dictionaries.
+
+You can go to the website [[https://extensions.libreoffice.org/en/extensions/show/english-dictionaries]] to download the dictionary.
+Download it then extract the .aff and .dic files to one of the locations listed by hunspell -D.
+#+begin_src shell
+  unzip dict-en.oxt -d dict-en
+  cp dict-en/en_* ~/Library/Spelling/
+#+end_src
+
+| M-$ | ispell-word          |
+|     | ispell-buffer        |
+|     | ispell-region        |
+|     | ispell-complete-word |
+
+You can use C-h f ispell-help for the options available when a misspelling is encountered.
+
+** Flyspell
+Flyspell highlights misspelled words as you type.
+There are two mode related with Flyspell: flyspell-mode and flyspell-prog-mode.
+The latter mode is designed for programmers.
+In this mode Emacs highlights misspellings only in comments or strings.
+To check existing text, you run M-x flyspell-buffer Enter.
+
+Flyspell highlights misspelled words in red.
+Words that are repeatedly misspelled are highlighted in yellow.
+
+| C-. | flyspell-auto-correct-word          |
+| C-; | flyspell-auto-correct-previous-word |
+
+* DONE Macro
+CLOSED: [2023-11-30 Thu 19:18]
+:LOGBOOK:
+- State "DONE"       from              [2023-11-30 Thu 19:18]
+:END:
+In Emacs, a macro is simply a group of recorded keystrokes you can play back over and over again.
+Macros are a great way to save yourself repetitive work.
+
+
+| C-x (       | start macro definition                  |
+| C-x )       | end macro definition                    |
+|-------------+-----------------------------------------|
+| C-x e       | execute the last defined macro          |
+| C-x C-k r   | apply last macro to all lines in region |
+|-------------+-----------------------------------------|
+| C-x C-k e   | edit macro                              |
+|-------------+-----------------------------------------|
+| C-x C-k C-d | delete current macro from macro ring    |
+| C-x C-k C-t | swap first two macros in macro ring     |
+| C-x C-k C-p | move to previous macro in macro ring    |
+| C-x C-k C-n | move to next macro in macro ring        |
+|-------------+-----------------------------------------|
+| C-x C-k b   | bind macro                              |
+| C-x C-k n   | name macro                              |
+
+** Persist Your Macro
+1. define a macro
+2. name the defined macro
+3. open a file
+4. M-x insert-kbd-macro RET <macroname> RET
+5. add "(load-file "<macro-file-path>")" to your Emacs configuration file (like .emacs)
+6. add "(global-set-key "\C-x\C-k<your key>" '<your macro name>)" to your Emacs configuration file (like .emacs)
+
+** Pausing a Macro for Keyboard Input
+
+When you’re defining a macro, type C-u C-x q at the point where you want the recursive edit to occur.
+Emacs enters a recursive edit.
+You can tell you’re in a recursive edit because square brackets appear on the mode line.
+Nothing you type during the recursive edit becomes a part of the macro.
+You can type whatever you want to and then press C-M-c to exit the recursive edit.
+
+
+
+** Adding a Query to a Macro
+When you’re defining a macro, type C-x q at the point where you want to add a query.
+Nothing happens immediately; go on defining the macro as you normally would.
+When you execute the macro and it gets to the point in the macro where you typed C-x q, Emacs prints a query in the minibuffer:
+
+#+begin_example
+Proceed with macro? (y, n, RET, C-l, C-r)
+#+end_example
+
+Here’s the meaning of the options:
+- y means to continue and go on to the next repetition, if any.
+- n means to stop executing the macro but go on to the next repetition, if any.
+- Enter means to stop executing the macro and cancel any repetitions.
+- C-r starts a recursive edit. To exit a recursive edit, press C-M-c.
+- C-l puts the line the cursor in on in the middle of the screen.
+
+
+
+* Useful Commands
+| C-x C-SPC | go back to the previous mark.                     |
+| C-c C-,   | insert block                                      |
+| C-c %     | push the current position onto the org mark ring. |
+| C-c &     | return to the previous position                   |
+| C-c C-x f | footnote                                          |
+
+* DONE Input Phonetic Symbols
+:LOGBOOK:
+- State "DONE"       from              [2024-01-09 Tue 19:19]
+:END:
+To input phonetic symbols, you can input a specified input-method.
+M-x list-input-methods can list the avaiable input methods.
+
+Normally, you can use ipa-x-sampa, ipa-kirshenbaum, ipa or ipa-praat to input international phoetic symbols.
+
+To enable or disable the the input method, use C-\ method RET.
+To select a new input method, use C-x RET C-\ mehtid RET.
+To get the key sequence for inserting the corresponding characters, use C-h I method RET.
+
+| C-\                    | enable or disable a input method |
+| C-x RET C-\            | select a new input method        |
+| C-h I                  | get help for a input method      |
+| M-x list-input-methods |                                  |
+
+* DONE Simple ASCII Picture
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2024-01-09 Tue 20:03]
+:END:
+Emacs includes a picture mode that allows you to draw simple pictures using keyboard characters; it also includes artist mode, which enables you to draw quickly using the mouse.
+
+
+** Picture Mode
+To enter picture mode, type M-x edit-picture.
+Typing C-c C-c exits picture mode and returns you to whatever major mode you were in before.
+
+In picture mode, you can “draw” with any character in any of eight directions.
+Although you can draw in eight directions, only one direction is available at a time; this direction is referred to as the default direction.
+When you first enter picture mode, the default direction is right.
+
+
+
+
+       	       	       	       	       	up C-c ^
+
+       	       	   northwest C-c `     	       	  northeast C-c '
+
+
+	       	   left C-c <  			  right C-c >
+
+
+		   southwest C-c /     	       	  southeast C-c \
+
+					down C-c .
+
+| C-c C-f | moves forward in the default direction |
+| C-c C-b | move backward in the default direction |
+| C-o     | insert a new line                      |
+
+** Artist Mode
+To enter artist mode, M-x artist-mode.
+To exit, C-c C-c.
+In this mode, you can choose what you want to draw in "Artist" in main bar.
+
+
+
+
+
+
+
+
+
+
+
+* Calendar
+To display the calendar: M-x calendar.
+| Group    | Binding | Meaning                                              |
+|----------+---------+------------------------------------------------------|
+| Movement | C-f     | forward one day                                      |
+|          | C-b     | backward one day                                     |
+|          | C-n     | forward one week                                     |
+|          | C-p     | backward one week                                    |
+|          | M-}     | forward one month                                    |
+|          | M-{     | backward one month                                   |
+|          | C-x ]   | forward one year                                     |
+|          | C-x [   | backward one year                                    |
+|          | C-a     | beginning of week                                    |
+|          | C-e     | end of week                                          |
+|          | M-a     | beginning of month                                   |
+|          | M-e     | end of month                                         |
+|          | M-<     | beginning of year                                    |
+|          | M->     | end of year                                          |
+|          | g d     | go to a specified day                                |
+|          | o       | put the specified month in the middle of the display |
+|----------+---------+------------------------------------------------------|
+| Holidays | a       | show the holidays                                    |
+|          | x       | mark the holidays                                    |
+|          | u       | unmark the holidays                                  |
+|----------+---------+------------------------------------------------------|
+| Diary    | i d     | insert diary entry                                   |
+|          | i w     | insert weekly diary entry                            |
+|          | i m     | insert monthly diary entry                           |
+|          | i y     | insert yearly diary entry                            |
+|          | i a     | insert anniversary diary entry                       |
+|          | m       | mark dairy entries                                   |
+|          | d       | view diary entries                                   |
+|          | s       | display diary file                                   |
+
+
+
+
+* Footnotes
+
+[fn:1] This is achieved by:
+#+begin_src emacs-lisp
+( with−eval−after−load ' org
+  (define−key org−mode−map (kbd "M-n") #'org−next−link)
+  (define−key org−mode−map (kbd "M-p") #'org−previous−link ))
+#+end_src

@@ -1,0 +1,72 @@
+
+\chapter{Cost function}
+\label{cha:cost-function}
+
+\keyword{Loss} is the difference between the predicted value and the actual value.
+The Function used to quantify this loss during the training phase in the form of a single real number is known as \keyword{Loss Function}.
+\keyword{Cost function} refers to an average of the loss functions over an entire training dataset.
+Cost function helps us reach the optimal solution.
+The cost function is the technique of evaluating ``the performance of our algorithm/model''.
+
+
+
+There are many cost functions in machine learning and each has its use cases depending on whether it is a regression problem or classification problem.
+
+
+\section{Regression cost function}
+\label{sec:regr-cost-funct}
+
+Regression models deal with predicting a continuous value.
+They are calculated on the distance-based error.
+
+
+\begin{equation}
+  \label{eq:6}
+  \text { Error }=y-y^{\prime}
+\end{equation}
+
+
+
+\subsection{Mean squared error}
+\label{sec:mean-squared-error}
+
+\begin{equation}
+  \label{eq:7}
+  \text{MSE} = \frac{\sum_{i=0}^{n}(y-y^{\prime})^{2}}{n}
+\end{equation}
+
+\subsection{Mean absolute error}
+\label{sec:mean-absolute-error}
+
+\begin{equation}
+  \label{eq:8}
+    \text{MSE} = \frac{\sum_{i=0}^{n} | y-y^{\prime} | }{n}
+\end{equation}
+
+\section{Classification cost function}
+\label{sec:class-cost-funct}
+
+In classification, we usually use one hot to encoder the labels.
+This can eliminate the affect of the distance.
+
+
+The cross entropy of the distribution \(q\) relative to distribution \(p\) over a given set is defined as
+\begin{equation}
+  \label{eq:10}
+  H(p,q) = - E_{p}[\log q]
+\end{equation}
+
+Where the \(E\) is the expected value operator respected to the probability \(q\).
+
+
+For discrete probability distribution \(p\) and \(q\) with the same support \(\mathcal{X}\) this means
+\begin{equation}
+  \label{eq:11}
+  H(P, Q)=-\sum_{x \in \mathcal{X}} p(x) \log q(x)
+\end{equation}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "machine-learning"
+%%% End:

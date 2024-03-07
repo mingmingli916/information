@@ -1,0 +1,332 @@
+
+\chapter{Translation}
+The goal of translation is to provide several lanugage for end uers.
+
+The process is:
+\begin{enumerate}
+\item Mark the content you want to translation.
+\item Create lanugage files.
+\item Alter the messages files and compile.
+\end{enumerate}
+
+About how to mark the content to translate, refer \url{https://docs.djangoproject.com/en/4.0/topics/i18n/translation/}.
+
+\section{Enable  Translation}
+
+Alter the settings.py in project root directory (the directory containg the manage.py file).
+
+\begin{lstlisting}
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'Français'),
+]
+\end{lstlisting}
+
+\section{Mark}
+
+\begin{lstlisting}
+{% load i18n %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/pagination.css' %}">
+<div class="center">
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; {% translate "first" %}</a>
+            <a href="?page={{ page_obj.previous_page_number }}">{% translate "previous" %} </a>
+        {% endif %}
+
+        {% for i in page_list %}
+            {% if i == page_obj.number %}
+                <a class="active" href="?page={{ i }}">{{ i }}</a>
+            {% else %}
+                <a href="?page={{ i }}">{{ i }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">{% translate "next" %}</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">{% translate "last" %} &raquo;</a>
+        {% endif %}
+
+        <a class="active"> {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</a>
+
+    </span>
+    </div>
+
+</div>
+\end{lstlisting}
+
+\section{URL patterns}
+
+Enable \verb|LocalMiddleware| in setting.py (project root directory):
+\begin{lstlisting}
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
+]
+\end{lstlisting}
+
+
+Edit the urls.py file:
+\begin{lstlisting}
+
+
+urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('admin/', admin.site.urls),
+    path('', include('home.urls')),
+    path('books/', include('books.urls')),
+    path('articles/', include('articles.urls')),
+    path('od/', include('od.urls'))
+]
+
+urlpatterns += i18n_patterns(*urlpatterns)
+\end{lstlisting}
+
+
+\section{Create language files}
+
+First, create a locale directory in the project root directory (the directory containing the manage.py file)
+\begin{lstlisting}
+  mkdir  locale
+\end{lstlisting}
+
+
+Second, run the command to create message files in the project root directory.
+\begin{lstlisting}
+  python manage.py makemessages -l fr
+\end{lstlisting}
+
+fr stands for French.
+
+
+\section{Compile message files}
+
+After you create your message file – and each time you make changes to it – you’ll need to compile it into a more efficient form, for use by gettext.
+
+
+
+
+\begin{lstlisting}
+python manage.py compilemessages
+\end{lstlisting}
+
+
+
+
+\section{Switch language on webpage}
+
+\begin{lstlisting}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+    
+  
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <select name="language">
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value={% translate "Go" %}>
+            </form>  
+\end{lstlisting}
+
+
+
+\section{Model translation}
+
+doc: \url{https://django-modeltranslation.readthedocs.io/en/latest/index.html}
+
+The modeltranslation application is used to translate dynamic content of existing Django models to an arbitrary number of languages without having to change the original model classes. It uses a registration approach (comparable to Django's admin app) to be able to add translations to existing or new projects and is fully integrated into the Django admin backend.
+
+\subsection{Install}
+
+
+\begin{lstlisting}
+pip install django-modeltranslation  
+\end{lstlisting}
+
+
+\subsection{Setup}
+
+
+1. Add modeltranslation to the \verb|INSTALLED_APPS| variable of your project’s settings.py.
+
+\begin{lstlisting}
+INSTALLED_APPS = [
+    'modeltranslation',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
+    'books.apps.BooksConfig',
+    'articles.apps.ArticlesConfig',
+    'od.apps.OdConfig',
+]  
+\end{lstlisting}
+
+Make sure the ``modeltranslation'' is before the ``django.contrib.admin''.
+
+2. Set \verb|USE_I18N = True| in settings.py.
+
+3. Set LANGUAGES in setting.py. The first language is treated as the default lanugage
+
+\begin{lstlisting}
+gettext = lambda s: s
+LANGUAGES = [
+    ('en', gettext('English')),
+    ('fr', gettext('French')),
+]
+\end{lstlisting}
+
+\begin{tcolorbox}
+The gettext lambda function is not a feature of modeltranslation, but rather required for Django to be able to (statically) translate the verbose names of the languages using the standard i18n solution.
+\end{tcolorbox}
+
+
+
+
+4. Create a translation.py in your app directory and register TranslationOptions for every model you want to translate.
+
+5. Sync the database using ``python manage.py makemigrations'' and ``python manage.py migrate''.
+
+
+\subsection{Registing models for translation}
+
+Registering models and their fields for translation requires the following steps:
+
+1. Create a ``translation.py'' in your app directory.
+2. Create a translation option class for every model to translate.
+3. Register the model and the translation option class at ``modeltranslation.translator.translator''.
+
+\begin{lstlisting}
+(base) li@Mingmings-MacBook-Pro mysite % tree articles 
+articles
+├── __init__.py
+├── __pycache__
+│   ├── __init__.cpython-38.pyc
+│   ├── admin.cpython-38.pyc
+│   ├── apps.cpython-38.pyc
+│   ├── models.cpython-38.pyc
+│   ├── urls.cpython-38.pyc
+│   └── views.cpython-38.pyc
+├── admin.py
+├── apps.py
+├── migrations
+│   ├── 0001_initial.py
+│   ├── 0002_remove_article_url_article_article_and_more.py
+│   ├── 0003_rename_article_article_html.py
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── 0001_initial.cpython-38.pyc
+│       ├── 0002_remove_article_url_article_article_and_more.cpython-38.pyc
+│       ├── 0003_rename_article_article_html.cpython-38.pyc
+│       └── __init__.cpython-38.pyc
+├── models.py
+├── static
+│   └── articles
+│       └── index.css
+├── templates
+│   └── articles
+│       └── index.html
+├── tests.py
+├── translation.py
+├── urls.py
+└── views.py
+
+7 directories, 24 files  
+\end{lstlisting}
+
+
+In ``translation.py'':
+\begin{lstlisting}
+from modeltranslation.translator import register, TranslationOptions
+from .models import Article
+
+
+@register(Article)
+class ArticleTranslationOptions(TranslationOptions):
+    fields = ('name', 'author', 'keywords', 'date', 'introduction')
+
+\end{lstlisting}
+
+Notice:
+If you have only one field to be translated, write as following:
+\begin{lstlisting}
+@register(Type)
+class TypeTranslationOptions(TranslationOptions):
+    fields = ('title',)  # Notice here  
+\end{lstlisting}
+
+
+\subsection{Add translation to administration}
+
+In you app's admin.py file:
+\begin{lstlisting}
+from .models import Article
+from modeltranslation.admin import TranslationAdmin
+
+
+# Register your models here.
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'keywords', 'date', 'introduction')
+    list_filter = ['date']
+    search_fields = ['name', 'keywords', 'introduction']
+
+
+class MyTranslatedArticleAdmin(ArticleAdmin, TranslationAdmin):
+    pass
+
+
+admin.site.register(Article, MyTranslatedArticleAdmin)
+  
+\end{lstlisting}
+
+
+\subsection{Manage commands}
+
+
+
+If you add translation to an existed project, run the command:
+\begin{lstlisting}
+
+python manage.py update_translation_fields  
+\end{lstlisting}
+
+
+
+You should run this command after adding a new language to your settings.LANGUAGES or a new field to the TranslationOptions of a registered model.
+
+\begin{lstlisting}
+python manage.py sync_translation_fields  
+\end{lstlisting}
+
+
+

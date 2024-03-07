@@ -1,0 +1,934 @@
+U\chapter{Using Packages}
+\index{package}
+
+\section{listings}
+\label{sec:listings}
+\index{package!listings}
+\begin{lstlisting}
+\usepackage{listings}
+\end{lstlisting}
+
+This package provides the following commands or environments:
+\begin{lstlisting}
+% inline code
+\lstinline
+
+% external code file
+\lstinputlisting
+\end{lstlisting}
+
+
+\begin{verbatim}
+\begin{lstlisting}
+
+\end{lstlisting}
+\end{verbatim}
+
+
+\section{xspace}
+\index{package!xspace}
+\begin{lstlisting}
+  \usepackage{xspace}
+\end{lstlisting}
+
+This package provides the command \xspace that inserts a space depending on the following character: If a dot, a comma, an exclamation, or a quotation mark follows, it won't insert a space, but if a normal letter follows, then it will. Usually, that's exactly what we want.
+
+\lstset{language=TeX}
+\begin{lstlisting}
+  \newcommand{\TUG}{\textsc{\TeX\ Users Group}\xspace}
+\end{lstlisting}
+
+
+\section{url}
+\index{package!url}
+\begin{lstlisting}
+  \usepackage{url}
+\end{lstlisting}
+
+This package will provide the command \verb|\url|.
+This command takes an address for the argument and will print it out with typewriter font.
+Furthermore, it is able to handle special characters in addresses like underscores and percent signs.
+It even enables hyphenation in addresses, which is useful for websites with a very long name.
+
+\section{microtype}
+\index{package!microtype}
+\begin{lstlisting}
+  \usepackage{microtype}
+\end{lstlisting}
+
+This package introduces font expansion to tweak the justification and uses hanging punctuation to improve the optical appearance of the margins. This may reduce the need of hyphenation and improves the "grayness" of the output.
+
+\section{inputenc}
+\index{package!inputenc}
+\begin{lstlisting}
+  \usepackage[utf8]{inputenc}  
+\end{lstlisting}
+
+We loaded the inputenc package. The option utf8 tells the package to use Unicode input encoding, which provides many more symbols than just the ASCII code. Now we just need to find the symbol on the keyboard and to type it.
+
+
+\section{parskip}
+\index{package!parskip}
+\begin{lstlisting}
+  \usepackage{parskip}
+\end{lstlisting}
+
+
+It remove the paragraph indentation completely. At the same time, this package introduces a skip between paragraphs. 
+
+\section{geometry}
+\label{sec:geometry}
+\index{package!geometry}
+\begin{lstlisting}
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=2cm,
+       bottom=3cm, bindingoffset=1cm]{geometry}
+\end{lstlisting}
+
+This package can be used to adjust margins.
+
+The geometry package understands arguments of the form "key=value", separated by commas.
+If you load geometry without arguments, those arguments could alternatively be used by calling \lstinline|\geometry{argument list}|.
+
+\section{setspace}
+\label{sec:setspace}
+\index{package!setspace}
+\begin{lstlisting}
+\usepackage[onehalfspacing]{setspace}
+\end{lstlisting}
+
+It is used to adjust the line spacing.
+It understand 3 options: \argument{singlespacing}, \argument{onehalfspacing} and \argument{doublespacing}.
+
+
+
+\section{fancyhdr}
+\label{sec:fancyhdr}
+\index{package!fancyhdr}
+\begin{lstlisting}
+% fancy header
+\usepackage{fancyhdr}           
+% clear the headers and footers
+\fancyhf{}                      
+% \leftmark is used by the book class to store the
+% chapter title together with the chapter number. 
+% LE stands for left-even and means that this chapter
+% title will be put on the left side of the header
+% on even-numbered pages.
+\fancyhead[LE]{\leftmark}       
+% \rightmark is used by the book class to store
+% the section title together with its number. 
+% RO stands for right-odd and means that this section
+% heading shall be displayed on right side of the
+% header on odd-numbered pages.
+\fancyhead[RO]{\nouppercase{\rightmark}} 
+% \thepage prints the page number.
+\fancyfoot[LE,RO]{\thepage}     
+% All those commands are used to modify a page style
+% provided by fancyhdr; this style is called fancy.
+% We had to tell LaTeX to use this style and we did
+% it through \pagestyle{fancy}.
+\pagestyle{fancy}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+\fancyhead[code]{text}
+\fancyfoot[code]{text}
+\end{lstlisting}
+
+\argument{code} may consist of one or more letters:
+\begin{itemize}
+\item L: left
+\item R: right
+\item C: center
+\item E: even page
+\item O: odd page
+\item H: header
+\item F: footer
+\end{itemize}
+
+
+LaTeX and its base classes provide four page styles:
+\begin{itemize}
+\item empty: Neither a header nor a footer is shown.
+\item plain: No header. The page number will be printed and centered in the footer. 
+\item headings: The header contains titles of chapters, sections, and/or subsections, depending on the class and also the page number. The footer is empty.
+\item myheadings: The header contains a user-defined text and the page number; the footer is empty.
+\end{itemize}
+
+\argument{fancyhdr} adds one page style:
+\begin{itemize}
+\item fancy: Both the header and footer may be customized by the user.
+\end{itemize}
+ 
+Two commands may be used to choose the page style:
+\begin{itemize}
+\item \lstinline|\pagestyle{name}|: Switches to the page style name from this point onwards.
+\item \lstinline|\thispagestyle{name}|: Chooses the page style name only or the current page; the following pages will have the style that's been used before.
+\end{itemize}
+
+
+We can introduce or delete lines between header and body text and body text and footer, respectively, with these two commands:
+\begin{lstlisting}
+\renewcommand{\headrulewidth}{width} 
+\renewcommand{\footrulewidth}{width}
+\end{lstlisting}
+
+
+\section{paralist}
+\label{sec:paralist}
+\index{package!paralist}
+\begin{lstlisting}[language=TeX]
+\usepackage{paralist}
+\end{lstlisting}
+
+\argument{paralist} provides several new list environments designed to be typeset within paragraphs or in a very compact look.
+We loaded this package and replaced the standard environments with their compact counterparts.
+
+
+For each standard environment, \argument{paralist} adds three corresponding environments:
+
+Numbered lists:
+\begin{itemize}
+\item \argument{compactenum}: Compact version of the \argument{enumerate} environment without any vertical space before or after the list or its items.
+\item \argument{inparaenum}: An enumerated list typeset within a paragraph.
+\item \argument{asparaenum}: Every list item is formatted like a separate common LaTeX paragraph, but numbered.
+\end{itemize}
+
+Bulleted lists:
+\begin{itemize}
+\item \argument{compactitem}:
+\item \argument{inparaeitem}:
+\item \argument{asparaitem}
+\end{itemize}
+
+Description lists:
+\begin{itemize}
+\item \argument{compactdesc}
+\item \argument{inparadesc}
+\item \argument{asparadesc}
+\end{itemize}
+
+\section{enumitem}
+\label{sec:enumitem}
+\index{package!enumitem}
+\begin{lstlisting}[language=TeX]
+\usepackage{enumitem}
+\end{lstlisting}
+
+
+This package provide sophisticated features to define numbered and bulleted lists.
+
+\begin{lstlisting}[language=TeX]
+\usepackage{enumitem}
+% \setlist sets properties valid for all types of lists.
+% Here we specified nolistsep to achieve very compact lists analogous
+% to the compact paralist environment.
+\setlist{nolistsep}
+% \setitemize modifies properties of bulleted lists.
+\setitemize[1]{label=---}
+% \setenumerate sets properties valid for numbered lists.
+% \alph, \Alph, \arabic, \roman and \Roman
+\setenumerate[1]{label=\textcircled{\scriptsize\Alph*},font=\sffamily{}}
+\end{lstlisting}
+
+
+All this three commands allow arguments of the form \argument{key=value}.
+Some useful parameters are:
+\begin{itemize}
+\item \argument{font}
+\item \argument{label}
+\item \argument{align}
+\item \argument{start}
+\item \argument{resume}
+\item \argument{noitemsep}
+\item \argument{nolistsep}
+\end{itemize}
+
+
+It also support:
+\begin{lstlisting}
+\setdescription[level]{k=v}
+\end{lstlisting}
+
+
+
+\section{array}
+\label{sec:array}
+\index{package!array}
+\begin{lstlisting}
+\usepackage{array}
+\end{lstlisting}
+
+This package provide some options to \argument{tabular}:
+\begin{itemize}
+\item \lstinline|m{width}| is similar to \lstinline|\parbox{width}|, the base line is at the middle.
+\item \lstinline|b{width}| is similar to \lstinline|\parbox[b]{width}|, the base line is at the bottom.
+\item \lstinline|!{code}| can be used like | but inserts \argument{code} instead of a vertical line.
+\item \lstinline|>{code}| can be used before an \argument{l, c, r, p, m}, or \argument{b} option and inserts code right at the beginning of each entry of that column.
+\item \lstinline|<{code}| can be used after an \argument{l, c, r, p, m}, or \argument{b} option and inserts code at the end of the entry of that column.
+\end{itemize}
+
+
+\begin{lstlisting}
+\begin{tabular}{@{}lp{1.2cm}m{1.2cm}b{1.2cm}@{}}
+  \hline
+  baseline & aligned at the top & aligned at the middle 
+  & aligned at the bottom\\
+  \hline
+\end{tabular}
+
+\end{lstlisting}
+
+\begin{tabular}{@{}lp{1.2cm}m{1.2cm}b{1.2cm}@{}}
+  \hline
+  baseline & aligned at the top & aligned at the middle & aligned at the bottom\\
+  \hline
+\end{tabular}
+
+
+The \argument{array} package introduces a length called \lstinline|\extrarowheight|.
+If it has a positive value, this will be added to the height of every row of the table.
+
+
+\begin{lstlisting}
+\setlength{\extrarowheight}{4pt}
+\begin{tabular}{@{}>{\itshape}ll!{:}l<{.}@{}}
+  \hline
+  Info: & Software & \LaTeX\\
+        & Author & Leslie Lamport\\
+        & Website & www.latex-project.org\\
+  \hline
+\end{tabular}
+\end{lstlisting}
+
+\setlength{\extrarowheight}{4pt}
+\begin{tabular}{@{}>{\itshape}ll!{:}l<{.}@{}}
+  \hline
+  Info: & Software & \LaTeX\\
+        & Author & Leslie Lamport\\
+        & Website & www.latex-project.org\\
+  \hline
+\end{tabular}
+
+
+\section{booktabs}
+\label{sec:booktabs}
+\index{package!bookabs}
+\begin{lstlisting}
+\usepackage{booktabs}
+\end{lstlisting}
+
+This package provides commands to beauty the table lines.
+\begin{itemize}
+\item \lstinline|\toprule[thickness]| may be used to draw a horizontal line at the top of the table. If desired, a thickness may be specified, like 1pt or 0.5mm.
+\item \lstinline|\midrule[thickness]| draws a horizontal dividing line between rows of a table.
+\item \lstinline|\bottomrule[thickness]| draws a horizontal line to finish off a table.
+  
+\item \lstinline|\cmidrule[thickness](trim){m-n}| draws a horizontal line from column \argument{m} to column \argument{n}. (\argument{trim}) is option, it could be (\argument{l} or \argument{r}) to trim the line at its left or right end. 
+\end{itemize}
+
+The package does not define vertical lines.
+
+
+\begin{lstlisting}
+\setlength{\heavyrulewidth}{2pt} % set top bottom line width
+  \begin{tabular}{ccc}
+    \toprule % British typesetters call a line a rule
+    \head{Command} & \head{Declaration}& \head{Output}\\
+    \midrule %
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+    \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+    \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+    \bottomrule %
+  \end{tabular}
+\end{lstlisting}
+
+
+  
+\begin{tabular}{ccc}
+  \toprule % British typesetters call a line a rule
+  \head{Command} & \head{Declaration}& \head{Output}\\
+  \midrule %
+  \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text \\
+  \verb|\textsf| & \verb|\sffamily| & \sffamily Example text \\
+  \verb|\texttt| & \verb|\ttfamily| & \ttfamily Example text \\
+  \bottomrule %
+\end{tabular}
+
+
+\section{multirow}
+\label{sec:multirow}
+\index{package!multirow}
+\begin{lstlisting}
+\usepackage{multirow}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+\begin{tabular}{@{}l*2{>{\textbackslash\ttfamily}l}l<{Example text}@{}}
+  \toprule
+  & \multicolumn{2}{c}{\head{Input}} & \multicolumn{1}{c}{\head{Output}}\\
+  & \normal{\head{Command}} & \normal{\head{Declaration}} & \normal{}\\
+  \cmidrule(lr){2-3}\cmidrule(l){4-4}
+  \multirow{3}{*}{Family} & textrm&rmfamily & \rmfamily\\
+  & textsf & sffamily & \sffamily\\
+  & texttt & ttfamily & \ttfamily\\
+  \bottomrule
+\end{tabular}
+
+\end{lstlisting}
+
+\begin{tabular}{@{}l*2{>{\textbackslash\ttfamily}l}l<{Example text}@{}}
+  \toprule
+  & \multicolumn{2}{c}{\head{Input}} & \multicolumn{1}{c}{\head{Output}}\\
+  & \normal{\head{Command}} & \normal{\head{Declaration}} & \normal{}\\
+  \cmidrule(lr){2-3}\cmidrule(l){4-4}
+  \multirow{3}{*}{Family} & textrm&rmfamily & \rmfamily\\
+  & textsf & sffamily & \sffamily\\
+  & texttt & ttfamily & \ttfamily\\
+  \bottomrule
+\end{tabular}
+
+\section{caption}
+\label{sec:caption}
+\index{package!caption}
+\begin{lstlisting}
+\usepackage[font=large,labelfont=bf,margin=1cm]{caption}
+\end{lstlisting}
+
+Through this package, you could enhance the visual appearance of all of your captions.
+
+
+\section{graphicx}
+\label{sec:graphicx}
+\index{package!graphicx}
+\begin{lstlisting}
+\usepackage{graphicx}
+\end{lstlisting}
+
+This package is used to insert figure into your document.
+
+
+\section{pdfpages}
+\label{sec:pdfpages}
+\index{package!pdfpages}
+\begin{lstlisting}
+\usepackage{pdfpages}
+\end{lstlisting}
+
+It provides a command, \lstinline|\includepdf|, which is able to include a complete page and
+even a multi-page PDF document at once.
+
+
+\section{eso-pic}
+\label{sec:eso-pic}
+\index{package!eso-pic}
+\begin{lstlisting}
+\usepackage{eso-pic}
+\end{lstlisting}
+
+This package makes it easy to add some picture commands to every page
+at absolute positions. So it can be used for watermarks, background images.
+
+
+
+\section{textpos}
+\label{sec:textpos}
+\index{package!textpos}
+\begin{lstlisting}
+\usepackage{textpos}
+\end{lstlisting}
+
+This package facilitates placing boxes at absolute positions on the
+LATEX page. It provides the following environment:
+\begin{lstlisting}
+\begin{textblock}{hsize}(hpos,vpos) 
+text...
+\end{textblock}
+
+\end{lstlisting}
+
+
+So it can be used for watermarks, background images.
+
+
+\section*{placeins}
+\label{sec:placeins}
+\index{package!placeins}
+It may happen that tables and figures float far away, perhaps even
+into another section. The \argument{placeins} package provides a
+useful command to restrict the floating. If you load
+\argument{placeins} with \lstinline|\usepackage{placeins}| and write
+\lstinline|\FloatBarrier| somewhere in your document, no table or
+figure could float past it. This macro keeps floats in their place.
+
+A very convenient way to prevent floats from crossing section
+boundaries is stating the section option:
+\begin{lstlisting}
+\usepackage[section]{placeins}
+\end{lstlisting}
+
+This option causes an implicit \lstinline|\FloatBarrier| to be used at the beginning of each section.
+
+
+\section{float}
+\label{sec:float}
+\index{package!float}
+\begin{lstlisting}
+\usepackage{float}
+\end{lstlisting}
+
+
+This package introduces the placement option \argument{H} causing the float to appear right there.
+
+
+
+\section{wrapfig}
+\label{sec:wrapfig}
+\index{package!wrapfig}
+\begin{lstlisting}
+\usepackage{wrapfig}
+\end{lstlisting}
+
+This package provides environments \argument{wrapfigure} and \argument{wraptable} to let text flow around a table or a figure.
+
+
+
+\begin{lstlisting}
+\begin{wrapfigure}[number of lines]{placement}[overhang]{width}
+  
+\end{wrapfigure}
+\end{lstlisting}
+
+
+
+\section{subfig}
+\label{sec:subfig}
+\index{package!subfig}
+\begin{lstlisting}
+\usepackage{subfig}
+\end{lstlisting}
+
+It is a sophisticated package supporting inclusion of small figures and tables.
+It takes care of positioning, labeling, and captioning within single floats.
+
+
+
+\section{varioref}
+\label{sec:varioref}
+\index{package!varioref}
+\begin{lstlisting}
+\usepackage{varioref}
+\end{lstlisting}
+
+
+This package defines the commands \lstinline|\vref, \vpageref, \vrefrange|, and \lstinline|\vpagerefrange|.
+\lstinline|\vref| is similar to \lstinline|\ref| but adds an additional page reference, like ‘on the facing page’ or ‘on page 27’ whenever the corresponding \lstinline|\label| is not on the same page.
+The command \lstinline|\vpageref| is a variation to \pageref with a similar functionality.
+The \lstinline|\vpagerefrange| commands take two labels as arguments and produce strings which depend on whether or not these labels fall onto a single page or on different pages. Generated strings are customizable so that these commands are usable with various languages.
+
+
+
+\section{xr}
+\label{sec:xr}
+\index{package!xr}
+\begin{lstlisting}
+\usepackage{xr}
+\externaldocument[A-]{aaa}
+\end{lstlisting}
+
+
+This package implements a system for eXternal References.
+
+If one document needs to refer to sections of another, say \argument{aaa.tex}, then this package may be loaded in the main file, and the command \lstinline|\externaldocument{aaa}| given in the preamble.
+Then you may use \lstinline|\ref| and \lstinline|\pageref| to refer to anything which has been given a \lstinline|\label| in either \argument{aaa.tex} or the main document.
+You may declare any number of such external documents.
+If any of the external documents, or the main document, use the same \lstinline|\label| then an error will occur as the label will be multiply defined.
+To overcome this problem \lstinline|\externaldocument| has an optional argument.
+If you declare \lstinline|\externaldocument[A-]{aaa}| Then all references from \argument{aaa} are prefixed by \argument{A-}.
+So for instance, if a section of \argument{aaa} had \lstinline|\label{intro}|, then this could be referenced with \lstinline|\ref{A-intro}|.
+
+
+\section{hyperref}
+\label{sec:hyperref}
+\index{package!hyperref}
+\begin{lstlisting}
+\usepackage{hyperref}
+\end{lstlisting}
+
+This package provides hyperlink capability. It provides the following the link commands:
+\begin{lstlisting}
+% makes text to a hyperlink, which points to the URL address
+\href{URL}{text} 
+% prints the URL and links it
+\url{URL} 
+% prints the URL without linking it
+\nolinkurl{URL} 
+% changes text to a hyperlink, which links to the place
+% where the label has been set, thus to the same place 
+% \ref{label} would point to
+\hyperref{label}{text} 
+% creates a target name for potential hyperlinks 
+% with text as the anchor
+\hypertarget{name}{text} 
+% makes text to a hyperlink, which points to the target name
+\hyperlink{name}{text} 
+\end{lstlisting}
+
+
+Sometimes you might need just an anchor, for instance, if you use \lstinline|\addcontentsline|, which creates a hyperlinked TOC entry, but there hasn't been a sectioning command setting the anchor.
+The TOC entry would point to the previously set anchor, thus to the wrong place! The command \lstinline|\phantomsection| comes to the rescue; it's just setting an anchor like \lstinline|\hypertarget{}{}| would do.
+It's mostly used this way for creating a TOC entry for the bibliography while linking to the correct page as follows:
+\begin{lstlisting}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliography{name}
+\end{lstlisting}
+
+
+
+It also provides metadata property.
+\begin{lstlisting}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=red,
+  pdfauthor={Mingming Li},
+  pdftitle={Latex},
+  pdfsubject={Latex},
+  pdfkeywords={Latex,Emacs}
+}
+\end{lstlisting}
+
+
+
+
+
+\section{tocloft}
+\label{sec:tocloft}
+\index{package!tocloft}
+\begin{lstlisting}
+\usepackage{tocloft}
+\end{lstlisting}
+
+This package provides means of controlling the typographic design of the Table of Contents, List of Figures and List of Tables.
+New kinds of ‘List of ...’ can be defined.
+
+
+\section{minitoc}
+\label{sec:minitoc}
+\index{package!minitoc}
+\begin{lstlisting}
+\usepackage{minitoc}
+
+\dominitoc
+\dominilof
+\dominilot
+
+
+\chapter{Chapter}
+\label{cha:chapter}
+
+\minitoc                        
+\mtcskip
+\minilof
+\mtcskip
+\minilot
+
+\end{lstlisting}
+
+This package can create small TOCs for each part, chapter, or section.
+
+
+\section{tocbibind}
+\label{sec:tocbibind}
+\index{package!tocbibind}
+\begin{lstlisting}
+\usepackage{tocbibind}
+\end{lstlisting}
+
+
+It can automatically add bibliography, index, TOC, LOF, and LOT to the table of contents.
+
+
+\section{index}
+\label{sec:index}
+\index{package!index}
+\begin{lstlisting}
+\usepackage{index}
+\makeindex{}
+
+...
+\index{network}
+...
+
+\clearpage{}
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+\end{lstlisting}
+
+This package improves LaTeX's built-in indexing capabilities.
+
+\section{fontenc}
+\label{sec:fontenc}
+\index{package!fontenc}
+\begin{lstlisting}
+\usepackage[T1]{fontenc}
+\end{lstlisting}
+
+This package is responsible for the output encoding: TeX macros are translated into special characters. 
+
+
+\section{titlesec}
+\label{sec:titlesec}
+\index{package!titlesec}
+\begin{lstlisting}
+\usepackage{titlesec}
+\end{lstlisting}
+
+It provide a consistent way to modify the headings.
+
+\begin{lstlisting}
+\titleformat{cmd}[shape]{format}{label}{sep}{before}[after]
+\titlespacing*{cmd}{left}{beforesep}{aftersep}[right]
+
+% example
+\titleformat{\chapter}[display]
+{\normalfont\sffamily\Large\bfseries\centering}
+{\chaptertitlename\ \thechapter}{0pt}{\Huge}
+% section heading
+\titleformat{\section}
+{\normalfont\sffamily\large\bfseries\centering}
+{\thesection}{1em}{}
+% adjust the chapter headings spacing
+% with star(*), the indentation of the following paragraph would be removed as you
+know of sections. With drop, wrap and run-in the starred version has no meaning.
+\titlespacing*{\chapter}{0pt}{30pt}{20pt}
+\end{lstlisting}
+
+
+The meaning of the arguments of \lstinline|\titleformat| is as follows:
+\begin{itemize}
+\item \argument{cmd} tands for the sectioning command we redefine, that is, \lstinline|\part, \chapter, \section, \subsection, \subsubsection, \paragraph|, or \lstinline|\subparagraph|
+\item \argument{shape} specifies the paragraph shape. The effect of the possible values is:
+  \begin{itemize}
+  \item \argument{display} puts the label into a separate paragraph
+  \item \argument{hang} creates a hanging label like in standard sections and is the default option
+  \item \argument{runin} produces a run-in title like \lstinline|\paragraph| does by default
+  \item \argument{leftmargin} sets the title into the left margin
+  \item \argument{rightmargin} puts the title into the right margin
+  \item \argument{drop} wraps the text around the title, requires care to avoid overlapping
+  \item \argument{wrap} works like drop but adjusts the space for the title to match the longest text line
+  \item \argument{frame} works like display and additionally frames the title
+  \end{itemize}
+\item \argument{format} may contains commands which will be applied to label and text of the title.
+\item \argument{label} prints the label, that is, the number.
+\item \argument{sep} is a length which specifies the separation between label and title text. With \argument{display} option, it’s the vertical separation, with \argument{frame} option it means the distance between text and frame, otherwise it’s the horizontal separation between label and title.
+\item \argument{before} can contain code which comes before the title body. The last command of it is allowed to take an argument, which should then be the title text.
+\item \argument{after} can contain code which comes after the title body.
+\end{itemize}
+
+
+\section{color}
+\label{sec:color}
+\index{package!color}
+\begin{lstlisting}
+\usepackage{color}
+\end{lstlisting}
+
+
+It provides the following commands:
+\begin{lstlisting}
+% declaration that switches to the color name
+\color{name}
+% like {\color{name}}
+\textcolor{name}{text} 
+% define your own color
+\definecolor{name}{model}{color specification}
+% \definecolor{light-blue}{rgb}{0.8,0.85,1}
+\end{lstlisting}
+
+
+\section{xcolor}
+\label{sec:xcolor}
+\index{package!xcolor}
+\begin{lstlisting}
+\usepackage{xcolor}
+\end{lstlisting}
+
+It extends the color facilities.
+It offers a lot of readily mixed colors; you just need to call it by its name and it has powerful capabilities regarding color definition
+
+
+\section{tikz}
+\label{sec:tikz}
+\index{package!tikz}
+
+\begin{lstlisting}
+\usepackage{tikz}
+\end{lstlisting}
+
+
+It is an enormously capable package for creating graphics.
+
+
+\section{amsmath}
+\label{sec:amsmath}
+\index{package!amsmath}
+
+\begin{lstlisting}
+\usepackage{amsmath}
+\end{lstlisting}
+
+
+It provides some math commands or environments. For example
+\begin{lstlisting}
+\begin{multline}
+\sum = a + b + c + d + e \\
+           + f + g + h + i + j \\
+           + k + l + m + n 
+\end{multline}
+
+
+\begin{gather}
+x + y + z = 0 \\ 
+y-z= 1
+\end{gather}
+
+
+\begin{align}
+  x + y + z &= 0 \\
+  y - z &= 1
+\end{align}
+\end{lstlisting}
+
+
+\begin{multline}
+\sum = a + b + c + d + e \\
+           + f + g + h + i + j \\
+           + k + l + m + n 
+\end{multline}
+
+
+\begin{gather}
+x + y + z = 0 \\ 
+y-z= 1
+\end{gather}
+
+
+\begin{align}
+  x + y + z &= 0 \\
+  y - z &= 1
+\end{align}
+
+
+It also provide two commands to insert text into formulas:
+\begin{lstlisting}
+% inserts text within a math formula. 
+\text{words}
+% suspends the formula, the text follows in a separate paragraph, then the multi-line formula is resumed, keeping the alignment. Use it for longer text. 
+\intertext{text}
+\end{lstlisting}
+
+\section{longtable}
+\label{sec:longtable}
+
+\begin{lstlisting}
+\usepackage{longtable}
+\end{lstlisting}
+
+\begin{lstlisting}
+\begin{center}
+  \begin{longtable}[H]{l>{\bfseries}lp{0.6\textwidth}}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{c}{{Continued on next page}}\\
+    \bottomrule
+    \endfoot
+
+    \endlastfoot
+
+    content
+    ...
+    content
+    
+    \bottomrule
+    \caption{Dired commands}
+    \label{tab:dired-commands}
+  \end{longtable}
+\end{center}
+\end{lstlisting}
+
+It is a popular package for creating multi-page table.
+
+\section{xsavebox}
+\label{sec:xsavebox}
+
+\begin{lstlisting}
+\usepackage{xsavebox}           
+\newsavebox{\lstbox}
+\end{lstlisting}
+
+This package provides some box environments to define box that can be used in footnote.
+
+\begin{tcolorbox}
+\begin{verbatim}
+
+\begin{lrbox}{\lstbox}
+\begin{lstlisting}[language=elisp, basicstyle=\footnotesize]
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "M-n") #'org-next-link)
+  (define-key org-mode-map (kbd "M-p") #'org-previous-link))
+\end{lstlisting}
+\end{lrbox}
+
+\footnote{\usebox{\lstbox}}
+\end{verbatim}
+\end{tcolorbox}
+
+
+
+
+\section{tablefootnote}
+\label{sec:tablefootnote}
+
+This package provides the \lstinline|\tablefootnote| command to add footnote in a table.
+
+
+\section{fncychap}
+\label{sec:fncychap}
+
+\begin{lstlisting}
+% Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
+
+\end{lstlisting}
+
+This package provides some predefined chapter settings.
+
+
+\section{fontawesome}
+\label{sec:fontawesome}
+
+This package provides some awesome social icons.
+
+\begin{lstlisting}
+\faGithub, \faLinkedin, \faStackExchange, \faStackOverflow, \faHome
+\end{lstlisting}
+
+\faGithub, \faLinkedin, \faStackExchange, \faStackOverflow, \faHome
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

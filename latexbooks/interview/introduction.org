@@ -1,0 +1,23 @@
+Good morning, Thank you for giving me this wonderful opportunity to introduce myself to you. My name is Mingming Li and I'm a deep learning algorithm engineer.
+
+My current job have two parts: 
+the first part is paper searching for a denosing model, Encoder-Decoder model, fine-tuning the model and applying the trained model into docoment denosing operation.
+The second part is paper searching for an object detection model, SSD, fine-tuning the model and applying the trained model into the document cut operation.
+The AI model improve the document processing efficiency by 80%.
+
+I am competent for this job. In my part time, I read the book "deep learning" written by Goodfellow and got a solid understanding on deep learning theory.
+After learning Python systematically, I practice my coding ability with Python a lot in my job.
+The process of my current job is paper searing, model fine-tuning, and applying models into practice which I think matches this position well.
+
+That's all, thank you for you time.
+
+
+
+
+
+Post-secondary education in a related field.
+Strong working knowledge of deep learning, and experience utilizing theoretical and empirical research to solve real-world problems.
+Must have at least 1 year of experience with Deep Learning frameworks like PyTorch or TensorFlow.
+Must have at least 3 years of industry experience with C/C++, Python coding or other high-level languages.
+Experience building systems based on machine learning and/or deep learning.
+An understanding of low-level implementation of neural networks.

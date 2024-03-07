@@ -1,0 +1,266 @@
+:PROPERTIES:
+:ID:       4687CCF7-0100-4951-AB8A-03CC6338B960
+:END:
+#+title: tensorflow
+
+* basic
+*** import
+#+BEGIN_SRC python
+import tensorflow as tf
+#+END_SRC
+
+*** matrix
+#+BEGIN_SRC python
+import tensorflow as tf
+import numpy as np
+
+a1 = tf.constant(np.ones([4, 4]))
+a2 = tf.constant(np.ones([4, 4]))
+print(a1)
+a1_dot_a2 = tf.matmul(a1, a2)
+
+sess = tf.Session()
+print(sess.run(a1_dot_a2))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+Tensor("Const:0", shape=(4, 4), dtype=float64)
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+
+#+END_EXAMPLE
+
+*** variable
+#+BEGIN_SRC python
+# define constant
+a1 = tf.constant(np.ones([4, 4]) * 2)
+
+# define vairable
+b1 = tf.Variable(a1)
+b2 = tf.Variable(np.ones([4, 4]))
+
+# define matrix mulplication
+b1_dot_b2 = tf.matmul(b1, b2)
+
+# variable initialization
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+print(sess.run(b1))
+print(sess.run(b2))
+print(sess.run(b1_dot_b2))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+[[2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]
+ [2. 2. 2. 2.]]
+[[1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]
+ [1. 1. 1. 1.]]
+[[8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]
+ [8. 8. 8. 8.]]
+
+#+END_EXAMPLE
+*** placeholder
+#+BEGIN_SRC python
+import tensorflow as tf
+import numpy as np
+
+b = tf.Variable(np.ones([4, 4]))
+
+# define placeholder
+c = tf.placeholder(dtype=tf.float64, shape=[4, 4])
+
+c_dot_b = tf.matmul(c, b)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+print(sess.run(c_dot_b, feed_dict={c: np.ones([4, 4])}))
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+[[4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]
+ [4. 4. 4. 4.]]
+
+#+END_EXAMPLE
+
+*** matrix functions
+#+BEGIN_SRC python
+import tensorflow as tf
+
+A_r = [[1, 2], [-1, 1]]
+b_r = [1, 1]
+
+A = tf.placeholder(dtype=tf.float64, shape=[2, 2])
+b = tf.placeholder(dtype=tf.float64, shape=[2])
+
+# usage of matrix functions
+A_pow = tf.pow(A, 2)
+A_relu = tf.nn.relu(A)
+A_inverse = tf.matrix_inverse(A)
+A_T = tf.transpose(A)
+b_diag = tf.diag(b)
+I = tf.eye(6)
+A_concat = tf.concat([A, A], axis=0)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+lst = sess.run([A_pow, A_relu, A_inverse, A_T, b_diag, I, A_concat], feed_dict={A: A_r, b: b_r})
+
+for _ in lst:
+    print(_)
+#+END_SRC
+output:
+
+#+BEGIN_EXAMPLE
+[[1. 4.]
+ [1. 1.]]
+[[1. 2.]
+ [0. 1.]]
+[[ 0.33333333 -0.66666667]
+ [ 0.33333333  0.33333333]]
+[[ 1. -1.]
+ [ 2.  1.]]
+[[1. 0.]
+ [0. 1.]]
+[[1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 1.]]
+[[ 1.  2.]
+ [-1.  1.]
+ [ 1.  2.]
+ [-1.  1.]]
+
+#+END_EXAMPLE
+
+
+*** scope
+#+BEGIN_SRC python
+W = tf.Variable(tf.zeros([4, 4]), name="W")
+print(W.name)
+
+with tf.variable_scope("first-nn-layer"):
+    W2 = tf.Variable(tf.zeros([4, 4]), name="W")
+print(W2.name)
+
+with tf.variable_scope("second-nn-layer") as scope:
+    W3 = tf.get_variable("W", [4, 4])
+    scope.reuse_variables()
+    W4 = tf.get_variable("W", [4, 4])
+print(W4.name)
+#+END_SRC
+
+output:
+
+#+BEGIN_EXAMPLE
+W:0
+first-nn-layer/W:0
+second-nn-layer/W:0
+
+#+END_EXAMPLE
+
+如果将 W3 = tf.get_variable("W", [4, 4]) 注释掉，则 W4 = tf.get_variable("W", [4, 4]) 会报错。
+reuse会使用之前使用get_variable方法创建的同名字的变量，而不会自动创建变量。不存在则报错。
+
+* simple demo
+#+BEGIN_SRC python
+import tensorflow as tf
+from sklearn.datasets import load_iris
+
+# 1. load data
+iris = load_iris()
+data = iris.data  # (150, 4)
+target = iris.target  # (150,)
+
+# 2. placeholder to hold the data
+X = tf.placeholder(tf.float32, [None, 4])  # None 表示行不限
+y = tf.placeholder(tf.float32, [None, 1])
+
+# 3. layer
+#   This layer implements the operation:
+#   `outputs = activation(inputs * kernel + bias)`
+net = tf.layers.dense(X, 4, activation=tf.nn.relu)
+
+# 4. output
+fx = tf.layers.dense(net, 1)
+
+# 5. loss function
+loss = tf.reduce_mean(tf.square(fx - y))
+
+# 6. train step
+train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+
+# 7. init
+sess = tf.Session()
+init = tf.global_variables_initializer()
+sess.run(init)
+
+# 8. iteration
+for itr in range(10):
+    sess.run(train_step, feed_dict={X: data, y: target.reshape(-1, 1)})
+
+    y_predict = sess.run(y, feed_dict={X: data[:3, :], y: target.reshape(-1, 1)[:3, :]})
+    print('iteration: {} with predict: \n{}'.format(itr, y_predict))
+#+END_SRC
+
+* graph
+#+BEGIN_SRC python
+graph = tf.Graph()
+
+with graph.as_default():
+    #neutual network
+writer = tf.summary.Filewriter('logdir',graph)
+#+END_SRC
+
+* save
+#+BEGIN_SRC python
+saver = tf.train.Saver()
+saver.save(sess,'model_path')
+
+#+END_SRC
+
+* load
+#+BEGIN_SRC python
+saver.restore(sess,'model_path')
+#+END_SRC
+
+* optimizer
+*** SGD
+
+*** RMSprop
+
+*** Adagrad
+
+*** Adadelta
+
+*** Adam
+
+*** Adamax
+
+*** Nadam
+
+*** TFOptimizer
+* loss

@@ -1,0 +1,452 @@
+
+\chapter[Working Environment]{Emacs as Working Environment}
+\label{cha:emacs-as-working}
+
+\section{Spell Checking}
+
+Emacs provide Ispell interface.
+We say ``interfaces'' because Emacs does not include the executable.
+
+
+On MacOSX, There are two popular software manager \keyword{MacPorts} and \keyword{Homebrew}. You can use any of it to install Ispell.
+After installation, use command \lstinline[language=sh]|which ispell| in terminal to locate the Ispell executable file.
+In Emacs, type \keyword{C-h a ispell} to get all functions containing the keyword ispell.
+You can find the function \argument{ispell-check-version}.
+Type \keyword{M-x ispell-check-version} to check whether Ispell is working correctly.
+It will show you where should the Ispell executable should be located.
+Link the Ispell executable to where Emacs expects Ispell to be:
+\begin{lstlisting}[language=sh]
+ln -s /opt/local/bin/ispell /usr/local/bin/ispell
+\end{lstlisting}
+
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}l>{\ttfamily}ll}
+    \toprule
+    \head{Binding} & \head{Command} & \head{Meaning}\\
+    \midrule
+                   & ispell-buffer & \\
+                   & ispell-region & \\
+    M-\$ & ispell-word & \\
+    \midrule
+                   & ispell-complete-word & \\
+    \bottomrule
+  \end{tabular}
+  \caption{Ispell Commands}
+  \label{tab:ispell-commands}
+\end{table}
+
+You can use \keyword{C-h f ispell-help} for the options available when a misspelling is encountered.
+The options are the following:
+\newpage{}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}lp{0.6\textwidth{}}}
+    \toprule
+    \head{Option} & \head{Meaning}\\
+    \midrule
+    DIGIT & replace the word with a digit offered in the *Choices* buffer\\
+    SPC &   accept word this time\\
+    i & accept word and insert into private dictionary\\
+    a & accept word for this session\\
+    A & accept word and place in ‘buffer-local dictionary’\\
+    r & replace word with typed-in value.  Rechecked\\
+    R & replace word with typed-in value.  Query-replaced in buffer.  Rechecked\\
+    x & exit spelling buffer.  Move cursor to original point\\
+    X & exit spelling buffer.  Leaves cursor at the current point, and permits the aborted check to be completed later\\
+    q & quit spelling session\\
+    l & look up typed-in replacement in alternate dictionary\\
+    u & like ‘i’, but the word is lower-cased first\\
+    m & place typed-in value in personal dictionary, then recheck current word\\
+    C-r &recursive edit\\
+    \bottomrule
+  \end{tabular}
+  \caption{Ispell options}
+  \label{tab:ispell-options}
+\end{table}
+
+\section{Flyspell}
+\label{sec:flyspell-1}
+
+Flyspell highlights misspelled words as you type.
+There are two mode related with Flyspell: \keyword{flyspell-mode} and \keyword{flyspell-prog-mode}.
+The latter mode is designed for programmers.
+In this mode Emacs highlights misspellings only in comments or strings.
+To check existing text, you run \keyword{M-x flyspell-buffer Enter}.
+
+
+Flyspell highlights misspelled words in red.
+Words that are repeatedly misspelled are highlighted in yellow.
+
+
+Here are some useful commands in \keyword{flyspell-mode}:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    M-\$ & correct words (using Ispell)\\
+    C-M-i & automatically correct word\\
+    C-; & automatically correct the last misspelled word\\
+    \bottomrule
+  \end{tabular}
+  \caption{Flyspell commands}
+  \label{tab:flyspell-commands}
+\end{table}
+
+You can type \keyword{C-M-i} or \keyword{C-;} again to change to another  correct word if the corrected word is not what you want.
+
+\section{Bookmarks}
+\label{sec:bookmarks}
+
+
+It saves any new bookmarks in this file automatically when you exit Emacs.
+Bookmark points to a position in a file and not to a piece of text.
+
+
+\subsection{Bookmark Commands}
+\label{sec:bookmark-commands}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    C-x r m & set a bookmark\\
+    C-x r b & move to a bookmark\\
+    \midrule
+    C-x r l & \argument{*Bookmark List*} buffer appears\\
+    \bottomrule
+  \end{tabular}
+  \caption{Bookmark Command}
+  \label{tab:bookmark-commands}
+\end{table}
+
+
+\subsection{Bookmark List}
+\label{sec:bookmark-list}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    RET, or j & open bookmark\\
+    o & open the bookmark in another window and move the cursor to that window\\
+    C-o & open the bookmark in another window and keep the cursor in current window\\
+    \midrule
+    r & rename bookmark\\
+    s & save all bookmark\\
+    \midrule
+    m & mark bookmarks to be displayed in multiple windows\\
+    d & mark bookmark for deletion\\
+    u & remove mark\\
+    \midrule
+    x & delete bookmarks marked for deletion\\
+    v & display marked bookmarks or the one the cursor is on if none are marked\\
+    \midrule
+    e & edit (or create) annotation for the current bookmark\\
+    a & display annotation for current bookmark\\
+    A & display all annotations\\
+    \midrule
+    q & exit bookmark list\\
+    \bottomrule
+  \end{tabular}
+  \caption{Bookmark list commands}
+  \label{tab:bookmark-list-commands}
+\end{table}
+
+\section{Shell}
+\label{sec:shell}
+
+
+\subsection{One Command at a Time}
+\label{sec:one-command-at}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    M-! & execute command \\
+    M-| & execute command with region as input\\
+    M-\& & execute command asynchronously in background\\
+    \bottomrule
+  \end{tabular}
+  \caption{One command at a time}
+  \label{tab:one-command-at-a-time}
+\end{table}
+
+With \keyword{C-u} prefix, the command output is insert to current buffer.
+
+\subsection{Shell Mode}
+\label{sec:shell-mode}
+
+To start a shell buffer, type \keyword{M-x shell Enter}.
+This creates a buffer named \argument{*shell*}.
+
+
+
+How does Emacs know which shell to start?
+First, it looks at the variable \argument{shell-file-name}.
+Then it looks for a Unix environment variable named \argument{ESHELL}.
+Finally it looks for an environment variable named \argument{SHELL}.
+If you want to run another particular shell (for example, the zed shell) when you’re in Emacs, you can add the following command to your \argument{.emacs} file:
+\begin{lstlisting}
+(setq shell-file-name "/bin/zsh")
+\end{lstlisting}
+
+
+When Emacs starts an interactive shell, it runs an additional initialization file after your shell’s normal startup files.
+The name of this file is \argument{.emacs\_shell-name}, where \argument{shell-name} is the name of the shell you want to use in Emacs.
+It must be located in your home directory.
+For example, if you use zsh, you can add Emacs-only startup commands by placing them in the file \argument{.emacs\_zsh}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}ll}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{6}{*}{terminal} & C-c C-c & like \keyword{C-c} in terminal\\
+                 & C-c C-u & line \keyword{C-u} in terminal\\
+                 & M-r & like \keyword{C-r} in terminal\\
+                 & M-p & like \keyword{C-p} in terminal\\
+                 & M-n & like \keyword{C-n} in terminal\\
+                 & C-c SPC & like \keyword{\textbackslash{}} in terminal\\
+    \midrule
+    \multirow{2}{*}{delete} & C-c C-o & delete output from last command\\
+                 & C-c M-o & clear the shell buffer\\
+    \midrule
+    \multirow{2}{*}{window} & C-c C-r & move first line of output to top of window\\
+                 & C-c C-e & move last line of output to bottom of window\\
+    \midrule
+    \multirow{3}{*}{history} & C-c C-p & move to previous command\\
+                 & C-c C-n & move to next command\\
+                 & C-c C-l & list the commands you have typed\\
+    \midrule
+    argument & C-c . & insert previous command argument\\
+    \midrule
+    \multirow{2}{*}{move} & C-c C-f & \argument{shell-forward-command}\\
+                 & C-c C-b & \argument{shell-backward-command}\\
+    \midrule
+    save & C-c C-s & write the privous output into a file (overwrite)\\
+    \bottomrule
+  \end{tabular}
+  \caption{Shell mode commands}
+  \label{tab:shell-mode-commands}
+\end{table}
+
+
+To create multiple shell buffer, you can use \keyword{C-u M-x shell}.
+
+
+\subsection{Eshell, Shell and Term}
+\label{sec:eshell}
+
+Here's the differences:
+\begin{itemize}
+\item \keyword{M-x shell} starts the standard emacs interface to Operating System's command line interface.
+
+\item \keyword{M-x term} starts the terminal emulator in emacs.
+It behaves like a dedicated terminal app, such as xterm, gnome-terminal, puTTY.
+It is compatible to more shell apps than emacs shell interface, but standard emacs keys such as moving cursor doesn't work here.
+
+\item \keyword{M-x eshell} starts eshell which is a shell written entirely in emacs lisp.
+Note: it is not a bash emulator.
+Eshell is a shell by itself, but similar to bash or other shells.
+
+\end{itemize}
+
+Which should you use?
+It depends on your preference and needs.
+The following is some general guide.
+
+\begin{itemize}
+\item shell is the most popular. It is good for general use of classic/standard unix shell commands.
+\item term are good if you want to run stuff like \argument{ssh}, or other command line interactive interface (such as \argument{python}), or text based GUI app such as \argument{vim}.
+\item Eshell is super fast on startup. If you are a emacs lisp programer, you might prefer eshell because direct access to emacs lisp and better integration with emacs.
+\end{itemize}
+
+
+
+
+\section{Directory Editor}
+\label{sec:directory-editor}
+
+There are several ways to start directory editing.
+If you're not in Emacs, invoke Emacs with a directory name as an argument.
+For example, if you want to edit the directory \argument{notebook}, type the following
+\begin{lstlisting}[language=sh]
+emacs notebook
+\end{lstlisting}
+If you are in Emacs, you can use \keyword{C-x C-f DIRECTORY} or \keyword{C-x d DIRECTORY} to edit the directory.
+
+\begin{center}
+  \begin{longtable}[H]{l>{\bfseries}lp{0.6\textwidth}}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \endfirsthead
+
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{3}{c}{{Continued on next page}}\\
+    \bottomrule
+    \endfoot
+
+    \endlastfoot
+
+    
+    \multirow{12}{*}{mark} & m & mark current file\\
+                 & * * & mark executable files\\
+                 & * @ & mark symlinks\\
+                 & * / & mark directories\\
+                 & \% m & mark files matching \argument{REGEXP}\\
+                 & \% g & mark files containing \argument{REGEXP}\\
+                 & \% d & flag for deletion files that match regular expression\\
+                 & d & mark file for deletion\\
+                 & \# & mark autosave files for deletion\\
+                 & \textasciitilde{} & mark backup files for deletion, \keyword{C-u} to prefix remove the flag\\
+                 & \& & mark garbage files for deletion\\
+                 & u & unmark current file\\
+                 & U & unmark all files\\
+                 & t & toggle mark\\
+                 & * c & change marks on specified files\\
+    \midrule
+    \multirow{4}{*}{visit} & v & view file read only, \keyword{q} to quit\\
+                 & o & find file in another window; move there\\
+                 & C-o & find file in another window; don't move there\\
+                 & RET & visit file\\
+    \midrule
+    \multirow{17}{*}{operation} & O & change ownership of file\\
+                 & D & delete a file immediately\\
+                 & R & rename\\
+                 & C & copy marked files\\
+                 & G & change group permissions\\
+                 & L & load the marked Emacs Lisp files\\
+                 & Z & compress or uncompress\\
+                 & M & use \keyword{chmod} on current file\\
+                 & S & create a symbolic link to this file\\
+                 & s & sort the Dired display by date or by filename (toggle)\\
+                 & w & copy filename into the kill ring\\
+                 & y & display information on the type of the file using the \keyword{file} command\\
+                 & ! & run shell command\\
+                 & + & create a directory\\
+                 & Q & replace matches in all marked files\\
+                 & A & do a regular expression search on marked files\\
+                 & x & delete the files flagged for deletion\\
+    \midrule
+                 & n & next line\\
+                 & p & previous line\\       
+                 & \textasciicircum{} & up directory\\
+                 & > & next directory line\\
+    \multirow{8}{*}{navigation} & < & previous directory line\\
+                 & i & insert this subdirectory into the same dired buffer\\
+                 & \$ & hide or show the current directory or subdirectory\\
+                 & M-\$ & hide all subdirectories, leaving only their names; repeat command to show\\
+                 & C-M-n & move to next subdirectory (if you've inserted subdirectories using \keyword{i})\\
+                 & C-M-p & move to previous subdirectory (if you’ve inserted subdirectories using \keyword{i})\\
+                 & M-\} & next marked file\\
+                 & M-\{ & previous marked file\\
+    \bottomrule
+    \caption{Dired commands}
+    \label{tab:dired-commands}
+  \end{longtable}
+\end{center}
+
+
+
+Here's one trick.
+In Dired mode, you can use \keyword{C-x C-q} to change the readonly status.
+After is becomes editable, you can edit the dired buffer directly.
+When you finish the edit, type \keyword{C-c C-c} to make the change work.
+
+\section{Calendar}
+\label{sec:calendar}
+
+To display the calendar, type \keyword{M-x calendar}.
+Emacs displays a calendar window with three months: last month, this month, and next month.
+Here's my simple configuration in \argument{.emacs} file:
+\begin{lstlisting}
+;; set the first day of a week to Monday
+(setq calendar-week-start-day 1)
+;; start calendar at start emacs
+(calendar)
+\end{lstlisting}
+
+\newpage{}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}ll}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{9}{*}{relative move}  & . & today\\
+                 & C-f & next day\\
+                 & C-b & previous day\\
+                 & C-n & forward by week\\
+                 & C-p & backward by week\\
+                 & M-\} & forward by month\\
+                 & M-\{ & backward by month\\
+                 & C-x [ & forward by year\\
+                 & C-x ] & backward by year\\
+    \midrule
+    \multirow{7}{*}{absolute move} & C-a & beginning of the week\\
+                 & C-e & end of the week\\
+                 & M-a & beginning of the month\\
+                 & M-e & end of the month\\
+                 & M-< & beginning of the year\\
+                 & M-> & end of the year\\
+                 & g d & go to the specified day\\
+    \midrule
+    \multirow{4}{*}{scroll} & C-x > & scroll forward by 1 month\\
+                 & C-x < & scroll backward by 1 month\\
+                 & C-v & scroll forward by 3 months\\
+                 & M-v & scroll backward by 3 months\\
+    \midrule
+    \multirow{4}{*}{holiday}  & a & show holidays for the current calendar window\\
+                 & h & show whether today or the specified day is a holiday\\
+                 & x & highlight holidays\\
+                 & u & remove the highlights\\
+    \midrule
+    \multirow{7}{*}{add entry} & i d & add day entry\\
+                 & i w & add weekly entry\\
+                 & i m & add month entry\\
+                 & i y & add annual entry\\
+                 & i a & add annual entry (the year is included for reference)\\
+                 & i c & add cyclic entry\\
+                 & i b & add block entry\\
+    \midrule
+    \multirow{3}{*}{display} & m & highlight entries\\
+                 & d & display entry for the current date\\
+                 & s & display all entries\\
+    \bottomrule
+  \end{tabular}
+  \caption{Calendar Commands}
+  \label{tab:calendar-commands}
+\end{table}
+
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

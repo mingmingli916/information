@@ -1,0 +1,215 @@
+
+\chapter{Programming techniques}
+\label{cha:progr-techn}
+
+
+\section{Generator}
+\label{cha:generator}
+
+Generator provide a means of performing lazy evaluation, which means that they compute only the values that are actually needed.
+This can be more efficient than computing a very large list in one go.
+
+
+There are two ways to create a generator:
+\begin{itemize}
+\item generator expression
+\item the keyword \keyword{yield}
+\end{itemize}
+
+
+\begin{lstlisting}
+(expression for item in iterable)
+(expression for item in iterable if condition)
+\end{lstlisting}
+
+If we need all the items in one go we can pass the generator returned to \funcword{list()} or \funcword{tuple()}.
+We can use \funcword{next()} to regrieve the next item from the generator.
+
+\section{Dynamic code execution}
+\label{sec:dynam-code-exec}
+Dynamic code execution means treating a string as code to evaluate.
+There are two built-in functions for dynamic code execution:
+\begin{itemize}
+\item \funcword{eval()} for expression
+\item \funcword{exec()} for code
+\end{itemize}
+
+\begin{lstlisting}
+x = eval('2 ** 10')
+print(x)  # 1024
+\end{lstlisting}
+
+
+\begin{lstlisting}
+import math
+
+code = '''
+def area_of_sphere(r):
+    return 4 * math.pi * r ** 2
+'''
+
+context = {}
+context['math'] = math
+exec(code, context)  # define the function area_of_sphere
+
+\end{lstlisting}
+
+
+After the \funcword{exec()} call the context dictionary contains a key called \argument{area\_of\_sphere} whose value is the \funcword{area\_of\_sphere()} function.
+
+
+\begin{lstlisting}
+area_of_sphere = context['area_of_sphere']
+area = area_of_sphere(5)
+print(area)  # 314.1592653589793  
+
+\end{lstlisting}
+
+
+
+\section{Decorator}
+\label{sec:decorator}
+
+A \keyword{decorator} is a function that takes a function or method as its sole argument and returns a new function or method that incorporates the docorated function or method  with some additional functionality added.
+
+\begin{lstlisting}
+@positive_result
+def discriminant(a, b, c):
+    return b ** 2 - 4 * a * c
+
+
+def positive_result(function):
+    def wrapper(*args, **kwargs):
+        result = function(*args, **kwargs)
+        assert result >= 0, function.__name__ + "() result isn't >= 0"
+        return result
+
+    wrapper.__name__ = function.__name__
+    wrapper.__doc__ = function.__doc__
+    return wrapper
+\end{lstlisting}
+
+Here \funcword{positive\_result} is a decorator.
+It define a new local function (here wrapper()) tha calls the original function.
+The wrapper finishes by returning the result computed by the wrapped function.
+After creating the wrapper, we set its name and docstring to those of the original function.
+This helps with introspection, since we want error messages to mention the name of the original function, not the wrapper.
+Finally, we return the wrapper function.
+
+
+We can also use the \argument{functools} module's \funcword{@functools.wraps} decorator to set the function name and docstring to its original ones.
+Here's the code:
+\begin{lstlisting}
+import functools
+
+
+def positive_result(function):
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        result = function(*args, **kwargs)
+        assert result >= 0, function.__name__ + "() result isn't >=0"
+        return result
+
+    return wrapper 
+\end{lstlisting}
+
+Here's an example code to create a decorator with parameters.
+\begin{lstlisting}
+@bounded(0, 100)
+def percent(amount, total):
+    return (amount / total) * 100
+
+def bounded(minimum, maximum):
+    def decorator(function):
+        @functools.wraps(function)
+        def wrapper(*args, **kwargs):
+            result = function(*args, **kwargs)
+            if result < minimum:
+                return minimum
+            elif result > maximum:
+                return maximum
+            return result
+
+        return wrapper
+
+    return decorator
+\end{lstlisting}
+
+
+Decorators can also be used for logging.
+This is a very neat and efficient way for logging.
+
+\section{Function annotation}
+\label{sec:function-annotation}
+
+\begin{lstlisting}
+def function_name(par1: exp1, par2: exp2, ..., parN: expN) -> rexp:
+    suite
+\end{lstlisting}
+
+Every colon expression part (: expN) and the return expression part (-> rexp) are optional annotations.
+
+If annotations are present they are added to the function's \argument{\_\_annotations\_\_} dictionary.
+If they are not present this dictionary is empty.
+The dictionary's keys are the parameter names, and the value are the corresponding expressions.
+Annotations have no special significance to Python.
+What we can do depends on how we use the \argument{\_\_annotations\_\_} dictionary.
+For example to do type checking.
+
+\section{Partial function}
+\label{sec:partial-function}
+
+Partial function application is the creation of a function from an existing function and some arguments to produce a new function that does what the original function did, but with some arguments fixed so that callers don’t have to pass them.
+Here’s a very simple example:
+\begin{lstlisting}
+enumerate1 = functools.partial(enumerate, start=1)
+for lino, line in enumerate1(lines):
+    process_line(lino, line)
+\end{lstlisting}
+
+
+
+Using partial function application can simplify our code, especially when we want to call the same functions with the same arguments again and again.
+For example:
+
+\begin{lstlisting}
+reader = functools.partial(open, mode='rt', encoding='utf8')
+writer = functools.partial(open, mode='wt', encoding='utf8')
+\end{lstlisting}
+
+\begin{lstlisting}
+Conv2D_common = functools.partial(Conv2D, kernel_size=(3, 3), activation='relu', padding='same')
+
+h = Conv2D_common(256)(input_layer)
+h = Conv2D_common(64)(h)
+
+# The same full code is:
+# h = Conv2D(256, (3, 3), activation='relu', padding='same')(input_layer)
+# h = Conv2D(64, (3, 3), activation='relu', padding='same')(h)  
+\end{lstlisting}
+
+\section{Coroutines}
+\label{sec:coroutines}
+
+
+Coroutines are functions whose processing can be suspended and resumed at specific points.
+So, typically, a coroutine will execute up to a certain statement, then suspend execution while waiting for some data.
+At this point other parts of the program can continue to execute (usually other coroutines that aren’t suspended).
+Once the data is received the coroutine resumes from the point it was suspended, performs processing (presumably based on the data it got), and possibly sending its results to another coroutine.
+
+In Python, a coroutine is a function that takes its input from a \funcword{yield} expression.
+It may also send results to a receiver function (which itself must be a coroutine).
+Whenever a coroutine reaches a \funcword{yield} expression it suspends waiting for data; and once it receives data, it resumes execution from that point.
+
+
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "python"
+%%% End:

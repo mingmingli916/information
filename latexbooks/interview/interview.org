@@ -1,0 +1,5 @@
+* deeplite
+** self-introduction
+** why are you interested in deep learning
+** introduce the models you know
+** more on research or more on programming

@@ -1,0 +1,85 @@
+\contentsline {chapter}{Contents}{iii}{section*.1}%
+\contentsline {chapter}{List of Figures}{vii}{section*.2}%
+\contentsline {chapter}{List of Tables}{ix}{section*.3}%
+\contentsline {part}{I\hspace {1em}Theory}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}Probability}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Markov chain}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Transitions}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Discrete-time Markov chain}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Continous-time Markov chain}{3}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Markov kernel}{4}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Measurable space}{4}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}{\(\sigma \)}-algebra}{4}{subsection.1.1.6}%
+\contentsline {section}{\numberline {1.2}Conditional probability}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Posterior probability}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Guassian distribution}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Laplace distribution}{6}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Monte Carlo method}{6}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Variational Bayesian methods}{6}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Bayesian probability}{7}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Binomial distribution}{7}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Kullback–Leibler divergence}{8}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Jensen's inequality}{8}{section.1.11}%
+\contentsline {chapter}{\numberline {2}Learning}{9}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Model}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Capacity}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}The no free lunch theorem}{11}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Universal approximation theorem}{12}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Overfitting and underfitting}{12}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Training (optimization)}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}SGD}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Momentum}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Nesterov momentum}{14}{section.4.3}%
+\contentsline {section}{\numberline {4.4}AdaGrad}{14}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Adam}{15}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Cost function}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Regression cost function}{17}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Mean squared error}{17}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Mean absolute error}{17}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Classification cost function}{17}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Full Connected Networks}{19}{chapter.6}%
+\contentsline {chapter}{\numberline {7}CNN}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Convolution}{21}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Properties}{22}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Sparse interaction}{22}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Parameter sharing}{22}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Equivariant representations}{22}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3} Pooling}{23}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Metric}{25}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Precision}{25}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Recall}{25}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Accuracy}{25}{section.8.3}%
+\contentsline {section}{\numberline {8.4}F-score}{26}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Regularization}{27}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Parameter norm penalties}{27}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}$L^2$ Parameter Regularization}{27}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}$L^1$ Regularization}{27}{subsection.9.1.2}%
+\contentsline {section}{\numberline {9.2}Dataset Augmentation}{28}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Early stopping}{28}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Droupout}{28}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Activation functions}{29}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Desirable features}{29}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Sigmoid}{29}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Tanh}{29}{section.10.3}%
+\contentsline {section}{\numberline {10.4}ReLU}{29}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Leaky ReLU}{30}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Swish}{30}{section.10.6}%
+\contentsline {chapter}{\numberline {11}Machine learning process}{31}{chapter.11}%
+\contentsline {part}{II\hspace {1em}Models}{33}{part.2}%
+\contentsline {chapter}{\numberline {12}Diffusion}{35}{chapter.12}%
+\contentsline {part}{III\hspace {1em}Tools}{37}{part.3}%
+\contentsline {chapter}{\numberline {13}PyTorch}{39}{chapter.13}%
+\contentsline {chapter}{\numberline {14}NumPy}{41}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Load data}{41}{section.14.1}%
+\contentsline {part}{IV\hspace {1em}Practice}{43}{part.4}%
+\contentsline {chapter}{\numberline {15}Preprocessing}{45}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Not valued based data}{45}{section.15.1}%
+\contentsline {part}{V\hspace {1em}Projects}{47}{part.5}%
+\contentsline {part}{VI\hspace {1em}Papers}{49}{part.6}%
+\contentsline {chapter}{\numberline {16}Deep Unsupervised Learning using Nonequilibrium Thermodynamics{\cite {js2015deep}}}{51}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Algorithm}{51}{section.16.1}%
+\contentsline {subsection}{\numberline {16.1.1}Forward trajectory}{51}{subsection.16.1.1}%
+\contentsline {subsection}{\numberline {16.1.2}Reverse Trajectory}{51}{subsection.16.1.2}%
+\contentsline {section}{\numberline {16.2}Model probability}{52}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Training}{52}{section.16.3}%
+\contentsline {chapter}{Bibliography}{55}{section*.11}%

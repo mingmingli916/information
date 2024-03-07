@@ -1,0 +1,116 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{1}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Ten principles of economics}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}How people make decisions}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}How people interact}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}How the economy as a whole works}{7}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Thinking like an economist}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The economist as scientist}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}The scientific method}{9}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}The role of assumptions}{10}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Economic models}{10}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}The circular-flow diagram}{10}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}The production possibilities frontier}{10}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Microeconomics and macroeconomics}{11}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}The economist as policy adviser}{12}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Positive versus normative analysis}{12}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Why economists disagree}{13}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Interdependence and the gains from trade}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The principle of comparative advantage}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Absolute advantage}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Opportunity cost and comparative advantage}{15}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Comparative advantage and trade}{15}{subsection.3.1.3}%
+\contentsline {chapter}{\numberline {4}The market forces and supply and demand}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Market and compition}{17}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Competitive markets}{17}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Competition: perfect and otherwise}{17}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Demand}{18}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}What determines the quantity an individual demands?}{18}{subsection.4.2.1}%
+\contentsline {subsubsection}{Price}{18}{section*.13}%
+\contentsline {subsubsection}{Income}{18}{section*.14}%
+\contentsline {subsubsection}{Price of related goods}{19}{section*.15}%
+\contentsline {subsubsection}{Tastes}{19}{section*.16}%
+\contentsline {subsubsection}{Expectations}{19}{section*.17}%
+\contentsline {subsection}{\numberline {4.2.2}The demand schedule and the demand curve}{19}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Ceteris paribus}{20}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Market demand versus individual demand}{20}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Shift in the demand curve}{21}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Supply}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}What determine the quantity an individual supplies?}{22}{subsection.4.3.1}%
+\contentsline {subsubsection}{Price}{22}{section*.18}%
+\contentsline {subsubsection}{Input prices}{22}{section*.19}%
+\contentsline {subsubsection}{Technology}{22}{section*.20}%
+\contentsline {subsubsection}{Expections}{22}{section*.21}%
+\contentsline {subsection}{\numberline {4.3.2}The supply schedule and the supply curve}{22}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Market supply vs individual supply}{23}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Shifts in the supply curve}{23}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Supply and demand together}{24}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Three steps to analyzing changes in equilibrium}{25}{subsection.4.4.1}%
+\contentsline {chapter}{\numberline {5}Elasticity and its application}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}The elasticity of demand}{29}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}The price elasticity of demand and its determinants}{29}{subsection.5.1.1}%
+\contentsline {subsubsection}{Necessities versus luxuries}{29}{section*.22}%
+\contentsline {subsubsection}{Availability of close substitutes}{29}{section*.23}%
+\contentsline {subsubsection}{Definition of the market}{30}{section*.24}%
+\contentsline {subsubsection}{Time horizon}{30}{section*.25}%
+\contentsline {subsection}{\numberline {5.1.2}Computing the price elasticity of demand}{30}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}The midpoint method}{30}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}The variety of demand curves}{30}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Total revenue and the price elasticity of demand}{31}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Other demand eslasticities}{32}{subsection.5.1.6}%
+\contentsline {subsubsection}{The income elasticity of demand}{32}{section*.26}%
+\contentsline {subsubsection}{The cross-price elasticity of demand}{33}{section*.27}%
+\contentsline {section}{\numberline {5.2}The elasticity of supply}{33}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}The price elasticity of supply and its determinants}{33}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Computing the price elasticity of supply}{34}{subsection.5.2.2}%
+\contentsline {chapter}{\numberline {6}Supply, demand and government policies}{35}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Controls on prices}{35}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}How price ceilings affect market outcomes}{35}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}How price floors affect market outcomes}{36}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Taxes}{36}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}How taxes on buyers affect market outcomes}{36}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}How taxes on sellers affect market outcomes}{37}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Elasticity and tax incidence}{38}{subsection.6.2.3}%
+\contentsline {chapter}{\numberline {7}Consumers, producers, and the efficiency of markets}{41}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Consumer surplus}{41}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Willingness to pay}{41}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Using the demand curve to measure consumer surplus}{41}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}How a lower price raise consumer surplus}{42}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.4}What does consumer surplus measure?}{42}{subsection.7.1.4}%
+\contentsline {section}{\numberline {7.2}Producer surplus}{44}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Cost and the willingness to sell}{44}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Using the supply curve to measure producer surplus}{45}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}How a higher price raises producer surplus}{45}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Market efficiency}{45}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Evaluating the market equilibrium}{47}{subsection.7.3.1}%
+\contentsline {chapter}{\numberline {8}Applications: the costs of taxation}{49}{chapter.8}%
+\contentsline {section}{\numberline {8.1}The deadweight loss of taxation}{49}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}How a tax affects market participants}{49}{subsection.8.1.1}%
+\contentsline {subsubsection}{Welfare without a tax}{49}{section*.28}%
+\contentsline {subsubsection}{Welfare with a tax}{49}{section*.29}%
+\contentsline {subsubsection}{Change in welfare}{50}{section*.30}%
+\contentsline {subsection}{\numberline {8.1.2}Deadweight losses and the gains from trade}{52}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}The determinants of the deadweight loss}{53}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Deadweight loss and tax revenue as taxes vary}{54}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Conclution}{54}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Application: international trade}{57}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The determinants of trade}{57}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}The equilibrium without trade}{57}{subsection.9.1.1}%
+\contentsline {section}{\numberline {9.2}The winners and losers from trade}{57}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}The gains and losses of an exporting country}{57}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}The gains and losses of an importing country}{59}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}The effects of a tariff}{60}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}The effect of an import quota}{61}{subsection.9.2.4}%
+\contentsline {chapter}{\numberline {10}Externalities}{65}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Externalities and market inefficiency}{65}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Private solutions to externalities}{66}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}The types of private solutions}{66}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}The coase theorem}{66}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}Why private solutions do not always work}{66}{subsection.10.2.3}%
+\contentsline {section}{\numberline {10.3}Public policies toward externalities}{66}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Regulation}{67}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Pigovian taxes and subsidies}{67}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}Tradable pollution permits}{67}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.4}Objections to the economic analysis of pollution}{67}{subsection.10.3.4}%
+\contentsline {chapter}{List of Tables}{69}{chapter*.31}%
+\contentsline {chapter}{List of Figures}{71}{chapter*.32}%

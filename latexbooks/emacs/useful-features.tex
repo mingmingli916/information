@@ -1,0 +1,130 @@
+
+\chapter{Useful Features}
+\label{cha:useful-features}
+
+\section{Get Help}
+\label{sec:get-help}
+
+Emacs has extensive help.
+You should always check the help information to learn how to use the command, how to configure the Emacs, how to search for what you want and so on.
+
+
+The whole help entry is \keyword{C-h C-h}.
+You should read the help buffer carefully to find what the next help information you want to get.
+
+
+For example, if you want to replace some string but forget the key binding and the function, you can use \keyword{C-h a replace Enter}. You will get all the functions containing the keyword \keyword{replace}.
+
+
+\section{Auto Fill}
+\label{sec:auto-fill}
+
+\subsection{Dynamic Expanding}
+\label{sec:dynamic-expanding}
+
+
+\keyword{M-/} runs the command \argument{dabbrev-expand}.
+It expands previous word ``dynamically''.
+Expands to the most recent, preceding word for which this is a prefix.
+If no suitable preceding word is found, words following point are considered.
+It also search other buffers.
+
+\subsection{Auto Correct Word}
+\label{sec:auto-correct-word}
+
+If flyspell-mode is enabled,
+\keyword{C-M-i} runs the command \argument{flyspell-auto-correct-word}.
+This command proposes various successive corrections for the current word.
+If invoked repeatedly on the same position, it cycles through the possible corrections of the current word.
+
+Otherwise, \keyword{C-M-i} runs corresponding command to do completion.
+
+\subsection{Auto Fill Commands}
+\label{sec:auto-fill-commands}
+If you are in minibuffer, you can use \keyword{Tab} to auto-fill commands and filenames.
+
+For example, type \keyword{M-x open Tab}. If there are only one command matching the ``open'' prefix, it will be auto-filled.
+If there are more commands matching the prefix, type \keyword{Tab} again to get all candidates. In AUCTeX mode, you use \keyword{C-c C-m} to start a macro.
+In the minibuffer, you can use \keyword{Tab} to auto-fill \LaTeX{}\xspace command.
+
+If you type \keyword{C-x C-f} to open a file. In the minibuffer, you can use \keyword{Tab} to auto-fill the filename or use \keyword{Tab Tab} to get all candidates.
+
+
+
+\section{Canceling Commands}
+\label{sec:canceling-commands}
+
+When you want to cancel any command that’s in progress, press \keyword{C-g}.
+The word \keyword{Quit} appears in the command area.
+This command is helpful when you are stuck in the minibuffer and didn’t really mean to go there.
+Depending on what you were doing, you may have to press \keyword{C-g} a few times.
+
+
+\section{Undoing Changes}
+\label{sec:undoing-changes}
+
+What happens if you make a mistake while you’re editing? You can undo your changes by \keyword{undo} function.
+Type \keyword{C-h k undo Enter} and choose your favorite key binding.
+
+
+What if you’d like to redo a command after you type undo?
+There is no formal redo command, but you can use undo in the following way.
+Just move the cursor in any direction, and use undo again.
+Emacs redoes the last command you undid.
+You can repeat it to redo previous undos.
+
+
+\section{History Commands}
+\label{sec:history-commands}
+
+Emacs will record the commands you have used before, so you can reuse them to avoiding typing them again to save you time.
+
+
+\keyword{C-x Esc Esc} will let you edit then re-evaluate the last complex command.
+A \keyword{ command} is one that used the minibuffer.
+The command is placed in the minibuffer as a Lisp form for editing.
+The result is executed, repeating the command as changed.
+In the minibuffer, you can use \keyword{M-n} and \keyword{M-p} to navigate fore ward and backward the history.
+
+
+\keyword{C-x z} repeats the most recently executed command.
+
+
+In LaTeX mode, when you use \keyword{C-c C-e} to insert an environment, 
+In the minibuffer, you can use \keyword{M-n} and \keyword{M-p} to navigate fore ward and backward the history.
+
+
+\section{C-u}
+\label{sec:c-u}
+
+\keyword{C-u} runs the command \argument{universal-argument}.
+It has the following situations:
+\begin{itemize}
+\item following \keyword{digits}, it will repeat the following command \keyword{digits} times
+\item following \keyword{- or - digits}, some commands support negative digits and it will repeat the following command \keyword{1 or digits} times in the opposite direction
+\item without digits or minus sign, it provides 4 as argument
+\item repeating \keyword{C-u} without digits or minus sign many times, it multiplies the argument by 4 each time
+\item for some commands, just \keyword{C-u} by itself serves as a flag that change the command function.
+\end{itemize}
+
+
+
+\section{Saving Positions in Registers}
+\label{sec:saving-posit-regist}
+
+Typing \keyword{C-x r SPC (point-to-register)}, followed by a character \keyword{r}, saves both the position of point and the current buffer in register \keyword{r}.
+The register retains this information until you store something else in it.
+
+The command \keyword{C-x r j r} switches to the buffer recorded in register \keyword{r}, pushes a mark, and moves point to the recorded position.
+(The mark is not pushed if point was already at the recorded position, or in successive calls to the command.)
+The contents of the register are not changed, so you can jump to the saved position any number of times.
+
+
+\section{rgrep}
+\label{sec:rgrep}
+
+\keyword{M-x rgrep} can recursively search the content in the directory and files you specified.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

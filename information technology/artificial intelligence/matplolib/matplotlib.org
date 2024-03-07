@@ -1,0 +1,176 @@
+:PROPERTIES:
+:ID:       E119674B-C02D-4D5A-87B4-C716EF790ED1
+:END:
+#+title: matplotlib
+
+
+For visualization.
+* import
+#+BEGIN_SRC python
+import matplotlib.pyplot as plt
+#+END_SRC
+
+* plot
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x**2 + x + 1
+plt.plot(x, y, marker='o')
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_plot.png]]
+* scatter
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+plt.scatter(x, y)
+plt.show()
+#+END_SRC
+[[file:pics/plt_scatter.png]]
+* hist
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(x, 50, density=True, facecolor='g', alpha=0.75)
+
+
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.title('Histogram of IQ')
+plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+plt.show()
+#+END_SRC
+[[file:pics/plt_hist.png]]
+Compute and draw the histogram of x.
+* multiple figures
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+plt.figure(1)
+plt.scatter(x, y)
+plt.figure(2)
+plt.plot(x, y)
+plt.show()
+#+END_SRC
+
+* 3d surface
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+
+# X, Y value
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)  # x-y 平面的网格
+R = np.sqrt(X ** 2 + Y ** 2)
+# height value
+Z = np.sin(R)
+
+# rstride: row stride
+# cstride: column stride
+ax.plot_surface(X, Y, Z, rstride=1, cstride=3, cmap=plt.get_cmap('rainbow'))
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_surface.png]]
+
+* contourf
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+
+# X, Y value
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+X, Y = np.meshgrid(X, Y)  # x-y 平面的网格
+R = np.sqrt(X ** 2 + Y ** 2)
+# height value
+Z = np.sin(R)
+
+# rstride: row stride
+# cstride: column stride
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1,  cmap=plt.get_cmap('rainbow'))
+
+# fig = plt.figure(2)
+# ax = Axes3D(fig)
+ax.contourf(X, Y, Z, zdir='z', offset=-1.5, cmap=plt.get_cmap('rainbow'))
+
+plt.show()
+#+END_SRC
+
+zdir='z' project on z;
+[[file:pics/plt_contourf.png]]
+* quiver
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+mpl.style.use('seaborn-darkgrid')
+
+x1 = np.linspace(1, 3, 20)
+x2 = np.linspace(2, 4, 20)
+x1, x2 = np.meshgrid(x1, x2)
+
+u = 2 * x1 - 4
+v = 2 * x2 - 6
+
+plt.quiver(x1, x2, -u, -v)
+plt.show()
+#+END_SRC
+
+[[file:pics/plt_quiver.png]]
+* label, title
+#+BEGIN_SRC python
+plt.xlabel()
+plt.title()
+#+END_SRC
+* style
+#+BEGIN_SRC python
+import matplotlib as mpl
+
+mpl.style.use('ggplot')
+#+END_SRC
+* subplot
+#+BEGIN_SRC python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 1, 50)
+y = x ** 2 + x + 1
+
+plt.subplot(1, 2, 1)  # one row, two columns; the first figure
+plt.scatter(x, y)
+plt.subplot(1, 2, 2)  # one row, two columns; the second figure
+plt.plot(x, y)
+plt.show()
+#+END_SRC
+[[file:pics/plt_subplot.png]]
+

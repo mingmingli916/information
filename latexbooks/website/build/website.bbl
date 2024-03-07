@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{}
+{\em Flask Web Development}.
+\newblock O’Reilly Media, Inc, 2018.
+
+\bibitem{AZ21}
+Aston~Zhang et~al.
+\newblock {\em Dive into Deep Learning}.
+\newblock 2021.
+
+\bibitem{DC04}
+Debra~Cameron et~al.
+\newblock {\em Learning GNU Emacs}.
+\newblock O’Reilly Media, Inc., 2004.
+
+\bibitem{IG16}
+Ian~Goodfellow et~al.
+\newblock {\em Deep Learning}.
+\newblock 2016.
+
+\bibitem{YL98}
+Yann~LeCun et~al.
+\newblock Gradientbased learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 1998.
+
+\bibitem{DK86}
+D.E. Knuth.
+\newblock {\em The {\TeX}book}.
+\newblock Addison Wesley, 1986.
+
+\bibitem{DK89}
+D.E. Knuth.
+\newblock Typesetting concrete mathematics.
+\newblock {\em TUGboat}, 10(1):31--36, April 1989.
+
+\bibitem{AR16}
+Adrian Rosebrock.
+\newblock {\em Practical Python and OpenCV}.
+\newblock PyImageSearch, 2016.
+
+\bibitem{AR17}
+Adrian Rosebrock.
+\newblock {\em Deep Learning for Computer Vision with Python}.
+\newblock PyImageSearch, 2017.
+
+\end{thebibliography}

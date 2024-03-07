@@ -1,0 +1,54 @@
+\documentclass[a4paper,10pt]{book}
+\input{preamble}
+\begin{document}
+
+\include{title}
+
+% Pages are numbered with lowercase Roman numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\frontmatter
+
+\tableofcontents{}
+\listoffigures{}
+\listoftables{}
+
+% Pages are numbered with Arabic numbers.
+% Chapters are numbered and produce a table of contents entry.
+\mainmatter 
+\include{latex-base}
+\include{emacs}
+\include{common-commands-and-environments}
+\include{font}
+\include{box}
+\include{list}
+\include{table}
+\include{figure}
+\include{listing-content-and-references}
+\include{math}
+\include{using-fonts}
+\include{developing-large-document}
+
+\include{external-packages}
+\include{mytikz}
+\include{reference}
+
+
+% Pages are numbered with Arabic numbers.
+% Chapters generate a table of contents entry but don't get a number.
+\backmatter
+\nocite{*}
+\bibliographystyle{alpha}
+\bibliography{tex}
+
+\clearpage{}
+% just setting an anchor like \hypertarget{}{}
+% fix the problem that anchor point to the previous section
+\phantomsection                 
+\printindex{}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+

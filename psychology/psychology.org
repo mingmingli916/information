@@ -4,3 +4,29 @@
 #+title: psychology
 
 [[id:0F7FCA94-7B14-43B4-AFCC-C394B9D28819][memory]]
+
+
+
+* 哲言
+
+"The secret of getting ahead is to get started." -- Mark Twrain
+
+
+Just do it.
+
+Solve the problem first and then you can improve the solution.
+
+Our energy is limited, so things have priorities.
+
+Choosing direction is more important than hard work.
+
+* 信心
+** 善于思考
+在小学的时候，我疑惑电流的方向为什么是负电子的流向，但又不要意思问老师。多年以后，我在书上看到，原来是因为当年的一个错误而沿用了下来。
+
+** 空间感
+高中的时候，我在黑板上画了一副卡通画，我也震惊与画完后的好看。
+
+** 理解力
+上大学的时候，王师问我一个物理书上的公式，我说这是立体角，他还嘲笑我，说哪有立体角，虽然我也不知道有立体角，当公式中就是立体角才解释的通。
+

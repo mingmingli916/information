@@ -1,0 +1,81 @@
+
+\chapter{RNN}
+\label{cha:rnn}
+
+RNN stands for recurrent neural network.
+RNN is neural network that has recurrent layers.
+While CNNs can efficiently process spatial information, RNNs are designed to better handle sequential information.
+RNNs introduce state variables to store past information, together with the current inputs, to determine the current outputs.
+
+\section{Recurrent}
+\label{sec:recurrent}
+
+\begin{equation}
+  \label{eq:3}
+  s^{(t)} = f(s^{(t-1)}; \theta)
+\end{equation}
+Where \(s^{(t)}\) is the state or output at time \(t\), \(f\) is the function, \(\theta\) is the parameter.
+Equation \ref{eq:3} is recurrent because \(s\) at time \(t\) refer to itself at time \(t-1\).
+
+
+\begin{equation}
+  \label{eq:4}
+  s^{(t)} = f(s^{(t-1)}, x^{(t)}; \theta)
+\end{equation}
+This equation is similar to equation \ref{eq:3} but with input \(x^{(t)}\).
+
+
+In natural language processing (NLP), we usually need to compute
+\begin{equation}
+  \label{eq:nlp}
+  P(x_{t}|x_{t-1},\ldots,x_{1})
+\end{equation}
+
+With n-gram model (Section \ref{sec:n-grams}), the number of model parameters increase exponentially as n increase.
+We need to store \(|V|^{n}\) numbers for a vocabulary set \(V\).
+In this case, we usually use a latent variable model:
+\begin{equation}
+  \label{eq:rnn-model}
+  P(x_{t}|x_{t-1},\ldots,x_{1}) \approx P(x_{t}|h_{t-1})
+\end{equation}
+and
+\begin{equation}
+  \label{eq:latent}
+  h_{t} = f(x_{t},h_{t-1})
+\end{equation}
+
+
+\section{Properties}
+\label{sec:properties}
+
+
+RNN leverages three important ideas:
+\begin{itemize}
+\item sparse interaction.
+\item parameter sharing.
+\item 
+\end{itemize}
+
+\subsection{Sparse interaction}
+\label{sec:sparse-interaction}
+
+
+Comparing to traditional neural network, it has sparse interaction.
+For example, in Equation \ref{eq:4}, \(s^{(t)}\) is determined by \(s^{(t-1)}\) and \(x^{(t)}\).
+It has no direct interaction with \(x^{(1)}, x^{(2)}, \ldots x^{(t-1)}\) because they are contained in \(s^{(t-1)}\).
+
+
+\subsection{Parameter sharing}
+\label{sec:parameter-sharing}
+
+In recurrent layers, the same parameters defined in function \(f\) are used at every position of the input.
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "deep-learning"
+%%% End:

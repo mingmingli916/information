@@ -1,0 +1,569 @@
+
+\chapter{Sequences, Arrays, and Vectors}
+\label{cha:sequ-arrays-vect}
+
+\begin{figure}[H]
+  \centering
+  \myfigure{sequence}
+  \caption{Sequences}
+  \label{fig:sequences}
+\end{figure}
+
+
+\section{Sequences}
+\label{sec:sequences}
+
+
+\begin{itemize}
+\item \lstinline|(sequencep object)|\\
+  This function returns \argument{t} if \argument{object} is a sequence, \argument{nil} otherwise.
+\item \lstinline|(length sequence)|\\
+  This function returns the number of elements in sequence.
+\begin{lstlisting}
+(length '(1 2 3))                       ; 3
+\end{lstlisting}
+\item \lstinline|(length< sequence length)|\\
+  Return non-\argument{nil} if \argument{sequence} is shorter than \argument{length}.
+  This may be more efficient than computing the length of sequence if \argument{sequence} is a long list.
+\item \lstinline|(length> sequence length)|
+\item \lstinline|(length= sequence length)|
+\item \lstinline|(elt sequence index)|\\
+  This function returns the element of sequence indexed by index.
+\begin{lstlisting}
+(elt '(1 2 3 4) 2)                      ; 3
+\end{lstlisting}
+\item \lstinline|(copy-sequence seqr)|\\
+  This function returns a copy of \argument{seqr}, which should be either a sequence or a record.
+\item \lstinline|(reverse sequence)|\\
+  This function creates a new sequence whose elements are the elements of \argument{sequence}, but in reverse order.
+  The original argument \argument{sequence} is not altered. 
+\item \lstinline|(nreverse sequence)|\\
+  This function reverses the order of the elements of \argument{sequence}.
+  Unlike \funcword{reverse} the original \argument{sequence} may be modified.
+\item \lstinline|(sort sequence predicate)|\\
+  This function sorts \argument{sequence} stably.
+  Note that this function doesn’t work for all sequences; it may be used only for lists and vectors.
+\item \lstinline|(seqp)|\\
+  This function returns non-nil if object is a sequence (a list or array), or any additional type of sequence defined via \argument{seq.el} generic functions.
+  This is an extensible variant of \funcword{sequencep}.
+\item \lstinline|(seq-drop sequence n)|\\
+  This function returns all but the first \argument{n} (an integer) elements of \argument{sequence}.
+  If \argument{n} is negative or zero, the result is \argument{sequence}.
+\begin{lstlisting}
+(seq-drop [1 2 3 4 5 6] 3)              ; [4 5 6]
+\end{lstlisting}
+\item \lstinline|(seq-take sequence n)|\\
+  This function returns the first \argument{n} (an integer) elements of \argument{sequence}.
+  If \argument{n} is negative or zero, the result is nil.
+\begin{lstlisting}
+(seq-take '(1 2 3 4) 3)                 ; (1 2 3)
+\end{lstlisting}
+\item \lstinline|(seq-take-while predicate sequence)|\\
+  This function returns the members of \argument{sequence} in order, stopping before the first one for which \argument{predicate} returns nil.
+\begin{lstlisting}
+(seq-take-while (lambda (elt) (> elt 0)) '(1 2 3 -1 -2))
+; (1 2 3)
+\end{lstlisting}
+\item \lstinline|(seq-drop-while predicate sequence)|
+\item \lstinline|(seq-do function sequence)|\\
+  This function applies function to each element of \argument{sequence} in turn (presumably for side effects), and returns \argument{sequence}.
+\item \lstinline|(seq-map function sequence)|\\
+  This function returns the result of applying \argument{function} to each element of \argument{sequence}.
+  The returned value is a list.
+\begin{lstlisting}
+(seq-map #'1+ '(2 4 6))                 ; (3 5 7)
+\end{lstlisting}
+\item \lstinline|(seq-map-indexed function sequence)|\\
+  This function returns the result of applying \argument{function} to each element of \argument{sequence} and its index within seq.
+  The returned value is a list.
+\begin{lstlisting}
+(seq-map-indexed (lambda (elt idx)
+                   (list idx elt))
+                 '(a b c))
+;;  ((0 a) (1 b) (2 c))
+\end{lstlisting}
+\item \lstinline|(seq-mapn function &rest sequences)|\\
+  This function returns the result of applying function to each element of sequences.
+\begin{lstlisting}
+(seq-mapn #'+ '(2 4 6) '(20 40 60))
+;;  (22 44 66)
+\end{lstlisting}
+\item \lstinline|(seq-filter predicate sequence)|\\
+  This function returns a list of all the elements in \argument{sequence} for which \argument{predicate} returns non-nil.
+\begin{lstlisting}
+(seq-filter (lambda (elt) (> elt 0)) [1 -1 3 -3 5])
+;;  (1 3 5)
+\end{lstlisting}
+\item \lstinline|(seq-remove predicate sequence)|\\
+  This function returns a list of all the elements in \argument{sequence} for which \argument{predicate} returns nil.
+\begin{lstlisting}
+(seq-remove (lambda (elt) (> elt 0)) [1 -1 3 -3 5])
+;;  (-1 -3)
+\end{lstlisting}
+  
+\item \lstinline|(seq-reduce function sequence initial-value)|\\
+  This function returns the result of calling \argument{function} with \argument{initial-value} and the first element of \argument{sequence}, then calling \argument{function} with that result and the second element of \argument{sequence}, then with that result and the third element of \argument{sequence}, etc.
+  \argument{function} should be a function of two arguments.
+\begin{lstlisting}
+(seq-reduce #'+ '(1 2 3 4) 5)
+;;  15
+\end{lstlisting}
+  
+\item \lstinline|(seq-some predicate sequence)|\\
+  This function returns the first non-nil value returned by applying \argument{predicate} to each element of sequence in turn.
+\begin{lstlisting}
+(seq-some #'numberp ["abc" 1 nil])      ; t
+(seq-some #'1+ [2 4 6])                 ; 3
+\end{lstlisting}
+  
+\item \lstinline|(seq-find predicate sequence &optional default)|\\
+  This function returns the first element in \argument{sequence} for which \argument{predicate} returns non-nil.
+  If no element matches \argument{predicate}, the function returns \argument{default}.
+\begin{lstlisting}
+(seq-find #'numberp ["abc" 1 nil])      ; 1
+\end{lstlisting}
+\item \lstinline|(seq-every-p predicate sequence)|\\
+  This function returns non-nil if applying \argument{predicate} to every element of \argument{sequence} returns non-nil.
+\begin{lstlisting}
+(seq-every-p #'numberp [2 4 6])         ; t
+(seq-every-p #'numberp [2 4 "6"])       ; nil
+\end{lstlisting}
+  
+\item \lstinline|(seq-empty-p sequence)|\\
+  This function returns non-nil if \argument{sequence} is empty.
+
+\item \lstinline|(seq-count predicate sequence)|\\
+  This function returns the number of elements in \argument{sequence} for which \argument{predicate} returns non-nil.
+\begin{lstlisting}
+(seq-count (lambda (elt) (> elt 0)) [-1 2 0 3 -1]) ; 2
+\end{lstlisting}
+\item \lstinline|(seq-sort function sequence)|\\
+  This function returns a copy of \argument{sequence} that is sorted according to \argument{function}, a function of two arguments that returns non-nil if the first argument should sort before the second.
+\begin{lstlisting}
+(seq-sort #'> '(1 2 3 4))               ; (4 3 2 1)
+\end{lstlisting}
+\item \lstinline|(seq-sort-by function predicate sequence)|\\
+  This function is similar to \funcword{seq-sort}, but the elements of \argument{sequence} are transformed by applying \argument{function} on them before being sorted.
+  \argument{function} is a function of one argument.
+\begin{lstlisting}
+(seq-sort-by #'seq-length #'> ["a" "ab" "abc"])
+;;  ["abc" "ab" "a"]
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-contains-p sequence elt &optional function)|\\
+  This function returns non-nil if at least one element in \argument{sequence} is equal to \argument{elt}.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-contains-p '(symbol1 symbol2) 'symbol1) ; t
+(seq-contains-p '(symbol1 symbol2) 'symbol3) ; nil
+\end{lstlisting}
+
+\item \lstinline|(seq-set-equal-p sequence1 sequence2 &optional function)|\\
+  This function checks whether \argument{sequence1} and \argument{sequence2} contain the same elements, regardless of the order.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-set-equal-p '(a b c) '(c b a))
+;;  t
+(seq-set-equal-p '(a b c) '(c b))
+;;  nil
+(seq-set-equal-p '("a" "b" "c") '("c" "b" "a"))
+;;  t
+(seq-set-equal-p '("a" "b" "c") '("c" "b" "a") #'eq)
+;;  nil
+\end{lstlisting}
+  
+\item \lstinline|(seq-position sequence elt &optional function)|\\
+  This function returns the index of the first element in \argument{sequence} that is equal to \argument{elt}.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-position '(a b c) 'b)              ; 1
+(seq-position '(a b c) 'd)              ; nil
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-uniq sequence &optional function)|\\
+  This function returns a list of the elements of \argument{sequence} with duplicates removed.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-uniq '(1 2 2 1 3))                 ; (1 2 3)
+(seq-uniq '(1 2 2.0 1.0) #'=)           ; (1 2)
+(seq-uniq '(1 2 2.0 1.0))               ; (1 2 2.0 1.0)
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-subseq sequence start &optional end)|\\
+  This function returns a subset of \argument{sequence} from \argument{start} to \argument{end}, both integers (end defaults to the last element).
+  If \argument{start} or \argument{end} is negative, it counts from the end of \argument{sequence}.
+\begin{lstlisting}
+(seq-subseq '(1 2 3 4 5) 1)
+;;  (2 3 4 5)
+(seq-subseq '[1 2 3 4 5] 1 3)
+;;  [2 3]
+(seq-subseq '[1 2 3 4 5] -3 -1)
+;;  [3 4]
+\end{lstlisting}
+
+\item \lstinline|(seq-concatenate type &rest sequences)|\\
+  This function returns a sequence of type \argument{type} made of the concatenation of \argument{sequences}.
+  \argument{type} may be: vector, list or string.
+\begin{lstlisting}
+(seq-concatenate 'list '(1 2) '(3 4) [5 6])
+;;  (1 2 3 4 5 6)
+(seq-concatenate 'string "Hello " "world")
+;;  "Hello world"
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-mapcat function sequence &optional type)|\\
+  This function returns the result of applying \funcword{seq-concatenate} to the result of applying \argument{function} to each element of \argument{sequence}.
+  The result is a sequence of type \argument{type}, or a list if \argument{type} is nil.
+\begin{lstlisting}
+(seq-mapcat #'seq-reverse '((3 2 1) (6 5 4)))
+;;  (1 2 3 4 5 6)
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-partition sequence n)|\\
+  This function returns a list of the elements of \argument{sequence} grouped into sub-sequences of length \argument{n}.
+  The last sequence may contain less elements than \argument{n}.
+  \argument{n} must be an integer.
+  If \argument{n} is a negative integer or 0, the return value is nil.
+\begin{lstlisting}
+(seq-partition '(0 1 2 3 4 5 6 7) 3)
+;;  ((0 1 2) (3 4 5) (6 7))
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-union sequence1 sequence2 &optional function)|\\
+  This function returns a list of the elements that appear either in \argument{sequence1} or \argument{sequence2}.
+  The elements of the returned list are all unique, in the sense that no two elements there will compare equal.
+  If the optional argument \argument{function} is non-nil, it should be a function of two arguments to use to compare elements, instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-union [1 2 3] [3 5])
+;;  (1 2 3 5)
+\end{lstlisting}
+
+\item \lstinline|(seq-intersection sequence1 sequence2 &optional function)|\\
+  This function returns a list of the elements that appear both in \argument{sequence1} and \argument{sequence2}.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use to compare elements instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-intersection [2 3 4 5] [1 3 5 6 7])
+;;  (3 5)
+\end{lstlisting}
+
+
+  
+\item \lstinline|(seq-difference sequence1 sequence2 &optional function)|\\
+  This function returns a list of the elements that appear in \argument{sequence1} but not in \argument{sequence2}.
+  If the optional argument \argument{function} is non-nil, it is a function of two arguments to use to compare elements instead of the default \funcword{equal}.
+\begin{lstlisting}
+(seq-difference '(2 3 4 5) [1 3 5 6 7])
+;;  (2 4)
+\end{lstlisting}
+
+
+\item \lstinline|(seq-group-by function sequence)|\\
+  This function separates the elements of \argument{sequence} into an alist whose keys are the result of applying \argument{function} to each element of \argument{sequence}.
+  Keys are compared using \funcword{equal}.
+\begin{lstlisting}
+(seq-group-by #'integerp '(1 2.1 3 2 3.2))
+;;  ((t 1 3 2) (nil 2.1 3.2))
+(seq-group-by #'car '((a 1) (b 2) (a 3) (c 4))) 
+;;  ((b (b 2)) (a (a 1) (a 3)) (c (c 4)))
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-into sequence type)|\\
+  This function converts the sequence \argument{sequence} into a sequence of type \argument{type}.
+  \argument{type} can be one of the following symbols: vector, string or list.
+\begin{lstlisting}
+(seq-into [1 2 3] 'list)
+;;  (1 2 3)
+(seq-into nil 'vector)
+;;  []
+(seq-into "hello" 'vector)
+;;  [104 101 108 108 111]
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-min sequence)|\\
+  This function returns the smallest element of \argument{sequence}.
+  The elements of \argument{sequence} must be numbers or markers.
+\item \lstinline|(seq-max sequence)|
+\item \lstinline|(seq-doseq (var sequence) body...)|\\
+  This macro is like \funcword{dolist}, except that \argument{sequence} can be a list, vector or string.
+  This is primarily useful for side-effects.
+
+\item \lstinline|(seq-let var-sequence val-sequence body...)|\\
+  This macro binds the variables defined in \argument{var-sequence} to the values that are the corresponding elements of \argument{val-sequence}.
+  This is known as \keyword{destructuring binding}.
+  The elements of \argument{var-sequence} can themselves include sequences, allowing for nested destructuring.
+
+  The \argument{var-sequence} sequence can also include the \argument{\&rest} marker followed by a variable name to be bound to the rest of \argument{val-sequence}.
+
+\begin{lstlisting}
+(seq-let [first second] [1 2 3 4]
+  (list first second))
+;;  (1 2)
+(seq-let (_ a _ b) '(1 2 3 4)
+  (list a b))
+;;  (2 4)
+(seq-let [a [b [c]]] [1 [2 [3]]]
+  (list a b c))
+;;  (1 2 3)
+(seq-let [a b &rest others] [1 2 3 4]
+  others)
+;;  [3 4]
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-setq var-sequence val-sequence)|\\
+  This macro works similarly to \funcword{seq-let}, except that values are assigned to variables as if by \funcword{setq} instead of as in a \funcword{let} binding.
+\begin{lstlisting}
+(let ((a nil)
+      (b nil))
+  (seq-setq (_ a _ b) '(1 2 3 4))
+  (list a b))
+;;  (2 4)
+\end{lstlisting}
+
+  
+\item \lstinline|(seq-random-elt sequence)|\\
+  This function returns an element of \argument{sequence} taken at random.
+\begin{lstlisting}
+(seq-random-elt [1 2 3 4])              ; 3
+(seq-random-elt [1 2 3 4])              ; 3
+(seq-random-elt [1 2 3 4])              ; 3
+(seq-random-elt [1 2 3 4])              ; 1
+(seq-random-elt [1 2 3 4])              ; 2
+\end{lstlisting}
+\end{itemize}
+
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "elisp"
+%%% End:
+
+\section{Arrays}
+\label{sec:arrays}
+
+Emacs defines four types of array, all one-dimensional:
+\begin{itemize}
+\item strings 
+\item vectors
+\item char-tables
+\item bool-vectors
+\end{itemize}
+
+Vectors and char-tables can hold elements of any type, but strings can only hold characters, and bool-vectors can only hold t and nil.
+
+
+All four kinds of array share these characteristics:
+\begin{itemize}
+\item All have zero-origin indexing.
+\item The length of the array is fixed once you create it; you cannot change the length of an existing array.
+\item For purposes of evaluation, the array is a constant—i.e., it evaluates to itself.
+\item The elements of an array may be referenced or changed with the functions \funcword{aref} and \funcword{aset}, respectively 
+\end{itemize}
+
+
+When you create an array, other than a char-table, you must specify its length.
+You cannot specify the length of a char-table, because that is determined by the range of character codes.
+
+
+
+Here's the functions that accept all types of arrays.
+\begin{itemize}
+\item \lstinline|(arrayp object)|
+\item \lstinline|(aref arr index)|\\
+  This function returns the \argument{index}th element of the array or record \argument{arr}.
+\item \lstinline|(aset array index object)|\\
+  This function sets the \argument{index}th element of \argument{array} to be object.
+  It returns \argument{object}.
+\item \lstinline|(fillarray array object)|\\
+  This function fills the array \argument{array} with \argument{object}, so that each element of \argument{array} is \argument{object}.
+  It returns \argument{array}.
+\begin{lstlisting}
+(setq a (copy-sequence [a b c d e f g])) ; need to be mutable
+;; [a b c d e f g]
+(fillarray a 0)
+;; [0 0 0 0 0 0 0]
+a
+;; [0 0 0 0 0 0 0]
+\end{lstlisting}
+\end{itemize}
+
+\section{Vectors}
+\label{sec:vectors}
+
+A vector is a general-purpose array whose elements can be any Lisp objects.
+Vectors are printed with square brackets surrounding the elements.
+You can write vectors in the same way in Lisp input.
+
+Here are some functions that relate to vectors:
+\begin{itemize}
+\item \lstinline|(vectorp object)|
+\item \lstinline|(vector &rest objects)|\\
+  This function creates and returns a vector whose elements are the arguments, \argument{objects}.
+\begin{lstlisting}
+(vector 'foo 23 [bar baz] "rats")
+;; [foo 23 [bar baz] "rats"]
+(vector)
+;; []
+\end{lstlisting}
+\item \lstinline|(make-vector length object)|\\
+  This function returns a new vector consisting of \argument{length} elements, each initialized to \argument{object}.
+\begin{lstlisting}
+(setq sleepy (make-vector 9 'Z))
+;; [Z Z Z Z Z Z Z Z Z]
+\end{lstlisting}
+\item \lstinline|(vconcat &rest sequences)|\\
+  This function returns a new vector containing all the elements of \argument{sequences}.
+\begin{lstlisting}
+(setq a (vconcat '(A B C) '(D E F)))
+;; [A B C D E F]
+(eq a (vconcat a))
+;; nil
+(vconcat [A B C] "aa" '(foo (6 7)))
+;; [A B C 97 97 foo (6 7)]
+\end{lstlisting}
+\end{itemize}
+
+
+\section{Char-Tables}
+\label{sec:char-tables}
+
+A char-table is much like a vector, except that it is indexed by character codes.
+Any valid character code, without modifiers, can be used as an index in a char-table.
+In addition, a char-table can have extra slots to hold additional data not associated with particular character codes.
+
+
+Each char-table has a \keyword{subtype} (a symbol) which serves two purposes:
+\begin{itemize}
+\item The subtype provides an easy way to tell what the char-table is for.
+  For instance, display tables are char-tables with \argument{display-table} as the subtype, and syntax tables are char-tables with \argument{syntax-table} as the subtype.
+\item The subtype controls the number of extra slots in the char-table.
+  This number is specified by the subtype’s char-table-extra-slots symbol property, whose value should be integer between 0 and 10.
+  If the subtype has no such symbol property, the char-table has no extra slots.
+\end{itemize}
+
+
+A char-table can have a parent, which is another char-table.
+If it does, then whenever the char-table specifies nil for a particular character c, it inherits the value specified in the parent.
+
+A char-table can also have a default value.
+If so, then (aref char-table c) returns the default value whenever the char-table does not specify any other non-nil value.
+
+
+\begin{itemize}
+\item \lstinline|(make-char-table subtype &optional init)|\\
+  Return a newly-created char-table, with subtype \argument{subtype} (a symbol).
+  Each element is initialized to \argument{init}, which defaults to nil.
+  You cannot alter the subtype of a char-table after the char-table is created.
+
+  There is no argument to specify the length of the char-table, because all char-tables have room for any valid character code as an index.
+
+  
+\item \lstinline|(char-table-p object)|
+  
+\item \lstinline|(char-table-subtype char-table)|\\
+  This function returns the subtype symbol of \argument{char-table}.
+\item \lstinline|(char-table-parent char-table)|\\
+  This function returns the parent of \argument{char-table}.
+\item \lstinline|(set-char-table-parent char-table new-parent)|\\
+  This function sets the parent of \argument{char-table} to \argument{new-parent}.
+\item \lstinline|(char-table-extra-slot char-table n)|\\
+  This function returns the contents of extra slot \argument{n} (zero based) of \argument{char-table}.
+\item \lstinline|(set-char-table-extra-slot char-table n value)|\\
+  This function stores \argument{value} in extra slot \argument{n} (zero based) of \argument{char-table}.
+\item \lstinline|(char-table-range char-table range)|\\
+  This returns the value specified in \argument{char-table} for a range of characters \argument{range}.
+  Here are the possibilities for range:
+  \begin{itemize}
+  \item nil: refers to the default value.
+  \item char: refers to the element for character char.
+  \item \lstinline|(from . to)|: A cons cell refers to all the characters in the inclusive range \argument{[from to]}.
+  \end{itemize}
+\item \lstinline|(set-char-table-range char-table range value)|\\
+  This function sets the value in \argument{char-table} for a range of characters \argument{range}.
+  Here are the possibilities for \argument{range}:
+  \begin{itemize}
+  \item nil: refers to the default value.
+  \item t: refers to the whole range of character codes.
+  \item char: refers to the element for character char.
+  \item \lstinline|(from . to)|: A cons cell refers to all the characters in the inclusive range \argument{[from to]}.
+  \end{itemize}
+\item \lstinline|(map-char-table function char-table)|\\
+  This function calls \argument{function} for each element of \argument{char-table} that has a non-nil value.
+  The call to \argument{function} is with two arguments, a key and a value.
+  The key is either a valid character or a cons cell \lstinline|(from . to)|.
+  The value is what \lstinline|(char-table-range char-table key)| returns.
+
+  The return value is always nil; to make calls to \funcword{map-char-table} useful, \argument{function} should have side effects. 
+
+\end{itemize}
+
+\section{Bool-vectors}
+\label{sec:bool-vectors}
+
+
+
+A bool-vector is much like a vector, except that it stores only the values t and nil.
+If you try to store any non-nil value into an element of the bool-vector, the effect is to store t there.
+
+
+\begin{itemize}
+\item \lstinline|(make-bool-vector length initial)|\\
+  Return a new bool-vector of \argument{length} elements, each one initialized to \argument{initial}.
+\item \lstinline|(bool-vector &rest objects)|\\
+  This function creates and returns a bool-vector whose elements are the arguments, \argument{objects}.
+\item \lstinline|(bool-vector-p object)|
+\item \lstinline|bool-vector-exclusive-or a b &optional c|\\
+  Return \keyword{bitwise exclusive or} of bool vectors \argument{a} and \argument{b}.
+  If optional argument \argument{c} is given, the result of this operation is stored into \argument{c}.
+  All arguments should be bool vectors of the same length.
+  
+\item \lstinline|(bool-vector-union a b &optional c)|\\
+  Return \keyword{bitwise or} of bool vectors \argument{a} and \argument{b}.
+\item \lstinline|(bool-vector-intersection a b &optional c)|\\
+  Return \keyword{bitwise and} of bool vectors \argument{a} and \argument{b}.
+\item \lstinline|(bool-vector-set-difference a b &optional c)|\\
+  Return \keyword{set difference} of bool vectors \argument{a} and \argument{b}.
+\item \lstinline|(bool-vector-not a &optional b)|\\
+  Return \keyword{set complement} of bool vector \argument{a}.
+  If optional argument \argument{b} is given, the result of this operation is stored into \argument{b}.
+\item \lstinline|(bool-vector-subsetp a b)|\\
+  Return t if every t value in a is also t in b, nil otherwise. 
+\item \lstinline|(bool-vector-count-consecutive a b i)|\\
+  Return the number of consecutive elements in a equal \argument{b} starting at \argument{i}.
+  \argument{a} is a bool vector, \argument{b} is t or nil, and \argument{i} is an index into a.
+\item \lstinline|(bool-vector-count-population a)|\\
+  Return the number of elements that are t in bool vector \argument{a}.
+
+  The printed form represents up to 8 boolean values as a single character:
+\begin{lstlisting}
+(bool-vector t nil t nil)               ; #&4"^E"
+(bool-vector)                           ; #&0""
+
+;; You can use vconcat to print a bool-vector like other vectors:
+(vconcat (bool-vector nil t nil t))
+;; [nil t nil t]
+\end{lstlisting}
+
+
+  
+\end{itemize}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "elisp"
+%%% End:

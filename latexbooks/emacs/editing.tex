@@ -1,0 +1,163 @@
+
+\chapter{Editing}
+\label{cha:editing}
+
+\section{Moving Cursor}
+\label{sec:moving-cursor}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}lp{0.5\textwidth}}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{4}{*}{char} & C-f (f: forward) & forward one char\\
+                 & C-b (b: backward) & backward one char\\
+                 & C-n (n: next line) & downward one char\\
+                 & C-p (p: previous line) & upward one char\\
+    \midrule
+    \multirow{2}{*}{word} & M-f & forward one word\\
+                 & M-b & backward one word\\
+    \midrule
+    \multirow{2}{*}{line} & C-a & beginning of line\\
+                 & C-e & end of line\\
+    \midrule
+    \multirow{2}{*}{sentence} & M-a & start of sentence\\
+                 & M-e & end of sentence\\
+    \midrule
+    \multirow{2}{*}{paragraph} & M-\{ & start of paragraph\\
+                 & M-\} & end of paragraph\\
+    \midrule
+    \multirow{2}{*}{screen} & C-v & downward one screen\\
+                 & M-v & upward one screen\\
+                 & C-l & scroll the window so that current line is in the middle of the window, type again, cursor on top, again, bottom\\
+                 & C-M-v & scroll other window\\
+    \midrule
+    \multirow{2}{*}{buffer} & M-< & start of buffer\\
+                 & M-> & end of buffer\\
+    \midrule
+                 & M-m & first non-whitespace character on this line\\
+    \midrule
+                 & F10 & start key navigation of the menu bar\\
+    \bottomrule
+  \end{tabular}
+  \caption{Moving Cursor}
+  \label{tab:moving-cursor}
+\end{table}
+
+Keep in mind that: \keyword{Meta} bindings move larger than \keyword{Ctrl} bindings.
+Table \ref{tab:moving-cursor} show commands for moving cursor.
+
+
+\section{Marking}
+\label{sec:marking}
+
+To define a region using the keyboard, you use a secondary pointer called a \keyword{mark}. You set the mark, move the cursor to somewhere to define a region between the mark and the cursor.
+
+Table \ref{tab:marking} show commands for marking.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    C-Space or C-@ & set the mark\\
+    C-x C-x & exchange point and mark\\
+    M-h & mark paragraph\\
+    C-x h & mark buffer\\
+    \bottomrule
+  \end{tabular}
+  \caption{Marking}
+  \label{tab:marking}
+\end{table}
+
+
+\keyword{C-Space} sets mark and highlights the \keyword{region}.
+The region is still there even if you can not see it.
+Because the region is define between mark and point.
+The mark is there even if you can not see it.
+
+\section{Deleting, Copying and Pasting}
+\label{sec:delet-copy-past}
+Table \ref{tab:del-cop-pas} show commands for deleting, copying and pasting.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l>{\bfseries}ll}
+    \toprule
+    \head{Group} & \head{Binding} & \head{Meaning}\\
+    \midrule
+    \multirow{8}{*}{delete} & Del & delete backward char\\
+                 & C-d (d: delete)& delete current char\\
+                 & M-Del & delete between start of word and one char before cursor\\
+                 & M-d & delete between cursor and end of word\\
+                 & C-k (k: kill) & delete between cursor and end of line\\
+                 & M-k & delete between cursor and end of sentence\\
+                 & M-{}- M-k & delete between start of sentence and one char before cursor\\
+                 & C-w & delete marked region\\
+    \midrule
+    copy & M-w & copy marked region\\
+    \midrule
+    past & C-y (y: yank)& past the most recently deleted or copied\\
+    \bottomrule
+  \end{tabular}
+  \caption{Deleting, Copying and Pasting}
+  \label{tab:del-cop-pas}
+\end{table}
+
+After the \keyword{C-y}, you can immediately use \keyword{M-y} several times to navigate the kill ring.
+
+
+\section{Transposition and Capitalization}
+Transposition and capitalization can be a edit trick and save you time.
+Here are some commands shown in Table \ref{tab:trans-cap} for achieving that.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    C-t & interchange characters around point, moving forward one character\\
+    M-t & Interchange words around point, leaving point at end of them\\
+    C-x C-t & exchange current line and previous line, leaving point after both\\
+    M-c (c: capital)& capitalize from point to the end of word, moving over\\
+    M-u (u: upper) & convert to upper case from point to end of word, moving over\\
+    M-l (l: lower) & convert to lower case from point to end of word, moving over\\
+    \bottomrule
+  \end{tabular}
+  \caption{Transposition and Capitalization}
+  \label{tab:trans-cap}
+\end{table}
+
+\section{Rectangle Editing}
+\label{sec:rectangle-editing}
+
+You can select a region and do region editing.
+Refer to Table \ref{tab:rect-edit} for this kind of editing.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{>{\bfseries}ll}
+    \toprule
+    \head{Binding} & \head{Meaning}\\
+    \midrule
+    C-x r k (r: rectangle; k: kill)& delete a rectangle and store it\\
+    C-x r c (c: clear) & using spaces, blank out the rectangle and do not store it\\
+    C-x r o & insert a blank rectangle, shift text right\\
+    \midrule
+    C-x r y & insert the last rectangle killed\\
+    \midrule
+    C-x r r $\beta$ & copy rectangle to register $\beta$ ($\beta$ is any character)\\
+    C-x r i $\beta$ & insert rectangle from register $\beta$\\
+    \midrule
+    C-x r t \argument{string} Enter & change contents of rectangle to \argument{string}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Rectangle Editing}
+  \label{tab:rect-edit}
+\end{table}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "emacs"
+%%% End:

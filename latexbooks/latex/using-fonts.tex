@@ -1,0 +1,44 @@
+
+\chapter{Using Fonts}
+\label{cha:using-fonts}
+
+\section{Installing Additional Fonts}
+\label{sec:inst-addit-fonts}
+
+TeX distributions usually install a lot of fonts.
+A package manager allows the installation of further fonts, like mpm with MiKTeX or tlmgr with TeX Live.
+
+
+
+TeX Live includes only freely licensed fonts.
+Non-free fonts may be installed using a separate program. It's called getnonfreefonts. 
+
+\begin{lstlisting}[language=Sh]
+# Install getnonfreefonts
+wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+texlua install-getnonfreefonts
+\end{lstlisting}
+
+
+Using the following commands to get the usage of commands:
+\begin{lstlisting}[language=Sh]
+getnonfreefonts --user -h  
+getnonfreefonts --sys -h  
+\end{lstlisting}
+
+
+\section{Choosing the Main Font}
+\label{sec:choosing-main-font}
+
+\begin{lstlisting}
+\usepackage{lmodern}
+\end{lstlisting}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "latex"
+%%% End:

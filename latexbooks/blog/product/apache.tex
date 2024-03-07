@@ -1,0 +1,159 @@
+
+\chapter{Deploy Django project with Apache}
+
+You can run Django project separately and it works.
+Then why did you deploy Django project to Apache or Nginx?
+Becuase Django is intended only for use while developing.
+It is in the business of making Web frameworks, not Web servers.
+Deploying Django with Apache and \keyword{mod\_wsgi}\footnote{wsgi: web server gateway interface} is a tried and tested way to get Django into production.
+
+
+
+\section{Apache}
+
+\subsection{Install Apache httpd}
+
+The operating system is CentOS 8.
+\lstset{language=Sh}
+\begin{lstlisting}
+  dnf install httpd
+\end{lstlisting}
+
+\subsection{Start httpd}
+
+\begin{lstlisting}
+  systemctl start httpd
+\end{lstlisting}
+
+\subsection{Stop httpd}
+
+\begin{lstlisting}
+  systemctl stop httpd
+\end{lstlisting}
+
+\subsection{Enable httpd on operationg system start}
+
+\begin{lstlisting}
+  systemctl enable httpd
+\end{lstlisting}
+
+
+
+\section{mod\_wsgi}
+
+The \verb|mod_wsgi| package implements a simple to use Apache module which can host any Python web application which supports the Python WSGI specification.
+
+To install mod\_wsgi in CentOS 8:
+\begin{lstlisting}
+  dnf search mod_wsgi
+  dnf install python3-mod_wsgi
+\end{lstlisting}
+
+
+\section{Permission}
+
+Give apache the right to read, write and execute the files in your django project
+\begin{lstlisting}
+  sudo setfacl -m u:ec2-user:rwx /var
+  sudo setfacl -m u:ec2-user:rwx /var/www
+\end{lstlisting}
+
+Give apache the right to read, write and execute the files in your django project
+\begin{lstlisting}
+  setfacl -R -m u:apache:rwx /var/www/mysite
+\end{lstlisting}
+
+Note: Sometime you need to give apache permission to you home directory.
+
+%% \subsection{http permission}
+%% Alter the configuration file ``/etc/httpd/conf/httpd.conf''.
+Add execute perssion to \verb|wsgi.py| file:
+\begin{lstlisting}
+  chmod +x mysite/mysite/wsgi.py
+\end{lstlisting}
+
+\section{Configurate Apache}
+Create a new file \verb|/etc/httpd/conf.d/mingmingli.net.conf|:
+
+\lstset{language=Python}
+\begin{lstlisting}
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/html"
+    ServerName mingmingli.net
+    ServerAlias www.mingmingli.net
+
+
+</VirtualHost>
+    
+# you can visit the static file system  
+Alias /static /var/www/mysite/static 
+<Directory /var/www/mysite/static>
+    Require all granted # permission
+</Directory>
+
+Alias /media /var/www/mysite/media
+<Directory /var/www/mysite/media>
+    Require all granted # permission
+</Directory>
+
+# permission to access wsgi.py file
+<Directory /var/www/mysite/mysite> 
+    <Files wsgi.py>
+        Require all granted
+    </Files>
+</Directory>
+
+
+WSGIDaemonProcess mingmingli.net python-path=/var/www/mysite:/home/ec2-user/anaconda3/lib/python3.9/site-packages
+WSGIProcessGroup mingmingli.net
+WSGIScriptAlias / /var/www/mysite/mysite/wsgi.py
+\end{lstlisting}
+
+Note:
+You shoud your apache permission to access the packages in your home.
+\begin{lstlisting}
+  chmod +x /home/ec2-user
+\end{lstlisting}
+
+Don't  use  setfacl command to give  rwx permission to /home/ec2-user.
+If you do that, the website works  but you cannot  login  ec2  with ssh  anymore with the  error:
+\begin{lstlisting}
+  ec2-user@ec2-3-129-43-26.us-east-2.compute.amazonaws.com: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+\end{lstlisting}
+
+
+Otherwise, you may get a error with
+\begin{lstlisting}
+  from django.core.wsgi import get_wsgi_application
+  ModuleNotFoundError: No module named 'django'
+\end{lstlisting}
+
+
+
+Change \verb|/etc/httpd/conf/httpd.conf|:
+\begin{lstlisting}
+  <Directory />
+    AllowOverride none
+    # Require all denied
+    Require all granted
+</Directory>
+\end{lstlisting}
+
+\section{Collect static files}
+
+In order to let django can find the static files,
+add the following configuration into \verb|blog/setting.py|:
+\begin{lstlisting}
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+\end{lstlisting}
+
+Then run the following command:
+\lstset{language=Sh}
+\begin{lstlisting}
+python manage.py collectstatic  
+\end{lstlisting}
+This command collects all the installed application static files into ``static'' directory in blog.
+
+
+
