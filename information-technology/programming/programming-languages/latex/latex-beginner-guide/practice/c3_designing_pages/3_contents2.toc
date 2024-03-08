@@ -1,5 +1,0 @@
-\babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Page layout}{3}
-\contentsline {section}{\numberline {1.1}Filler text}{3}
-\contentsline {section}{\numberline {1.2}More}{3}
-\contentsline {subsection}{\numberline {1.2.1}Plenty}{3}

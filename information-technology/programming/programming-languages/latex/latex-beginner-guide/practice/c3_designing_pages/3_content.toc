@@ -1,5 +1,0 @@
-\babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Exploring the page layout}{3}
-\contentsline {section}{\numberline {1.1}Some filler text}{3}
-\contentsline {section}{\numberline {1.2}A lot more filler text}{3}
-\contentsline {subsection}{\numberline {1.2.1}Plenty of filler text}{3}
