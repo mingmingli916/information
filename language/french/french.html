@@ -1,0 +1,2104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-02-17 Sat 07:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>french</title>
+<meta name="author" content="Mingming Li" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">french</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org36a1dda">1. <span class="done DONE">DONE</span> La Prononciation</a>
+<ul>
+<li><a href="#org68aadcb">1.1. Les Symboles Phonetiques 音标</a></li>
+<li><a href="#org55ea1ff">1.2. <span class="done DONE">DONE</span> l'Alphabet</a></li>
+<li><a href="#orga96c223">1.3. <span class="done DONE">DONE</span> 发音规则</a>
+<ul>
+<li><a href="#orgd0fa9ce">1.3.1. 不在字母组合中，单个字母只有一种发音的情况</a></li>
+<li><a href="#orgc7ab1f2">1.3.2. Les Lettre avec l'Accent</a></li>
+<li><a href="#org5ceaf46">1.3.3. 不在字母组合中，单个字母有多个发音的情况</a></li>
+<li><a href="#orge2340f6">1.3.4. 字母组合</a></li>
+</ul>
+</li>
+<li><a href="#org5d4d8c3">1.4. <span class="todo TODO">TODO</span> La Liaison</a></li>
+<li><a href="#org29c3983">1.5. <span class="todo TODO">TODO</span> La Intonation 语调</a></li>
+</ul>
+</li>
+<li><a href="#orgbcbc700">2. La Grammaire</a>
+<ul>
+<li><a href="#org6bd28f0">2.1. <span class="todo TODO">TODO</span> 时态</a>
+<ul>
+<li><a href="#orge1ae43b">2.1.1. Indicatif</a></li>
+<li><a href="#orge6b92c7">2.1.2. Subjonctif</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8d614ea">3. Le Vocabulaire</a>
+<ul>
+<li><a href="#org612d847">3.1. <span class="todo TODO">TODO</span> 词根</a></li>
+<li><a href="#orgbf343f2">3.2. <span class="done DONE">DONE</span> Le Préfixe</a></li>
+<li><a href="#orge5a5c7c">3.3. <span class="done DONE">DONE</span> Le Suffixe</a></li>
+<li><a href="#org38239fe">3.4. La Semaine</a></li>
+<li><a href="#org33e5722">3.5. Le Mois</a></li>
+<li><a href="#org7b7961b">3.6. Le Corps</a></li>
+<li><a href="#org42168be">3.7. 个别单词</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../psychology/memory.html#ID-0F7FCA94-7B14-43B4-AFCC-C394B9D28819">memory</a><br />
+</p>
+
+
+<div id="outline-container-org36a1dda" class="outline-2">
+<h2 id="org36a1dda"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> La Prononciation</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+
+<div id="outline-container-org68aadcb" class="outline-3">
+<h3 id="org68aadcb"><span class="section-number-3">1.1.</span> Les Symboles Phonetiques 音标</h3>
+<div class="outline-text-3" id="text-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Consonne</td>
+<td class="org-left">b</td>
+<td class="org-left">d</td>
+<td class="org-left">f</td>
+<td class="org-left">k</td>
+<td class="org-left">l</td>
+<td class="org-left">m</td>
+<td class="org-left">n</td>
+<td class="org-left">p</td>
+<td class="org-left">s</td>
+<td class="org-left">t</td>
+<td class="org-left">v</td>
+<td class="org-left">z</td>
+<td class="org-left">g</td>
+<td class="org-left">ɲ</td>
+<td class="org-left">r</td>
+<td class="org-left">ʃ</td>
+<td class="org-left">ʒ</td>
+<td class="org-left">dʒ</td>
+<td class="org-left">ʧ</td>
+<td class="org-left">ŋ</td>
+</tr>
+
+<tr>
+<td class="org-left">Voyelle</td>
+<td class="org-left">a</td>
+<td class="org-left">e</td>
+<td class="org-left">ɪ</td>
+<td class="org-left">o</td>
+<td class="org-left">u</td>
+<td class="org-left">y</td>
+<td class="org-left">ø</td>
+<td class="org-left">œ</td>
+<td class="org-left">ɔ</td>
+<td class="org-left">ə</td>
+<td class="org-left">ɛ</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Semi-Voyelle</td>
+<td class="org-left">j</td>
+<td class="org-left">w</td>
+<td class="org-left">ɥ</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Nasale</td>
+<td class="org-left">ɑ̃</td>
+<td class="org-left">ɔ̃</td>
+<td class="org-left">ɛ̃</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org55ea1ff" class="outline-3">
+<h3 id="org55ea1ff"><span class="section-number-3">1.2.</span> <span class="done DONE">DONE</span> l'Alphabet</h3>
+<div class="outline-text-3" id="text-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a [a]</td>
+<td class="org-left">b [be]</td>
+<td class="org-left">c [se]</td>
+<td class="org-left">d [de]</td>
+<td class="org-left">e [ə]</td>
+</tr>
+
+<tr>
+<td class="org-left">f [ɛf]</td>
+<td class="org-left">g [ʒe]</td>
+<td class="org-left">h [aʃ]</td>
+<td class="org-left">i [ɪ]</td>
+<td class="org-left">j [ʒɪ]</td>
+</tr>
+
+<tr>
+<td class="org-left">k [ka]</td>
+<td class="org-left">l [ɛl]</td>
+<td class="org-left">m [ɛm]</td>
+<td class="org-left">n [ɛn]</td>
+<td class="org-left">o [o]</td>
+</tr>
+
+<tr>
+<td class="org-left">p [pe]</td>
+<td class="org-left">q [ky]</td>
+<td class="org-left">r [ɛr]</td>
+<td class="org-left">s [ɛs]</td>
+<td class="org-left">t [te]</td>
+</tr>
+
+<tr>
+<td class="org-left">u [y]</td>
+<td class="org-left">v [ve]</td>
+<td class="org-left">w [dubləve]</td>
+<td class="org-left">x [iks]</td>
+<td class="org-left">y [iɡrɛk]</td>
+</tr>
+
+<tr>
+<td class="org-left">z [zɛd]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orga96c223" class="outline-3">
+<h3 id="orga96c223"><span class="section-number-3">1.3.</span> <span class="done DONE">DONE</span> 发音规则</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+最基本的发音规则：<br />
+</p>
+<ol class="org-ol">
+<li>辅音字母位于词末不发音，除了cflr(长发丽人)<br /></li>
+<li>h永不发音<br /></li>
+<li>两个相同的字母发一个音<br /></li>
+</ol>
+</div>
+
+
+
+<div id="outline-container-orgd0fa9ce" class="outline-4">
+<h4 id="orgd0fa9ce"><span class="section-number-4">1.3.1.</span> 不在字母组合中，单个字母只有一种发音的情况</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+大部分辅音字母只有一个发音。<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Lettre</th>
+<th scope="col" class="org-left">Phonetique</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">[a]</td>
+<td class="org-left">lama</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">[b]</td>
+<td class="org-left">habiter</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">[d]</td>
+<td class="org-left">dimanche</td>
+</tr>
+
+<tr>
+<td class="org-left">f</td>
+<td class="org-left">[f]</td>
+<td class="org-left">film</td>
+</tr>
+
+<tr>
+<td class="org-left">i</td>
+<td class="org-left">[ɪ]</td>
+<td class="org-left">timide</td>
+</tr>
+
+<tr>
+<td class="org-left">j</td>
+<td class="org-left">[ʒ]</td>
+<td class="org-left">jour</td>
+</tr>
+
+<tr>
+<td class="org-left">k</td>
+<td class="org-left">[k]</td>
+<td class="org-left">kilomètre</td>
+</tr>
+
+<tr>
+<td class="org-left">l</td>
+<td class="org-left">[l]</td>
+<td class="org-left">libre</td>
+</tr>
+
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">[m]</td>
+<td class="org-left">moi</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">[n]</td>
+<td class="org-left">nom</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">[p]</td>
+<td class="org-left">papa</td>
+</tr>
+
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">[r]</td>
+<td class="org-left">français</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">[t]</td>
+<td class="org-left">timide</td>
+</tr>
+
+<tr>
+<td class="org-left">u</td>
+<td class="org-left">[y]</td>
+<td class="org-left">unique</td>
+</tr>
+
+<tr>
+<td class="org-left">v</td>
+<td class="org-left">[v]</td>
+<td class="org-left">vie</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-left">[ɪ]</td>
+<td class="org-left">système</td>
+</tr>
+
+<tr>
+<td class="org-left">z</td>
+<td class="org-left">[z]</td>
+<td class="org-left">zéro</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc7ab1f2" class="outline-4">
+<h4 id="orgc7ab1f2"><span class="section-number-4">1.3.2.</span> Les Lettre avec l'Accent</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">é</td>
+<td class="org-left">[e]</td>
+<td class="org-left">répéter</td>
+</tr>
+
+<tr>
+<td class="org-left">è,ê,ë</td>
+<td class="org-left">[ɛ]</td>
+<td class="org-left">lève, fête, Noël</td>
+</tr>
+
+<tr>
+<td class="org-left">ï, î</td>
+<td class="org-left">[ɪ]</td>
+<td class="org-left">maïs, île</td>
+</tr>
+
+<tr>
+<td class="org-left">ô</td>
+<td class="org-left">[o]</td>
+<td class="org-left">hôpital</td>
+</tr>
+
+<tr>
+<td class="org-left">ç</td>
+<td class="org-left">[s]</td>
+<td class="org-left">français</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5ceaf46" class="outline-4">
+<h4 id="org5ceaf46"><span class="section-number-4">1.3.3.</span> 不在字母组合中，单个字母有多个发音的情况</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">字母</th>
+<th scope="col" class="org-left">发音</th>
+<th scope="col" class="org-left">发音情况</th>
+<th scope="col" class="org-left">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">c</td>
+<td class="org-left">[s]</td>
+<td class="org-left">在e,i,j前</td>
+<td class="org-left">ici, ce</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[k]</td>
+<td class="org-left">不在e,i,j前</td>
+<td class="org-left">sac</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">[ʒ]</td>
+<td class="org-left">在e,i,j前</td>
+<td class="org-left">général</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[g]</td>
+<td class="org-left">不在e,i,j前</td>
+<td class="org-left">gare</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">o</td>
+<td class="org-left">[ɔ]</td>
+<td class="org-left">一般情况下</td>
+<td class="org-left">porte</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[o]</td>
+<td class="org-left">词末开音节</td>
+<td class="org-left">mot</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[o]</td>
+<td class="org-left">在[z]前</td>
+<td class="org-left">rose</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">s</td>
+<td class="org-left">[s]</td>
+<td class="org-left">一般情况</td>
+<td class="org-left">si</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[z]</td>
+<td class="org-left">两个元音之间</td>
+<td class="org-left">rose</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">[v]</td>
+<td class="org-left">一般情况</td>
+<td class="org-left">wagon</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[w]</td>
+<td class="org-left">外来词</td>
+<td class="org-left">wifi</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">[ks]</td>
+<td class="org-left">一般情况</td>
+<td class="org-left">taxi</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[s]</td>
+<td class="org-left">短小词词末</td>
+<td class="org-left">six, dix</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">e</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">词末不发音，但在单音节词中时发[ə]</td>
+<td class="org-left">ce</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ɛ]</td>
+<td class="org-left">闭音节中</td>
+<td class="org-left">merci, met</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ə]</td>
+<td class="org-left">开音节中</td>
+<td class="org-left">ceci</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ɛ]</td>
+<td class="org-left">两个相同的辅音前</td>
+<td class="org-left">pelle[pɛl]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ɑ]</td>
+<td class="org-left">在mm前</td>
+<td class="org-left">femme</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">元音+辅音+e+辅音+元音</td>
+<td class="org-left">samedi</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[e]</td>
+<td class="org-left">desc, dess, ess, eff在词首</td>
+<td class="org-left">descendre, dessin, essai, effacer, essayer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge2340f6" class="outline-4">
+<h4 id="orge2340f6"><span class="section-number-4">1.3.4.</span> 字母组合</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">gu</td>
+<td class="org-left">[g]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">guide</td>
+</tr>
+
+<tr>
+<td class="org-left">qu</td>
+<td class="org-left">[k]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">qui</td>
+</tr>
+
+<tr>
+<td class="org-left">ex</td>
+<td class="org-left">[ɛɡz]</td>
+<td class="org-left">ex+元音</td>
+<td class="org-left">exemple</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ɛks]</td>
+<td class="org-left">ex+辅音</td>
+<td class="org-left">excuse</td>
+</tr>
+
+<tr>
+<td class="org-left">ai,ei,ay,ey</td>
+<td class="org-left">[ɛ]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">faire,seize</td>
+</tr>
+
+<tr>
+<td class="org-left">oi</td>
+<td class="org-left">[wa]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">soir</td>
+</tr>
+
+<tr>
+<td class="org-left">au,eau</td>
+<td class="org-left">[o]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">au, eau, beau</td>
+</tr>
+
+<tr>
+<td class="org-left">eu</td>
+<td class="org-left">[ø]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">bleu</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[œ]</td>
+<td class="org-left">在r前</td>
+<td class="org-left">leur</td>
+</tr>
+
+<tr>
+<td class="org-left">oeu,œu</td>
+<td class="org-left">[œ]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">cœur</td>
+</tr>
+
+<tr>
+<td class="org-left">gn</td>
+<td class="org-left">[ɲ]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ligne</td>
+</tr>
+
+<tr>
+<td class="org-left">ou, où, oû</td>
+<td class="org-left">[u]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">où, bisou</td>
+</tr>
+
+<tr>
+<td class="org-left">an, am, en,em</td>
+<td class="org-left">[ɑ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">dans, enfant</td>
+</tr>
+
+<tr>
+<td class="org-left">on, om</td>
+<td class="org-left">[ɔ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">mon, nombre</td>
+</tr>
+
+<tr>
+<td class="org-left">im, in, ym, yn, aim, ain</td>
+<td class="org-left">[ɛ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">important, prince, plein</td>
+</tr>
+
+<tr>
+<td class="org-left">um, un</td>
+<td class="org-left">[œ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">un, lundi</td>
+</tr>
+
+<tr>
+<td class="org-left">tion</td>
+<td class="org-left">[sjɔ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">attention</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[tjɔ̃]</td>
+<td class="org-left">s+tion</td>
+<td class="org-left">question</td>
+</tr>
+
+<tr>
+<td class="org-left">sion</td>
+<td class="org-left">[sjɔ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">passion</td>
+</tr>
+
+<tr>
+<td class="org-left">ien</td>
+<td class="org-left">[jɛ̃]</td>
+<td class="org-left">词末</td>
+<td class="org-left">canadien</td>
+</tr>
+
+<tr>
+<td class="org-left">oin</td>
+<td class="org-left">[wɛ̃]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">loin, point</td>
+</tr>
+
+<tr>
+<td class="org-left">ch, sch</td>
+<td class="org-left">[ʃ]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Chine, schéma</td>
+</tr>
+
+<tr>
+<td class="org-left">ph</td>
+<td class="org-left">[f]</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">photo</td>
+</tr>
+
+<tr>
+<td class="org-left">il</td>
+<td class="org-left">[j]</td>
+<td class="org-left">词末</td>
+<td class="org-left">travail</td>
+</tr>
+
+<tr>
+<td class="org-left">ill</td>
+<td class="org-left">[j]</td>
+<td class="org-left">元音+ill</td>
+<td class="org-left">travailler</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">[ij]</td>
+<td class="org-left">辅音+ill</td>
+<td class="org-left">famille</td>
+</tr>
+
+<tr>
+<td class="org-left">tiel</td>
+<td class="org-left">[sjɛl]</td>
+<td class="org-left">词末</td>
+<td class="org-left">essentiel</td>
+</tr>
+
+<tr>
+<td class="org-left">ent</td>
+<td class="org-left">[]</td>
+<td class="org-left">动词变位的词末</td>
+<td class="org-left">parlent</td>
+</tr>
+
+<tr>
+<td class="org-left">er</td>
+<td class="org-left">[e]</td>
+<td class="org-left">动词原型词末</td>
+<td class="org-left">parler</td>
+</tr>
+
+<tr>
+<td class="org-left">ez</td>
+<td class="org-left">[e]</td>
+<td class="org-left">词末</td>
+<td class="org-left">aimer, chez</td>
+</tr>
+
+<tr>
+<td class="org-left">es</td>
+<td class="org-left">[e]</td>
+<td class="org-left">单音节词末</td>
+<td class="org-left">mes, des, ses</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d4d8c3" class="outline-3">
+<h3 id="org5d4d8c3"><span class="section-number-3">1.4.</span> <span class="todo TODO">TODO</span> La Liaison</h3>
+</div>
+<div id="outline-container-org29c3983" class="outline-3">
+<h3 id="org29c3983"><span class="section-number-3">1.5.</span> <span class="todo TODO">TODO</span> La Intonation 语调</h3>
+</div>
+</div>
+<div id="outline-container-orgbcbc700" class="outline-2">
+<h2 id="orgbcbc700"><span class="section-number-2">2.</span> La Grammaire</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org6bd28f0" class="outline-3">
+<h3 id="org6bd28f0"><span class="section-number-3">2.1.</span> <span class="todo TODO">TODO</span> 时态</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+动词变位是动词根据语式、时态、人称、单复数等的不同而改变。<br />
+但是这些变化大部分都是有规律可循的。<br />
+这些动词分为3大类：<br />
+</p>
+<ol class="org-ol">
+<li>er结尾<br /></li>
+<li>ir结尾<br /></li>
+<li>re结尾<br /></li>
+</ol>
+
+
+<p>
+除却极少数的动词有不规则的变化形式外，相同结尾的动词有相同或者类似的变化形式。<br />
+</p>
+
+<p>
+法语中的动词以：<br />
+</p>
+<ul class="org-ul">
+<li>er 结尾的有9630个<br /></li>
+<li>ir结尾的有597个<br /></li>
+<li>re结尾的有316个。<br /></li>
+</ul>
+</div>
+<div id="outline-container-orge1ae43b" class="outline-4">
+<h4 id="orge1ae43b"><span class="section-number-4">2.1.1.</span> Indicatif</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+陈述句。<br />
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org8b4e24c"></a><span class="done DONE">DONE</span> Présent<br />
+<div class="outline-text-5" id="text-2-1-1-1">
+<p>
+陈述一种事实。<br />
+比如：<br />
+Je cours tous les matins. 我每天早晨跑步。<br />
+</p>
+
+
+<p>
+变化规则：<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">je</th>
+<th scope="col" class="org-left">tu</th>
+<th scope="col" class="org-left">il</th>
+<th scope="col" class="org-left">nous</th>
+<th scope="col" class="org-left">vous</th>
+<th scope="col" class="org-left">ils</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">-er</th>
+<th scope="col" class="org-left">-e</th>
+<th scope="col" class="org-left">-es</th>
+<th scope="col" class="org-left">-e</th>
+<th scope="col" class="org-left">-ons</th>
+<th scope="col" class="org-left">-ez</th>
+<th scope="col" class="org-left">-ent</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">-ir</th>
+<th scope="col" class="org-left">-is</th>
+<th scope="col" class="org-left">-is</th>
+<th scope="col" class="org-left">-it</th>
+<th scope="col" class="org-left">-issons</th>
+<th scope="col" class="org-left">-issez</th>
+<th scope="col" class="org-left">-issent</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">-re</th>
+<th scope="col" class="org-left">-s</th>
+<th scope="col" class="org-left">-s</th>
+<th scope="col" class="org-left">-t</th>
+<th scope="col" class="org-left">-ons</th>
+<th scope="col" class="org-left">-ez</th>
+<th scope="col" class="org-left">-ent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">parler</td>
+<td class="org-left">je parle</td>
+<td class="org-left">tu parles</td>
+<td class="org-left">il parle</td>
+<td class="org-left">nous parlons</td>
+<td class="org-left">vous parlez</td>
+<td class="org-left">ils parlent</td>
+</tr>
+
+<tr>
+<td class="org-left">finir</td>
+<td class="org-left">je finis</td>
+<td class="org-left">tu finis</td>
+<td class="org-left">il finit</td>
+<td class="org-left">nous finissons</td>
+<td class="org-left">vous finissez</td>
+<td class="org-left">ils finissent</td>
+</tr>
+
+<tr>
+<td class="org-left">rompre</td>
+<td class="org-left">je romps</td>
+<td class="org-left">tu romps</td>
+<td class="org-left">il rompt</td>
+<td class="org-left">nous rompons</td>
+<td class="org-left">vous rompez</td>
+<td class="org-left">ils rompent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+
+<li><a id="orgb6fa06f"></a><span class="done DONE">DONE</span> Passé Composé<br />
+<div class="outline-text-5" id="text-2-1-1-2">
+<p>
+陈述过去发生的动作或者事件。<br />
+比如：<br />
+J'ai mangé. 我吃饭了。<br />
+</p>
+
+
+
+<p>
+变化形式：助动词être或avoir的indicatif présent + 动词的participe parssé。<br />
+（大部分动词使用avoir作为助动词。）<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">être</td>
+<td class="org-left">avoir</td>
+</tr>
+
+<tr>
+<td class="org-left">je</td>
+<td class="org-left">je suis</td>
+<td class="org-left">j'ai</td>
+</tr>
+
+<tr>
+<td class="org-left">tu</td>
+<td class="org-left">tu es</td>
+<td class="org-left">tu as</td>
+</tr>
+
+<tr>
+<td class="org-left">il</td>
+<td class="org-left">il est</td>
+<td class="org-left">il a</td>
+</tr>
+
+<tr>
+<td class="org-left">nous</td>
+<td class="org-left">nous sommes</td>
+<td class="org-left">nous avons</td>
+</tr>
+
+<tr>
+<td class="org-left">vous</td>
+<td class="org-left">vous êtes</td>
+<td class="org-left">vous avez</td>
+</tr>
+
+<tr>
+<td class="org-left">ils</td>
+<td class="org-left">ils sont</td>
+<td class="org-left">ils ont</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+过去分词变化规则：<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">-er</td>
+<td class="org-left">-é</td>
+</tr>
+
+<tr>
+<td class="org-left">-ir</td>
+<td class="org-left">-i</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">aller</td>
+<td class="org-left">je suis allé</td>
+<td class="org-left">tu es allé</td>
+<td class="org-left">il est allé</td>
+<td class="org-left">nous sommes allés</td>
+<td class="org-left">vous êtes allés</td>
+<td class="org-left">ils sont allés</td>
+</tr>
+
+<tr>
+<td class="org-left">finir</td>
+<td class="org-left">j'ai fini</td>
+<td class="org-left">tu as fini</td>
+<td class="org-left">il a fini</td>
+<td class="org-left">nous avons fini</td>
+<td class="org-left">vous avez fini</td>
+<td class="org-left">ils ont fini</td>
+</tr>
+</tbody>
+</table>
+
+
+<pre class="example" id="orga719cb6">
+注意：
+使用être做助动词的时候，过去分词要根据单复数而进行变化。
+</pre>
+</div>
+</li>
+
+<li><a id="orgced1f30"></a><span class="done DONE">DONE</span> Imparfait<br />
+<div class="outline-text-5" id="text-2-1-1-3">
+<p>
+陈述过去有延续性、重复性的动作，或过去一段时间内的状态。<br />
+比如：<br />
+Je mangeais. 我当时在吃饭。<br />
+</p>
+
+
+
+<p>
+变化规则：<br />
+nous的indicatif présent的变位去掉词尾的ons，分别加上ais, ais, ait, ions, iez, aient.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">nous</td>
+<td class="org-left">je</td>
+<td class="org-left">tu</td>
+<td class="org-left">il</td>
+<td class="org-left">nous</td>
+<td class="org-left">vous</td>
+<td class="org-left">ils</td>
+</tr>
+
+<tr>
+<td class="org-left">manger</td>
+<td class="org-left">nous mange-ons</td>
+<td class="org-left">je mangeais</td>
+<td class="org-left">tu mangeais</td>
+<td class="org-left">il mangeait</td>
+<td class="org-left">nous mangions</td>
+<td class="org-left">vous mangiez</td>
+<td class="org-left">ils mangeaient</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example" id="org3ef6486">
+注意：
+mangions中没有e，不是mangeions。
+因为根据发音规则，g在e，i，j前发[ʒ]，因此此处的e需省略。
+</pre>
+</div>
+</li>
+
+
+
+<li><a id="org3bce813"></a><span class="done DONE">DONE</span> Future Simple<br />
+<div class="outline-text-5" id="text-2-1-1-4">
+<p>
+表示将来的动作或者事件。<br />
+比如：<br />
+Je voyagerai en France. 我将去法国旅行。<br />
+</p>
+
+
+<p>
+变化规则：动词原型的基础上加ai, as, a, ons, ez, ont.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">je</td>
+<td class="org-left">tu</td>
+<td class="org-left">il</td>
+<td class="org-left">nous</td>
+<td class="org-left">vous</td>
+<td class="org-left">ils</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">-ai</td>
+<td class="org-left">-as</td>
+<td class="org-left">-a</td>
+<td class="org-left">-ons</td>
+<td class="org-left">-ez</td>
+<td class="org-left">-ont</td>
+</tr>
+
+<tr>
+<td class="org-left">dormir</td>
+<td class="org-left">je dormirai</td>
+<td class="org-left">tu dormiras</td>
+<td class="org-left">il dormira</td>
+<td class="org-left">nous dormirons</td>
+<td class="org-left">vosu dormirez</td>
+<td class="org-left">ils dormiront</td>
+</tr>
+
+<tr>
+<td class="org-left">manger</td>
+<td class="org-left">je mangerai</td>
+<td class="org-left">tu mangeras</td>
+<td class="org-left">il mangera</td>
+<td class="org-left">nous mangerons</td>
+<td class="org-left">vous mangerez</td>
+<td class="org-left">ils mangeront</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org97bdcf8"></a>Future Proche<br /></li>
+</ol>
+</div>
+
+
+<div id="outline-container-orge6b92c7" class="outline-4">
+<h4 id="orge6b92c7"><span class="section-number-4">2.1.2.</span> Subjonctif</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+一种用于que引入的从句中，用来表达感情、意见、怀疑、愿望、不确定、可能性、假设或建议。<br />
+常用的句式：sujet + verbe introducteur + que + sujet + verbe au subjonctif.<br />
+</p>
+</div>
+
+
+<ol class="org-ol">
+<li><a id="orgae19a59"></a>Présent<br />
+<div class="outline-text-5" id="text-2-1-2-1">
+<p>
+在indicatif présent的ils变位的基础上变化，去掉ent，然后加上e, es, e, ions, iez, ent.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">je</td>
+<td class="org-left">tu</td>
+<td class="org-left">il</td>
+<td class="org-left">nous</td>
+<td class="org-left">vous</td>
+<td class="org-left">ils</td>
+</tr>
+
+<tr>
+<td class="org-left">finir</td>
+<td class="org-left">ils finissent</td>
+<td class="org-left">que je finisse</td>
+<td class="org-left">que tu finisses</td>
+<td class="org-left">qu'il finisse</td>
+<td class="org-left">que nous finissions</td>
+<td class="org-left">que vous finissiez</td>
+<td class="org-left">qu'ils finissent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org8d614ea" class="outline-2">
+<h2 id="org8d614ea"><span class="section-number-2">3.</span> Le Vocabulaire</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org612d847" class="outline-3">
+<h3 id="org612d847"><span class="section-number-3">3.1.</span> <span class="todo TODO">TODO</span> 词根</h3>
+</div>
+<div id="outline-container-orgbf343f2" class="outline-3">
+<h3 id="orgbf343f2"><span class="section-number-3">3.2.</span> <span class="done DONE">DONE</span> Le Préfixe</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+</div>
+
+<div id="outline-container-orge5a5c7c" class="outline-3">
+<h3 id="orge5a5c7c"><span class="section-number-3">3.3.</span> <span class="done DONE">DONE</span> Le Suffixe</h3>
+<div class="outline-text-3" id="text-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">eur</td>
+<td class="org-left">阳性 名词后缀</td>
+<td class="org-left">表示人或者物（有时也可做形容词）</td>
+<td class="org-left">accélérateur, valeur</td>
+</tr>
+
+<tr>
+<td class="org-left">rice</td>
+<td class="org-left">阴性名词后缀</td>
+<td class="org-left">表示人或者物（有时也可做形容词）</td>
+<td class="org-left">accélératrice</td>
+</tr>
+
+<tr>
+<td class="org-left">aire</td>
+<td class="org-left">阳性名词后缀</td>
+<td class="org-left">表示抽象的名词</td>
+<td class="org-left">inventaire</td>
+</tr>
+
+<tr>
+<td class="org-left">tion</td>
+<td class="org-left">名词后缀</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">transaction, question</td>
+</tr>
+
+<tr>
+<td class="org-left">ment</td>
+<td class="org-left">副词后缀，名词后缀</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">vraiment, aliment</td>
+</tr>
+
+<tr>
+<td class="org-left">sceptique</td>
+<td class="org-left">名词后缀</td>
+<td class="org-left">对···持怀疑态度的人</td>
+<td class="org-left">climatosceptique</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org38239fe" class="outline-3">
+<h3 id="org38239fe"><span class="section-number-3">3.4.</span> La Semaine</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>lundi<br /></li>
+<li>mardi<br /></li>
+<li>mercredi<br /></li>
+<li>jeudi<br /></li>
+<li>vendredi<br /></li>
+<li>samedi<br /></li>
+<li>dimanche<br /></li>
+</ul>
+
+
+<p>
+LMM: 李明明。 mercredi是lmm中最长的的。<br />
+vendredi，samedi，dimanche是比较特殊的。<br />
+jeudi单独记忆。<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org33e5722" class="outline-3">
+<h3 id="org33e5722"><span class="section-number-3">3.5.</span> Le Mois</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>janvier: similar to January.<br /></li>
+<li>février: similar to February.<br /></li>
+<li>mars: m放到就是3，3把火<br /></li>
+<li>avril: A类似4<br /></li>
+<li>mai: 单独记忆<br /></li>
+<li>juin: 对比着juillet来记忆<br /></li>
+<li>juillet:<br /></li>
+<li>août: 唯一的一个月份，戴着帽子的。<br /></li>
+<li>septembre: similar to september<br /></li>
+<li>octobre: similar to october<br /></li>
+<li>novembre: similar to november<br /></li>
+<li>décembre: similar to december<br /></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org7b7961b" class="outline-3">
+<h3 id="org7b7961b"><span class="section-number-3">3.6.</span> Le Corps</h3>
+<div class="outline-text-3" id="text-3-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Mot</th>
+<th scope="col" class="org-left">Masculine ou Feminine</th>
+<th scope="col" class="org-left">Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">bedaine</td>
+<td class="org-left">m</td>
+<td class="org-left">大肚子</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org42168be" class="outline-3">
+<h3 id="org42168be"><span class="section-number-3">3.7.</span> 个别单词</h3>
+<div class="outline-text-3" id="text-3-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Mot</th>
+<th scope="col" class="org-left">Masculine ou Feminine</th>
+<th scope="col" class="org-left">Prononciation</th>
+<th scope="col" class="org-left">Explication</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">poids</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">重量</td>
+<td class="org-left">poids requis</td>
+</tr>
+
+<tr>
+<td class="org-left">atteindre</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">追上，赶上，到达</td>
+<td class="org-left">Nous atteindrons Shanghai avant la nuit</td>
+</tr>
+
+<tr>
+<td class="org-left">atteint(e)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">得病的</td>
+<td class="org-left">Il est atteit d'un cancer</td>
+</tr>
+
+<tr>
+<td class="org-left">régler</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">校准，调整</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">réglage</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">校准，调整</td>
+<td class="org-left">réglage manuel</td>
+</tr>
+
+<tr>
+<td class="org-left">lourd(e)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">重的，沉重的</td>
+<td class="org-left">Il fait lourd. 天气沉闷。</td>
+</tr>
+
+<tr>
+<td class="org-left">cadran</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">标度盘，刻度盘</td>
+<td class="org-left">Régler le cadran à un nombre inférieur pour amincir les tranches.</td>
+</tr>
+
+<tr>
+<td class="org-left">inférieur(e)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">下部的，下游的，次的</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">épaissir</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">变厚，使变厚</td>
+<td class="org-left">La crème épaissit. 奶油变稠了。</td>
+</tr>
+
+<tr>
+<td class="org-left">amincir</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">使&#x2026;变细，使&#x2026;变薄</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">supérieur(e)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">上游的，优越的；长官</td>
+<td class="org-left">être ~ à qn pour la taille 身材比某人高</td>
+</tr>
+
+<tr>
+<td class="org-left">éviter</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">避免，躲避</td>
+<td class="org-left">éviter un accident 避免一场事故</td>
+</tr>
+
+<tr>
+<td class="org-left">essuyer</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">拭； 擦干， 擦去</td>
+<td class="org-left">essuyer ses mains avec une serviette 用毛巾把手擦干</td>
+</tr>
+
+<tr>
+<td class="org-left">brancher</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">晒在树枝上，分支，分流，接通</td>
+<td class="org-left">brancher un tuyau sur une conduite principale. 把管子接在总管上。</td>
+</tr>
+
+<tr>
+<td class="org-left">sécuritaire</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">安全的</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">chariot</td>
+<td class="org-left">m</td>
+<td class="org-left">[∫arjo]</td>
+<td class="org-left">四轮运货车，【机械】溜板, 拖板;滑架;滑动刀架</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">vitesse</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">迅速，速率</td>
+<td class="org-left">changer de vitesse 换档</td>
+</tr>
+
+<tr>
+<td class="org-left">poussoir</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">按钮，【机械】推杆</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">épaisseur</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">厚度</td>
+<td class="org-left">épaisseur de deux centimètres 2厘米的厚度</td>
+</tr>
+
+<tr>
+<td class="org-left">lame</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">（金属、玻璃、木头等的）薄片， 薄板，（刀、剑等的）身； 剑</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">inventaire</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">财产清单，清点财产</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">tranfert</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">转让，转移</td>
+<td class="org-left">transfert de propriété产权转让</td>
+</tr>
+
+<tr>
+<td class="org-left">compte</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">账户，计数，计算</td>
+<td class="org-left">faire un compte, au ~ de 依靠&#x2026;，由&#x2026;负责</td>
+</tr>
+
+<tr>
+<td class="org-left">œuvre</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">工作，劳动，事业，著作</td>
+<td class="org-left">main d'œuvre</td>
+</tr>
+
+<tr>
+<td class="org-left">trésorier(ère)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">财务官, 财务主管</td>
+<td class="org-left">rapport de trésorier</td>
+</tr>
+
+<tr>
+<td class="org-left">transaction</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">和解，交易</td>
+<td class="org-left">texe sur les transactions 交易税</td>
+</tr>
+
+<tr>
+<td class="org-left">déboursé</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">预付款</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">plateau</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">托盘</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">portion</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(食物、钱财等的)一客, 一份</td>
+<td class="org-left">portion de pain一份面包</td>
+</tr>
+
+<tr>
+<td class="org-left">breuvage</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">饮料</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">galette</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">饼，饼状物</td>
+<td class="org-left">galette végé</td>
+</tr>
+
+<tr>
+<td class="org-left">laïque</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">世俗的，非宗教的</td>
+<td class="org-left">école laïque 非教会学校, 公立学校</td>
+</tr>
+
+<tr>
+<td class="org-left">autisme</td>
+<td class="org-left">m</td>
+<td class="org-left">[otism]</td>
+<td class="org-left">【心】自我中心主义，孤独性，【医】孤独症</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">thérapie</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">治疗</td>
+<td class="org-left">suivre une thérapie contre le SIDA进行抗艾滋病治疗</td>
+</tr>
+
+<tr>
+<td class="org-left">pastèque</td>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">melon d'eau</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">domestique</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">家庭的，家养的</td>
+<td class="org-left">travaux domestiques家务，animaux domestiques家畜</td>
+</tr>
+
+<tr>
+<td class="org-left">appareil</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">device</td>
+<td class="org-left">appareil ménager家用电器</td>
+</tr>
+
+<tr>
+<td class="org-left">auditoire</td>
+<td class="org-left">m</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">听众，听课学生，读者</td>
+<td class="org-left">auditoire attentif 专心听讲的听众</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mingming Li</p>
+<p class="date">Created: 2024-02-17 Sat 07:22</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

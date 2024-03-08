@@ -1,0 +1,3409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-02-16 Fri 15:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>emacs</title>
+<meta name="author" content="Mingming Li" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">emacs</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4610c28">1. Emacs</a>
+<ul>
+<li><a href="#orgc1f07e5">1.1. Buffer</a></li>
+<li><a href="#orgf0ff396">1.2. Mode</a></li>
+<li><a href="#org268b433">1.3. Backup File</a></li>
+<li><a href="#orgb68f4c7">1.4. Auto Save Files</a></li>
+<li><a href="#org0d646c6">1.5. Point, Cursor and Mark</a></li>
+<li><a href="#orgad9b216">1.6. Kill Ring</a></li>
+<li><a href="#org208fc7f">1.7. Binding</a></li>
+<li><a href="#orgb24f8ab">1.8. Display</a></li>
+</ul>
+</li>
+<li><a href="#org3b0bffb">2. <span class="done DONE">DONE</span> Helps</a></li>
+<li><a href="#orgbbdbefe">3. <span class="done DONE">DONE</span> Editing</a>
+<ul>
+<li><a href="#org042888c">3.1. <span class="done DONE">DONE</span> Moving the Cursor</a></li>
+<li><a href="#org8635ef5">3.2. <span class="done DONE">DONE</span> Marking the Region</a></li>
+<li><a href="#org0cd04bb">3.3. <span class="done DONE">DONE</span> Editing</a></li>
+</ul>
+</li>
+<li><a href="#orgcb29b97">4. <span class="done DONE">DONE</span> Search and Replace</a></li>
+<li><a href="#org125d4b9">5. Windows and Frames</a></li>
+<li><a href="#orgc63dd76">6. <span class="done DONE">DONE</span> Org Mode</a>
+<ul>
+<li><a href="#orgf7876c3">6.1. <span class="done DONE">DONE</span> Outlines</a>
+<ul>
+<li><a href="#org97365ae">6.1.1. <span class="done DONE">DONE</span> Visibility</a></li>
+<li><a href="#orgdc670d5">6.1.2. <span class="done DONE">DONE</span> Motion</a></li>
+<li><a href="#org0580c00">6.1.3. <span class="done DONE">DONE</span> Structure Editing</a></li>
+<li><a href="#orge7470d2">6.1.4. <span class="done DONE">DONE</span> Sparse Trees</a></li>
+</ul>
+</li>
+<li><a href="#orgb5f87e7">6.2. <span class="done DONE">DONE</span> Plain Lists</a>
+<ul>
+<li><a href="#org4191170">6.2.1. <span class="done DONE">DONE</span> Checkboxes</a></li>
+</ul>
+</li>
+<li><a href="#orga18e9fa">6.3. <span class="done DONE">DONE</span> Drawers</a></li>
+<li><a href="#org3fcca6f">6.4. <span class="done DONE">DONE</span> Habit</a></li>
+<li><a href="#org4495fd1">6.5. Table</a>
+<ul>
+<li><a href="#orgce4ce26">6.5.1. <span class="done DONE">DONE</span> Table Editor</a></li>
+<li><a href="#org152508c">6.5.2. <span class="done DONE">DONE</span> Column Width and Alignment</a></li>
+<li><a href="#orgb82ada5">6.5.3. <span class="done DONE">DONE</span> Column Groups</a></li>
+<li><a href="#org590944d">6.5.4. The Spreadsheet</a></li>
+<li><a href="#org3cec2ce">6.5.5. Plot</a></li>
+</ul>
+</li>
+<li><a href="#hello">6.6. <span class="done DONE">DONE</span> Hyperlinks</a>
+<ul>
+<li><a href="#orgd53ec4a">6.6.1. Internal Links</a></li>
+<li><a href="#org9dbc910">6.6.2. Radio Targets</a></li>
+</ul>
+</li>
+<li><a href="#orgab0e5ab">6.7. <span class="done DONE">DONE</span> Tags</a>
+<ul>
+<li><a href="#orgc164a8a">6.7.1. Tag Inheritance</a></li>
+<li><a href="#orgc493b9f">6.7.2. Setting Tags</a></li>
+<li><a href="#orgb5835e6">6.7.3. Tag Hierarchy</a></li>
+<li><a href="#orgd758b33">6.7.4. Tag Searches</a></li>
+</ul>
+</li>
+<li><a href="#orgf5b269d">6.8. <span class="todo TODO">TODO</span> <code>TODO</code> Items</a>
+<ul>
+<li><a href="#org0710ab1">6.8.1. Basic TODO Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4fd2886">7. <span class="done DONE">DONE</span> Directory Editor</a>
+<ul>
+<li><a href="#orgcbf00ea">7.1. <span class="done DONE">DONE</span> Navigating</a></li>
+<li><a href="#org2a01875">7.2. <span class="done DONE">DONE</span> Flagging for Deletion</a></li>
+<li><a href="#org77271a5">7.3. <span class="done DONE">DONE</span> Visiting Files</a></li>
+<li><a href="#org1079bbd">7.4. <span class="done DONE">DONE</span> Marking</a></li>
+<li><a href="#org0ced1da">7.5. <span class="done DONE">DONE</span> Operating on Files</a></li>
+<li><a href="#org230d36f">7.6. <span class="done DONE">DONE</span> Shell Commands</a></li>
+<li><a href="#org4f757a4">7.7. <span class="done DONE">DONE</span> Transforming File Names</a></li>
+<li><a href="#orge108527">7.8. <span class="done DONE">DONE</span> Subdirectories</a></li>
+<li><a href="#orgd9ed22d">7.9. <span class="done DONE">DONE</span> Updating the Dired Buffer</a></li>
+<li><a href="#orgf3d0935">7.10. <span class="done DONE">DONE</span> Editing the Dired Buffer</a></li>
+<li><a href="#orgb2104bb">7.11. <span class="done DONE">DONE</span> Other Featuers</a></li>
+</ul>
+</li>
+<li><a href="#org4c1a2ea">8. EasyPG</a>
+<ul>
+<li><a href="#org914f6eb">8.1. GnuPG</a>
+<ul>
+<li><a href="#orgd078b0b">8.1.1. Generating a New Keypair</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf74cf6d">9. <span class="done DONE">DONE</span> Shell</a>
+<ul>
+<li><a href="#org4b0f1c8">9.1. Term Mode</a></li>
+</ul>
+</li>
+<li><a href="#org0d34018">10. <span class="done DONE">DONE</span> Spell</a>
+<ul>
+<li><a href="#org6371f7f">10.1. Ispell</a></li>
+<li><a href="#org9dc97fb">10.2. Flyspell</a></li>
+</ul>
+</li>
+<li><a href="#org6047d86">11. <span class="done DONE">DONE</span> Macro</a>
+<ul>
+<li><a href="#orga6c16a7">11.1. Persist Your Macro</a></li>
+<li><a href="#orgb1fccde">11.2. Pausing a Macro for Keyboard Input</a></li>
+<li><a href="#orgaabbce1">11.3. Adding a Query to a Macro</a></li>
+</ul>
+</li>
+<li><a href="#orgb8134e1">12. Useful Commands</a></li>
+<li><a href="#org3218a0c">13. <span class="done DONE">DONE</span> Input Phonetic Symbols</a></li>
+<li><a href="#orgb475a5b">14. <span class="done DONE">DONE</span> Simple ASCII Picture</a>
+<ul>
+<li><a href="#orgdfe5e09">14.1. Picture Mode</a></li>
+<li><a href="#org3227d65">14.2. Artist Mode</a></li>
+</ul>
+</li>
+<li><a href="#org08f9551">15. Calendar</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../programming-languages/elisp/elisp.html#ID-A194CD53-E934-452A-B9F4-3348F7E77DBA">elisp</a><br />
+</p>
+
+
+<div id="outline-container-org4610c28" class="outline-2">
+<h2 id="org4610c28"><span class="section-number-2">1.</span> Emacs</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Emacs is a text editor.<br />
+Emacs is important because of the integration of different things you need to do.<br />
+It's more than just an editor; it's a complete environment that can change the way you work.<br />
+</p>
+
+<p>
+Learning to use an editor is a matter of learning finger habits.<br />
+The finger-habits approach implies the way to learn Emacs.<br />
+You can form only a few new habits each day.<br />
+</p>
+</div>
+
+
+
+<div id="outline-container-orgc1f07e5" class="outline-3">
+<h3 id="orgc1f07e5"><span class="section-number-3">1.1.</span> Buffer</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+You don't edit files with Emacs.<br />
+Instead, Emacs copies the contents of a file into a temporary buffer and you eidt that.<br />
+The file on disk doesn't change until you save the buffer.<br />
+</p>
+
+<p>
+This feature used the thought "keep the original data safe".<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf0ff396" class="outline-3">
+<h3 id="orgf0ff396"><span class="section-number-3">1.2.</span> Mode</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+There are many tasks or needs around us and modes exists for them.<br />
+A mode collect all the feature you need.<br />
+</p>
+
+<p>
+Modes allows Emacs to be the kind of editor you want for different tasks.<br />
+A buffer can be in only one major mode at a time.<br />
+Minor modes defines a particular aspect of Emacs’s behavior and can be turned on and off within a major mode.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org268b433" class="outline-3">
+<h3 id="org268b433"><span class="section-number-3">1.3.</span> Backup File</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+A backup file is a copy of the old contents of a file you are editing.<br />
+Emacs makes a backup file the first time you save a buffer into its visited file.<br />
+The contents of the backup file normally remain unchanged once it exists.<br />
+During the editing, you may save the buffer several times and the content of the original file will change accordingly.<br />
+</p>
+
+<p>
+The name of the backup file is the same as the name of the file you’re editing, with a tilde added.<br />
+For example, if you are editing the file text, the backup file is text~.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb68f4c7" class="outline-3">
+<h3 id="orgb68f4c7"><span class="section-number-3">1.4.</span> Auto Save Files</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+The save files are used save the content of current buffer if you forget to save the buffer and the Emacs or system crashed.<br />
+</p>
+
+<p>
+Emacs will auto save you files from time to time into auto-save files.<br />
+The name of an auto-save file is the same as the name of the file you are editing, with a sharp (#) added to the beginning and the end.<br />
+For example, if you are editing the file text, its auto-save file is #text#.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org0d646c6" class="outline-3">
+<h3 id="org0d646c6"><span class="section-number-3">1.5.</span> Point, Cursor and Mark</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+A cursor is on the top the char.<br />
+The point is immediately before the character.<br />
+The mark is another position in the buffer.<br />
+</p>
+
+<p>
+The part of the buffer between point and mark is called the region.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgad9b216" class="outline-3">
+<h3 id="orgad9b216"><span class="section-number-3">1.6.</span> Kill Ring</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Kill ring is a ring used to keep the content you deleted (in Emacs, called "kill").<br />
+This feature enable you to recover or paste the content you deleted not only recently but also long time ago (depending the kill ring size you set).<br />
+</p>
+
+
+<p>
+What exactly goes into the kill ring?<br />
+Only the text delete by Del and C-d (without numeric argument) does not go into kill ring.<br />
+All the else will go into kill ring.<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org208fc7f" class="outline-3">
+<h3 id="org208fc7f"><span class="section-number-3">1.7.</span> Binding</h3>
+</div>
+
+<div id="outline-container-orgb24f8ab" class="outline-3">
+<h3 id="orgb24f8ab"><span class="section-number-3">1.8.</span> Display</h3>
+<div class="outline-text-3" id="text-1-8">
+
+<div id="orgec06520" class="figure">
+<p><img src="images/display.png" alt="display.png" /><br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3b0bffb" class="outline-2">
+<h2 id="org3b0bffb"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> Helps</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+C-h<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgbbdbefe" class="outline-2">
+<h2 id="orgbbdbefe"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> Editing</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+<div id="outline-container-org042888c" class="outline-3">
+<h3 id="org042888c"><span class="section-number-3">3.1.</span> <span class="done DONE">DONE</span> Moving the Cursor</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">C-f</th>
+<th scope="col" class="org-left">forward one char</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-b</th>
+<th scope="col" class="org-left">backward one char</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-n</th>
+<th scope="col" class="org-left">next line</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-p</th>
+<th scope="col" class="org-left">previous line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-f</td>
+<td class="org-left">forward one word</td>
+</tr>
+
+<tr>
+<td class="org-left">M-b</td>
+<td class="org-left">backward one word</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-a</td>
+<td class="org-left">head of the line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-e</td>
+<td class="org-left">end of the line</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-a</td>
+<td class="org-left">forward one sentence</td>
+</tr>
+
+<tr>
+<td class="org-left">M-e</td>
+<td class="org-left">backward one sentence</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-}</td>
+<td class="org-left">forward one paragraph</td>
+</tr>
+
+<tr>
+<td class="org-left">M-{</td>
+<td class="org-left">backward one paragraph</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-v</td>
+<td class="org-left">forward one screen</td>
+</tr>
+
+<tr>
+<td class="org-left">M-v</td>
+<td class="org-left">backward one screen</td>
+</tr>
+
+<tr>
+<td class="org-left">C-l</td>
+<td class="org-left">recenter</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x ]</td>
+<td class="org-left">forward one page</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x [</td>
+<td class="org-left">backward one page</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-&lt;</td>
+<td class="org-left">beginning of buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&gt;</td>
+<td class="org-left">end of bufferf</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-m</td>
+<td class="org-left">first non-whitespace character</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-g M-g</td>
+<td class="org-left">go to a specified line</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org8635ef5" class="outline-3">
+<h3 id="org8635ef5"><span class="section-number-3">3.2.</span> <span class="done DONE">DONE</span> Marking the Region</h3>
+<div class="outline-text-3" id="text-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-Space or C-@</td>
+<td class="org-left">set the mark</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-x</td>
+<td class="org-left">exchange pointer and mark</td>
+</tr>
+
+<tr>
+<td class="org-left">M-h</td>
+<td class="org-left">mark paragraph</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x h</td>
+<td class="org-left">mark buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">M-@</td>
+<td class="org-left">mark word</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-@</td>
+<td class="org-left">mark Lisp expression</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-h</td>
+<td class="org-left">mark Lisp defun</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-p</td>
+<td class="org-left">mark page</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Mark command can be pressed multiple times to mark several specified regions.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0cd04bb" class="outline-3">
+<h3 id="org0cd04bb"><span class="section-number-3">3.3.</span> <span class="done DONE">DONE</span> Editing</h3>
+<div class="outline-text-3" id="text-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Backspace</th>
+<th scope="col" class="org-left">delete backward char</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-d</th>
+<th scope="col" class="org-left">delete current char</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">M-Backspace</th>
+<th scope="col" class="org-left">delete between beginning of word and pointer</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">M-d</th>
+<th scope="col" class="org-left">delete between cursor and end of word</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-k</th>
+<th scope="col" class="org-left">delete between cursor and end of line</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">M-k</th>
+<th scope="col" class="org-left">delete between cursor and end of sentence</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">M&#x2013; M-k</th>
+<th scope="col" class="org-left">delete between beginning of sentence and pointer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-w</td>
+<td class="org-left">copy marked region</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-y</td>
+<td class="org-left">paste most recently deleted or copied text</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-c</td>
+<td class="org-left">Capitalize</td>
+</tr>
+
+<tr>
+<td class="org-left">M-u</td>
+<td class="org-left">Upper</td>
+</tr>
+
+<tr>
+<td class="org-left">M-l</td>
+<td class="org-left">Lower</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgcb29b97" class="outline-2">
+<h2 id="orgcb29b97"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Search and Replace</h2>
+<div class="outline-text-2" id="text-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">C-s</th>
+<th scope="col" class="org-left">incremental search</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-u C-s or C-M-s</th>
+<th scope="col" class="org-left">incremental regular expression search</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-%</td>
+<td class="org-left">query replace</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u M-%</td>
+<td class="org-left">query replace word</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-%</td>
+<td class="org-left">regular expression replace</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You can type C-h k C-s to get the help information to learn how to use incremental search well.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org125d4b9" class="outline-2">
+<h2 id="org125d4b9"><span class="section-number-2">5.</span> Windows and Frames</h2>
+</div>
+<div id="outline-container-orgc63dd76" class="outline-2">
+<h2 id="orgc63dd76"><span class="section-number-2">6.</span> <span class="done DONE">DONE</span> Org Mode</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+
+<div id="outline-container-orgf7876c3" class="outline-3">
+<h3 id="orgf7876c3"><span class="section-number-3">6.1.</span> <span class="done DONE">DONE</span> Outlines</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Org mode is implemented on top of Outline mode.<br />
+Org headlines start on the left margin with one or more stars followed by a space.<br />
+</p>
+</div>
+<div id="outline-container-org97365ae" class="outline-4">
+<h4 id="org97365ae"><span class="section-number-4">6.1.1.</span> <span class="done DONE">DONE</span> Visibility</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">Subtree cycling. (point on headline)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u TAB</td>
+<td class="org-left">Same as S-TAB.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-u TAB</td>
+<td class="org-left">Switch bach to the startup visibility.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-u C-u TAB</td>
+<td class="org-left">Show all, including drawers.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-r</td>
+<td class="org-left">Reveal context around point, showing the current entry, the following heading and the hierarchy above.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-k</td>
+<td class="org-left">Expose all the headings of the subtree, but not their bodies.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c TAB</td>
+<td class="org-left">Expose all direct children of the subtree. With a numeric prefix argument N, expose all children down to level N.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x b</td>
+<td class="org-left">Show the current subtree in an indirect buffer. With a numeric prefix argument N, go up to level N and then take that tree. With a C-u prefix, do not remove the previously used indirect buffer.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x v</td>
+<td class="org-left">Copy the visible text in the region into the kill ring.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgdc670d5" class="outline-4">
+<h4 id="orgdc670d5"><span class="section-number-4">6.1.2.</span> <span class="done DONE">DONE</span> Motion</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-n</td>
+<td class="org-left">Next heading.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-p</td>
+<td class="org-left">Previous heading.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-f</td>
+<td class="org-left">Next heading same level.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-b</td>
+<td class="org-left">Previous heading same level.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-u</td>
+<td class="org-left">Backward to higher level heading.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-j</td>
+<td class="org-left">Jump to a different place without changing the current line visibility.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0580c00" class="outline-4">
+<h4 id="org0580c00"><span class="section-number-4">6.1.3.</span> <span class="done DONE">DONE</span> Structure Editing</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">Insert a new heading, item or row</td>
+</tr>
+
+<tr>
+<td class="org-left">C-RET</td>
+<td class="org-left">Insert a new heading at the end of the current subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RET</td>
+<td class="org-left">Insert new TODO entry with same level as current heading.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-S-RET</td>
+<td class="org-left">Insert new TODO entry with same level as current heading. The new headline is inserted after the current subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">In a new entry with out text yet, the first TAB demotes the entry to become a child of the previous one. The next TAB makes it a parent, and so on, all the way to top level.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-LEFT/RIGHT</td>
+<td class="org-left">Promote or demote current heading by one level.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-LEFT/RIGHT</td>
+<td class="org-left">Promote or demote current subtree by one level.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP/DOWN</td>
+<td class="org-left">Move subtree up/down.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c @</td>
+<td class="org-left">Mark the subtree at point.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x C-w</td>
+<td class="org-left">Kill subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x M-w</td>
+<td class="org-left">Copy subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x c</td>
+<td class="org-left">Clone a subtree by making a sibling copies of it.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">Sort same level entries.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n s</td>
+<td class="org-left">Narrow buffer to current subtree.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n b</td>
+<td class="org-left">Narrow buffer to current block.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x n w</td>
+<td class="org-left">Widen.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c *</td>
+<td class="org-left">Turn a normal line or plain list item into a headline.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge7470d2" class="outline-4">
+<h4 id="orge7470d2"><span class="section-number-4">6.1.4.</span> <span class="done DONE">DONE</span> Sparse Trees</h4>
+<div class="outline-text-4" id="text-6-1-4">
+<p>
+An important feature of Org mode is the ability to construct sparse trees for selected information in an outline tree, so that the entire document is folded as much as possible, but the selected information is made visible along with the headline structure above it<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c /</td>
+<td class="org-left">Prompts for an extra key to select a sparse-tree creating command</td>
+</tr>
+
+<tr>
+<td class="org-left">M-g n</td>
+<td class="org-left">Jumpt to the next sparse tree match.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-g p</td>
+<td class="org-left">Jumpt to the previous sparse tree match.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb5f87e7" class="outline-3">
+<h3 id="orgb5f87e7"><span class="section-number-3">6.2.</span> <span class="done DONE">DONE</span> Plain Lists</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Org knows ordered lists, unordered lists, and description lists.<br />
+</p>
+<ul class="org-ul">
+<li>unordered list items start with '-', '+' or '*' as bullets. (Whe using &lowast; as a bullet, lines must be indented.)<br /></li>
+<li>Ordered list items start with a numberal followed by either a period or a right parenthesis.<br /></li>
+<li>Description list items are unordered list items and contain the separator '::' to distringuish the description term from the description.<br /></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">Insert new item at current level.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RET</td>
+<td class="org-left">Insert a new item with a checkbox.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP/DOWN</td>
+<td class="org-left">Move the item including subitem up/down.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-LEFT/RIGHT</td>
+<td class="org-left">Decrease/increase the indentation of an item, leaving children alone.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-LEFT/RIGHT</td>
+<td class="org-left">Decrease/increase the indentation of an item, including subitems.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">Toggle the state of the checkbox or verify bullets and indentation consistency.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c -</td>
+<td class="org-left">Cycle the entire list level through the different itemize/enumerate bullets.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c *</td>
+<td class="org-left">Turn a plain list item into a headline.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-*</td>
+<td class="org-left">Turn the whole plain list into a subtree of the current heading.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-LEFT/RIGHT</td>
+<td class="org-left">Cycle bullet styles.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">Sort the plain list.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org4191170" class="outline-4">
+<h4 id="org4191170"><span class="section-number-4">6.2.1.</span> <span class="done DONE">DONE</span> Checkboxes</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+Every item in a plain list can be made into a checkbox by starting it with the string [ ].<br />
+This feature is similar to TODO items, but is more lightweight.<br />
+Checkboxes are not included into the global TODO list, so they are often great to split a task into a number of simple steps.<br />
+</p>
+
+<pre class="example" id="orgc148a94">
+* light task [25%]
+  - [-] task 1 [33%]
+    - [X] task 1-1
+    - [ ] task 1-2
+    - [ ] task 1-3
+  - [ ] task 2
+  - [X] task 3
+  - [ ] task 4
+</pre>
+
+
+
+
+
+<dl class="org-dl">
+<dt>C-c C-c</dt><dd>Toggle checkbox status or presence. With a single prefix argument, add en empty checkbox or remove the current one. With a double prefix argument, set it to '[-]'.<br /></dd>
+<dt>M-S-RET</dt><dd>Insert a new item with checkbox.<br /></dd>
+<dt>C-c C-x o</dt><dd>Toggle the 'ORDERED' property of the entry.<br /></dd>
+<dt>C-c #</dt><dd>Update the statistics cookie in the current outline entry. When called with a C-u prefix, update the entire file.<br /></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orga18e9fa" class="outline-3">
+<h3 id="orga18e9fa"><span class="section-number-3">6.3.</span> <span class="done DONE">DONE</span> Drawers</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Drawers let you keep information associated with an entry, but normally do not show it.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-x d</td>
+<td class="org-left">Insert a drawer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-c C-x d</td>
+<td class="org-left">Create a 'PROPERTIES' drawer.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x p</td>
+<td class="org-left">Set a proerty.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-z</td>
+<td class="org-left">Add a time-stamped not to the 'LOGBOOK' drawer.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Properties are key-value pairs associated with an entry. They live in a special drawer with the name ‘PROPERTIES’. Each property is specified on a single line, with the key (surrounded by colons) first, and the value after it.<br />
+</p>
+
+<p>
+When you are in the properties, you can use C-c C-c to do property operations.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3fcca6f" class="outline-3">
+<h3 id="org3fcca6f"><span class="section-number-3">6.4.</span> <span class="done DONE">DONE</span> Habit</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+A habit in Emacs is just a TODO item with some properitis to track the consistency of what you want to do.<br />
+To enable habit module, add the following code to your configuration file.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(add-to-list 'org-modules 'org-habit t)
+</pre>
+</div>
+
+<p>
+A habit has the following properties:<br />
+</p>
+<ol class="org-ol">
+<li>It is a TODO item.<br /></li>
+<li>The property <code>style</code> is set to 'habit'.<br /></li>
+<li>It has a schedule date with interval.<br /></li>
+</ol>
+
+
+<p>
+Here's a example:<br />
+</p>
+<pre class="example" id="org8c31079">
+** Habit
+SCHEDULED: &lt;2023-11-13 Mon .+1d&gt;
+:PROPERTIES:
+:STYLE:    habit
+:END:
+</pre>
+
+<p>
+In agenda view, you can change if only show habit for today by pressing C-u K.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4495fd1" class="outline-3">
+<h3 id="org4495fd1"><span class="section-number-3">6.5.</span> Table</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+Any line with '|' as the first non-whitespace character is considered of a tablel.<br />
+'|' is also the column separator.<br />
+</p>
+</div>
+
+<div id="outline-container-orgce4ce26" class="outline-4">
+<h4 id="orgce4ce26"><span class="section-number-4">6.5.1.</span> <span class="done DONE">DONE</span> Table Editor</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Commands</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c &vert;</td>
+<td class="org-left">Create or convert a region into table. You can use a prefix argument to force a specific separator: C-u forces CSV, C-u C-u forces TAB, C-u C-u C-u prompts for a regular expression to match the separator.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">Re-align the table.</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB</td>
+<td class="org-left">Re-align the table, move to the next field. Creates a new row if necessary.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-TAB</td>
+<td class="org-left">Re-align the table, move to the previous field.</td>
+</tr>
+
+<tr>
+<td class="org-left">RET</td>
+<td class="org-left">Re-align the table, move to the next row. Creates a new row if necessary. At the beginning or end of a line, RET still inserts a new line, so it can be used to split a table.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-a</td>
+<td class="org-left">Move to beginning of the current table field, or on to the previous field.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-e</td>
+<td class="org-left">Move to end of the current table field, or on to the next field.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-LEFT/RIGHT</td>
+<td class="org-left">Move the current column left/right.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-LEFT</td>
+<td class="org-left">Kill the current column.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-RIGHT</td>
+<td class="org-left">Insert a new column at point position. Move the recent column and all cells to the right of this column to the right.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP/DOWN</td>
+<td class="org-left">Move the current row up/down.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-UP</td>
+<td class="org-left">Kill the current row or horizontal line.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-DOWN</td>
+<td class="org-left">Insert a new row above the current row.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-UP/DOWN/LEFT/RIGHT</td>
+<td class="org-left">Move cell up/down/left/right by swapping with adjcent cell.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c -</td>
+<td class="org-left">Insert a horizontal line below current row. With a prefix argument, the line is created above the current line.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c RET</td>
+<td class="org-left">Insert a horizontal line below current row, and move point into the row below that line.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">Sort the table lines in the region.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c C-x M-w</td>
+<td class="org-left">Copy cell.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x C-w</td>
+<td class="org-left">Cut cell.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x C-y</td>
+<td class="org-left">Paste cell.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c +</td>
+<td class="org-left">Sum the numbers in the current column, or in the rectangle defined by the active region. The result is shown in the echo area and can be inserted with C-y.</td>
+</tr>
+
+<tr>
+<td class="org-left">S-RET</td>
+<td class="org-left">When current field is empty, copy from first non-empty field above. When not empty, copy current field down to next row and move point along with it.</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-c `</td>
+<td class="org-left">Edit the current field in a separate window. This is useful for fields that are not fully visible.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org152508c" class="outline-4">
+<h4 id="org152508c"><span class="section-number-4">6.5.2.</span> <span class="done DONE">DONE</span> Column Width and Alignment</h4>
+<div class="outline-text-4" id="text-6-5-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c TAB</td>
+<td class="org-left">Shrink or expand current column.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-c TAB</td>
+<td class="org-left">Shrink all columns with a column width. Expand the others.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u C-u C-c TAB</td>
+<td class="org-left">Expand all columns.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You can ajust the width and alignment with the speificications:<br />
+</p>
+<pre class="example" id="org2a2eadf">
+| &lt;l&gt;         |         &lt;r&gt; |     &lt;c&gt;     | &lt;l10&gt;                          |
+| hello       | hello world |    hello    | hello world. I am mingming li. |
+| hello world |       hello | hello world | hello                          |
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb82ada5" class="outline-4">
+<h4 id="orgb82ada5"><span class="section-number-4">6.5.3.</span> <span class="done DONE">DONE</span> Column Groups</h4>
+<div class="outline-text-4" id="text-6-5-3">
+<p>
+In order to specify column groups, you can use a special row where the first field contains only ‘/’.<br />
+The further fields can either contain ‘&lt;’ to indicate that this column should start a group, ‘&gt;’ to indicate the end of a column, or ‘&lt;&gt;’ (no space between ‘&lt;’ and ‘&gt;’) to make a column a group of its own.<br />
+</p>
+
+<pre class="example" id="org72c7455">
+| N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
+|---+-----+-----+-----+---------+------------|
+| / |  &lt;  |     |  &gt;  |       &lt; |          &gt; |
+| 1 |  1  |  1  |  1  |       1 |          1 |
+| 2 |  4  |  8  | 16  |  1.4142 |     1.1892 |
+| 3 |  9  | 27  | 81  |  1.7321 |     1.3161 |
+|---+-----+-----+-----+---------+------------|
+#+TBLFM: $2=$1^2::$3=$1^3::$4=$1^4::$5=sqrt($1)::$6=sqrt(sqrt(($1)))
+
+</pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+</colgroup>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">N</th>
+<th scope="col" class="org-right">N<sup>2</sup></th>
+<th scope="col" class="org-right">N<sup>3</sup></th>
+<th scope="col" class="org-right">N<sup>4</sup></th>
+<th scope="col" class="org-right">sqrt(n)</th>
+<th scope="col" class="org-right">sqrt[4](N)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+<td class="org-right">8</td>
+<td class="org-right">16</td>
+<td class="org-right">1.4142</td>
+<td class="org-right">1.1892</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">9</td>
+<td class="org-right">27</td>
+<td class="org-right">81</td>
+<td class="org-right">1.7321</td>
+<td class="org-right">1.3161</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org590944d" class="outline-4">
+<h4 id="org590944d"><span class="section-number-4">6.5.4.</span> The Spreadsheet</h4>
+</div>
+
+
+<div id="outline-container-org3cec2ce" class="outline-4">
+<h4 id="org3cec2ce"><span class="section-number-4">6.5.5.</span> Plot</h4>
+<div class="outline-text-4" id="text-6-5-5">
+<p>
+To use this function, you need to install Gnuplot and gnuplot mode in your Emacs.<br />
+</p>
+
+<table id="orgfd16f5f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Grades</th>
+<th scope="col" class="org-right">Mathematics</th>
+<th scope="col" class="org-right">Physics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Ben</td>
+<td class="org-right">9.2</td>
+<td class="org-right">9.9</td>
+</tr>
+
+<tr>
+<td class="org-left">Tom</td>
+<td class="org-right">6.7</td>
+<td class="org-right">7.7</td>
+</tr>
+
+<tr>
+<td class="org-left">Tim</td>
+<td class="org-right">7.5</td>
+<td class="org-right">6.7</td>
+</tr>
+
+<tr>
+<td class="org-left">Dean</td>
+<td class="org-right">8.0</td>
+<td class="org-right">7.0</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-gnuplot">set title "Grades in Physics and Mathematics"
+set style data histogram
+set xlabel "Student"
+set ylabel "Grades"
+set auto x
+plot data using 2:xtic(1) ti col, '' u 3 ti col
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-hello" class="outline-3">
+<h3 id="hello"><span class="section-number-3">6.6.</span> <span class="done DONE">DONE</span> Hyperlinks</h3>
+<div class="outline-text-3" id="text-hello">
+<p>
+The general link format:<br />
+</p>
+<pre class="example" id="org0e01a70">
+[[LINK][DESCRIPTION]]
+or
+[[LINK]]
+</pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-l</td>
+<td class="org-left">Insert a link. With a C-u prefix, prompts for a file to link to. When point is on an existing link, edit the link and description parts of the link.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-o</td>
+<td class="org-left">Open the link.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-n</td>
+<td class="org-left">Next link.    <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></td>
+</tr>
+
+<tr>
+<td class="org-left">M-p</td>
+<td class="org-left">Previous link.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-orgd53ec4a" class="outline-4">
+<h4 id="orgd53ec4a"><span class="section-number-4">6.6.1.</span> Internal Links</h4>
+<div class="outline-text-4" id="text-6-6-1">
+<p>
+A link that does not look like a URL—i.e., does not start with a known scheme or a file name—refers to the current document.<br />
+</p>
+
+
+
+<pre class="example" id="org39cc1fc">
+[[#my-costom-id]]
+[[*Hyperlinks]]
+[[my-target]]
+</pre>
+
+<p>
+The links shown above link to the following position<br />
+</p>
+<pre class="example" id="orgd5e3307">
+
+* Some Topics
+:PROPERTIES:
+:CUSTOM_ID: my-custom-id
+:END:
+
+
+* Hyperlinks
+
+
+&lt;&lt;my-target&gt;&gt;
+</pre>
+
+<p>
+A construct like <code>[[#my-costom-id]]</code> specifically targets the entry with the ‘CUSTOM<sub>ID</sub>’ property set to ‘my-custom-id’.<br />
+Also, an internal link looking like <code>[[*Some section]]</code> points to a headline with the name ‘Some section’.<br />
+A link that does not look like a URL—i.e., does not start with a known scheme or a file name—refers to the current document.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9dbc910" class="outline-4">
+<h4 id="org9dbc910"><span class="section-number-4">6.6.2.</span> Radio Targets</h4>
+<div class="outline-text-4" id="text-6-6-2">
+<p>
+Org can automatically turn any occurrences of certain target names in normal text into a link.<br />
+So without explicitly creating a link, the text connects to the target radioing its position.<br />
+Radio targets are enclosed by triple angular brackets.<br />
+For example, a target ‘<a id="org0632528">My Target</a>’ causes each occurrence of ‘<a href="#org0632528">my target</a>’ in normal text to become activated as a link.<br />
+The Org file is scanned automatically for radio targets only when the file is first loaded into Emacs.<br />
+To update the target list during editing, press C-c C-c with point on or at a target.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgab0e5ab" class="outline-3">
+<h3 id="orgab0e5ab"><span class="section-number-3">6.7.</span> <span class="done DONE">DONE</span> Tags</h3>
+<div class="outline-text-3" id="text-6-7">
+<p>
+An excellent way to implement labels and contexts for cross-correlating information is to assign tags to headlines.<br />
+Every headline can contain a list of tags; they occur at the end of the headline.<br />
+Tags are normal words containing letters, numbers, ‘_’, and ‘@’.<br />
+Tags must be preceded and followed by a single colon, e.g., ‘:work:’.<br />
+Several tags can be specified, as in ‘:work:urgent:’.<br />
+</p>
+</div>
+
+
+
+<div id="outline-container-orgc164a8a" class="outline-4">
+<h4 id="orgc164a8a"><span class="section-number-4">6.7.1.</span> Tag Inheritance</h4>
+<div class="outline-text-4" id="text-6-7-1">
+<p>
+Tags make use of the hierarchical structure of outline trees.<br />
+If a heading has a certain tag, all subheadings inherit the tag as well.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgc493b9f" class="outline-4">
+<h4 id="orgc493b9f"><span class="section-number-4">6.7.2.</span> Setting Tags</h4>
+<div class="outline-text-4" id="text-6-7-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-q</td>
+<td class="org-left">Set tags</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">When point is in a headline, this does the same as C-c C-q.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Org supports tag insertion based on a list of tags.<br />
+By default this list is constructed dynamically, containing all tags currently used in the buffer.<br />
+You may also globally specify a hard list of tags with the variable org-tag-alist.<br />
+Finally you can set the default tags for a given file using the ‘TAGS’ keyword, like<br />
+</p>
+<pre class="example" id="org497fe46">
+#+TAGS: work home
+</pre>
+
+
+<p>
+If you have globally defined your preferred set of tags using the variable org-tag-alist, but would like to use a dynamic tag list in a specific file, add an empty ‘TAGS’ keyword to that file:<br />
+</p>
+<pre class="example" id="orge734056">
+#+TAGS:
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgb5835e6" class="outline-4">
+<h4 id="orgb5835e6"><span class="section-number-4">6.7.3.</span> Tag Hierarchy</h4>
+</div>
+
+<div id="outline-container-orgd758b33" class="outline-4">
+<h4 id="orgd758b33"><span class="section-number-4">6.7.4.</span> Tag Searches</h4>
+<div class="outline-text-4" id="text-6-7-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c / m</td>
+<td class="org-left">Create a sparse tree with all headlines matching a tags search. With a C-u prefix argument, ignore headlines that are not a TODO line.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c a m</td>
+<td class="org-left">Create a global list of tag matches from all agenda files.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c a M</td>
+<td class="org-left">Create a global list of tag matches from all agenda files, but check only TODO items.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orgf5b269d" class="outline-3">
+<h3 id="orgf5b269d"><span class="section-number-3">6.8.</span> <span class="todo TODO">TODO</span> <code>TODO</code> Items</h3>
+<div class="outline-text-3" id="text-6-8">
+<p>
+Org mode does not maintain TODO lists as seperate documents. Instead, TODO items are an integral part of the notes file, because TODO items usually come up with taking notes. Of course, this technique for managing TODO items scatters them throughout your notes file. Org mode compensate for this by providing methods to give you an overview of all the things that you have to do.<br />
+</p>
+</div>
+
+
+
+<div id="outline-container-org0710ab1" class="outline-4">
+<h4 id="org0710ab1"><span class="section-number-4">6.8.1.</span> Basic TODO Functionality</h4>
+<div class="outline-text-4" id="text-6-8-1">
+<p>
+<code>C-c C-t</code> :<br />
+Rotate the TODO state. If TODO keywords have fast access keys, prompt for a TODO keyword through the fast selection interface. The same state changing can also be done “remotely” from the agenda buffer with the <code>t</code> command key.<br />
+</p>
+
+<p>
+<code>S-RIGHT S-LEFT</code>:<br />
+Select the following/preceding TODO state, similar to cycling.<br />
+</p>
+
+<p>
+<code>C-c / t</code>:<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4fd2886" class="outline-2">
+<h2 id="org4fd2886"><span class="section-number-2">7.</span> <span class="done DONE">DONE</span> Directory Editor</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+
+
+<div id="outline-container-orgcbf00ea" class="outline-3">
+<h3 id="orgcbf00ea"><span class="section-number-3">7.1.</span> <span class="done DONE">DONE</span> Navigating</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+All the usual Emacs cursor motion commmands are available in Dired buffers.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">Next line.</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">Previous line.</td>
+</tr>
+
+<tr>
+<td class="org-left">DEL</td>
+<td class="org-left">Move up and unflag</td>
+</tr>
+
+<tr>
+<td class="org-left">j</td>
+<td class="org-left">Prompts for a file name using the minibuffer and jump to that line.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-s f C-s</td>
+<td class="org-left">Performs a forward incremental search in the Dired buffer, looking for matches only amongst the file names and ignoring the rest of the text in the buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">M-s f M-C-s</td>
+<td class="org-left">Does the same, using a regular expression search.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2a01875" class="outline-3">
+<h3 id="org2a01875"><span class="section-number-3">7.2.</span> <span class="done DONE">DONE</span> Flagging for Deletion</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Flag the files for deletions.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">Flag this file for deletion.</td>
+</tr>
+
+<tr>
+<td class="org-left">u</td>
+<td class="org-left">Unflag.</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">Delete files flagged for deletion.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+This commands flag many files for deletion.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">#</td>
+<td class="org-left">Flag all auto-save files for deletion.</td>
+</tr>
+
+<tr>
+<td class="org-left">~</td>
+<td class="org-left">Flag all backup files for deletion.</td>
+</tr>
+
+<tr>
+<td class="org-left">.</td>
+<td class="org-left">Flag excess numeric backup files for deletion. The oldest and newest few backup files of any one file are exempt; the middle ones are flagged.</td>
+</tr>
+
+<tr>
+<td class="org-left">% &amp;</td>
+<td class="org-left">Flag files whose names match the regular expression specified by the variable dired-garbage-files-regexp.</td>
+</tr>
+
+<tr>
+<td class="org-left">% d</td>
+<td class="org-left">Flags all files whose names match a specified regular expression</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org77271a5" class="outline-3">
+<h3 id="org77271a5"><span class="section-number-3">7.3.</span> <span class="done DONE">DONE</span> Visiting Files</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+To visit or examine the files.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">f</td>
+<td class="org-left">Visit the file.</td>
+</tr>
+
+<tr>
+<td class="org-left">RET</td>
+<td class="org-left">Equivalent to f.</td>
+</tr>
+
+<tr>
+<td class="org-left">e</td>
+<td class="org-left">Equivalent to f.</td>
+</tr>
+
+<tr>
+<td class="org-left">o</td>
+<td class="org-left">Like f, but uses another window.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-o</td>
+<td class="org-left">Visit the file and display the buffer in another window, but do not select that window.</td>
+</tr>
+
+<tr>
+<td class="org-left">v</td>
+<td class="org-left">View the file with View mode. View mode provides convenient commands to navigate the buffer but forbids changing it.</td>
+</tr>
+
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">Visit the parent directory.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org1079bbd" class="outline-3">
+<h3 id="org1079bbd"><span class="section-number-3">7.4.</span> <span class="done DONE">DONE</span> Marking</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2023-12-22 Fri 23:18]</span></span><br /></li>
+</ul>
+<p>
+Instead of flagging a file with ‘D’, you can mark the file with some other character (usually ‘*’).<br />
+Most Dired commands to operate on files use the files marked with ‘*’.<br />
+The only command that operates on flagged files is x, which deletes them.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">Mark the current file.</td>
+</tr>
+
+<tr>
+<td class="org-left">* N</td>
+<td class="org-left">Report what the number and size of the marked files.</td>
+</tr>
+
+<tr>
+<td class="org-left">* *</td>
+<td class="org-left">Mark all executable files. With a numeric argument, unmark all those files.</td>
+</tr>
+
+<tr>
+<td class="org-left">* @</td>
+<td class="org-left">Mark all symbolic links. With a numeric argument, unmark all those files.</td>
+</tr>
+
+<tr>
+<td class="org-left">* /</td>
+<td class="org-left">Mark all files which are directories, except for . and &#x2026; With a numeric argument, unmark all those files.</td>
+</tr>
+
+<tr>
+<td class="org-left">* s</td>
+<td class="org-left">Mark all the files in the current subdirectory, aside from . and &#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">u</td>
+<td class="org-left">Remove any mark on this line.</td>
+</tr>
+
+<tr>
+<td class="org-left">Del</td>
+<td class="org-left">Move point to previous line and remove any mark on that line.</td>
+</tr>
+
+<tr>
+<td class="org-left">U</td>
+<td class="org-left">Unmark all.</td>
+</tr>
+
+<tr>
+<td class="org-left">* ? <i>markchar</i></td>
+<td class="org-left">Remove all marks that use the character <i>markchar</i>.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-}</td>
+<td class="org-left">Move down to the next marked file.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-{</td>
+<td class="org-left">Move up to the previous marked file.</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">Toggle all marks. (Files marked with *)</td>
+</tr>
+
+<tr>
+<td class="org-left">* c <i>old-markchar</i> <i>new-markchar</i></td>
+<td class="org-left">Replace all marks that use the character <i>old-markchar</i> with marks that use the character <i>new-markchar</i>.</td>
+</tr>
+
+<tr>
+<td class="org-left">% m <i>regexp</i> RET</td>
+<td class="org-left">Mark (with *) all files whose names match <i>regexp</i>.</td>
+</tr>
+
+<tr>
+<td class="org-left">% g <i>regexp</i></td>
+<td class="org-left">Mark (with *) all files whose contents contain a match for <i>regexp</i>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0ced1da" class="outline-3">
+<h3 id="org0ced1da"><span class="section-number-3">7.5.</span> <span class="done DONE">DONE</span> Operating on Files</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+This commands operate on one file or several files.<br />
+All of them let you specify the files to manipulate in these ways:<br />
+</p>
+<ul class="org-ul">
+<li>If you give the command a numeric prefix argument n, it operates on the next n files, starting with the current file. (If n is negative, the command operates on the −n files preceding the current line.)<br /></li>
+<li>Otherwise, if some files are marked with ‘*’, the command operates on all those files.<br /></li>
+<li>Otherwise, the command operates on the current file only.<br /></li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">C <i>new</i> RET</th>
+<th scope="col" class="org-left">Copy the file. (Like cp in shell)</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">D</th>
+<th scope="col" class="org-left">Delete the specified files.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">R <i>new</i> RET</th>
+<th scope="col" class="org-left">Rename the specified files. (Like mv in shell)</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">H <i>new</i> RET</th>
+<th scope="col" class="org-left">Make hard links. (Like ln in shell)</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">S <i>new</i> RET</th>
+<th scope="col" class="org-left">Make symbolic links. (Like ls -s in shell)</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">Y <i>new</i> RET</th>
+<th scope="col" class="org-left">Make relative symbolic links.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">M <i>modspec</i> RET</th>
+<th scope="col" class="org-left">Change the mode (permission bits).</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">G <i>newgroup</i> RET</th>
+<th scope="col" class="org-left">Chanage the group.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">O <i>newowner</i> RET</th>
+<th scope="col" class="org-left">Change the owner.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">Z</th>
+<th scope="col" class="org-left">Compress/uncompress the specified files. Each marked file is compressed into its own archive.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">c</th>
+<th scope="col" class="org-left">Compress the specified files into a single archive.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">L</th>
+<th scope="col" class="org-left">Load the specified Emacs Lisp files.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">B</th>
+<th scope="col" class="org-left">Byte compile the specified Emacs Lisp files.</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">A <i>regexp</i> RET</th>
+<th scope="col" class="org-left">Search all the specified files for the <i>regexp.</i></th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">Q <i>regexp</i> RET <i>to</i> RET</th>
+<th scope="col" class="org-left">Replace matches for <i>regexp</i> with the string <i>to</i>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">:e</td>
+<td class="org-left">Encrypt the specified files.</td>
+</tr>
+
+<tr>
+<td class="org-left">:d</td>
+<td class="org-left">Decrypt the specified files.</td>
+</tr>
+
+<tr>
+<td class="org-left">:s</td>
+<td class="org-left">Digitally sign the specified files.</td>
+</tr>
+
+<tr>
+<td class="org-left">:v</td>
+<td class="org-left">Vevify digital signatures on the specified files.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org230d36f" class="outline-3">
+<h3 id="org230d36f"><span class="section-number-3">7.6.</span> <span class="done DONE">DONE</span> Shell Commands</h3>
+<div class="outline-text-3" id="text-7-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">!</td>
+<td class="org-left">Reads a shell command string in the minibuffer, and runs that shell command on one or more files.</td>
+</tr>
+
+<tr>
+<td class="org-left">X</td>
+<td class="org-left">A synonym for !</td>
+</tr>
+
+<tr>
+<td class="org-left">&amp;</td>
+<td class="org-left">Does the same, except that it runs the shell command asynchronously.</td>
+</tr>
+</tbody>
+</table>
+<p>
+When the command operates on more than one file, it runs multiple parallel copies of the specified shell command, one for each file.<br />
+As an exception, if the specified shell command ends in ';' or ';&amp;', the shell command is run in the background on each file sequentially.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4f757a4" class="outline-3">
+<h3 id="org4f757a4"><span class="section-number-3">7.7.</span> <span class="done DONE">DONE</span> Transforming File Names</h3>
+<div class="outline-text-3" id="text-7-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">% u</td>
+<td class="org-left">Rename each of the selected files to an upper-case name.</td>
+</tr>
+
+<tr>
+<td class="org-left">% l</td>
+<td class="org-left">lower-case name.</td>
+</tr>
+
+<tr>
+<td class="org-left">% R <i>from</i> RET <i>to</i> RET</td>
+<td class="org-left">Rename computing the new name by regular-expression substitution from the name of the old file.</td>
+</tr>
+
+<tr>
+<td class="org-left">% C <i>from</i> RET <i>to</i> RET</td>
+<td class="org-left">Copy.</td>
+</tr>
+
+<tr>
+<td class="org-left">% H <i>from</i> RET <i>to</i> RET</td>
+<td class="org-left">Make hard links.</td>
+</tr>
+
+<tr>
+<td class="org-left">% S <i>from</i> RET <i>to</i> RET</td>
+<td class="org-left">Make soft links.</td>
+</tr>
+
+<tr>
+<td class="org-left">% Y <i>from</i> RET <i>to</i> RET</td>
+<td class="org-left">Make relative soft links.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge108527" class="outline-3">
+<h3 id="orge108527"><span class="section-number-3">7.8.</span> <span class="done DONE">DONE</span> Subdirectories</h3>
+<div class="outline-text-3" id="text-7-8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">i</td>
+<td class="org-left">Insert the content of a subdirectory.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u i</td>
+<td class="org-left">Insert subdirectory with specified ls switches.</td>
+</tr>
+
+<tr>
+<td class="org-left">l</td>
+<td class="org-left">Update the subdirectory's contents.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u l</td>
+<td class="org-left">Change the ls swithces of already inserted subdirectory (on subdirectory header line).</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u k</td>
+<td class="org-left">Remove the subdirectory listing (on subdirectory header line).</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-n</td>
+<td class="org-left">Go to next subdirectory header line, regardless of level.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-p</td>
+<td class="org-left">Go to previous subdirectory header line, regardless of level.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-u</td>
+<td class="org-left">Go up to the parent diretory header line.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-M-d</td>
+<td class="org-left">Go down in the diretory tree, to the first subdirectory's header line.</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;</td>
+<td class="org-left">Move up to the previous directory-file line.</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;</td>
+<td class="org-left">Move down to the next directory-file line.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-G</td>
+<td class="org-left">Prompt for a directory and move to its directory-file line.</td>
+</tr>
+
+<tr>
+<td class="org-left">$</td>
+<td class="org-left">Hide or show the subdirectory that point is in, and move point to the next subdirectory.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-$</td>
+<td class="org-left">hide or show all subdirectories.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<p>
+If the subdirectory's contents are already present in the buffer, the i command moves to it.<br />
+In either case, i sets the Emacs mark before moveing, so C-u C-SPC returns to your previous position in the Dired buffer.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd9ed22d" class="outline-3">
+<h3 id="orgd9ed22d"><span class="section-number-3">7.9.</span> <span class="done DONE">DONE</span> Updating the Dired Buffer</h3>
+<div class="outline-text-3" id="text-7-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">Update the entire contents.</td>
+</tr>
+
+<tr>
+<td class="org-left">l</td>
+<td class="org-left">Update the specified files.</td>
+</tr>
+
+<tr>
+<td class="org-left">k</td>
+<td class="org-left">Delete the specified file lines - not the files, just the lines. (on next n files for marked files, not on current file.)</td>
+</tr>
+
+<tr>
+<td class="org-left">s</td>
+<td class="org-left">Toggle between alphabetical order and date/time order.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u s <i>switches</i> RET</td>
+<td class="org-left">Refresh the Dired buffer using <i>switches</i>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgf3d0935" class="outline-3">
+<h3 id="orgf3d0935"><span class="section-number-3">7.10.</span> <span class="done DONE">DONE</span> Editing the Dired Buffer</h3>
+<div class="outline-text-3" id="text-7-10">
+<p>
+Wdired is a special mode that allows you to perform file operations by editing the Dired buffer directly (the “W” in “Wdired” stands for “writable”).<br />
+To enter Wdired mode, type C-x C-q (dired-toggle-read-only) while in a Dired buffer.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-x C-q</td>
+<td class="org-left">Enter Wdired mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb2104bb" class="outline-3">
+<h3 id="orgb2104bb"><span class="section-number-3">7.11.</span> <span class="done DONE">DONE</span> Other Featuers</h3>
+<div class="outline-text-3" id="text-7-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">Create a directory</td>
+</tr>
+
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">Puts the names of the marked (or next n) files into the king ring.</td>
+</tr>
+
+<tr>
+<td class="org-left">W</td>
+<td class="org-left">Use the standard configured brower to view that file.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4c1a2ea" class="outline-2">
+<h2 id="org4c1a2ea"><span class="section-number-2">8.</span> EasyPG</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+EasyPG Assistant is an Emacs user interface to GNU Privacy Guard (GnuPG).<br />
+EasyPG Assistant is a part of the package called EasyPG, an all-in-one GnuPG interface for Emacs.<br />
+EasyPG also contains the library interface called EasyPG Library.<br />
+</p>
+</div>
+
+<div id="outline-container-org914f6eb" class="outline-3">
+<h3 id="org914f6eb"><span class="section-number-3">8.1.</span> GnuPG</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+To install the package (on MacOS):<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install gnupg
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgd078b0b" class="outline-4">
+<h4 id="orgd078b0b"><span class="section-number-4">8.1.1.</span> Generating a New Keypair</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<div class="org-src-container">
+<pre class="src src-shell">gpg --gen-key
+</pre>
+</div>
+
+
+<p>
+EasyPG Assistant commands are prefixed by 'epa-'.<br />
+</p>
+
+<p>
+When decryping a file, it may produce the error:<br />
+</p>
+<pre class="example" id="org0fffa03">
+Error while decrypting with "/usr/local/bin/gpg":
+
+gpg: encrypted with cv25519 key, ID C1349F68EF9FE731, created 2023-11-16
+      "Mingming Li &lt;mingmingli916@gmail.com&gt;"
+gpg: public key decryption failed: Inappropriate ioctl for device
+gpg: decryption failed: Inappropriate ioctl for device
+</pre>
+
+<p>
+This can be solved by setting the environment:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">export GPG_TTY=$(tty)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf74cf6d" class="outline-2">
+<h2 id="orgf74cf6d"><span class="section-number-2">9.</span> <span class="done DONE">DONE</span> Shell</h2>
+<div class="outline-text-2" id="text-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M-! <i>cmd</i> RET</td>
+<td class="org-left">Run the shell command <i>cmd</i> and display the output. With a numeric argument, it insert output into the current buffer.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&vert; <i>cmd</i> RET</td>
+<td class="org-left">Run the shell command <i>cmd</i> with region content as intput. With a numeric argument, it replaces the old region with output.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&amp; <i>cmd</i> RET</td>
+<td class="org-left">Run the shell command <i>cmd</i> asynchronously.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x shell</td>
+<td class="org-left">Run a subshell with input and output throught an Emacs buffer.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x term</td>
+<td class="org-left">Run a subshell with input and output through an Emacs buffer. Full terminal emulation is available.</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x eshell</td>
+<td class="org-left">Invokes a shell implemented entirely in Emacs.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-org4b0f1c8" class="outline-3">
+<h3 id="org4b0f1c8"><span class="section-number-3">9.1.</span> Term Mode</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+The terminal emulator uses Term mode, which has two input modes.<br />
+In line mode, Term basically acts like Shell mode.<br />
+In char mode, each character is sent directly to the subshell, as terminal input; the sole exception is the terminal escape character, which by default is C-c.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-j</td>
+<td class="org-left">Switch to line mode. Do nothing if already in line mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-k</td>
+<td class="org-left">Switch to char mode. Do nothing if already in char mode.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-q</td>
+<td class="org-left">Toggle the page-at-a-time featuer.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The following commands are only available in char mode:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">Send a literal C-c to the sub-shell</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c <i>char</i></td>
+<td class="org-left">This is equivalent to C-x <i>char</i> in normal Emacs.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d34018" class="outline-2">
+<h2 id="org0d34018"><span class="section-number-2">10.</span> <span class="done DONE">DONE</span> Spell</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+
+<div id="outline-container-org6371f7f" class="outline-3">
+<h3 id="org6371f7f"><span class="section-number-3">10.1.</span> Ispell</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Emacs provide Ispell interface.<br />
+We say "interfaces" because Emacs does not include the executable.<br />
+</p>
+
+<p>
+On MacOSX, There are two popular software manager MacPorts and Homebrew.<br />
+You can use any of it to install Ispell.<br />
+After installation, use command which ispell in terminal to locate the Ispell executable file.<br />
+In Emacs, type C-h a ispell to get all functions containing the keyword ispell.<br />
+You can find the function ispell-check-version.<br />
+Type M-x ispell-check-version to check whether Ispell is working correctly.<br />
+</p>
+
+<p>
+You may encounter the problem that says:<br />
+</p>
+<pre class="example" id="orgd326a4a">
+can not find hunspell dictionary with a .affix
+</pre>
+
+<p>
+You can use the command:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">hunspell -D
+</pre>
+</div>
+<p>
+to check the available dictionaries.<br />
+</p>
+
+<p>
+You can go to the website <a href="https://extensions.libreoffice.org/en/extensions/show/english-dictionaries">https://extensions.libreoffice.org/en/extensions/show/english-dictionaries</a> to download the dictionary.<br />
+Download it then extract the .aff and .dic files to one of the locations listed by hunspell -D.<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">unzip dict-en.oxt -d dict-en
+cp dict-en/en_* ~/Library/Spelling/
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M-$</td>
+<td class="org-left">ispell-word</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ispell-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ispell-region</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ispell-complete-word</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You can use C-h f ispell-help for the options available when a misspelling is encountered.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9dc97fb" class="outline-3">
+<h3 id="org9dc97fb"><span class="section-number-3">10.2.</span> Flyspell</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Flyspell highlights misspelled words as you type.<br />
+There are two mode related with Flyspell: flyspell-mode and flyspell-prog-mode.<br />
+The latter mode is designed for programmers.<br />
+In this mode Emacs highlights misspellings only in comments or strings.<br />
+To check existing text, you run M-x flyspell-buffer Enter.<br />
+</p>
+
+<p>
+Flyspell highlights misspelled words in red.<br />
+Words that are repeatedly misspelled are highlighted in yellow.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-.</td>
+<td class="org-left">flyspell-auto-correct-word</td>
+</tr>
+
+<tr>
+<td class="org-left">C-;</td>
+<td class="org-left">flyspell-auto-correct-previous-word</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6047d86" class="outline-2">
+<h2 id="org6047d86"><span class="section-number-2">11.</span> <span class="done DONE">DONE</span> Macro</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+In Emacs, a macro is simply a group of recorded keystrokes you can play back over and over again.<br />
+Macros are a great way to save yourself repetitive work.<br />
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">C-x (</th>
+<th scope="col" class="org-left">start macro definition</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">C-x )</th>
+<th scope="col" class="org-left">end macro definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x e</td>
+<td class="org-left">execute the last defined macro</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k r</td>
+<td class="org-left">apply last macro to all lines in region</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k e</td>
+<td class="org-left">edit macro</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k C-d</td>
+<td class="org-left">delete current macro from macro ring</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-t</td>
+<td class="org-left">swap first two macros in macro ring</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-p</td>
+<td class="org-left">move to previous macro in macro ring</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k C-n</td>
+<td class="org-left">move to next macro in macro ring</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-k b</td>
+<td class="org-left">bind macro</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-k n</td>
+<td class="org-left">name macro</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orga6c16a7" class="outline-3">
+<h3 id="orga6c16a7"><span class="section-number-3">11.1.</span> Persist Your Macro</h3>
+<div class="outline-text-3" id="text-11-1">
+<ol class="org-ol">
+<li>define a macro<br /></li>
+<li>name the defined macro<br /></li>
+<li>open a file<br /></li>
+<li>M-x insert-kbd-macro RET &lt;macroname&gt; RET<br /></li>
+<li>add "(load-file "&lt;macro-file-path&gt;")" to your Emacs configuration file (like .emacs)<br /></li>
+<li>add "(global-set-key "\C-x\C-k&lt;your key&gt;" '&lt;your macro name&gt;)" to your Emacs configuration file (like .emacs)<br /></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb1fccde" class="outline-3">
+<h3 id="orgb1fccde"><span class="section-number-3">11.2.</span> Pausing a Macro for Keyboard Input</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+When you’re defining a macro, type C-u C-x q at the point where you want the recursive edit to occur.<br />
+Emacs enters a recursive edit.<br />
+You can tell you’re in a recursive edit because square brackets appear on the mode line.<br />
+Nothing you type during the recursive edit becomes a part of the macro.<br />
+You can type whatever you want to and then press C-M-c to exit the recursive edit.<br />
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgaabbce1" class="outline-3">
+<h3 id="orgaabbce1"><span class="section-number-3">11.3.</span> Adding a Query to a Macro</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+When you’re defining a macro, type C-x q at the point where you want to add a query.<br />
+Nothing happens immediately; go on defining the macro as you normally would.<br />
+When you execute the macro and it gets to the point in the macro where you typed C-x q, Emacs prints a query in the minibuffer:<br />
+</p>
+
+<pre class="example" id="org17ff1d4">
+Proceed with macro? (y, n, RET, C-l, C-r)
+</pre>
+
+<p>
+Here’s the meaning of the options:<br />
+</p>
+<ul class="org-ul">
+<li>y means to continue and go on to the next repetition, if any.<br /></li>
+<li>n means to stop executing the macro but go on to the next repetition, if any.<br /></li>
+<li>Enter means to stop executing the macro and cancel any repetitions.<br /></li>
+<li>C-r starts a recursive edit. To exit a recursive edit, press C-M-c.<br /></li>
+<li>C-l puts the line the cursor in on in the middle of the screen.<br /></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb8134e1" class="outline-2">
+<h2 id="orgb8134e1"><span class="section-number-2">12.</span> Useful Commands</h2>
+<div class="outline-text-2" id="text-12">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-x C-SPC</td>
+<td class="org-left">go back to the previous mark.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-,</td>
+<td class="org-left">insert block</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c %</td>
+<td class="org-left">push the current position onto the org mark ring.</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c &amp;</td>
+<td class="org-left">return to the previous position</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-x f</td>
+<td class="org-left">footnote</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org3218a0c" class="outline-2">
+<h2 id="org3218a0c"><span class="section-number-2">13.</span> <span class="done DONE">DONE</span> Input Phonetic Symbols</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+To input phonetic symbols, you can input a specified input-method.<br />
+M-x list-input-methods can list the avaiable input methods.<br />
+</p>
+
+<p>
+Normally, you can use ipa-x-sampa, ipa-kirshenbaum, ipa or ipa-praat to input international phoetic symbols.<br />
+</p>
+
+<p>
+To enable or disable the the input method, use C-\ method RET.<br />
+To select a new input method, use C-x RET C-\ mehtid RET.<br />
+To get the key sequence for inserting the corresponding characters, use C-h I method RET.<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-\</td>
+<td class="org-left">enable or disable a input method</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x RET C-\</td>
+<td class="org-left">select a new input method</td>
+</tr>
+
+<tr>
+<td class="org-left">C-h I</td>
+<td class="org-left">get help for a input method</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x list-input-methods</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb475a5b" class="outline-2">
+<h2 id="orgb475a5b"><span class="section-number-2">14.</span> <span class="done DONE">DONE</span> Simple ASCII Picture</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Emacs includes a picture mode that allows you to draw simple pictures using keyboard characters; it also includes artist mode, which enables you to draw quickly using the mouse.<br />
+</p>
+</div>
+
+
+<div id="outline-container-orgdfe5e09" class="outline-3">
+<h3 id="orgdfe5e09"><span class="section-number-3">14.1.</span> Picture Mode</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+To enter picture mode, type M-x edit-picture.<br />
+Typing C-c C-c exits picture mode and returns you to whatever major mode you were in before.<br />
+</p>
+
+<p>
+In picture mode, you can “draw” with any character in any of eight directions.<br />
+Although you can draw in eight directions, only one direction is available at a time; this direction is referred to as the default direction.<br />
+When you first enter picture mode, the default direction is right.<br />
+</p>
+
+
+
+
+<p>
+up C-c ^<br />
+</p>
+
+<p>
+northwest C-c `     	       	  northeast C-c '<br />
+</p>
+
+
+<p>
+left C-c &lt;  			  right C-c &gt;<br />
+</p>
+
+
+<p>
+southwest C-c /     	       	  southeast C-c \<br />
+</p>
+
+<p>
+down C-c .<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">C-c C-f</td>
+<td class="org-left">moves forward in the default direction</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-b</td>
+<td class="org-left">move backward in the default direction</td>
+</tr>
+
+<tr>
+<td class="org-left">C-o</td>
+<td class="org-left">insert a new line</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org3227d65" class="outline-3">
+<h3 id="org3227d65"><span class="section-number-3">14.2.</span> Artist Mode</h3>
+<div class="outline-text-3" id="text-14-2">
+<p>
+To enter artist mode, M-x artist-mode.<br />
+To exit, C-c C-c.<br />
+In this mode, you can choose what you want to draw in "Artist" in main bar.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org08f9551" class="outline-2">
+<h2 id="org08f9551"><span class="section-number-2">15.</span> Calendar</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+To display the calendar: M-x calendar.<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Group</th>
+<th scope="col" class="org-left">Binding</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Movement</td>
+<td class="org-left">C-f</td>
+<td class="org-left">forward one day</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-b</td>
+<td class="org-left">backward one day</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-n</td>
+<td class="org-left">forward one week</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-p</td>
+<td class="org-left">backward one week</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-}</td>
+<td class="org-left">forward one month</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-{</td>
+<td class="org-left">backward one month</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-x ]</td>
+<td class="org-left">forward one year</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-x [</td>
+<td class="org-left">backward one year</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-a</td>
+<td class="org-left">beginning of week</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C-e</td>
+<td class="org-left">end of week</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-a</td>
+<td class="org-left">beginning of month</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-e</td>
+<td class="org-left">end of month</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-&lt;</td>
+<td class="org-left">beginning of year</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">M-&gt;</td>
+<td class="org-left">end of year</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">g d</td>
+<td class="org-left">go to a specified day</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">o</td>
+<td class="org-left">put the specified month in the middle of the display</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Holidays</td>
+<td class="org-left">a</td>
+<td class="org-left">show the holidays</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">x</td>
+<td class="org-left">mark the holidays</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">u</td>
+<td class="org-left">unmark the holidays</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Diary</td>
+<td class="org-left">i d</td>
+<td class="org-left">insert diary entry</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">i w</td>
+<td class="org-left">insert weekly diary entry</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">i m</td>
+<td class="org-left">insert monthly diary entry</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">i y</td>
+<td class="org-left">insert yearly diary entry</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">i a</td>
+<td class="org-left">insert anniversary diary entry</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">m</td>
+<td class="org-left">mark dairy entries</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">d</td>
+<td class="org-left">view diary entries</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s</td>
+<td class="org-left">display diary file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This is achieved by:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">( with−eval−after−load ' org
+  (define−key org−mode−map (kbd "M-n") #'org−next−link)
+  (define−key org−mode−map (kbd "M-p") #'org−previous−link ))
+</pre>
+</div></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Mingming Li</p>
+<p class="date">Created: 2024-02-16 Fri 15:44</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
