@@ -10,8 +10,19 @@ certificate
 mifi
 management
 product-key.org
+auto
+build
 
 .DS_Store
 *~
 *.org_archive
 *.html
+*.log
+*.out
+*.aux
+*.bbl
+*.lof
+*.blg
+*.toc
+*.lot
+*.idx
