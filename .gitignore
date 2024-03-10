@@ -16,7 +16,7 @@ build
 .DS_Store
 *~
 *.org_archive
-*.html
+
 *.log
 *.out
 *.aux

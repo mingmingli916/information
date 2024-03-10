@@ -3942,11 +3942,17 @@ Macros are one of the key ingredients in this flexibility. They allow you to tra
 
 
 
-* CLOS
-The Common Lisp Ojbect System, or <<<CLOS>>>, is a set of operators for doing object-oriented programming. Technically, they are in no way distinguished from the rest of Common Lisp: =defmethod= is just as much (and just as little) as integral part of the language as defun. 
+* DONE CLOS
+:LOGBOOK:
+- State "DONE"       from              [2024-03-09 Sat 12:21]
+:END:
+The Common Lisp Ojbect System, or <<<CLOS>>>, is a set of operators for doing object-oriented programming. Technically, they are in no way distinguished from the rest of Common Lisp: =defmethod= is just as much (and just as little) as integral part of the language as =defun=. 
 
 
-** Object-Oriented Programming
+** DONE Object-Oriented Programming
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 06:29]
+:END:
 Object-oriented programming means a change in the way programs are organized. Instead of having a single program that operates on an inert mass of data, the data itself it told how to behave, and the program is implicit in the interactions of these new data "objects".
 
 
@@ -4025,7 +4031,10 @@ In practical terms, object-oriented programming means organizing a program in te
 
 
 
-** Classes and Instances
+** DONE Classes and Instances
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 06:40]
+:END:
 In Section [[*Structures]] we went through two steps to create structures: we called =defstruct= to lay out the form of a structure, and a specific function like =make-point= to make them. Creating instances requires two analogous steps. First we define a class, using =defclass=:
 #+begin_src lisp
   (defclass circle ()
@@ -4051,7 +4060,10 @@ CL-USER> (slot-value c 'center)
 
 
 
-** Slot Properties
+** DONE Slot Properties
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 06:40]
+:END:
 
 The third argument to =defclass= must be a list of slot definitions. The simplest slot definition is a symbol representing its name. In the general case, a slot definition can be a list of name followed by one or more perperties. Properties are specified like keyword arguments.
 
@@ -4097,7 +4109,7 @@ CL-USER> (circle-center c)
 #+end_src
 
 
-We can specify that some slots are to be shared — that is, their value is the same for every instance. We do this by declaring the slot to have =:allocation :class=. (The alternative is for a slot to have =:allocation : instance=, but since this is the default there is no need to say so explicitly.) When we change the value of such a slot in one instance, that slot will get the same value in every other instance. So we would want to use shared slots to contain properties that all the instances would have in common.
+We can specify that some slots are to be shared — that is, their value is the same for every instance. We do this by declaring the slot to have =:allocation :class=. (The alternative is for a slot to have =:allocation :instance=, but since this is the default there is no need to say so explicitly.) When we change the value of such a slot in one instance, that slot will get the same value in every other instance. So we would want to use shared slots to contain properties that all the instances would have in common.
 
 
 
@@ -4123,7 +4135,10 @@ ADULTERY-OF-SENATOR
 The =:documentation= property, if given, should be a string to serve as the slot's documentation. By specifying a =:type=, you are promising that the slot will only contain elements of that type. 
 
 
-** Superclasses
+** DONE Superclasses
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 06:43]
+:END:
 The second argument to =defclass= is a list of superclasses. A class inherits the union of the slots of its superclasses.
 #+begin_src lisp
   (defclass circle ()
@@ -4179,7 +4194,10 @@ CL-USER> (circle-radius (make-instance 'screen-circle))
 #+end_src
 
 
-** Precedence
+** DONE Precedence
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 13:46]
+:END:
 
 When there are methods defined for several of the classes to which an instance belongs, Lisp needs some way to decide which one to use. The point of <<<precedence>>> is to ensure that this happpens in an intuitive way.
 
@@ -4204,7 +4222,7 @@ Figure [[fig:class-hierarchy]] contains a newwork representing =cast-status= and
 
 
 
-To build such a network for a class, start at the bottom with a node representing that class. Draw links upward to nodes representing each of its immediate superclasses, laid out from left to right as they appeared in the calls to =defclass=. Repeat thep rocess for each of those nodes,and soon,until you reach classes whose only immediate superclass is =standard-object= - that is, classes for which the second argument to =defclass= was =()=. Create links from those classes up to a node representing =standard-object=, and one from that node up to another node representing the class =t= . The result will be a network that comes to a point at both top and bottom, as in Figure [[fig:class-hierarchy]].
+To build such a network for a class, start at the bottom with a node representing that class. Draw links upward to nodes representing each of its immediate superclasses, laid out from left to right as they appeared in the calls to =defclass=. Repeat the process for each of those nodes,and soon,until you reach classes whose only immediate superclass is =standard-object= - that is, classes for which the second argument to =defclass= was =()=. Create links from those classes up to a node representing =standard-object=, and one from that node up to another node representing the class =t= . The result will be a network that comes to a point at both top and bottom, as in Figure [[fig:class-hierarchy]].
 
 
 The precedence list for a class can be computed by traversing the corresponding networks as follows:
@@ -4222,11 +4240,14 @@ The arrows in Figure [[fig:class-hierarchy]] show how it would be traversed. The
 
 
 The main point of precedence is to decide what method gets used when a generic function is invoked. The other time precedence matters is when a slot with a given name is inherited from several superclasses. 
-when this happens.
 
 
 
-** Generic Functions
+
+** DONE Generic Functions
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 13:56]
+:END:
 A <<<generic function>>> is a function made up of one or more methods. Methods are defined with =defmethod=, which is similar in form to =defun=:
 #+begin_src lisp
   (defmethod combine (x y)
@@ -4359,7 +4380,10 @@ Only required parameters can be specialized. Thus each method is uniquely identi
 we redefine what combine does when its arguments are =powder= and =spark=.
 
 
-** Auxiliary Methods
+** DONE Auxiliary Methods
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 15:19]
+:END:
 Methods can be augmented by *<<<auxiliary methods>>>*, including before-, after-, and around-methods. <<<Before-methods>>> allow us to say, "But first, do this." They are called, most specific first, as a prelude to the rest of the method call. <<<After-methods>>> allow us to say, "P.S. Do this too." They are called, most specific last, as an epilogue to the method call. Between them, we run what has till now been considered just the method, but is more precisely known as the *<<<primary method>>>*. The value of this call is the one returned, even if after-methods are called later.
 
 
@@ -4380,7 +4404,7 @@ The value returned is the value of the around-method (in case 1) or the value of
 
 
 
-Auxiliary methods are defined by putting a quilifiying keyword after after the method name in the call to =defmethod=. If we define a primary =speak= method for the =speaker= class as:
+Auxiliary methods are defined by putting a quilifiying keyword after the method name in the call to =defmethod=. If we define a primary =speak= method for the =speaker= class as:
 #+begin_src lisp
   (defclass speaker () ())
 
@@ -4419,7 +4443,7 @@ As the preceding outline of standard method combination noted, all before- and a
   (defmethod speak :before ((s speaker) string)
     (princ "I think "))
 #+end_src
-they will get called in teh middle of the sandwich:
+they will get called in the middle of the sandwich:
 #+begin_src lisp
 CL-USER> (speak (make-instance 'intellectual)
                 "I'm hungry")
@@ -4463,7 +4487,10 @@ Unlike before- and after-methods, the value returned by the around- method is re
 
 
 
-** Method Combination
+** DONE Method Combination
+:LOGBOOK:
+- State "DONE"       from              [2024-03-08 Fri 17:06]
+:END:
 In standard method combination the only primary method that gets called is the most specific (though it can call others vis =call-next-method=). Instead we might like to be ale to combine the results of all applicable primary methods.
 
 
@@ -4534,7 +4561,10 @@ If we want to change the method combination of =price=, we must remove the whole
 
 
 
-** Encapsulation
+** DONE Encapsulation
+:LOGBOOK:
+- State "DONE"       from              [2024-03-09 Sat 12:20]
+:END:
 object-oriented languages often provide some way of distinguishing between the actual representation of objects and the interface they present to the world. Hiding implementation details brings two advantages: you can change the implementation without affecting the object's outward appearance, and you prevent objects from being modified in potentially dangerous ways. Hidden details are sometimes said to be *<<<encapsulated>>>*.
 
 
@@ -4596,12 +4626,12 @@ Then there is no way, legitimate or otherwise, to refer to the slot from any pac
 
 
 
-* Structure
+* DONE Structure
 
 Section [[*Why Lisp Has No Pointers]] explained how Lisp's use of pointers allows us to put any value anywhere. This statement is full of possibilities, not all of them good. For example, an object can be an element of itself. Whether this is good or bad depends on whether it's done on purpose or by accident.
 
 
-** <<<Shared Structure>>>
+** DONE <<<Shared Structure>>>
 
 Lists can share conses in common. In the simplest case, one list might be part of another.
 #+begin_src lisp
@@ -4698,7 +4728,7 @@ will return a list that doesn't even share tree structure with original list. Fi
 
 [[file:images/two-kinds-of-copying.png]]
 
-** Modification
+** DONE Modification
 
 Why would we want to avoid sharing structure? Up to this point, the issue of shared structure has been just an intellectual exercise. It would not have made any difference to any program we've written so far. It is when we modify objects that shared structure becomes an issue. If two lists share structure, and we modify one, then we may inadvertently be modifying the other.
 #+begin_src lisp
@@ -4733,7 +4763,7 @@ In both cases, the solution is to pass a copy.
 In Common Lisp, a function called in the course of travering list structrue (e.g. an argument to =mapcar= or =remove-if=) is not allowed to modify the structure being traversed. The consequence of evaluating such code are undefined.
 
 
-** Destructive Functions
+** DONE Destructive Functions
 Common Lisp includes several function that are allowed to modify list structure. This functions are destructive for reason of efficiency. Though they may recycle conses passed to them as arguments, they are not meant to be called for their side-effects.
 
 
@@ -4836,7 +4866,7 @@ If we used =mappend=, we could leave out the =copy-list= in the definition of =g
 #+end_src
 
 
-** Circular Structure
+** DONE Circular Structure
 There are two kinds of circular lists. The most useful are those whose top-level list structure is a loop. Such lists are called *<<<cdr-circular>>> because the loop passes through the cdr part of a cons.
 
 
