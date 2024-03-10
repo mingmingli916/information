@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       9E8D8B59-2FC0-4DFB-8DD6-B775DC563643
+:END:
+#+title: lfs
+
+Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source.
+
+Here are the benefits of building LFS given by the LFS website:
+- LFS teaches people how a Linux system works internally.
+- Building LFS produces a very compact Linux system.
+- LFS is extremely flexible.
+- LFS offers you added security.
+
+
+
+The benefits exactly macth my needs:
+- I want to understand how a linux operating system works.
+- I want a clear OS.
+- I wang an OS specilized to my usecase.
+- I want keep my data safe, no data sent to the companies like Windows, Apple or Canonical.
+
+
+
+
+
+* Prerequisites
+
+
+  
+ 
+
+
