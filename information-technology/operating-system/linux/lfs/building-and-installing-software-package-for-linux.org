@@ -106,3 +106,58 @@ Your general installation procedure will therefore be:
 5. Run =make=.
 6. Check file permissions.
 7. If necessary, run =make install=.
+
+
+
+
+* Prepackaged Binaries
+Manually building and installing packages from source is apparently so daunting a task for some Linux users that they have embraced the popular rpm and deb or the newer Stampede slp package formats. But there are some disadvantages of this prepackaged binaries.
+
+
+*(later than tarball)*
+First, be aware that software packages are normally released first as "tarballs", and that prepackaged binaries follow days, weeks, even months later. A current rpm package is typically at least a couple of minor version behind the latest "tarball". So, if you wish to keep up with all the 'bleeding edge' software, you might not wish to wait for an rpm or deb to appear. Some less popular packages may never be rpm'ed.
+
+
+*(may be missing functionality)*
+Second, the "tarball" package may well be more complete, have more options, and lend itself better to customization and tweaking. The binary rpm version may be missing some of the functionality of the full release. Source rpm's contain the full source code and are equivalent to the corresponding "tarballs", and they likewise need to be built and installed using either of the =rpm --recompile packagename.rpm= or =rpm --rebuild packagename.rpm= options.
+
+
+*(may not work correctly)*
+Third, some prepackaged binaries will not properly install, and even if they do install, they could crash and core-dump. They may depend on different library versions than are present in your system, or they may be improperly prepared or just plain broken. In any case, when installing an rpm or deb you necessarily trust the expertise of the persons who have packaged it.
+
+*(separate source code)*
+Finally, it helps to have the source code on hand, to be able to tinker with and learn from it. It is much more straightforward to have the source in the archive you are building the binaries from, and not in a separate source rpm.
+
+
+
+
+You must install rpm's and deb's as root, in order to have the necessary write permissions, and this opens a potentially serious security hole, as you may inadvertently clobber system binaries and libraries, or even install a Trojan horse that might wreak havoc upon your system. It is therefore important to obtain rpm and deb packages from a "trusted source". In any case, you should run a 'signature check' (against the MD5 checksum) on the package, =rpm --checksig packagename.rpm=, before installing. Likewise highly recommended is running =rpm -K --nopgp packagename.rpm=. The corresponding commands for deb packages are =dpkg -I | --info packagename.deb= and =dpkg -e | --control packagename.deb=.
+
+#+begin_src shell
+  rpm --checksig gnucash-1.1.23-4.i386.rpm
+  gnucash-1.1.23-4.i386.rpm: size md5 OK
+
+  rpm -K --nopgp gnucash-1.1.23-4.i386.rpm
+  gnucash-1.1.23-4.i386.rpm: size md5 OK  
+#+end_src
+
+
+* Final Steps
+Read the software package documentation to determine whether certain environmental variables need setting and if the =.Xdefaults= and =.Xresources= files need customizing.
+
+
+
+There may be an applications default file, usually named =Xfoo.ad= in the original Xfoo distribution. If so, edit the =Xfoo.ad= file to customize it for your machine, then rename it =Xfoo= and install it in the =/usr/lib/X11/app-defaults= directory, as root. Failure to do this may cause the software to behave strangely or even refuse to run.
+
+
+Most software packages come with one or more preformatted man pages. As root, copy the =Xfoo.man= file to the appropriate =/usr/man=, =/usr/local/man=, or =/usr/X11R6/man= directory (man1 - man9), and rename it accordingly. For example, if =Xfoo.man= ends up in =/usr/man/man4=, it should be renamed =Xfoo.4=. By convention, user commands go in man1, games in man6, and administration packages in man8 (see the man docs for more details). Of course, you may deviate from this on your own system, if you like.
+
+
+A few packages will not install the binaries in the appropriate system directories, that is, they are missing the =install= option in the Makefile. Should this be the case, you can install the binaries manually by copying the binaries to the appropriate system directory, =/usr/bin=, =/usr/local/bin= or =/usr/X11R6/bin=, as root. Note that =/usr/local/bin= is the preferred directory for binaries that are not part of the Linux distribution's base install.
+
+
+
+Some or all of the above procedures should, in most cases, be handled automatically by a =make install=, and possibly a =make install.man= or =make install_man=. If so, the =README= or =INSTALL= doc file will specify this.
+
+
+

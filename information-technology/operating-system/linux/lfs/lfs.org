@@ -25,6 +25,243 @@ The benefits exactly macth my needs:
 
 * Prerequisites
 
+[[id:BB16B28A-EDD0-42EB-8132-7C224666E1A4][building and installing software package]]
+
+
+* Instrocution
+
+
+The LFS system will be built by using an already installed Linux distribution. This existing Linux system (the host) will be used as a starting point to provide necessary programs, including a compiler, linker, and shell, to build the new system. Select the “development” option during the distribution installation to include these tools.
+
+
+** Things to Mention
+Apart from a brief explanation of the problem being experienced, any request for help should include these essential things:
+- The version of the book being used (in this case 12.1)
+- The host distribution and version being used to create LFS
+- The output from the Host System Requirements script
+- The package or section the problem was encountered in
+- The exact error message, or a clear description of the problem
+- Note whether you have deviated from the book at all
+
+
+** Configure Script Problems
+If something goes wrong while running the =configure= script, review the =config.log= file. This file may contain errors encountered during configure which were not printed to the screen. Include the relevant lines if you need to ask for help.
+
+
+** Compilation Problems
+Both the screen output and the contents of various files are useful in determining the cause of compilation problems. The screen output from the =configure= script and the =make= run can be helpful. It is not necessary to include the entire output, but do include all of the relevant information. Here is an example of the type of information to include from the make screen output.
+
+#+begin_example
+gcc -DALIASPATH=\"/mnt/lfs/usr/share/locale:.\"
+-DLOCALEDIR=\"/mnt/lfs/usr/share/locale\"
+-DLIBDIR=\"/mnt/lfs/usr/lib\"
+-DINCLUDEDIR=\"/mnt/lfs/usr/include\" -DHAVE_CONFIG_H -I. -I.
+-g -O2 -c getopt1.c
+gcc -g -O2 -static -o make ar.o arscan.o commands.o dir.o
+expand.o file.o function.o getopt.o implicit.o job.o main.o
+misc.o read.o remake.o rule.o signame.o variable.o vpath.o
+default.o remote-stub.o version.o opt1.o
+-lutil job.o: In function `load_too_high':
+/lfs/tmp/make-3.79.1/job.c:1565: undefined reference
+to `getloadavg'
+collect2: ld returned 1 exit status
+make[2]: *** [make] Error 1
+make[2]: Leaving directory `/lfs/tmp/make-3.79.1'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/lfs/tmp/make-3.79.1'
+make: *** [all-recursive-am] Error 2
+#+end_example
+
+In this case, many people would just include the bottom section:
+
+#+begin_example
+make [2]: *** [make] Error 1
+#+end_example
+
+This is not enough information to diagnose the problem, because it only notes that something went wrong, not what went wrong. The entire section, as in the example above, is what should be saved because it includes the command that was executed and all the associated error messages.
+
+
+
+* Preparing for the Build
+** Preparing the Host System
+*** Host System Requirements
+
+[[file:scripts/version-check.sh]]
+
+*** Creating a New Partition
+
+
+Like most other operating systems, LFS is usually installed on a dedicated partition. The recommended approach to building an LFS system is to use an available empty partition or, if you have enough unpartitioned space, to create one.
+
+
+
+A minimal system requires a partition of around 10 gigabytes (GB). This is enough to store all the source tarballs and compile the packages. However, if the LFS system is intended to be the primary Linux system, additional software will probably be installed which will require additional space. A 30 GB partition is a reasonable size to provide for growth. The LFS system itself will not take up this much room. A large portion of this requirement is to provide sufficient free temporary storage as well as for adding additional capabilities after LFS is complete. Additionally, compiling packages can require a lot of disk space which will be reclaimed after the package is installed.
+
+
+
+Because there is not always enough Random Access Memory (RAM) available for compilation processes, it is a good idea to use a small disk partition as swap space. This is used by the kernel to store seldom-used data and leave more memory available for active processes. The swap partition for an LFS system can be the same as the one used by the host system, in which case it is not necessary to create another one.
+
+
+**** The Root Partion
+A root LFS partition (not to be confused with the /root directory) of twenty gigabytes is a good compromise for most systems. It provides enough space to build LFS and most of BLFS, but is small enough so that multiple partitions can be easily created for experimentation.
+
+
+**** The Swap Partition
+Most distributions automatically create a swap partition. Generally the recommended size of the swap partition is about twice the amount of physical RAM, however this is rarely needed. If disk space is limited, hold the swap partition to two gigabytes and monitor the amount of disk swapping.
+
+If you want to use the hibernation feature (suspend-to-disk) of Linux, it writes out the contents of RAM to the swap partition before turning off the machine. In this case the size of the swap partition should be at least as large as the system's installed RAM.
+
+Swapping is never good. For mechanical hard drives you can generally tell if a system is swapping by just listening to disk activity and observing how the system reacts to commands. With an SSD you will not be able to hear swapping, but you can tell how much swap space is being used by running the top or free programs. Use of an SSD for a swap partition should be avoided if possible. The first reaction to swapping should be to check for an unreasonable command such as trying to edit a five gigabyte file. If swapping becomes a normal occurrence, the best solution is to purchase more RAM for your system.
+
+
+**** The Grub Bios Partition
+If the boot disk has been partitioned with a GUID Partition Table (GPT), then a small, typically 1 MB, partition must be created if it does not already exist. This partition is not formatted, but must be available for GRUB to use during installation of the boot loader. This partition will normally be labeled 'BIOS Boot' if using fdisk or have a code of EF02 if using the gdisk command.
+
+
+
+**** Convenience Partitions
+There are several other partitions that are not required, but should be considered when designing a disk layout. The following list is not comprehensive, but is meant as a guide.
+- /boot – Highly recommended. Use this partition to store kernels and other booting information. To minimize potential boot problems with larger disks, make this the first physical partition on your first disk drive. A partition size of 200 megabytes is adequate.
+- /boot/efi – The EFI System Partition, which is needed for booting the system with UEFI. Read the BLFS page for details.
+- /home – Highly recommended. Share your home directory and user customization across multiple distributions or LFS builds. The size is generally fairly large and depends on available disk space.
+- /usr – In LFS, /bin, /lib, and /sbin are symlinks to their counterparts in /usr. So /usr contains all the binaries needed for the system to run. For LFS a separate partition for /usr is normally not needed. If you create it anyway, you should make a partition large enough to fit all the programs and libraries in the system. The root partition can be very small (maybe just one gigabyte) in this configuration, so it's suitable for a thin client or diskless workstation (where /usr is mounted from a remote server). However, you should be aware that an initramfs (not covered by LFS) will be needed to boot a system with a separate /usr partition.
+- /opt – This directory is most useful for BLFS, where multiple large packages like KDE or Texlive can be installed without embedding the files in the /usr hierarchy. If used, 5 to 10 gigabytes is generally adequate.
+- /tmp – A separate /tmp partition is rare, but useful if configuring a thin client. This partition, if used, will usually not need to exceed a couple of gigabytes. If you have enough RAM, you can mount a tmpfs on /tmp to make access to temporary files faster.
+- /usr/src – This partition is very useful for providing a location to store BLFS source files and share them across LFS builds. It can also be used as a location for building BLFS packages. A reasonably large partition of 30-50 gigabytes provides plenty of room.
+
+
+Any separate partition that you want automatically mounted when the system starts must be specified in the /etc/fstab file.
+
+*** Creating a File System on the Partition
+
+
+A partition is just a range of sectors on a disk drive, delimited by boundaries set in a partition table. Before the operating system can use a partition to store any files, the partition must be formatted to contain a file system, typically consisting of a label, directory blocks, data blocks, and an indexing scheme to locate a particular file on demand. The file system also helps the OS keep track of free space on the partition, reserve the needed sectors when a new file is created or an existing file is extended, and recycle the free data segments created when files are deleted. It may also provide support for data redundancy, and for error recovery.
+
+
+
+LFS can use any file system recognized by the Linux kernel, but the most common types are ext3 and ext4. The choice of the right file system can be complex; it depends on the characteristics of the files and the size of the partition. For example:
+- ext2 :: is suitable for small partitions that are updated infrequently such as /boot.
+- ext3 :: is an upgrade to ext2 that includes a journal to help recover the partition's status in the case of an unclean shutdown. It is commonly used as a general purpose file system.
+- ext4 :: is the latest version of the ext family of file systems. It provides several new capabilities including nano-second timestamps, creation and use of very large files (up to 16 TB), and speed improvements.
+
+
+LFS assumes that the root file system (/) is of type ext4. To create an ext4 file system on the LFS partition, issue the following command:
+#+begin_src shell
+  mkfs -v -t ext4 /dev/<xxx>
+  # Replace <xxx> with the name of the LFS partition.
+
+  # -t, --type type
+  # Specify the type of filesystem to be built.
+#+end_src
+
+
+
+If you are using an existing swap partition, there is no need to format it. If a new swap partition was created, it will need to be initialized with this command:
+#+begin_src shell
+  mkswap /dev/<yyy>
+  # Replace <yyy> with the name of the swap partition.
+#+end_src
+
+
+
+*** Setting the $LFS Variable
+Throughout this book, the environment variable LFS will be used several times. You should ensure that this variable is always defined throughout the LFS build process. It should be set to the name of the directory where you will be building your LFS system - we will use /mnt/lfs as an example, but you may choose any directory name you want. If you are building LFS on a separate partition, this directory will be the mount point for the partition. Choose a directory location and set the variable with the following command:
+
+#+begin_src shell
+  export LFS=/mnt/lfs
+#+end_src
+
+
+Do not forget to check that LFS is set whenever you leave and reenter the current working environment (such as when doing a su to root or another user). Check that the LFS variable is set up properly with:
+#+begin_src shell
+  echo $LFS
+#+end_src
+
+
+*** Mounting the New Partition
+The partition must be mounted so the host system can access it. Strictly speaking, one cannot “mount a partition.” One mounts the file system embedded in that partition. But since a single partition can't contain more than one file system, people often speak of the partition and the associated file system as if they were one and the same.
+
+
+
+Create the mount point and mount the LFS file system with these commands:
+#+begin_src shell
+  mkdir -pv $LFS
+  mount -v -t ext4 /dev/<xxx> $LFS
+  # Replace <xxx> with the name of the LFS partition.
+#+end_src
+
+
+If you are using multiple partitions for LFS (e.g., one for / and another for /home), mount them like this:
+#+begin_src shell
+  mkdir -pv $LFS
+  # -p, --parents
+  # no error if existing, make parent directories as needed
+  mount -v -t ext4 /dev/<xxx> $LFS
+  mkdir -v $LFS/home
+  mount -v -t ext4 /dev/<yyy> $LFS/home
+  # Replace <xxx> and <yyy> with the appropriate partition names.
+#+end_src
+
+
+Ensure that this new partition is not mounted with permissions that are too restrictive (such as the nosuid or nodev options). Run the =mount= command without any parameters to see what options are set for the mounted LFS partition. If nosuid and/or nodev are set, the partition must be remounted.
+
+
+If you are using a swap partition, ensure that it is enabled using the =swapon= command:
+#+begin_src shell
+  /sbin/swapon -v /dev/<zzz>
+  # Replace <zzz> with the name of the swap partition.
+#+end_src
+** Packages and Patches
+
+
+This chapter includes a list of packages that need to be downloaded in order to build a basic Linux system. Downloaded packages and patches will need to be stored somewhere that is conveniently available throughout the entire build. A working directory is also required to unpack the sources and build them. =$LFS/sources= can be used both as the place to store the tarballs and patches and as a working directory. By using this directory, the required elements will be located on the LFS partition and will be available during all stages of the building process.
+
+
+To create this directory, execute the following command, as user root, before starting the download session:
+#+begin_src shell
+  mkdir -v $LFS/sources
+#+end_src
+
+
+Make this directory writable and sticky. “Sticky” means that even if multiple users have write permission on a directory, only the owner of a file can delete the file within a sticky directory. The following command will enable the write and sticky modes:
+#+begin_src shell
+  chmod -v a+wt $LFS/sources
+#+end_src
+
+
+
+There are several ways to obtain all the necessary packages and patches to build LFS:
+- The files can be downloaded individually.
+- For stable versions of the book, a tarball of all the needed files can be downloaded from one of the mirror sites listed at https://www.linuxfromscratch.org/mirrors.html#files.
+- The files can be downloaded using =wget= and a wget-list.
+
+
+To download all of the packages and patches by using wget-list-sysv as an input to the =wget= command, use:
+#+begin_src shell
+  wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
+#+end_src
+
+
+There is a separate file, md5sums, which can be used to verify that all the correct packages are available before proceeding. Place that file in =$LFS/sources= and run:
+#+begin_src shell
+  pushd $LFS/sources 		# change to the directory $LFS/sources
+  md5sum -c md5sums
+  popd				# return back to the original directory
+#+end_src
+
+This check can be used after retrieving the needed files with any of the methods listed above.
+
+
+If the packages and patches are downloaded as a non-root user, these files will be owned by the user. The file system records the owner by its UID, and the UID of a normal user in the host distro is not assigned in LFS. So the files will be left owned by an unnamed UID in the final LFS system. If you won't assign the same UID for your user in the LFS system, change the owners of these files to root now to avoid this issue:
+#+begin_src shell
+  chown root:root $LFS/sources/*
+#+end_src
+
+** Final Preparations
+
+* Building the LFS Cross Toolchain and Temporary Tools
+
+* Building the LFS System
 
   
  

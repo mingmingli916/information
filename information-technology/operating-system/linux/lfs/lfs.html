@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-03-10 Sun 23:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lfs</title>
+<meta name="author" content="Mingming Li" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">lfs</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org758ba06">1. Prerequisites</a></li>
+<li><a href="#orgbee7e6a">2. Instrocution</a>
+<ul>
+<li><a href="#org3e3f4bf">2.1. Things to Mention</a></li>
+<li><a href="#org48e76be">2.2. Configure Script Problems</a></li>
+<li><a href="#org30560e2">2.3. Compilation Problems</a></li>
+</ul>
+</li>
+<li><a href="#orgae31524">3. Preparing for the Build</a>
+<ul>
+<li><a href="#org8f5259d">3.1. Preparing the Host System</a>
+<ul>
+<li><a href="#org5201822">3.1.1. Host System Requirements</a></li>
+<li><a href="#org3bb0243">3.1.2. Creating a New Partition</a></li>
+<li><a href="#org93cc16a">3.1.3. Creating a File System on the Partition</a></li>
+<li><a href="#org021449e">3.1.4. Setting the $LFS Variable</a></li>
+<li><a href="#orgd9c849d">3.1.5. Mounting the New Partition</a></li>
+</ul>
+</li>
+<li><a href="#org505037a">3.2. Packages and Patches</a></li>
+<li><a href="#orgd7b9c29">3.3. Final Preparations</a></li>
+</ul>
+</li>
+<li><a href="#org8d1ec33">4. Building the LFS Cross Toolchain and Temporary Tools</a></li>
+<li><a href="#org182cc81">5. Building the LFS System</a></li>
+</ul>
+</div>
+</div>
+<p>
+Linux From Scratch (LFS) is a project that provides you with step-by-step instructions for building your own customized Linux system entirely from source.<br />
+</p>
+
+<p>
+Here are the benefits of building LFS given by the LFS website:<br />
+</p>
+<ul class="org-ul">
+<li>LFS teaches people how a Linux system works internally.<br /></li>
+<li>Building LFS produces a very compact Linux system.<br /></li>
+<li>LFS is extremely flexible.<br /></li>
+<li>LFS offers you added security.<br /></li>
+</ul>
+
+
+
+<p>
+The benefits exactly macth my needs:<br />
+</p>
+<ul class="org-ul">
+<li>I want to understand how a linux operating system works.<br /></li>
+<li>I want a clear OS.<br /></li>
+<li>I wang an OS specilized to my usecase.<br /></li>
+<li>I want keep my data safe, no data sent to the companies like Windows, Apple or Canonical.<br /></li>
+</ul>
+
+
+
+
+
+<div id="outline-container-org758ba06" class="outline-2">
+<h2 id="org758ba06"><span class="section-number-2">1.</span> Prerequisites</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="building-and-installing-software-package-for-linux.html#ID-BB16B28A-EDD0-42EB-8132-7C224666E1A4">building and installing software package</a><br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgbee7e6a" class="outline-2">
+<h2 id="orgbee7e6a"><span class="section-number-2">2.</span> Instrocution</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The LFS system will be built by using an already installed Linux distribution. This existing Linux system (the host) will be used as a starting point to provide necessary programs, including a compiler, linker, and shell, to build the new system. Select the “development” option during the distribution installation to include these tools.<br />
+</p>
+</div>
+
+
+<div id="outline-container-org3e3f4bf" class="outline-3">
+<h3 id="org3e3f4bf"><span class="section-number-3">2.1.</span> Things to Mention</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Apart from a brief explanation of the problem being experienced, any request for help should include these essential things:<br />
+</p>
+<ul class="org-ul">
+<li>The version of the book being used (in this case 12.1)<br /></li>
+<li>The host distribution and version being used to create LFS<br /></li>
+<li>The output from the Host System Requirements script<br /></li>
+<li>The package or section the problem was encountered in<br /></li>
+<li>The exact error message, or a clear description of the problem<br /></li>
+<li>Note whether you have deviated from the book at all<br /></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org48e76be" class="outline-3">
+<h3 id="org48e76be"><span class="section-number-3">2.2.</span> Configure Script Problems</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+If something goes wrong while running the <code>configure</code> script, review the <code>config.log</code> file. This file may contain errors encountered during configure which were not printed to the screen. Include the relevant lines if you need to ask for help.<br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org30560e2" class="outline-3">
+<h3 id="org30560e2"><span class="section-number-3">2.3.</span> Compilation Problems</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Both the screen output and the contents of various files are useful in determining the cause of compilation problems. The screen output from the <code>configure</code> script and the <code>make</code> run can be helpful. It is not necessary to include the entire output, but do include all of the relevant information. Here is an example of the type of information to include from the make screen output.<br />
+</p>
+
+<pre class="example" id="org9922697">
+gcc -DALIASPATH=\"/mnt/lfs/usr/share/locale:.\"
+-DLOCALEDIR=\"/mnt/lfs/usr/share/locale\"
+-DLIBDIR=\"/mnt/lfs/usr/lib\"
+-DINCLUDEDIR=\"/mnt/lfs/usr/include\" -DHAVE_CONFIG_H -I. -I.
+-g -O2 -c getopt1.c
+gcc -g -O2 -static -o make ar.o arscan.o commands.o dir.o
+expand.o file.o function.o getopt.o implicit.o job.o main.o
+misc.o read.o remake.o rule.o signame.o variable.o vpath.o
+default.o remote-stub.o version.o opt1.o
+-lutil job.o: In function `load_too_high':
+/lfs/tmp/make-3.79.1/job.c:1565: undefined reference
+to `getloadavg'
+collect2: ld returned 1 exit status
+make[2]: *** [make] Error 1
+make[2]: Leaving directory `/lfs/tmp/make-3.79.1'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/lfs/tmp/make-3.79.1'
+make: *** [all-recursive-am] Error 2
+</pre>
+
+<p>
+In this case, many people would just include the bottom section:<br />
+</p>
+
+<pre class="example" id="orga020492">
+make [2]: *** [make] Error 1
+</pre>
+
+<p>
+This is not enough information to diagnose the problem, because it only notes that something went wrong, not what went wrong. The entire section, as in the example above, is what should be saved because it includes the command that was executed and all the associated error messages.<br />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgae31524" class="outline-2">
+<h2 id="orgae31524"><span class="section-number-2">3.</span> Preparing for the Build</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org8f5259d" class="outline-3">
+<h3 id="org8f5259d"><span class="section-number-3">3.1.</span> Preparing the Host System</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org5201822" class="outline-4">
+<h4 id="org5201822"><span class="section-number-4">3.1.1.</span> Host System Requirements</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+<a href="scripts/version-check.sh">scripts/version-check.sh</a><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3bb0243" class="outline-4">
+<h4 id="org3bb0243"><span class="section-number-4">3.1.2.</span> Creating a New Partition</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Like most other operating systems, LFS is usually installed on a dedicated partition. The recommended approach to building an LFS system is to use an available empty partition or, if you have enough unpartitioned space, to create one.<br />
+</p>
+
+
+
+<p>
+A minimal system requires a partition of around 10 gigabytes (GB). This is enough to store all the source tarballs and compile the packages. However, if the LFS system is intended to be the primary Linux system, additional software will probably be installed which will require additional space. A 30 GB partition is a reasonable size to provide for growth. The LFS system itself will not take up this much room. A large portion of this requirement is to provide sufficient free temporary storage as well as for adding additional capabilities after LFS is complete. Additionally, compiling packages can require a lot of disk space which will be reclaimed after the package is installed.<br />
+</p>
+
+
+
+<p>
+Because there is not always enough Random Access Memory (RAM) available for compilation processes, it is a good idea to use a small disk partition as swap space. This is used by the kernel to store seldom-used data and leave more memory available for active processes. The swap partition for an LFS system can be the same as the one used by the host system, in which case it is not necessary to create another one.<br />
+</p>
+</div>
+
+
+<ol class="org-ol">
+<li><a id="org4174b0d"></a>The Root Partion<br />
+<div class="outline-text-5" id="text-3-1-2-1">
+<p>
+A root LFS partition (not to be confused with the /root directory) of twenty gigabytes is a good compromise for most systems. It provides enough space to build LFS and most of BLFS, but is small enough so that multiple partitions can be easily created for experimentation.<br />
+</p>
+</div>
+</li>
+
+
+<li><a id="org4867674"></a>The Swap Partition<br />
+<div class="outline-text-5" id="text-3-1-2-2">
+<p>
+Most distributions automatically create a swap partition. Generally the recommended size of the swap partition is about twice the amount of physical RAM, however this is rarely needed. If disk space is limited, hold the swap partition to two gigabytes and monitor the amount of disk swapping.<br />
+</p>
+
+<p>
+If you want to use the hibernation feature (suspend-to-disk) of Linux, it writes out the contents of RAM to the swap partition before turning off the machine. In this case the size of the swap partition should be at least as large as the system's installed RAM.<br />
+</p>
+
+<p>
+Swapping is never good. For mechanical hard drives you can generally tell if a system is swapping by just listening to disk activity and observing how the system reacts to commands. With an SSD you will not be able to hear swapping, but you can tell how much swap space is being used by running the top or free programs. Use of an SSD for a swap partition should be avoided if possible. The first reaction to swapping should be to check for an unreasonable command such as trying to edit a five gigabyte file. If swapping becomes a normal occurrence, the best solution is to purchase more RAM for your system.<br />
+</p>
+</div>
+</li>
+
+
+<li><a id="org1cb94ee"></a>The Grub Bios Partition<br />
+<div class="outline-text-5" id="text-3-1-2-3">
+<p>
+If the boot disk has been partitioned with a GUID Partition Table (GPT), then a small, typically 1 MB, partition must be created if it does not already exist. This partition is not formatted, but must be available for GRUB to use during installation of the boot loader. This partition will normally be labeled 'BIOS Boot' if using fdisk or have a code of EF02 if using the gdisk command.<br />
+</p>
+</div>
+</li>
+
+
+
+<li><a id="orgf2844b5"></a>Convenience Partitions<br />
+<div class="outline-text-5" id="text-3-1-2-4">
+<p>
+There are several other partitions that are not required, but should be considered when designing a disk layout. The following list is not comprehensive, but is meant as a guide.<br />
+</p>
+<ul class="org-ul">
+<li>/boot – Highly recommended. Use this partition to store kernels and other booting information. To minimize potential boot problems with larger disks, make this the first physical partition on your first disk drive. A partition size of 200 megabytes is adequate.<br /></li>
+<li>/boot/efi – The EFI System Partition, which is needed for booting the system with UEFI. Read the BLFS page for details.<br /></li>
+<li>/home – Highly recommended. Share your home directory and user customization across multiple distributions or LFS builds. The size is generally fairly large and depends on available disk space.<br /></li>
+<li>/usr – In LFS, /bin, /lib, and /sbin are symlinks to their counterparts in /usr. So /usr contains all the binaries needed for the system to run. For LFS a separate partition for /usr is normally not needed. If you create it anyway, you should make a partition large enough to fit all the programs and libraries in the system. The root partition can be very small (maybe just one gigabyte) in this configuration, so it's suitable for a thin client or diskless workstation (where /usr is mounted from a remote server). However, you should be aware that an initramfs (not covered by LFS) will be needed to boot a system with a separate /usr partition.<br /></li>
+<li>/opt – This directory is most useful for BLFS, where multiple large packages like KDE or Texlive can be installed without embedding the files in the /usr hierarchy. If used, 5 to 10 gigabytes is generally adequate.<br /></li>
+<li>/tmp – A separate /tmp partition is rare, but useful if configuring a thin client. This partition, if used, will usually not need to exceed a couple of gigabytes. If you have enough RAM, you can mount a tmpfs on /tmp to make access to temporary files faster.<br /></li>
+<li>/usr/src – This partition is very useful for providing a location to store BLFS source files and share them across LFS builds. It can also be used as a location for building BLFS packages. A reasonably large partition of 30-50 gigabytes provides plenty of room.<br /></li>
+</ul>
+
+
+<p>
+Any separate partition that you want automatically mounted when the system starts must be specified in the /etc/fstab file.<br />
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org93cc16a" class="outline-4">
+<h4 id="org93cc16a"><span class="section-number-4">3.1.3.</span> Creating a File System on the Partition</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+A partition is just a range of sectors on a disk drive, delimited by boundaries set in a partition table. Before the operating system can use a partition to store any files, the partition must be formatted to contain a file system, typically consisting of a label, directory blocks, data blocks, and an indexing scheme to locate a particular file on demand. The file system also helps the OS keep track of free space on the partition, reserve the needed sectors when a new file is created or an existing file is extended, and recycle the free data segments created when files are deleted. It may also provide support for data redundancy, and for error recovery.<br />
+</p>
+
+
+
+<p>
+LFS can use any file system recognized by the Linux kernel, but the most common types are ext3 and ext4. The choice of the right file system can be complex; it depends on the characteristics of the files and the size of the partition. For example:<br />
+</p>
+<dl class="org-dl">
+<dt>ext2</dt><dd>is suitable for small partitions that are updated infrequently such as /boot.<br /></dd>
+<dt>ext3</dt><dd>is an upgrade to ext2 that includes a journal to help recover the partition's status in the case of an unclean shutdown. It is commonly used as a general purpose file system.<br /></dd>
+<dt>ext4</dt><dd>is the latest version of the ext family of file systems. It provides several new capabilities including nano-second timestamps, creation and use of very large files (up to 16 TB), and speed improvements.<br /></dd>
+</dl>
+
+
+<p>
+LFS assumes that the root file system (/) is of type ext4. To create an ext4 file system on the LFS partition, issue the following command:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkfs -v -t ext4 /dev/&lt;xxx&gt;
+# Replace &lt;xxx&gt; with the name of the LFS partition.
+
+# -t, --type type
+# Specify the type of filesystem to be built.
+</pre>
+</div>
+
+
+
+<p>
+If you are using an existing swap partition, there is no need to format it. If a new swap partition was created, it will need to be initialized with this command:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkswap /dev/&lt;yyy&gt;
+# Replace &lt;yyy&gt; with the name of the swap partition.
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org021449e" class="outline-4">
+<h4 id="org021449e"><span class="section-number-4">3.1.4.</span> Setting the $LFS Variable</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<p>
+Throughout this book, the environment variable LFS will be used several times. You should ensure that this variable is always defined throughout the LFS build process. It should be set to the name of the directory where you will be building your LFS system - we will use /mnt/lfs as an example, but you may choose any directory name you want. If you are building LFS on a separate partition, this directory will be the mount point for the partition. Choose a directory location and set the variable with the following command:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">export LFS=/mnt/lfs
+</pre>
+</div>
+
+
+<p>
+Do not forget to check that LFS is set whenever you leave and reenter the current working environment (such as when doing a su to root or another user). Check that the LFS variable is set up properly with:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">echo $LFS
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd9c849d" class="outline-4">
+<h4 id="orgd9c849d"><span class="section-number-4">3.1.5.</span> Mounting the New Partition</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+The partition must be mounted so the host system can access it. Strictly speaking, one cannot “mount a partition.” One mounts the file system embedded in that partition. But since a single partition can't contain more than one file system, people often speak of the partition and the associated file system as if they were one and the same.<br />
+</p>
+
+
+
+<p>
+Create the mount point and mount the LFS file system with these commands:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -pv $LFS
+mount -v -t ext4 /dev/&lt;xxx&gt; $LFS
+# Replace &lt;xxx&gt; with the name of the LFS partition.
+</pre>
+</div>
+
+
+<p>
+If you are using multiple partitions for LFS (e.g., one for / and another for /home), mount them like this:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -pv $LFS
+# -p, --parents
+# no error if existing, make parent directories as needed
+mount -v -t ext4 /dev/&lt;xxx&gt; $LFS
+mkdir -v $LFS/home
+mount -v -t ext4 /dev/&lt;yyy&gt; $LFS/home
+# Replace &lt;xxx&gt; and &lt;yyy&gt; with the appropriate partition names.
+</pre>
+</div>
+
+
+<p>
+Ensure that this new partition is not mounted with permissions that are too restrictive (such as the nosuid or nodev options). Run the <code>mount</code> command without any parameters to see what options are set for the mounted LFS partition. If nosuid and/or nodev are set, the partition must be remounted.<br />
+</p>
+
+
+<p>
+If you are using a swap partition, ensure that it is enabled using the <code>swapon</code> command:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">/sbin/swapon -v /dev/&lt;zzz&gt;
+# Replace &lt;zzz&gt; with the name of the swap partition.
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org505037a" class="outline-3">
+<h3 id="org505037a"><span class="section-number-3">3.2.</span> Packages and Patches</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+This chapter includes a list of packages that need to be downloaded in order to build a basic Linux system. Downloaded packages and patches will need to be stored somewhere that is conveniently available throughout the entire build. A working directory is also required to unpack the sources and build them. <code>$LFS/sources</code> can be used both as the place to store the tarballs and patches and as a working directory. By using this directory, the required elements will be located on the LFS partition and will be available during all stages of the building process.<br />
+</p>
+
+
+<p>
+To create this directory, execute the following command, as user root, before starting the download session:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -v $LFS/sources
+</pre>
+</div>
+
+
+<p>
+Make this directory writable and sticky. “Sticky” means that even if multiple users have write permission on a directory, only the owner of a file can delete the file within a sticky directory. The following command will enable the write and sticky modes:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">chmod -v a+wt $LFS/sources
+</pre>
+</div>
+
+
+
+<p>
+There are several ways to obtain all the necessary packages and patches to build LFS:<br />
+</p>
+<ul class="org-ul">
+<li>The files can be downloaded individually.<br /></li>
+<li>For stable versions of the book, a tarball of all the needed files can be downloaded from one of the mirror sites listed at <a href="https://www.linuxfromscratch.org/mirrors.html#files">https://www.linuxfromscratch.org/mirrors.html#files</a>.<br /></li>
+<li>The files can be downloaded using <code>wget</code> and a wget-list.<br /></li>
+</ul>
+
+
+<p>
+To download all of the packages and patches by using wget-list-sysv as an input to the <code>wget</code> command, use:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
+</pre>
+</div>
+
+
+<p>
+There is a separate file, md5sums, which can be used to verify that all the correct packages are available before proceeding. Place that file in <code>$LFS/sources</code> and run:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pushd $LFS/sources 		# change to the directory $LFS/sources
+md5sum -c md5sums
+popd				# return back to the original directory
+</pre>
+</div>
+
+<p>
+This check can be used after retrieving the needed files with any of the methods listed above.<br />
+</p>
+
+
+<p>
+If the packages and patches are downloaded as a non-root user, these files will be owned by the user. The file system records the owner by its UID, and the UID of a normal user in the host distro is not assigned in LFS. So the files will be left owned by an unnamed UID in the final LFS system. If you won't assign the same UID for your user in the LFS system, change the owners of these files to root now to avoid this issue:<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">chown root:root $LFS/sources/*
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd7b9c29" class="outline-3">
+<h3 id="orgd7b9c29"><span class="section-number-3">3.3.</span> Final Preparations</h3>
+</div>
+</div>
+
+<div id="outline-container-org8d1ec33" class="outline-2">
+<h2 id="org8d1ec33"><span class="section-number-2">4.</span> Building the LFS Cross Toolchain and Temporary Tools</h2>
+</div>
+
+<div id="outline-container-org182cc81" class="outline-2">
+<h2 id="org182cc81"><span class="section-number-2">5.</span> Building the LFS System</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mingming Li</p>
+<p class="date">Created: 2024-03-10 Sun 23:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
