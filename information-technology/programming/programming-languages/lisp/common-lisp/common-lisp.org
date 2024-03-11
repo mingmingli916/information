@@ -4964,7 +4964,7 @@ It's difficult to give general advice about optimization, because of the variati
 
 
 
-** The <<<Bottleneck Rule>>>
+** DONE The <<<Bottleneck Rule>>>
 Three points can be made about optimization, regardless of the implementation:
 1. It should be focused on bottlenecks.
 2. It should not begin too early.

@@ -17,3 +17,16 @@ programming = data structure + [[id:285C698D-B909-453E-8775-CCC9FDE21A4D][algori
 [[id:FBD665E7-ADE3-4069-83C4-8715199F1FFC][python]]
 [[id:A194CD53-E934-452A-B9F4-3348F7E77DBA][elisp]]
 [[id:08CE1295-519C-4406-88DB-2CFC760865C4][Shell]]
+
+
+
+* Speed
+
+** The Bottleneck Rule
+- It should be focused on bottlenecks.
+- It should not begin too early.
+- It should begin with algorithms.
+
+
+
+A profiler is a valuable tool — perhaps even a necessity — in producing the most efficient code.
