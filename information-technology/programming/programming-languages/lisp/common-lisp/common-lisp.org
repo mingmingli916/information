@@ -3,6 +3,9 @@
 :END:
 #+title: common lisp
 
+[[id:E8EE0CF6-A8D8-4A9C-A2EF-F8B0FF466E25][cl web]]
+
+
 * DONE Introduction
 :LOGBOOK:
 - State "DONE"       from              [2024-02-13 Tue 08:36]
@@ -4954,7 +4957,7 @@ CL-USER> (progn
 #1=#S(MY-ELT :PARENT #S(MY-ELT :PARENT NIL :CHILD #1#) :CHILD NIL)  
 #+end_src
 
-* Speed
+* DONE Speed
 
 Lisp is really two languages: a language for writting fast programs and a language for writting programs fast. In the early stages of a program you can trade speed for convenience. Then once the structure of your program begins to crystallize, you can refine critical portions to make them faster.
 
@@ -4991,7 +4994,7 @@ You end up with better programs if each task can be emphasized at the appropriat
 When you do turn to optimization, begin at the top. That is, make sure that you're using the most efficient algorithm before you resort to low-level coding tricks. The potential gains are greater — perhaps great enough that you won't have to resort to coding tricks after all. This rule has to be balanced against the preceding one, though. Sometimes decisions about algorithms have to be made early.
 
 
-** Compilation
+** DONE Compilation
 
 Five parameters control the way your code is compiled:
 - speed :: refers to the speed of the code produced by the compiler;
@@ -5099,7 +5102,7 @@ NIL
 Even if what you see is completely incomprehensible, you can still use =disassemble= to determine whether declarations are being used: compile two version of the function, one with the declaration and one without, and see if the code displayed by =disassemble= differs between the two. You can use a similar technique to see if functions are being compiled inline. In either case, be sure to set the compilation parameters beforehand to get the fatest code.
 
 
-** Type Declarations
+** DONE Type Declarations
 In most languages, you have to declare the type of each variable, and the variable can only hold values of that type. Such a language is said to be *<<<strong typed>>>*. As well as being a lot of work for the programmer, this approach imposes restrictions on what you can do. In such a language it's hard to write functions that work for different kinds of arguments, or to have data structure that contain different kinds of elements. The advantage of this approach is that whenever the compiler sees an addition, for example, it knows beforehand what kind of addition is involved. If both arguments are integers, it can hard-wire an integer addition in the object code.
 
 
@@ -5195,7 +5198,7 @@ This declare that =arr= will be $4\times 4$ simple array specialized for fixnums
 
 
 
-The following code shows how to create a $1OOO \times 1000$ array of single-floats, and how to write a function to sum the elements of such an array. Arrays are
+The following code shows how to create a $1000 \times 1000$ array of single-floats, and how to write a function to sum the elements of such an array. Arrays are
 stored in row-major order and should be traversed that way when possible.
 #+begin_src lisp
   (setf a (make-array '(1000 1000)
@@ -5245,7 +5248,7 @@ Evaluation took:
 The importance of type declarations, especially for arrays and numbers, cannot be overemphasized. 
 
 
-** Garbage Avoidance
+** DONE Garbage Avoidance
 As Lisp allows you to delay thinking about the types of variables, it also allows you to delay thinking about memory allocation. In the early stages of a program it frees your imagination not to have to think about (or deal with bugs involving) memory allocation. As a program matures, it can rely less on dynamic allocation and so become faster.
 
 
@@ -5349,7 +5352,7 @@ then the compiler is free (but not required) to allocate space for =args= on the
 
 
 
-** Fast Operators
+** DONE Fast Operators
 
 The beginning of this chapter described Lisp as two different languages. In one sense this is literally true. If you look closely at the design of Common Lisp, you can see that some features are intended mainly for speed, and others mainly for convenience.
 
@@ -5385,7 +5388,7 @@ Individual compilers sometimes perform their own particular optimizations. For e
 
 
 
-** Two-Phase Development
+** DONE Two-Phase Development
 In applications where speed is paramount, you may want to rewrite part of a Lisp program in a lower-level language like C or assembler. You can use this technique with programs written in any language — critical parts of C programs are often rewritten in assembler — but the more abstract the language, the greater the benefits of developing programs in two phases.
 
 
@@ -5412,7 +5415,7 @@ Common Lisp is like an iceberg: a great part of its functionality is invisible t
 
 
 
-** Type Specifiers
+** DONE Type Specifiers
 Types are not objects in Common Lisp. There is no object that corresponds to the type =integer=, for example. What we get from a function like =type-of=, and give as an argument to function like =typep=, is not a type, but a type specifier.
 
 
@@ -5499,7 +5502,7 @@ NIL
 Type specifiers are interpreted, and therefore slow, so you would generally be better off defining a function to make this kind of test.
 
 
-** Binary Streams
+** DONE Binary Streams
 A <<<binary stream>>> is a source and/or destination of integers. You create a binary stream by specifying a subtype of =integer= — most often =unsigned-byte= — as the =:element-type= when you open the stream.
 
 There are only two functions for I/O on binary streams, =read-byte= and =write-byte=. So here is how you might define a function to copy a file:
@@ -5512,7 +5515,7 @@ There are only two functions for I/O on binary streams, =read-byte= and =write-b
 	(do ((i (read-byte in nil -1) (read-byte in nil -1)))
 	    ((minusp i))
 	  (declare (fixnum i))
-	  (write-tye i out)))))  
+	  (write-byte i out)))))  
 #+end_src
 
 
