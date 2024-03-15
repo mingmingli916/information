@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       B2197A36-4F24-43A8-9220-FB153B71598A
+:END:
+#+title: information technology
+
+
+
+Information technology (IT) is a set of related fields that encompass computer systems, software, programming languages and data and information processing and storage.
+
+
+
+[[id:905C9846-ADD5-4FCC-B322-8A25B998D56F][os]]
+
+[[id:64EE8E3D-DEB2-4CD9-ADA0-840A007C45E1][programming]]
+
+[[id:1A64F002-AF71-46B8-B672-E5D7890B785E][ai]]
+
+
+[[id:85E97455-43DC-4D57-BEDA-03636B596F29][website]]
